@@ -61,6 +61,17 @@ export default function Login({ onLogin }) {
   const [success, setSuccess] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPwd, setLoginPwd]     = useState('');
+  const [remember, setRemember]     = useState(false);
+
+  // Auto-remplir si mémorisé
+  useState(() => {
+    const saved = JSON.parse(localStorage.getItem('agrisens_remember') || 'null');
+    if (saved) {
+      setLoginEmail(saved.email || '');
+      setLoginPwd(saved.password || '');
+      setRemember(true);
+    }
+  });
   const [regNom, setRegNom]         = useState('');
   const [regPrenom, setRegPrenom]   = useState('');
   const [regNat, setRegNat]         = useState('Sénégalaise');
@@ -89,12 +100,22 @@ export default function Login({ onLogin }) {
       const payload = JSON.parse(atob(data.access_token.split('.')[1]));
       const user = payload.preferred_username || username;
       const role = user === 'admin' ? 'admin' : user === 'technicien' ? 'technicien' : 'agronome';
+      if (remember) {
+        localStorage.setItem('agrisens_remember', JSON.stringify({ email: loginEmail, password: loginPwd }));
+      } else {
+        localStorage.removeItem('agrisens_remember');
+      }
       onLogin({ token: data.access_token, user, role, email: loginEmail });
     } catch {
       const users = getUsers();
       const found = users.find(u => u.email === loginEmail && u.password === loginPwd);
       if (found) {
-        onLogin({ token: 'local', user: found.prenom + ' ' + found.nom, role: found.role, email: found.email, profile: found });
+        if (remember) {
+        localStorage.setItem('agrisens_remember', JSON.stringify({ email: loginEmail, password: loginPwd }));
+      } else {
+        localStorage.removeItem('agrisens_remember');
+      }
+      onLogin({ token: 'local', user: found.prenom + ' ' + found.nom, role: found.role, email: found.email, profile: found });
       } else {
         setError('Email ou mot de passe incorrect.');
       }
@@ -152,10 +173,23 @@ export default function Login({ onLogin }) {
               <label>Mot de passe</label>
               <PwdInput value={loginPwd} onChange={e=>setLoginPwd(e.target.value)}/>
             </div>
+            <div className="remember-row">
+              <label className="remember-label">
+                <input
+                  type="checkbox"
+                  checked={remember}
+                  onChange={e => {
+                    setRemember(e.target.checked);
+                    if (!e.target.checked) localStorage.removeItem('agrisens_remember');
+                  }}
+                />
+                <span>Se souvenir de moi</span>
+              </label>
+              <span className="login-link" onClick={()=>switchTab('reset')}>Mot de passe oublié ?</span>
+            </div>
             <button className="btn-login" type="submit" disabled={loading}>
               {loading ? '⏳ Connexion…' : '🔐 Se connecter'}
             </button>
-            <p className="login-link" onClick={()=>switchTab('reset')}>Mot de passe oublié ?</p>
           </form>
         )}
 
