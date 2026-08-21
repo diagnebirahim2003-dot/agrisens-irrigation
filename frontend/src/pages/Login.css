@@ -80,3 +80,36 @@
   color: #6a7f6a;
   padding: 0;
 }
+
+/* ── Fix mobile : texte visible dans tous les champs ── */
+.login-card input,
+.login-card select,
+.login-card textarea,
+.pwd-wrap input {
+  color: #1b3a1b !important;
+  -webkit-text-fill-color: #1b3a1b !important;
+  opacity: 1 !important;
+  background-color: #ffffff !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.login-card input::placeholder {
+  color: #9aaa9a !important;
+  -webkit-text-fill-color: #9aaa9a !important;
+  opacity: 1 !important;
+}
+.login-card input:focus,
+.login-card select:focus {
+  color: #1b3a1b !important;
+  -webkit-text-fill-color: #1b3a1b !important;
+  background-color: #ffffff !important;
+  outline: none;
+}
+/* Fix Safari/iOS autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1b3a1b !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
