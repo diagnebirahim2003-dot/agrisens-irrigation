@@ -29,6 +29,23 @@ function getUsers() {
   return users;
 }
 
+function PwdInput({ value, onChange, placeholder }) {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="pwd-wrap">
+      <input
+        type={show ? 'text' : 'password'}
+        placeholder={placeholder || '••••••••'}
+        value={value}
+        onChange={onChange}
+      />
+      <button type="button" className="btn-show-pwd" onClick={() => setShow(s => !s)}>
+        {show ? '🙈' : '👁️'}
+      </button>
+    </div>
+  );
+}
+
 export default function Login({ onLogin }) {
   const [tab, setTab]         = useState('login');
   const [loading, setLoading] = useState(false);
@@ -114,14 +131,26 @@ export default function Login({ onLogin }) {
         </div>
         {error   && <div className="login-error">{error}</div>}
         {success && <div className="login-success">{success}</div>}
+
         {tab === 'login' && (
           <form onSubmit={handleLogin}>
-            <div className="inp-group"><label>Email Gmail</label><input type="email" placeholder="exemple@gmail.com" value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/></div>
-            <div className="inp-group"><label>Mot de passe</label><input type="password" placeholder="••••••••" value={loginPwd} onChange={e=>setLoginPwd(e.target.value)}/></div>
-            <button className="btn-login" type="submit" disabled={loading}>{loading ? '⏳ Connexion…' : '🔐 Se connecter'}</button>
+            <div className="inp-group">
+              <label>Email Gmail</label>
+              <input type="email" placeholder="exemple@gmail.com"
+                value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
+              {loginEmail && <span className="email-display">✉️ {loginEmail}</span>}
+            </div>
+            <div className="inp-group">
+              <label>Mot de passe</label>
+              <PwdInput value={loginPwd} onChange={e=>setLoginPwd(e.target.value)}/>
+            </div>
+            <button className="btn-login" type="submit" disabled={loading}>
+              {loading ? '⏳ Connexion…' : '🔐 Se connecter'}
+            </button>
             <p className="login-link" onClick={()=>switchTab('reset')}>Mot de passe oublié ?</p>
           </form>
         )}
+
         {tab === 'register' && (
           <form onSubmit={handleRegister}>
             <div className="form-row">
@@ -142,19 +171,27 @@ export default function Login({ onLogin }) {
             <div className="inp-group">
               <label>Email Gmail * <span className="gmail-hint">(@gmail.com requis)</span></label>
               <input type="email" placeholder="exemple@gmail.com" value={regEmail} onChange={e=>setRegEmail(e.target.value)}/>
+              {regEmail && isGmail(regEmail)  && <span className="email-display">✉️ {regEmail}</span>}
               {regEmail && !isGmail(regEmail) && <span className="field-error">⚠️ Utilisez une adresse @gmail.com</span>}
             </div>
             <div className="form-row">
-              <div className="inp-group"><label>Mot de passe *</label><input type="password" placeholder="Min. 6 caractères" value={regPwd} onChange={e=>setRegPwd(e.target.value)}/></div>
-              <div className="inp-group"><label>Confirmer *</label><input type="password" placeholder="Répéter" value={regPwd2} onChange={e=>setRegPwd2(e.target.value)}/></div>
+              <div className="inp-group"><label>Mot de passe *</label><PwdInput value={regPwd} onChange={e=>setRegPwd(e.target.value)} placeholder="Min. 6 caractères"/></div>
+              <div className="inp-group"><label>Confirmer *</label><PwdInput value={regPwd2} onChange={e=>setRegPwd2(e.target.value)} placeholder="Répéter"/></div>
             </div>
             <button className="btn-login" type="submit">✅ Créer mon compte</button>
           </form>
         )}
+
         {tab === 'reset' && (
           <form onSubmit={handleReset}>
-            <p style={{fontSize:'0.8rem',color:'#6a7f6a',marginBottom:'14px'}}>Entrez votre adresse Gmail pour recevoir un lien de réinitialisation.</p>
-            <div className="inp-group"><label>Email Gmail</label><input type="email" placeholder="exemple@gmail.com" value={resetEmail} onChange={e=>setResetEmail(e.target.value)}/></div>
+            <p style={{fontSize:'0.8rem',color:'#6a7f6a',marginBottom:'14px'}}>
+              Entrez votre adresse Gmail pour recevoir un lien de réinitialisation.
+            </p>
+            <div className="inp-group">
+              <label>Email Gmail</label>
+              <input type="email" placeholder="exemple@gmail.com" value={resetEmail} onChange={e=>setResetEmail(e.target.value)}/>
+              {resetEmail && isGmail(resetEmail) && <span className="email-display">✉️ {resetEmail}</span>}
+            </div>
             <button className="btn-login" type="submit">📧 Envoyer le lien</button>
             <p className="login-link" onClick={()=>switchTab('login')}>← Retour</p>
           </form>
