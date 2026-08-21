@@ -29,7 +29,7 @@ function getUsers() {
   return users;
 }
 
-function PwdInput({ value, onChange, placeholder, id }) {
+function PwdInput({ value, onChange, placeholder }) {
   const [show, setShow] = useState(false);
   return (
     <div className="pwd-wrap">
@@ -38,8 +38,16 @@ function PwdInput({ value, onChange, placeholder, id }) {
         placeholder={placeholder || '••••••••'}
         value={value}
         onChange={onChange}
+        autoComplete="current-password"
       />
-      <button type="button" className="btn-show-pwd" onClick={() => setShow(s => !s)}>
+      <button
+        type="button"
+        className="btn-show-pwd"
+        tabIndex={-1}
+        onMouseDown={e => e.preventDefault()}
+        onClick={() => setShow(s => !s)}
+        aria-label={show ? 'Masquer' : 'Afficher'}
+      >
         {show ? '🙈' : '👁️'}
       </button>
     </div>
