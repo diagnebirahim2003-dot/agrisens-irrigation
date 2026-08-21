@@ -29,7 +29,7 @@ function getUsers() {
   return users;
 }
 
-function PwdInput({ value, onChange, placeholder }) {
+function PwdInput({ value, onChange, placeholder, id }) {
   const [show, setShow] = useState(false);
   return (
     <div className="pwd-wrap">
