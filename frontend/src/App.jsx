@@ -139,7 +139,7 @@ export default function App() {
       {page === 'admin'      && <AdminPanel auth={auth} onBack={() => setPage('dashboard')}/>}
       {page === 'parcelles'  && <ComingSoon label="🧭 Mes parcelles"/>}
       {page === 'capteurs'   && <ComingSoon label="📊 Données capteurs"/>}
-      {page === 'calculs'    && <ComingSoon label="🧮 Calculs ETo/ETc"/>}
+      {page === 'calculs' && <Calculs auth={auth}/>}
       {page === 'graphes'    && <ComingSoon label="📈 Graphes historiques"/>}
     </div>
   );
