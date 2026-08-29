@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
 import Parcelles from './pages/Parcelles';
 import Calculs from './pages/Calculs';
+import Capteurs from './pages/Capteurs';
 import './App.css';
 
 const NAV_ITEMS = [
@@ -180,7 +181,7 @@ export default function App() {
         {page==='admin'     && <PageWrap title="👥 Gestion des utilisateurs"><AdminPanel auth={auth} onBack={()=>setPage('dashboard')}/></PageWrap>}
         {page==='parcelles' && <PageWrap title="🧭 Mes parcelles" desc="Gérez vos plots et suivez les stades culturaux"><Parcelles auth={auth}/></PageWrap>}
         {page==='calculs'   && <PageWrap title="🧮 Calculs agronomiques" desc="ETo · ETc · RU · RFU — FAO-56 + Hargreaves"><Calculs auth={auth}/></PageWrap>}
-        {page==='capteurs'  && <ComingSoon icon="📡" label="Données capteurs"/>}
+        {page==='capteurs' && <PageWrap title="📡 Données capteurs" desc="Capteur 8-en-1 (sol) + Météo OpenWeatherMap temps réel"><Capteurs auth={auth}/></PageWrap>}
         {page==='graphes'   && <ComingSoon icon="📈" label="Graphes historiques"/>}
       </div>
     </div>
