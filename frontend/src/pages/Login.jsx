@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CONFIG } from '../utils/config';
 import './Login.css';
+import logoImg from '../assets/logo.png';
 
 const PROFESSIONS  = ['Agronome', 'Agriculteur'];
 const NATIONALITES = ['Sénégalaise', 'Malienne', 'Guinéenne', 'Ivoirienne', 'Mauritanienne', 'Autre'];
@@ -150,7 +151,7 @@ export default function Login({ onLogin }) {
   return (
     <div className="login-bg">
       <div className="login-card">
-        <div className="login-logo">🌾</div>
+        <div className="login-logo"><img src={logoImg} alt="AgroSens" style={{width:'80px',height:'80px',borderRadius:'20px',objectFit:'cover',boxShadow:'0 8px 24px rgba(27,94,32,0.3)'}}/></div>
         <h1 className="login-title">AgriSens</h1>
         <p className="login-sub">Irrigation de précision — USSEIN Kaolack</p>
         <div className="login-tabs">
