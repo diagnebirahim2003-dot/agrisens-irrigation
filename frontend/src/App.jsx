@@ -5,117 +5,134 @@ import Parcelles from './pages/Parcelles';
 import Calculs from './pages/Calculs';
 import './App.css';
 
-const NAV = [
-  { page:'parcelles', icon:'🧭', label:'Parcelles' },
-  { page:'capteurs',  icon:'📡', label:'Capteurs'  },
-  { page:'calculs',   icon:'🧮', label:'Calculs'   },
-  { page:'graphes',   icon:'📈', label:'Graphes'   },
+const NAV_ITEMS = [
+  { page:'dashboard', icon:'🏠', label:'Accueil'   },
+  { page:'parcelles', icon:'🧭', label:'Parcelles'  },
+  { page:'capteurs',  icon:'📡', label:'Capteurs'   },
+  { page:'calculs',   icon:'🧮', label:'Calculs'    },
+  { page:'graphes',   icon:'📈', label:'Graphes'    },
 ];
 
-const DASH_CARDS = [
-  { page:'parcelles', icon:'🧭', label:'Mes parcelles',    desc:'Gérer vos plots et cultures', color:'var(--green)',  bg:'var(--green-pale)' },
-  { page:'capteurs',  icon:'📡', label:'Données capteurs', desc:'Sol 8-en-1 + météo GPS',       color:'var(--blue)',   bg:'var(--blue-pale)'  },
-  { page:'calculs',   icon:'🧮', label:'Calculs ETo/ETc',  desc:'Bilan hydrique FAO-56',         color:'var(--orange)', bg:'var(--orange-pale)'},
-  { page:'graphes',   icon:'📈', label:'Graphes',          desc:'Historique et tendances',       color:'var(--purple)', bg:'var(--purple-pale)'},
-];
-
-function Topbar({ auth, page, setPage, onLogout }) {
-  const roleIcons = { admin:'🛡️', agronome:'🌿', technicien:'🔧' };
-  const initials  = auth.user.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+function Sidebar({ auth, page, setPage, onLogout }) {
+  const roleColors = { admin:'#e65100', agronome:'#1565c0', technicien:'#6a1b9a' };
+  const roleIcons  = { admin:'🛡️', agronome:'🌿', technicien:'🔧' };
+  const initials   = auth.user.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  const nav = auth.role === 'admin'
+    ? [...NAV_ITEMS, { page:'admin', icon:'👥', label:'Utilisateurs' }]
+    : NAV_ITEMS;
 
   return (
-    <header className="topbar">
-      <div className="topbar-brand" style={{cursor:'pointer'}} onClick={() => setPage('dashboard')}>
-        <div className="topbar-logo">🌾</div>
+    <aside className="sidebar">
+      {/* Logo */}
+      <div className="sb-brand">
+        <div className="sb-logo">🌾</div>
         <div>
-          <div className="topbar-name">AgriSens</div>
-          <div className="topbar-sub">Irrigation de précision</div>
+          <div className="sb-name">AgriSens</div>
+          <div className="sb-tagline">Irrigation IoT</div>
         </div>
       </div>
 
-      <nav className="topbar-nav">
-        {NAV.map(n => (
+      {/* Nav */}
+      <nav className="sb-nav">
+        {nav.map(n => (
           <button key={n.page}
-            className={`topbar-btn ${page===n.page?'active':''}`}
+            className={`sb-item ${page===n.page?'active':''}`}
             onClick={() => setPage(n.page)}>
-            <span>{n.icon}</span>
-            <span>{n.label}</span>
+            <span className="sb-item-icon">{n.icon}</span>
+            <span className="sb-item-label">{n.label}</span>
+            {page===n.page && <span className="sb-item-dot"/>}
           </button>
         ))}
-        {auth.role === 'admin' && (
-          <button className={`topbar-btn ${page==='admin'?'active':''}`}
-            onClick={() => setPage('admin')}>
-            <span>👥</span><span>Utilisateurs</span>
-          </button>
-        )}
+      </nav>
 
-        <div className="topbar-user">
-          <div className="user-avatar">{initials}</div>
-          <div>
-            <div className="user-info-name">{auth.user.split(' ')[0]}</div>
-            <div className="user-info-role">{roleIcons[auth.role]} {auth.role}</div>
+      {/* Bottom */}
+      <div className="sb-bottom">
+        <div className="sb-live">
+          <span className="live-pulse"/>
+          <span>Système actif</span>
+        </div>
+        <div className="sb-user">
+          <div className="sb-avatar" style={{background:roleColors[auth.role]}}>
+            {initials}
+          </div>
+          <div className="sb-user-info">
+            <div className="sb-user-name">{auth.user}</div>
+            <div className="sb-user-role">{roleIcons[auth.role]} {auth.role}</div>
           </div>
         </div>
-
-        <div className="live-dot" title="En direct"/>
-
-        <button className="topbar-btn danger" onClick={onLogout}>
-          <span>⇠</span>
+        <button className="sb-logout" onClick={onLogout}>
+          ⇠ Déconnexion
         </button>
-      </nav>
-    </header>
+      </div>
+    </aside>
   );
 }
 
 function Dashboard({ auth, setPage }) {
-  const now  = new Date();
-  const hour = now.getHours();
+  const now      = new Date();
+  const hour     = now.getHours();
   const greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
-  const parcelles = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-  const myParc    = auth.role === 'admin' ? parcelles : parcelles.filter(p => p.owner === auth.email);
-  const users     = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
+  const parcelles= JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
+  const myParc   = auth.role==='admin' ? parcelles : parcelles.filter(p=>p.owner===auth.email);
+  const users    = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
 
-  const cards = auth.role === 'admin'
-    ? [...DASH_CARDS, { page:'admin', icon:'👥', label:'Utilisateurs', desc:'Gérer les accès', color:'var(--red)', bg:'var(--red-pale)' }]
-    : DASH_CARDS;
+  const kpis = [
+    { icon:'🧭', label:'Parcelles',   val:myParc.length,  color:'#2e7d32', bg:'#e8f5e9' },
+    { icon:'📡', label:'Capteurs',    val:myParc.length*1, color:'#1565c0', bg:'#e3f2fd' },
+    { icon:'💧', label:'Plots actifs',val:myParc.length,  color:'#0288d1', bg:'#e1f5fe' },
+    ...(auth.role==='admin'
+      ? [{ icon:'👥', label:'Utilisateurs', val:users.length, color:'#e65100', bg:'#fff3e0' }]
+      : []),
+  ];
+
+  const cards = [
+    { page:'parcelles', icon:'🧭', label:'Mes parcelles',    desc:'Gérer vos plots, cultures et suivre les stades phénologiques', color:'#2e7d32', gradient:'linear-gradient(135deg,#e8f5e9,#c8e6c9)' },
+    { page:'capteurs',  icon:'📡', label:'Données capteurs', desc:'Sol 8-en-1 (N,P,K,pH,Hum) + météo OpenWeatherMap en temps réel', color:'#1565c0', gradient:'linear-gradient(135deg,#e3f2fd,#bbdefb)' },
+    { page:'calculs',   icon:'🧮', label:'Calculs ETo/ETc',  desc:'Bilan hydrique complet — Hargreaves + Penman-Monteith FAO-56', color:'#e65100', gradient:'linear-gradient(135deg,#fff3e0,#ffe0b2)' },
+    { page:'graphes',   icon:'📈', label:'Graphes',          desc:'Historique humidité, températures, ETo/ETc et bilan hydrique', color:'#6a1b9a', gradient:'linear-gradient(135deg,#f3e5f5,#e1bee7)' },
+  ];
 
   return (
-    <div className="page-wrap">
-      <div className="welcome-banner">
+    <div className="main-content">
+      {/* Greeting */}
+      <div className="dash-greeting">
         <div>
-          <div className="welcome-greeting">{greeting}, {auth.user.split(' ')[0]} 👋</div>
-          <div className="welcome-sub">
-            {now.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' })}
-          </div>
+          <h1 className="dash-hello">{greeting}, {auth.user.split(' ')[0]} 👋</h1>
+          <p className="dash-date">
+            {now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+            {' · '}USSEIN Kaolack
+          </p>
         </div>
-        <div style={{display:'flex',gap:'16px',flexWrap:'wrap'}}>
-          {auth.role === 'admin' && (
-            <div style={{background:'rgba(255,255,255,0.15)',borderRadius:'12px',padding:'12px 20px',textAlign:'center'}}>
-              <div style={{fontSize:'1.6rem',fontWeight:'800',color:'#fff'}}>{users.length}</div>
-              <div style={{fontSize:'0.65rem',color:'rgba(255,255,255,0.75)',textTransform:'uppercase'}}>Utilisateurs</div>
-            </div>
-          )}
-          <div style={{background:'rgba(255,255,255,0.15)',borderRadius:'12px',padding:'12px 20px',textAlign:'center'}}>
-            <div style={{fontSize:'1.6rem',fontWeight:'800',color:'#fff'}}>{myParc.length}</div>
-            <div style={{fontSize:'0.65rem',color:'rgba(255,255,255,0.75)',textTransform:'uppercase'}}>Parcelles</div>
-          </div>
+        <div className="dash-badge-role">
+          {auth.role === 'admin' && '🛡️ Administrateur'}
+          {auth.role === 'agronome' && '🌿 Agronome'}
+          {auth.role === 'technicien' && '🔧 Technicien'}
         </div>
       </div>
 
-      <div className="page-header">
-        <div className="page-title">Tableau de bord</div>
-        <div className="page-desc">Sélectionnez une section pour commencer</div>
+      {/* KPIs */}
+      <div className="kpi-row">
+        {kpis.map(k => (
+          <div key={k.label} className="kpi-card" style={{'--kc':k.color,'--kb':k.bg}}>
+            <div className="kpi-icon">{k.icon}</div>
+            <div className="kpi-val">{k.val}</div>
+            <div className="kpi-lbl">{k.label}</div>
+          </div>
+        ))}
       </div>
 
-      <div className="dash-grid">
+      {/* Nav cards */}
+      <h2 className="section-title">Navigation rapide</h2>
+      <div className="nav-cards">
         {cards.map(c => (
-          <div key={c.page} className="dash-card"
-            style={{'--card-color':c.color,'--card-bg':c.bg}}
+          <div key={c.page} className="nav-card" style={{'--nc':c.color,'--ng':c.gradient}}
             onClick={() => setPage(c.page)}>
-            <div className="dash-card-icon">{c.icon}</div>
-            <div className="dash-card-label">{c.label}</div>
-            <div className="dash-card-desc">{c.desc}</div>
-            <div className="dash-card-arrow">→</div>
+            <div className="nc-top">
+              <div className="nc-icon">{c.icon}</div>
+              <span className="nc-arrow">→</span>
+            </div>
+            <div className="nc-label">{c.label}</div>
+            <div className="nc-desc">{c.desc}</div>
           </div>
         ))}
       </div>
@@ -123,13 +140,27 @@ function Dashboard({ auth, setPage }) {
   );
 }
 
-function ComingSoon({ label, icon }) {
+function PageWrap({ title, desc, children }) {
   return (
-    <div className="page-wrap">
-      <div className="empty-state">
-        <div className="empty-state-icon">{icon || '🚧'}</div>
-        <div className="empty-state-title">{label}</div>
-        <div className="empty-state-desc">Cette section est en cours de développement.</div>
+    <div className="main-content">
+      {title && (
+        <div className="page-top">
+          <h1 className="page-title">{title}</h1>
+          {desc && <p className="page-desc">{desc}</p>}
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}
+
+function ComingSoon({ icon, label }) {
+  return (
+    <div className="main-content">
+      <div className="coming-soon">
+        <div className="cs-icon">{icon}</div>
+        <h2 className="cs-title">{label}</h2>
+        <p className="cs-desc">Cette section est en cours de développement.</p>
       </div>
     </div>
   );
@@ -139,33 +170,19 @@ export default function App() {
   const [auth, setAuth] = useState(null);
   const [page, setPage] = useState('dashboard');
 
-  function handleLogout() { setAuth(null); setPage('dashboard'); }
-  function handleLogin(a) { setAuth(a); setPage('dashboard'); }
-
-  if (!auth) return <Login onLogin={handleLogin}/>;
+  if (!auth) return <Login onLogin={a => { setAuth(a); setPage('dashboard'); }}/>;
 
   return (
-    <div className="app-root">
-      <Topbar auth={auth} page={page} setPage={setPage} onLogout={handleLogout}/>
-
-      {page === 'dashboard' && <Dashboard auth={auth} setPage={setPage}/>}
-      {page === 'admin'     && (
-        <div className="page-wrap">
-          <AdminPanel auth={auth} onBack={() => setPage('dashboard')}/>
-        </div>
-      )}
-      {page === 'parcelles' && (
-        <div className="page-wrap">
-          <Parcelles auth={auth}/>
-        </div>
-      )}
-      {page === 'calculs'   && (
-        <div className="page-wrap">
-          <Calculs auth={auth}/>
-        </div>
-      )}
-      {page === 'capteurs'  && <ComingSoon label="Données capteurs" icon="📡"/>}
-      {page === 'graphes'   && <ComingSoon label="Graphes historiques" icon="📈"/>}
+    <div className="app-shell">
+      <Sidebar auth={auth} page={page} setPage={setPage} onLogout={() => { setAuth(null); setPage('dashboard'); }}/>
+      <div className="app-body">
+        {page==='dashboard' && <Dashboard auth={auth} setPage={setPage}/>}
+        {page==='admin'     && <PageWrap title="👥 Gestion des utilisateurs"><AdminPanel auth={auth} onBack={()=>setPage('dashboard')}/></PageWrap>}
+        {page==='parcelles' && <PageWrap title="🧭 Mes parcelles" desc="Gérez vos plots et suivez les stades culturaux"><Parcelles auth={auth}/></PageWrap>}
+        {page==='calculs'   && <PageWrap title="🧮 Calculs agronomiques" desc="ETo · ETc · RU · RFU — FAO-56 + Hargreaves"><Calculs auth={auth}/></PageWrap>}
+        {page==='capteurs'  && <ComingSoon icon="📡" label="Données capteurs"/>}
+        {page==='graphes'   && <ComingSoon icon="📈" label="Graphes historiques"/>}
+      </div>
     </div>
   );
 }
