@@ -394,7 +394,7 @@ export default function Capteurs({ auth }) {
             <div className="sc-bar">
               <div className="sc-fill lux" style={{width:gauge(sol.luminosite,0,2000)+'%'}}/>
             </div>
-            <div className="sc-range">Plein soleil : >1000 lux</div>
+            <div className="sc-range">Plein soleil : &gt;1000 lux</div>
           </div>
 
         </div>

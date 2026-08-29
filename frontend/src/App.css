@@ -331,3 +331,53 @@ input:-webkit-autofill {
 @media (max-width: 480px) {
   .nav-cards { grid-template-columns: 1fr; }
 }
+
+/* ── BOTTOM NAV MOBILE ── */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 62px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+  z-index: 200;
+  padding: 0 4px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bn-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  color: var(--muted);
+  transition: all 0.15s;
+  gap: 2px;
+  padding: 0;
+}
+
+.bn-item.active { color: var(--green); }
+
+.bn-item.active .bn-icon {
+  background: var(--green-l);
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+
+.bn-icon  { font-size: 1.3rem; line-height: 1; }
+.bn-label { font-size: 0.58rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+
+@media (max-width: 768px) {
+  .sidebar    { display: none !important; }
+  .bottom-nav { display: flex !important; }
+  .app-body   { padding-bottom: 70px !important; }
+  .main-content { padding: 14px !important; }
+}

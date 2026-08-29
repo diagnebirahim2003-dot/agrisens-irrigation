@@ -138,6 +138,27 @@ function Dashboard({ auth, setPage }) {
         ))}
       </div>
     </div>
+
+      {/* Bottom nav mobile */}
+      <nav className="bottom-nav">
+        {navItems.map(n => (
+          <button key={n.page}
+            className={`bn-item ${page===n.page?'active':''}`}
+            onClick={() => setPage(n.page)}>
+            <span className="bn-icon">{n.icon}</span>
+            <span className="bn-label">{n.label}</span>
+          </button>
+        ))}
+        {auth.role === 'admin' && (
+          <button
+            className={`bn-item ${page==='admin'?'active':''}`}
+            onClick={() => setPage('admin')}>
+            <span className="bn-icon">👥</span>
+            <span className="bn-label">Users</span>
+          </button>
+        )}
+      </nav>
+    </div>
   );
 }
 
@@ -152,6 +173,27 @@ function PageWrap({ title, desc, children }) {
       )}
       {children}
     </div>
+
+      {/* Bottom nav mobile */}
+      <nav className="bottom-nav">
+        {navItems.map(n => (
+          <button key={n.page}
+            className={`bn-item ${page===n.page?'active':''}`}
+            onClick={() => setPage(n.page)}>
+            <span className="bn-icon">{n.icon}</span>
+            <span className="bn-label">{n.label}</span>
+          </button>
+        ))}
+        {auth.role === 'admin' && (
+          <button
+            className={`bn-item ${page==='admin'?'active':''}`}
+            onClick={() => setPage('admin')}>
+            <span className="bn-icon">👥</span>
+            <span className="bn-label">Users</span>
+          </button>
+        )}
+      </nav>
+    </div>
   );
 }
 
@@ -164,6 +206,27 @@ function ComingSoon({ icon, label }) {
         <p className="cs-desc">Cette section est en cours de développement.</p>
       </div>
     </div>
+
+      {/* Bottom nav mobile */}
+      <nav className="bottom-nav">
+        {navItems.map(n => (
+          <button key={n.page}
+            className={`bn-item ${page===n.page?'active':''}`}
+            onClick={() => setPage(n.page)}>
+            <span className="bn-icon">{n.icon}</span>
+            <span className="bn-label">{n.label}</span>
+          </button>
+        ))}
+        {auth.role === 'admin' && (
+          <button
+            className={`bn-item ${page==='admin'?'active':''}`}
+            onClick={() => setPage('admin')}>
+            <span className="bn-icon">👥</span>
+            <span className="bn-label">Users</span>
+          </button>
+        )}
+      </nav>
+    </div>
   );
 }
 
@@ -173,10 +236,18 @@ export default function App() {
 
   if (!auth) return <Login onLogin={a => { setAuth(a); setPage('dashboard'); }}/>;
 
+  const navItems = [
+    { page:'dashboard', icon:'🏠', label:'Accueil'  },
+    { page:'parcelles', icon:'🧭', label:'Parcelles' },
+    { page:'capteurs',  icon:'📡', label:'Capteurs'  },
+    { page:'calculs',   icon:'🧮', label:'Calculs'   },
+    { page:'graphes',   icon:'📈', label:'Graphes'   },
+  ];
+
   return (
     <div className="app-shell">
       <Sidebar auth={auth} page={page} setPage={setPage} onLogout={() => { setAuth(null); setPage('dashboard'); }}/>
-      <div className="app-body">
+      <div className="app-body" style={{paddingBottom:'70px'}}>
         {page==='dashboard' && <Dashboard auth={auth} setPage={setPage}/>}
         {page==='admin'     && <PageWrap title="👥 Gestion des utilisateurs"><AdminPanel auth={auth} onBack={()=>setPage('dashboard')}/></PageWrap>}
         {page==='parcelles' && <PageWrap title="🧭 Mes parcelles" desc="Gérez vos plots et suivez les stades culturaux"><Parcelles auth={auth}/></PageWrap>}
@@ -184,6 +255,27 @@ export default function App() {
         {page==='capteurs' && <PageWrap title="📡 Données capteurs" desc="Capteur 8-en-1 (sol) + Météo OpenWeatherMap temps réel"><Capteurs auth={auth}/></PageWrap>}
         {page==='graphes'   && <ComingSoon icon="📈" label="Graphes historiques"/>}
       </div>
+    </div>
+
+      {/* Bottom nav mobile */}
+      <nav className="bottom-nav">
+        {navItems.map(n => (
+          <button key={n.page}
+            className={`bn-item ${page===n.page?'active':''}`}
+            onClick={() => setPage(n.page)}>
+            <span className="bn-icon">{n.icon}</span>
+            <span className="bn-label">{n.label}</span>
+          </button>
+        ))}
+        {auth.role === 'admin' && (
+          <button
+            className={`bn-item ${page==='admin'?'active':''}`}
+            onClick={() => setPage('admin')}>
+            <span className="bn-icon">👥</span>
+            <span className="bn-label">Users</span>
+          </button>
+        )}
+      </nav>
     </div>
   );
 }
