@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
+import Parcelles from './pages/Parcelles';
+import Calculs from './pages/Calculs';
 import './App.css';
 
 function Header({ auth, page, setPage, onLogout }) {
@@ -137,7 +139,7 @@ export default function App() {
 
       {page === 'dashboard'  && <Dashboard auth={auth} setPage={setPage}/>}
       {page === 'admin'      && <AdminPanel auth={auth} onBack={() => setPage('dashboard')}/>}
-      {page === 'parcelles'  && <ComingSoon label="🧭 Mes parcelles"/>}
+      {page === 'parcelles' && <Parcelles auth={auth}/>}
       {page === 'capteurs'   && <ComingSoon label="📊 Données capteurs"/>}
       {page === 'calculs' && <Calculs auth={auth}/>}
       {page === 'graphes'    && <ComingSoon label="📈 Graphes historiques"/>}
