@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  mongo-db:
+    image: mongo:6.0
+    container_name: agrosens-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  orion:
+    image: fiware/orion:3.10.1
+    container_name: agrosens-orion
+    restart: unless-stopped
+    depends_on:
+      - mongo-db
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo-db -logLevel DEBUG
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.2
+    container_name: agrosens-keycloak
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    command: start-dev
+    ports:
+      - "8080:8080"
+
+  wilma-auth:
+    build: ./wilma-auth
+    container_name: agrosens-wilma-auth
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_URL: http://keycloak:8080
+      KEYCLOAK_REALM: agrotic
+    depends_on:
+      - keycloak
+
+  wilma:
+    build: ./wilma
+    container_name: agrosens-wilma
+    restart: unless-stopped
+    ports:
+      - "1027:1027"
+    depends_on:
+      - orion
+      - wilma-auth
+
+volumes:
+  mongo_data:
