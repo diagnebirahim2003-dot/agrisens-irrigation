@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CONFIG } from '../utils/config';
+import { CONFIG, KEYCLOAK_TOKEN_URL } from '../utils/config';
 import './Login.css';
 import logoImg from '../assets/logo.png';
 
@@ -91,10 +91,10 @@ export default function Login({ onLogin }) {
     setLoading(true); setError('');
     try {
       const username = loginEmail.split('@')[0];
-      const res = await fetch(CONFIG.KEYCLOAK_URL, {
+      const res = await fetch(KEYCLOAK_TOKEN_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ client_id: CONFIG.KEYCLOAK_CLIENT, client_secret: CONFIG.KEYCLOAK_SECRET, username, password: loginPwd, grant_type: 'password' }),
+        body: new URLSearchParams({ client_id: CONFIG.KEYCLOAK_CLIENT, username, password: loginPwd, grant_type: 'password' }),
       });
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error_description || 'Identifiants incorrects');
