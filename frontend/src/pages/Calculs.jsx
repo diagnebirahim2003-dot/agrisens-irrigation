@@ -64,7 +64,7 @@ function calcRs(Tmax, Tmin, Ra) {
 }
 
 // ETo — Penman-Monteith FAO-56 (Chapitre 3 mémoire)
-function calcETo(Tmax, Tmin, HR, u10, Rs, lat, doy) {
+function calcETo(Tmax, Tmin, HR, u10, Rs, Ra) {
   const T   = (Tmax + Tmin) / 2;
   const u2  = u10 * 0.748;                              // vent à 2m
   const P   = 101.3 * Math.pow((293 - 0.0065*SITE.alt)/293, 5.26);
@@ -184,7 +184,7 @@ export default function Calculs({ auth }) {
       // Calculs
       const Ra    = calcRa(parc.lat, doy);
       const Rs    = calcRs(wx.Tmax, wx.Tmin, Ra);
-      const ETo   = calcETo(wx.Tmax, wx.Tmin, wx.HR, wx.u10, Rs, parc.lat, doy);
+      const ETo   = calcETo(wx.Tmax, wx.Tmin, wx.HR, wx.u10, Rs, Ra);
       const Kc    = getKc(CULTURES, parc.culture, das);
       const ETc   = Kc * ETo;
       const RU    = calcRU(sol.cc, sol.pf, c.Zr);

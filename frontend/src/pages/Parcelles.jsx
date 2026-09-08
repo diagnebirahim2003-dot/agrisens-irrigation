@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { SOLS, getSol } from '../utils/sols';
+import { getSols } from '../utils/sols';
 import { getCulturesList } from '../utils/cultures';
 import { listParcelles, createParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
 import './Parcelles.css';
@@ -36,6 +36,7 @@ let mapInstance = null;
 
 export default function Parcelles({ auth }) {
   const CULTURES = getCulturesList();
+  const SOLS = getSols();
   const [parcelles, setParcelles] = useState([]);
   const [loading,   setLoading]   = useState(true);
   const [view,      setView]      = useState('list');

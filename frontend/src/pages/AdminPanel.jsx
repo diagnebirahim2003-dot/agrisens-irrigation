@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
+import { getSols, saveSols, resetSols } from '../utils/sols';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -38,6 +39,9 @@ export default function AdminPanel({ auth, onBack }) {
 
   // Paramétrage des cultures (RG-I6)
   const [cultures, setCultures] = useState(getCultures());
+
+  // Paramétrage des sols (Hcc, Hpf, f)
+  const [sols, setSols] = useState(getSols());
 
   useEffect(() => { setUsers(getUsers()); }, [tab]);
 
@@ -134,6 +138,21 @@ export default function AdminPanel({ auth, onBack }) {
     setSuccess('Paramètres des cultures réinitialisés aux valeurs par défaut.');
   }
 
+  function updateSol(nom, field, val) {
+    setSols(prev => prev.map(s => s.nom === nom ? { ...s, [field]: val } : s));
+  }
+  function handleSaveSols(e) {
+    e.preventDefault();
+    saveSols(sols);
+    setSuccess('✅ Paramètres des sols enregistrés.');
+  }
+  function handleResetSols() {
+    if (!confirm('Revenir aux valeurs par défaut (Protocole / Chapitre III) ?')) return;
+    resetSols();
+    setSols(getSols());
+    setSuccess('Paramètres des sols réinitialisés aux valeurs par défaut.');
+  }
+
   const filtered = users.filter(u =>
     (u.nom+u.prenom+u.email+u.role).toLowerCase().includes(search.toLowerCase())
   );
@@ -183,6 +202,9 @@ export default function AdminPanel({ auth, onBack }) {
         </button>
         <button className={`atab ${tab==='cultures'?'active':''}`} onClick={()=>{setTab('cultures');setError('');setSuccess('');}}>
           🌱 Cultures
+        </button>
+        <button className={`atab ${tab==='sols'?'active':''}`} onClick={()=>{setTab('sols');setError('');setSuccess('');}}>
+          🪨 Sols
         </button>
       </div>
 
@@ -380,6 +402,33 @@ export default function AdminPanel({ auth, onBack }) {
           <div className="form-row">
             <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
             <button className="btn-back" type="button" onClick={handleResetCultures}>↺ Réinitialiser aux valeurs par défaut</button>
+          </div>
+        </form>
+      )}
+
+      {/* SOLS */}
+      {tab === 'sols' && (
+        <form className="add-form" onSubmit={handleSaveSols}>
+          <div className="add-form-title">
+            Paramétrer l'humidité à la capacité au champ (Hcc), au point de flétrissement (Hpf)
+            et la fraction d'épuisement (f) par type de sol — Chapitre III du mémoire
+          </div>
+
+          {sols.map(s => (
+            <div key={s.nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
+              <div className="add-form-title" style={{marginBottom:8}}>🪨 {s.nom}</div>
+
+              <div className="form-row">
+                <div className="inp-group"><label>Hcc — capacité au champ (%)</label><input type="number" step="0.1" value={s.cc} onChange={e=>updateSol(s.nom,'cc',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Hpf — point de flétrissement (%)</label><input type="number" step="0.1" value={s.pf} onChange={e=>updateSol(s.nom,'pf',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>f — fraction d'épuisement</label><input type="number" step="0.01" value={s.f} onChange={e=>updateSol(s.nom,'f',parseFloat(e.target.value)||0)}/></div>
+              </div>
+            </div>
+          ))}
+
+          <div className="form-row">
+            <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
+            <button className="btn-back" type="button" onClick={handleResetSols}>↺ Réinitialiser aux valeurs par défaut</button>
           </div>
         </form>
       )}
