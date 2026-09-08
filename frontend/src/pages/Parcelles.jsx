@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './Parcelles.css';
 
 const CULTURES = [
-  { nom:'Laitue', icon:'🥬', cycle:55,  prof:0.30, Kc:[0.70,1.05,0.95], L:[10,15,15,15] },
+  { nom:'Laitue', icon:'🥬', cycle:55,  prof:0.35, Kc:[0.70,1.05,0.95], L:[10,15,15,15] },
   { nom:'Navet',  icon:'🌿', cycle:55,  prof:0.50, Kc:[0.70,1.00,0.95], L:[10,15,15,15] },
   { nom:'Gombo',  icon:'🫛', cycle:100, prof:0.60, Kc:[0.40,1.00,0.75], L:[20,20,30,30] },
 ];
@@ -255,7 +255,7 @@ export default function Parcelles({ auth }) {
       {view === 'detail' && selected && (() => {
         const p=selected, das=getDAS(p.semis), kc=getKc(p.culture,das), stage=getStage(p.culture,das);
         const ci=cInfo(p.culture), sol=SOLS.find(s=>s.nom===p.sol)||SOLS[3];
-        const ru=(ci.prof*(sol.cc-sol.pf)/100*sol.da*1000), rfu=ru*sol.f, pct=Math.min(100,Math.round(das/ci.cycle*100));
+        const ru=(ci.prof*(sol.cc-sol.pf)/100*1000), rfu=ru*sol.f, pct=Math.min(100,Math.round(das/ci.cycle*100));
         return (
           <div>
             <div className="detail-section">

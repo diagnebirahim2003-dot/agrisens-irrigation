@@ -6,14 +6,14 @@ import './Calculs.css';
 // ═══════════════════════════════════════════════════
 const OWM_KEY = 'f376f93aee61a823a4c0eff15e47b0a0';
 const SITE    = { lat: 14.15, lng: -16.07, alt: 3, KRs: 0.16 };
-const SOL     = { Hcc: 28, Hpf: 16, Da: 1.35, f: 0.50 };
+const SOL     = { Hcc: 28, Hpf: 11 }; // sol sablo-limoneux du site expérimental (Chap.3 mémoire)
 
 const CULTURES = {
   Laitue: {
     icon:'🥬', cycle:55,
     Kc: [0.70, 1.05, 0.95],
     L:  [10, 15, 15, 15],
-    Zr: 0.30, p: 0.30,
+    Zr: 0.35, p: 0.30,
     NPK:{ N:150, P:40, K:120 },
   },
   Navet: {
@@ -119,9 +119,9 @@ function calcPajuste(p_table, ETc) {
   return Math.min(0.8, Math.max(0.1, p_table + 0.04*(5-ETc)));
 }
 
-// RU = (Hcc-Hpf)/100 × Da × Zr × 1000
+// RU = (Hcc-Hpf)/100 × Zr × 1000 (Chapitre III, mémoire — sans densité apparente)
 function calcRU(Zr) {
-  return (SOL.Hcc - SOL.Hpf) / 100 * SOL.Da * Zr * 1000;
+  return (SOL.Hcc - SOL.Hpf) / 100 * Zr * 1000;
 }
 
 // Seuil critique: Sc = Hcc/100 × Zr × 1000 - RFU (Chapitre III, mémoire)
@@ -310,7 +310,7 @@ export default function Calculs({ auth }) {
 
           {/* RU / RFU / Sc / Di */}
           <div className="calc-card">
-            <div className="cc-title">💧 Bilan hydrique — Sol limono-argileux (Hcc=28%, Hpf=16%)</div>
+            <div className="cc-title">💧 Bilan hydrique — Sol sablo-limoneux, site expérimental (Hcc=28%, Hpf=11%)</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div><div className="ri-form">(Hcc-Hpf)/100×Da×Zr×1000</div></div>
               <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div><div className="ri-form">p + 0,04×(5-ETc)</div></div>
@@ -390,7 +390,7 @@ export default function Calculs({ auth }) {
               <div className="formule-item"><span className="f-name">ea</span><span className="f-eq">= (HR/100) × es</span><span className="f-src">Chap.3 mémoire (simplifié)</span></div>
               <div className="formule-item"><span className="f-name">ETo</span><span className="f-eq">= Penman-Monteith FAO-56</span><span className="f-src">FAO-56 Eq.6</span></div>
               <div className="formule-item"><span className="f-name">ETc</span><span className="f-eq">= Kc × ETo</span><span className="f-src">FAO-56</span></div>
-              <div className="formule-item"><span className="f-name">RU</span><span className="f-eq">= (Hcc−Hpf)/100 × Da × Zr × 1000</span><span className="f-src">FAO-56 Eq.82</span></div>
+              <div className="formule-item"><span className="f-name">RU</span><span className="f-eq">= (Hcc−Hpf)/100 × Zr × 1000</span><span className="f-src">Chap.3 mémoire</span></div>
               <div className="formule-item"><span className="f-name">p</span><span className="f-eq">= p_table + 0,04×(5−ETc)</span><span className="f-src">FAO-56 T.22, Chap.3 mémoire</span></div>
               <div className="formule-item"><span className="f-name">RFU</span><span className="f-eq">= p_ajusté × RU</span><span className="f-src">FAO-56 Eq.83</span></div>
               <div className="formule-item"><span className="f-name">Sc</span><span className="f-eq">= Hcc/100 × Zr × 1000 − RFU</span><span className="f-src">Chap.3 mémoire</span></div>
