@@ -1,18 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import { SOLS, getSol } from '../utils/sols';
 import './Parcelles.css';
 
 const CULTURES = [
   { nom:'Laitue', icon:'🥬', cycle:55,  prof:0.35, Kc:[0.70,1.05,0.95], L:[10,15,15,15] },
   { nom:'Navet',  icon:'🌿', cycle:55,  prof:0.50, Kc:[0.70,1.00,0.95], L:[10,15,15,15] },
   { nom:'Gombo',  icon:'🫛', cycle:100, prof:0.60, Kc:[0.40,1.00,0.75], L:[20,20,30,30] },
-];
-
-const SOLS = [
-  { nom:'Sableux',         cc:10, pf:4,  da:1.6,  f:0.50 },
-  { nom:'Sablo-limoneux',  cc:18, pf:8,  da:1.5,  f:0.50 },
-  { nom:'Limoneux',        cc:28, pf:14, da:1.4,  f:0.50 },
-  { nom:'Limono-argileux', cc:32, pf:16, da:1.35, f:0.50 },
-  { nom:'Argileux',        cc:36, pf:20, da:1.3,  f:0.45 },
 ];
 
 function getDAS(semis) {

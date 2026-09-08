@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getSol } from '../utils/sols';
 import './Calculs.css';
 
 // ═══════════════════════════════════════════════════
@@ -6,7 +7,6 @@ import './Calculs.css';
 // ═══════════════════════════════════════════════════
 const OWM_KEY = 'f376f93aee61a823a4c0eff15e47b0a0';
 const SITE    = { lat: 14.15, lng: -16.07, alt: 3, KRs: 0.16 };
-const SOL     = { Hcc: 28, Hpf: 11 }; // sol sablo-limoneux du site expérimental (Chap.3 mémoire)
 
 const CULTURES = {
   Laitue: {
@@ -120,13 +120,13 @@ function calcPajuste(p_table, ETc) {
 }
 
 // RU = (Hcc-Hpf)/100 × Zr × 1000 (Chapitre III, mémoire — sans densité apparente)
-function calcRU(Zr) {
-  return (SOL.Hcc - SOL.Hpf) / 100 * Zr * 1000;
+function calcRU(Hcc, Hpf, Zr) {
+  return (Hcc - Hpf) / 100 * Zr * 1000;
 }
 
 // Seuil critique: Sc = Hcc/100 × Zr × 1000 - RFU (Chapitre III, mémoire)
-function calcSc(Zr, RFU) {
-  return (SOL.Hcc / 100) * Zr * 1000 - RFU;
+function calcSc(Hcc, Zr, RFU) {
+  return (Hcc / 100) * Zr * 1000 - RFU;
 }
 
 // Stock d'eau actuel: Sa = θactuel × Zr × 1000 (Chapitre III, mémoire)
@@ -192,6 +192,7 @@ export default function Calculs({ auth }) {
       const das = getDAS(parc.semis);
       const c   = CULTURES[parc.culture];
       if (!c) throw new Error('Culture non reconnue');
+      const sol = getSol(parc.sol); // sol réellement choisi pour cette parcelle
 
       // Calculs
       const Ra    = calcRa(parc.lat, doy);
@@ -199,10 +200,10 @@ export default function Calculs({ auth }) {
       const ETo   = calcETo(wx.Tmax, wx.Tmin, wx.HR, wx.u10, Rs, parc.lat, doy);
       const Kc    = getKc(parc.culture, das);
       const ETc   = Kc * ETo;
-      const RU    = calcRU(c.Zr);
+      const RU    = calcRU(sol.cc, sol.pf, c.Zr);
       const Pajus = calcPajuste(c.p, ETc);
       const RFU   = Pajus * RU;
-      const Sc    = calcSc(c.Zr, RFU);
+      const Sc    = calcSc(sol.cc, c.Zr, RFU);
       const Di    = calcDi(ETc, 2); // plot 2m²
       const stage = getStage(parc.culture, das);
 
@@ -225,7 +226,7 @@ export default function Calculs({ auth }) {
         recoClass = 'info';
       }
 
-      setResult({ wx, Ra, Rs, ETo, Kc, ETc, RU, Pajus, RFU, Sc, Di,
+      setResult({ wx, Ra, Rs, ETo, Kc, ETc, RU, Pajus, RFU, Sc, Di, sol,
                   das, stage, parc, npkDef, reco, recoClass, humSol, Sa });
     } catch(e) {
       setError('Erreur : ' + e.message);
@@ -310,7 +311,7 @@ export default function Calculs({ auth }) {
 
           {/* RU / RFU / Sc / Di */}
           <div className="calc-card">
-            <div className="cc-title">💧 Bilan hydrique — Sol sablo-limoneux, site expérimental (Hcc=28%, Hpf=11%)</div>
+            <div className="cc-title">💧 Bilan hydrique — Sol {result.parc.sol} de la parcelle (Hcc={result.sol.cc}%, Hpf={result.sol.pf}%)</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div><div className="ri-form">(Hcc-Hpf)/100×Da×Zr×1000</div></div>
               <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div><div className="ri-form">p + 0,04×(5-ETc)</div></div>
