@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { SOLS, getSol } from '../utils/sols';
 import { getCulturesList } from '../utils/cultures';
+import { listParcelles, createParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
 import './Parcelles.css';
 
 function getDAS(semis) {
@@ -31,21 +32,12 @@ function getKc(cultures, culture, das) {
   return Ke;
 }
 
-function getParcelles(email, role) {
-  const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-  if (role === 'admin') return all;
-  return all.filter(p => p.owner === email);
-}
-
-function saveParcelles(list) {
-  localStorage.setItem('agrisens_parcelles', JSON.stringify(list));
-}
-
 let mapInstance = null;
 
 export default function Parcelles({ auth }) {
   const CULTURES = getCulturesList();
   const [parcelles, setParcelles] = useState([]);
+  const [loading,   setLoading]   = useState(true);
   const [view,      setView]      = useState('list');
   const [selected,  setSelected]  = useState(null);
   const [error,     setError]     = useState('');
@@ -61,9 +53,17 @@ export default function Parcelles({ auth }) {
   const [fLng,       setFLng]       = useState('-16.0700');
   const [fRegion,    setFRegion]    = useState('Kaolack');
 
-  useEffect(() => {
-    setParcelles(getParcelles(auth.email, auth.role));
-  }, []);
+  async function reloadParcelles() {
+    setLoading(true); setError('');
+    try {
+      const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+      setParcelles(list);
+    } catch (e) {
+      setError(e.message);
+    } finally { setLoading(false); }
+  }
+
+  useEffect(() => { reloadParcelles(); }, []);
 
   useEffect(() => {
     if (view === 'map' && selected) setTimeout(() => initMap(selected), 200);
@@ -90,28 +90,36 @@ export default function Parcelles({ auth }) {
     ], {color:'#2e7d32',fillColor:'#a5d6a7',fillOpacity:0.3,weight:2}).addTo(mapInstance);
   }
 
-  function addParcelle(e) {
+  async function addParcelle(e) {
     e.preventDefault();
     setError(''); setSuccess('');
     if (!fNom || !fSup || !fLat || !fLng) { setError('Remplissez tous les champs obligatoires.'); return; }
     const lat = parseFloat(fLat), lng = parseFloat(fLng);
     if (isNaN(lat) || isNaN(lng)) { setError('Coordonnées GPS invalides.'); return; }
-    const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-    all.push({ id:Date.now().toString(), nom:fNom, culture:fCulture, sol:fSol,
-      semis:fSemis, superficie:parseFloat(fSup), lat, lng, region:fRegion,
-      owner:auth.email, ownerName:auth.user, createdAt:new Date().toISOString() });
-    saveParcelles(all);
-    setParcelles(getParcelles(auth.email, auth.role));
-    setSuccess(`✅ Parcelle "${fNom}" ajoutée !`);
-    setFNom(''); setFSup(''); setView('list');
+    setLoading(true);
+    try {
+      await createParcelle(auth.token, { nom:fNom, culture:fCulture, sol:fSol,
+        semis:fSemis, superficie:parseFloat(fSup), lat, lng, region:fRegion,
+        owner:auth.email, ownerName:auth.user, createdAt:new Date().toISOString() });
+      await reloadParcelles();
+      setSuccess(`✅ Parcelle "${fNom}" ajoutée !`);
+      setFNom(''); setFSup(''); setView('list');
+    } catch (e) {
+      setError(e.message);
+      setLoading(false);
+    }
   }
 
-  function deleteParcelle(id) {
+  async function removeParcelle(id) {
     if (!confirm('Supprimer cette parcelle ?')) return;
-    const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]').filter(p => p.id !== id);
-    saveParcelles(all);
-    setParcelles(getParcelles(auth.email, auth.role));
-    if (selected?.id === id) { setSelected(null); setView('list'); }
+    setError('');
+    try {
+      await deleteParcelleOrion(auth.token, id);
+      await reloadParcelles();
+      if (selected?.id === id) { setSelected(null); setView('list'); }
+    } catch (e) {
+      setError(e.message);
+    }
   }
 
   const cInfo = name => CULTURES.find(x => x.nom === name) || CULTURES[0];
@@ -147,7 +155,13 @@ export default function Parcelles({ auth }) {
       {success && <div className="parc-success">{success}</div>}
 
       {view === 'list' && (
-        parcelles.length === 0 ? (
+        loading ? (
+          <div className="parc-empty">
+            <div className="parc-empty-icon">⏳</div>
+            <div className="parc-empty-title">Chargement des parcelles…</div>
+            <div className="parc-empty-sub">Connexion à Orion via Wilma</div>
+          </div>
+        ) : parcelles.length === 0 ? (
           <div className="parc-empty">
             <div className="parc-empty-icon">🧭</div>
             <div className="parc-empty-title">Aucune parcelle</div>
@@ -169,7 +183,7 @@ export default function Parcelles({ auth }) {
                       <div className="parc-card-sub">{p.culture} · {p.superficie} ha · {p.region}</div>
                     </div>
                     {auth.role !== 'agronome' && (
-                      <button className="btn-del-parc" onClick={e => { e.stopPropagation(); deleteParcelle(p.id); }}>🗑️</button>
+                      <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
                     )}
                   </div>
                   <div className="parc-card-body">

@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Login from './pages/Login';
 import AdminPanel from './pages/AdminPanel';
 import Parcelles from './pages/Parcelles';
 import Calculs from './pages/Calculs';
 import Capteurs from './pages/Capteurs';
 import Graphes from './pages/Graphes';
+import { listParcelles } from './utils/orion';
 import logoImg from './assets/logo.png';
 import './App.css';
 
@@ -92,14 +93,19 @@ function Dashboard({ auth, setPage }) {
   const now      = new Date();
   const hour     = now.getHours();
   const greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
-  const parcelles= JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-  const myParc   = auth.role==='admin' ? parcelles : parcelles.filter(p=>p.owner===auth.email);
-  const users    = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
+  const [nbParcelles, setNbParcelles] = useState(0);
+  const users = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
+
+  useEffect(() => {
+    listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email })
+      .then(list => setNbParcelles(list.length))
+      .catch(() => setNbParcelles(0));
+  }, []);
 
   const kpis = [
-    { icon:'🧭', label:'Parcelles',    val:myParc.length, color:'#2e7d32', bg:'#e8f5e9' },
-    { icon:'📡', label:'Capteurs',     val:myParc.length, color:'#1565c0', bg:'#e3f2fd' },
-    { icon:'💧', label:'Plots actifs', val:myParc.length, color:'#0288d1', bg:'#e1f5fe' },
+    { icon:'🧭', label:'Parcelles',    val:nbParcelles, color:'#2e7d32', bg:'#e8f5e9' },
+    { icon:'📡', label:'Capteurs',     val:nbParcelles, color:'#1565c0', bg:'#e3f2fd' },
+    { icon:'💧', label:'Plots actifs', val:nbParcelles, color:'#0288d1', bg:'#e1f5fe' },
     ...(auth.role==='admin'
       ? [{ icon:'👥', label:'Utilisateurs', val:users.length, color:'#e65100', bg:'#fff3e0' }]
       : []),

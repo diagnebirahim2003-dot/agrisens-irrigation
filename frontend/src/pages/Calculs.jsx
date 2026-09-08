@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getSol } from '../utils/sols';
 import { getCultures } from '../utils/cultures';
+import { listParcelles } from '../utils/orion';
 import './Calculs.css';
 
 // ═══════════════════════════════════════════════════
@@ -121,7 +122,9 @@ function calcDi(ETc, superficie) {
 // ═══════════════════════════════════════════════════
 export default function Calculs({ auth }) {
   const CULTURES = getCultures();
-  const [parcelles, setParcelles] = useState([]);
+  const [parcelles,  setParcelles]  = useState([]);
+  const [parcLoading,setParcLoading]= useState(true);
+  const [parcError,  setParcError]  = useState('');
   const [selected,  setSelected]  = useState('');
   const [meteo,     setMeteo]     = useState(null);
   const [sol8,      setSol8]      = useState(null);
@@ -130,10 +133,16 @@ export default function Calculs({ auth }) {
   const [result,    setResult]    = useState(null);
 
   useEffect(() => {
-    const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-    const mine = auth.role === 'admin' ? all : all.filter(p => p.owner === auth.email);
-    setParcelles(mine);
-    if (mine.length > 0) setSelected(mine[0].id);
+    (async () => {
+      setParcLoading(true); setParcError('');
+      try {
+        const mine = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+        setParcelles(mine);
+        if (mine.length > 0) setSelected(mine[0].id);
+      } catch (e) {
+        setParcError(e.message);
+      } finally { setParcLoading(false); }
+    })();
   }, []);
 
   useEffect(() => {
@@ -223,7 +232,10 @@ export default function Calculs({ auth }) {
       {/* Sélection parcelle */}
       <div className="calc-card">
         <div className="cc-title">📍 Sélection de la parcelle</div>
-        {parcelles.length === 0 ? (
+        {parcError && <div className="calc-error">{parcError}</div>}
+        {parcLoading ? (
+          <div className="calc-empty">⏳ Chargement des parcelles (Orion via Wilma)…</div>
+        ) : parcelles.length === 0 ? (
           <div className="calc-empty">Aucune parcelle. Créez une parcelle d'abord.</div>
         ) : (
           <div className="parc-select-grid">

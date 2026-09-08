@@ -1,16 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { pushReleve } from '../utils/historique';
+import { listParcelles } from '../utils/orion';
 import './Capteurs.css';
 
 const OWM_KEY  = 'f376f93aee61a823a4c0eff15e47b0a0';
 const SITE_LAT = 14.15;
 const SITE_LNG = -16.07;
-
-function getParcelleCoords() {
-  const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
-  if (all.length > 0) return { lat: all[0].lat, lng: all[0].lng, nom: all[0].nom };
-  return { lat: SITE_LAT, lng: SITE_LNG, nom: 'USSEIN Kaolack' };
-}
 
 function statusClass(val, min, max) {
   if (val === null || val === undefined) return 'val-neutral';
@@ -43,10 +38,17 @@ export default function Capteurs({ auth }) {
   const readerRef  = useRef(null);
   const bufferRef  = useRef('');
   const timerRef   = useRef(null);
+  const coordsRef  = useRef({ lat: SITE_LAT, lng: SITE_LNG, nom: 'USSEIN Kaolack' });
 
   useEffect(() => {
-    fetchMeteo();
-    timerRef.current = setInterval(fetchMeteo, 5 * 60 * 1000); // refresh 5 min
+    (async () => {
+      try {
+        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+        if (list.length > 0) coordsRef.current = { lat: list[0].lat, lng: list[0].lng, nom: list[0].nom };
+      } catch { /* Orion injoignable : on garde les coordonnées par défaut du site */ }
+      fetchMeteo();
+      timerRef.current = setInterval(fetchMeteo, 5 * 60 * 1000); // refresh 5 min
+    })();
     return () => {
       clearInterval(timerRef.current);
       disconnectSerial();
@@ -55,7 +57,7 @@ export default function Capteurs({ auth }) {
 
   // ── MÉTÉO OpenWeatherMap ──────────────────────────────
   async function fetchMeteo() {
-    const coords = getParcelleCoords();
+    const coords = coordsRef.current;
     setMeteoLoad(true); setMeteoErr('');
     try {
       const res = await fetch(
