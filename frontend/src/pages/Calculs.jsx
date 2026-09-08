@@ -124,9 +124,14 @@ function calcRU(Zr) {
   return (SOL.Hcc - SOL.Hpf) / 100 * SOL.Da * Zr * 1000;
 }
 
-// Seuil critique: Sc = Hcc - RFU (mémoire)
-function calcSc(RFU) {
-  return SOL.Hcc - RFU;
+// Seuil critique: Sc = Hcc/100 × Zr × 1000 - RFU (Chapitre III, mémoire)
+function calcSc(Zr, RFU) {
+  return (SOL.Hcc / 100) * Zr * 1000 - RFU;
+}
+
+// Stock d'eau actuel: Sa = θactuel × Zr × 1000 (Chapitre III, mémoire)
+function calcSa(humidite, Zr) {
+  return (humidite / 100) * Zr * 1000;
 }
 
 // Di = ETc × superficie_plot (mémoire: plot 2m²)
@@ -197,7 +202,7 @@ export default function Calculs({ auth }) {
       const RU    = calcRU(c.Zr);
       const Pajus = calcPajuste(c.p, ETc);
       const RFU   = Pajus * RU;
-      const Sc    = calcSc(RFU);
+      const Sc    = calcSc(c.Zr, RFU);
       const Di    = calcDi(ETc, 2); // plot 2m²
       const stage = getStage(parc.culture, das);
 
@@ -208,21 +213,20 @@ export default function Calculs({ auth }) {
         K: Math.max(0, c.NPK.K - (sol8.k || 0)),
       } : null;
 
-      // Recommandation
+      // Recommandation — Sa vs Sc, règle à 2 branches (RG-I4, Chapitre III/IV mémoire)
       const humSol = sol8?.humidite ?? null;
+      const Sa     = humSol !== null ? calcSa(humSol, c.Zr) : null;
       let reco, recoClass;
-      if (humSol !== null) {
-        const stock = humSol;
-        if (stock < Sc)        { reco = '🚨 IRRIGATION URGENTE'; recoClass = 'danger'; }
-        else if (stock < SOL.Hcc) { reco = '⚠️ IRRIGATION RECOMMANDÉE'; recoClass = 'warn'; }
-        else                   { reco = '✅ SOL BIEN HYDRATÉ'; recoClass = 'ok'; }
+      if (Sa !== null) {
+        if (Sa < Sc) { reco = '🚨 IRRIGATION DÉCLENCHÉE'; recoClass = 'danger'; }
+        else         { reco = '✅ STOCK SUFFISANT — AUCUN ARROSAGE'; recoClass = 'ok'; }
       } else {
         reco = '📡 Connecter le capteur 8-en-1 pour recommandation';
         recoClass = 'info';
       }
 
       setResult({ wx, Ra, Rs, ETo, Kc, ETc, RU, Pajus, RFU, Sc, Di,
-                  das, stage, parc, npkDef, reco, recoClass, humSol });
+                  das, stage, parc, npkDef, reco, recoClass, humSol, Sa });
     } catch(e) {
       setError('Erreur : ' + e.message);
     } finally { setLoading(false); }
@@ -311,7 +315,10 @@ export default function Calculs({ auth }) {
               <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div><div className="ri-form">(Hcc-Hpf)/100×Da×Zr×1000</div></div>
               <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div><div className="ri-form">p + 0,04×(5-ETc)</div></div>
               <div className="res-item highlight"><div className="ri-val blue">{result.RFU.toFixed(1)}</div><div className="ri-lbl">RFU (mm)</div><div className="ri-form">p_ajusté × RU</div></div>
-              <div className="res-item"><div className="ri-val red">{result.Sc.toFixed(1)}%</div><div className="ri-lbl">Sc — Seuil critique</div><div className="ri-form">Hcc − RFU</div></div>
+              <div className="res-item"><div className="ri-val red">{result.Sc.toFixed(1)}</div><div className="ri-lbl">Sc (mm) — Seuil critique</div><div className="ri-form">Hcc/100×Zr×1000 − RFU</div></div>
+              {result.Sa !== null && (
+                <div className="res-item highlight"><div className="ri-val blue">{result.Sa.toFixed(1)}</div><div className="ri-lbl">Sa (mm) — Stock actuel</div><div className="ri-form">θactuel × Zr × 1000</div></div>
+              )}
               <div className="res-item highlight"><div className="ri-val green">{result.Di.toFixed(2)}</div><div className="ri-lbl">Di (mm/plot)</div><div className="ri-form">ETc × 2 m²</div></div>
             </div>
           </div>
@@ -358,8 +365,9 @@ export default function Calculs({ auth }) {
               <div className="reco-title">{result.reco}</div>
               {result.humSol !== null && (
                 <div className="reco-detail">
-                  Humidité sol mesurée : <b>{result.humSol}%</b> · 
-                  Seuil critique Sc : <b>{result.Sc.toFixed(1)}%</b> · 
+                  Humidité sol mesurée : <b>{result.humSol}%</b> ·
+                  Stock actuel Sa : <b>{result.Sa.toFixed(1)} mm</b> ·
+                  Seuil critique Sc : <b>{result.Sc.toFixed(1)} mm</b> ·
                   Dose recommandée Di : <b>{result.Di.toFixed(2)} mm/plot</b>
                 </div>
               )}
@@ -385,7 +393,9 @@ export default function Calculs({ auth }) {
               <div className="formule-item"><span className="f-name">RU</span><span className="f-eq">= (Hcc−Hpf)/100 × Da × Zr × 1000</span><span className="f-src">FAO-56 Eq.82</span></div>
               <div className="formule-item"><span className="f-name">p</span><span className="f-eq">= p_table + 0,04×(5−ETc)</span><span className="f-src">FAO-56 T.22, Chap.3 mémoire</span></div>
               <div className="formule-item"><span className="f-name">RFU</span><span className="f-eq">= p_ajusté × RU</span><span className="f-src">FAO-56 Eq.83</span></div>
-              <div className="formule-item"><span className="f-name">Sc</span><span className="f-eq">= Hcc − RFU</span><span className="f-src">Chap.3 mémoire</span></div>
+              <div className="formule-item"><span className="f-name">Sc</span><span className="f-eq">= Hcc/100 × Zr × 1000 − RFU</span><span className="f-src">Chap.3 mémoire</span></div>
+              <div className="formule-item"><span className="f-name">Sa</span><span className="f-eq">= θactuel × Zr × 1000</span><span className="f-src">Chap.3 mémoire</span></div>
+              <div className="formule-item"><span className="f-name">Décision</span><span className="f-eq">Sa &lt; Sc → irrigation ; sinon aucun arrosage</span><span className="f-src">RG-I4, Chap.3/4 mémoire</span></div>
               <div className="formule-item"><span className="f-name">Di</span><span className="f-eq">= ETc × superficie_plot</span><span className="f-src">Chap.3 mémoire</span></div>
               <div className="formule-item"><span className="f-name">Déficit NPK</span><span className="f-eq">= Valeur_optimale − Valeur_capteur</span><span className="f-src">Protocole + FAO AGRIS</span></div>
             </div>
