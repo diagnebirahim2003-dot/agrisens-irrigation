@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
-import { getSols, saveSols, resetSols } from '../utils/sols';
+import { getSols, saveSols, resetSols, DEFAULT_SOLS } from '../utils/sols';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -40,8 +40,17 @@ export default function AdminPanel({ auth, onBack }) {
   // Paramétrage des cultures (RG-I6)
   const [cultures, setCultures] = useState(getCultures());
 
-  // Paramétrage des sols (Hcc, Hpf, f)
+  // Paramétrage des sols (Hcc, Hpf, f) — FAO par défaut ou valeurs personnalisées
   const [sols, setSols] = useState(getSols());
+  const isFao = s => {
+    const d = DEFAULT_SOLS.find(x => x.nom === s.nom);
+    return !!d && d.cc === s.cc && d.pf === s.pf && d.f === s.f;
+  };
+  const [solsMode, setSolsMode] = useState(() => {
+    const m = {};
+    for (const s of getSols()) m[s.nom] = isFao(s) ? 'fao' : 'custom';
+    return m;
+  });
 
   useEffect(() => { setUsers(getUsers()); }, [tab]);
 
@@ -141,6 +150,13 @@ export default function AdminPanel({ auth, onBack }) {
   function updateSol(nom, field, val) {
     setSols(prev => prev.map(s => s.nom === nom ? { ...s, [field]: val } : s));
   }
+  function setSolMode(nom, mode) {
+    setSolsMode(prev => ({ ...prev, [nom]: mode }));
+    if (mode === 'fao') {
+      const d = DEFAULT_SOLS.find(x => x.nom === nom);
+      if (d) setSols(prev => prev.map(s => s.nom === nom ? { ...s, cc: d.cc, pf: d.pf, f: d.f } : s));
+    }
+  }
   function handleSaveSols(e) {
     e.preventDefault();
     saveSols(sols);
@@ -149,7 +165,10 @@ export default function AdminPanel({ auth, onBack }) {
   function handleResetSols() {
     if (!confirm('Revenir aux valeurs par défaut (Protocole / Chapitre III) ?')) return;
     resetSols();
-    setSols(getSols());
+    const d = getSols();
+    setSols(d);
+    const m = {}; for (const s of d) m[s.nom] = 'fao';
+    setSolsMode(m);
     setSuccess('Paramètres des sols réinitialisés aux valeurs par défaut.');
   }
 
@@ -414,17 +433,33 @@ export default function AdminPanel({ auth, onBack }) {
             et la fraction d'épuisement (f) par type de sol — Chapitre III du mémoire
           </div>
 
-          {sols.map(s => (
-            <div key={s.nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
-              <div className="add-form-title" style={{marginBottom:8}}>🪨 {s.nom}</div>
+          {sols.map(s => {
+            const mode = solsMode[s.nom] || 'fao';
+            const editable = mode === 'custom';
+            return (
+              <div key={s.nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
+                <div className="add-form-title" style={{marginBottom:8}}>🪨 {s.nom}</div>
 
-              <div className="form-row">
-                <div className="inp-group"><label>Hcc — capacité au champ (%)</label><input type="number" step="0.1" value={s.cc} onChange={e=>updateSol(s.nom,'cc',parseFloat(e.target.value)||0)}/></div>
-                <div className="inp-group"><label>Hpf — point de flétrissement (%)</label><input type="number" step="0.1" value={s.pf} onChange={e=>updateSol(s.nom,'pf',parseFloat(e.target.value)||0)}/></div>
-                <div className="inp-group"><label>f — fraction d'épuisement</label><input type="number" step="0.01" value={s.f} onChange={e=>updateSol(s.nom,'f',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group" style={{marginBottom:8}}>
+                  <label>Source de la valeur</label>
+                  <div className="radio-group">
+                    <label className="radio-label">
+                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='fao'} onChange={()=>setSolMode(s.nom,'fao')}/> 🌍 Valeurs FAO/USDA par défaut
+                    </label>
+                    <label className="radio-label">
+                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='custom'} onChange={()=>setSolMode(s.nom,'custom')}/> ✏️ Mes propres valeurs (mesurées)
+                    </label>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="inp-group"><label>Hcc — capacité au champ (%)</label><input type="number" step="0.1" disabled={!editable} value={s.cc} onChange={e=>updateSol(s.nom,'cc',parseFloat(e.target.value)||0)}/></div>
+                  <div className="inp-group"><label>Hpf — point de flétrissement (%)</label><input type="number" step="0.1" disabled={!editable} value={s.pf} onChange={e=>updateSol(s.nom,'pf',parseFloat(e.target.value)||0)}/></div>
+                  <div className="inp-group"><label>f — fraction d'épuisement</label><input type="number" step="0.01" disabled={!editable} value={s.f} onChange={e=>updateSol(s.nom,'f',parseFloat(e.target.value)||0)}/></div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           <div className="form-row">
             <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
