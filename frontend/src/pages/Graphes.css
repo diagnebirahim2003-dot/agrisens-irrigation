@@ -1,0 +1,24 @@
+.graph-wrap { display:flex; flex-direction:column; gap:16px; }
+
+.graph-section { background:#fff; border:1px solid #e0e8e0; border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+
+.graph-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
+.graph-title { font-size:0.9rem; font-weight:700; color:#1b3a1b; }
+.graph-count { font-size:0.72rem; color:#6a7f6a; }
+
+.graph-empty { padding:32px 16px; text-align:center; color:#6a7f6a; font-size:0.85rem; background:#f4f7f1; border-radius:10px; }
+
+.graph-params { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.graph-param-btn {
+  background:#f4f7f1; border:1px solid #dde5d7; border-radius:999px;
+  padding:6px 14px; font-size:0.75rem; font-weight:600; color:#4b5d51;
+  cursor:pointer; font-family:inherit; transition:all .15s;
+}
+.graph-param-btn:hover { background:#eef2ea; }
+.graph-param-btn.active { background:#fff; font-weight:700; }
+
+.graph-current { display:flex; flex-direction:column; margin-bottom:8px; }
+.graph-current-val { font-size:1.8rem; font-weight:800; }
+.graph-current-lbl { font-size:0.72rem; color:#6a7f6a; }
+
+.graph-hint { font-size:0.7rem; color:#9aaa9a; margin-top:8px; text-align:right; }

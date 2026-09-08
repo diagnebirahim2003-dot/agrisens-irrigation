@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getSol } from '../utils/sols';
+import { getCultures } from '../utils/cultures';
 import './Calculs.css';
 
 // ═══════════════════════════════════════════════════
@@ -7,30 +8,6 @@ import './Calculs.css';
 // ═══════════════════════════════════════════════════
 const OWM_KEY = 'f376f93aee61a823a4c0eff15e47b0a0';
 const SITE    = { lat: 14.15, lng: -16.07, alt: 3, KRs: 0.16 };
-
-const CULTURES = {
-  Laitue: {
-    icon:'🥬', cycle:55,
-    Kc: [0.70, 1.05, 0.95],
-    L:  [10, 15, 15, 15],
-    Zr: 0.35, p: 0.30,
-    NPK:{ N:150, P:40, K:120 },
-  },
-  Navet: {
-    icon:'🌿', cycle:55,
-    Kc: [0.70, 1.00, 0.95],
-    L:  [10, 15, 15, 15],
-    Zr: 0.50, p: 0.50,
-    NPK:{ N:100, P:30, K:100 },
-  },
-  Gombo: {
-    icon:'🫛', cycle:100,
-    Kc: [0.40, 1.00, 0.75],
-    L:  [20, 20, 30, 30],
-    Zr: 0.60, p: 0.50,
-    NPK:{ N:120, P:60, K:150 },
-  },
-};
 
 // ═══════════════════════════════════════════════════
 // FONCTIONS DE CALCUL (Chapitre 3 mémoire + FAO-56)
@@ -47,8 +24,8 @@ function getDAS(semis) {
   return Math.max(0, Math.floor((Date.now() - new Date(semis)) / 86400000));
 }
 
-function getKc(culture, das) {
-  const c = CULTURES[culture];
+function getKc(cultures, culture, das) {
+  const c = cultures[culture];
   if (!c) return 0.75;
   const [Li, Ld, Lm, Ll] = c.L;
   const [Ki, Km, Ke]     = c.Kc;
@@ -59,8 +36,8 @@ function getKc(culture, das) {
   return Ke;
 }
 
-function getStage(culture, das) {
-  const c = CULTURES[culture];
+function getStage(cultures, culture, das) {
+  const c = cultures[culture];
   if (!c) return 'Inconnu';
   const [Li, Ld, Lm] = c.L;
   if (das <= Li)       return 'Initial';
@@ -143,6 +120,7 @@ function calcDi(ETc, superficie) {
 // COMPOSANT
 // ═══════════════════════════════════════════════════
 export default function Calculs({ auth }) {
+  const CULTURES = getCultures();
   const [parcelles, setParcelles] = useState([]);
   const [selected,  setSelected]  = useState('');
   const [meteo,     setMeteo]     = useState(null);
@@ -198,14 +176,14 @@ export default function Calculs({ auth }) {
       const Ra    = calcRa(parc.lat, doy);
       const Rs    = calcRs(wx.Tmax, wx.Tmin, Ra);
       const ETo   = calcETo(wx.Tmax, wx.Tmin, wx.HR, wx.u10, Rs, parc.lat, doy);
-      const Kc    = getKc(parc.culture, das);
+      const Kc    = getKc(CULTURES, parc.culture, das);
       const ETc   = Kc * ETo;
       const RU    = calcRU(sol.cc, sol.pf, c.Zr);
       const Pajus = calcPajuste(c.p, ETc);
       const RFU   = Pajus * RU;
       const Sc    = calcSc(sol.cc, c.Zr, RFU);
       const Di    = calcDi(ETc, 2); // plot 2m²
-      const stage = getStage(parc.culture, das);
+      const stage = getStage(CULTURES, parc.culture, das);
 
       // Déficit NPK (si données capteur 8-en-1 disponibles)
       const npkDef = sol8 ? {

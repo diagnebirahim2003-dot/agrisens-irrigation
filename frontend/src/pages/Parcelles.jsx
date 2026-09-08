@@ -1,20 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { SOLS, getSol } from '../utils/sols';
+import { getCulturesList } from '../utils/cultures';
 import './Parcelles.css';
-
-const CULTURES = [
-  { nom:'Laitue', icon:'🥬', cycle:55,  prof:0.35, Kc:[0.70,1.05,0.95], L:[10,15,15,15] },
-  { nom:'Navet',  icon:'🌿', cycle:55,  prof:0.50, Kc:[0.70,1.00,0.95], L:[10,15,15,15] },
-  { nom:'Gombo',  icon:'🫛', cycle:100, prof:0.60, Kc:[0.40,1.00,0.75], L:[20,20,30,30] },
-];
 
 function getDAS(semis) {
   if (!semis) return 0;
   return Math.max(0, Math.floor((Date.now() - new Date(semis)) / 86400000));
 }
 
-function getStage(culture, das) {
-  const c = CULTURES.find(x => x.nom === culture);
+function getStage(cultures, culture, das) {
+  const c = cultures.find(x => x.nom === culture);
   if (!c) return { label:'Inconnu', css:'stage-ini' };
   const [Li, Ld, Lm] = c.L;
   if (das <= Li)        return { label:'Initial',       css:'stage-ini'  };
@@ -24,8 +19,8 @@ function getStage(culture, das) {
   return                       { label:'Récolte',       css:'stage-done' };
 }
 
-function getKc(culture, das) {
-  const c = CULTURES.find(x => x.nom === culture);
+function getKc(cultures, culture, das) {
+  const c = cultures.find(x => x.nom === culture);
   if (!c) return 0.75;
   const [Li, Ld, Lm, Ll] = c.L;
   const [Ki, Km, Ke]     = c.Kc;
@@ -49,6 +44,7 @@ function saveParcelles(list) {
 let mapInstance = null;
 
 export default function Parcelles({ auth }) {
+  const CULTURES = getCulturesList();
   const [parcelles, setParcelles] = useState([]);
   const [view,      setView]      = useState('list');
   const [selected,  setSelected]  = useState(null);
@@ -162,7 +158,7 @@ export default function Parcelles({ auth }) {
         ) : (
           <div className="parc-grid">
             {parcelles.map(p => {
-              const das=getDAS(p.semis), kc=getKc(p.culture,das), stage=getStage(p.culture,das), ci=cInfo(p.culture);
+              const das=getDAS(p.semis), kc=getKc(CULTURES,p.culture,das), stage=getStage(CULTURES,p.culture,das), ci=cInfo(p.culture);
               const pct=Math.min(100, Math.round(das/ci.cycle*100));
               return (
                 <div key={p.id} className="parc-card" onClick={() => { setSelected(p); setView('detail'); }}>
@@ -246,9 +242,9 @@ export default function Parcelles({ auth }) {
       )}
 
       {view === 'detail' && selected && (() => {
-        const p=selected, das=getDAS(p.semis), kc=getKc(p.culture,das), stage=getStage(p.culture,das);
+        const p=selected, das=getDAS(p.semis), kc=getKc(CULTURES,p.culture,das), stage=getStage(CULTURES,p.culture,das);
         const ci=cInfo(p.culture), sol=SOLS.find(s=>s.nom===p.sol)||SOLS[3];
-        const ru=(ci.prof*(sol.cc-sol.pf)/100*1000), rfu=ru*sol.f, pct=Math.min(100,Math.round(das/ci.cycle*100));
+        const ru=(ci.Zr*(sol.cc-sol.pf)/100*1000), rfu=ru*sol.f, pct=Math.min(100,Math.round(das/ci.cycle*100));
         return (
           <div>
             <div className="detail-section">
@@ -273,7 +269,7 @@ export default function Parcelles({ auth }) {
               <div className="detail-grid">
                 <div className="detail-item highlight"><div className="di-val green">{kc.toFixed(3)}</div><div className="di-lbl">Kc actuel</div></div>
                 <div className="detail-item"><div className="di-val">{p.sol}</div><div className="di-lbl">Type de sol</div></div>
-                <div className="detail-item"><div className="di-val">{ci.prof*100} cm</div><div className="di-lbl">Prof. racinaire</div></div>
+                <div className="detail-item"><div className="di-val">{ci.Zr*100} cm</div><div className="di-lbl">Prof. racinaire</div></div>
                 <div className="detail-item"><div className="di-val">{ru.toFixed(1)} mm</div><div className="di-lbl">RU</div></div>
                 <div className="detail-item highlight"><div className="di-val green">{rfu.toFixed(1)} mm</div><div className="di-lbl">RFU</div></div>
                 <div className="detail-item"><div className="di-val">{p.lat}°, {p.lng}°</div><div className="di-lbl">GPS</div></div>

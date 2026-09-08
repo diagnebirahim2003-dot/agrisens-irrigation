@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { pushReleve } from '../utils/historique';
 import './Capteurs.css';
 
 const OWM_KEY  = 'f376f93aee61a823a4c0eff15e47b0a0';
@@ -6,7 +7,7 @@ const SITE_LAT = 14.15;
 const SITE_LNG = -16.07;
 
 function getParcelleCoords() {
-  const all = JSON.parse(localStorage.getItem('agrosens_parcelles') || '[]');
+  const all = JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
   if (all.length > 0) return { lat: all[0].lat, lng: all[0].lng, nom: all[0].nom };
   return { lat: SITE_LAT, lng: SITE_LNG, nom: 'USSEIN Kaolack' };
 }
@@ -179,8 +180,12 @@ export default function Capteurs({ auth }) {
         }
       }
       if (Object.keys(data).length > 0) {
-        setSol(prev => ({ ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') }));
-        localStorage.setItem('agrosens_sol8', JSON.stringify({ ...data, updatedAt: new Date().toISOString() }));
+        setSol(prev => {
+          const merged = { ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') };
+          localStorage.setItem('agrisens_sol8', JSON.stringify({ ...merged, updatedAt: new Date().toISOString() }));
+          pushReleve(merged);
+          return merged;
+        });
       }
     } catch(e) {}
   }
@@ -199,7 +204,8 @@ export default function Capteurs({ auth }) {
       updatedAt:   new Date().toLocaleTimeString('fr-FR'),
     };
     setSol(demo);
-    localStorage.setItem('agrosens_sol8', JSON.stringify({ ...demo, updatedAt: new Date().toISOString() }));
+    localStorage.setItem('agrisens_sol8', JSON.stringify({ ...demo, updatedAt: new Date().toISOString() }));
+    pushReleve(demo);
     setSerialSt('demo');
   }
 

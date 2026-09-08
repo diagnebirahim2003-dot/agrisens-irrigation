@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -35,6 +36,9 @@ export default function AdminPanel({ auth, onBack }) {
   const [fProf, setFProf]     = useState('Technicien');
   const [fMaraich, setFMaraich] = useState('non');
 
+  // Paramétrage des cultures (RG-I6)
+  const [cultures, setCultures] = useState(getCultures());
+
   useEffect(() => { setUsers(getUsers()); }, [tab]);
 
   function refresh() {
@@ -67,7 +71,7 @@ export default function AdminPanel({ auth, onBack }) {
       createdAt: new Date().toISOString(),
     });
     saveUsers(users);
-    setSuccess(`✅ ${fRole === 'admin' ? 'Admin' : 'Technicien'} ${fPrenom} ${fNom} ajouté avec succès !`);
+    setSuccess(`✅ ${fRole === 'admin' ? 'Admin' : 'Technicien'} ${fPrenom} ${fNom} enregistré. Créez aussi son compte dans Keycloak pour qu'il puisse se connecter.`);
     setFNom(''); setFPrenom(''); setFEmail(''); setFPwd('');
     setFRole('technicien');
     refresh();
@@ -98,6 +102,36 @@ export default function AdminPanel({ auth, onBack }) {
     const users = getUsers().map(u => u.email === email ? { ...u, password: newPwd } : u);
     saveUsers(users);
     alert('✅ Mot de passe réinitialisé.');
+  }
+
+  function updateKc(nom, idx, val) {
+    setCultures(prev => {
+      const Kc = [...prev[nom].Kc]; Kc[idx] = val;
+      return { ...prev, [nom]: { ...prev[nom], Kc } };
+    });
+  }
+  function updateL(nom, idx, val) {
+    setCultures(prev => {
+      const L = [...prev[nom].L]; L[idx] = val;
+      return { ...prev, [nom]: { ...prev[nom], L } };
+    });
+  }
+  function updateField(nom, field, val) {
+    setCultures(prev => ({ ...prev, [nom]: { ...prev[nom], [field]: val } }));
+  }
+  function updateNPK(nom, el, val) {
+    setCultures(prev => ({ ...prev, [nom]: { ...prev[nom], NPK: { ...prev[nom].NPK, [el]: val } } }));
+  }
+  function handleSaveCultures(e) {
+    e.preventDefault();
+    saveCultures(cultures);
+    setSuccess('✅ Paramètres des cultures enregistrés.');
+  }
+  function handleResetCultures() {
+    if (!confirm('Revenir aux valeurs par défaut (Protocole / Chapitre III) ?')) return;
+    resetCultures();
+    setCultures(getCultures());
+    setSuccess('Paramètres des cultures réinitialisés aux valeurs par défaut.');
   }
 
   const filtered = users.filter(u =>
@@ -146,6 +180,9 @@ export default function AdminPanel({ auth, onBack }) {
         </button>
         <button className={`atab ${tab==='add'?'active':''}`} onClick={()=>{setTab('add');setError('');setSuccess('');}}>
           ➕ Ajouter un utilisateur
+        </button>
+        <button className={`atab ${tab==='cultures'?'active':''}`} onClick={()=>{setTab('cultures');setError('');setSuccess('');}}>
+          🌱 Cultures
         </button>
       </div>
 
@@ -299,6 +336,51 @@ export default function AdminPanel({ auth, onBack }) {
           <button className="btn-add-user" type="submit">
             ➕ Ajouter {fRole === 'admin' ? 'le co-administrateur' : 'le technicien'}
           </button>
+        </form>
+      )}
+
+      {/* CULTURES */}
+      {tab === 'cultures' && (
+        <form className="add-form" onSubmit={handleSaveCultures}>
+          <div className="add-form-title">
+            Paramétrer Kc, stades, profondeur racinaire et NPK optimal par culture (RG-I6)
+          </div>
+
+          {Object.entries(cultures).map(([nom, c]) => (
+            <div key={nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
+              <div className="add-form-title" style={{marginBottom:8}}>{c.icon} {nom}</div>
+
+              <div className="form-row">
+                <div className="inp-group"><label>Kc initial</label><input type="number" step="0.01" value={c.Kc[0]} onChange={e=>updateKc(nom,0,parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Kc mi-saison</label><input type="number" step="0.01" value={c.Kc[1]} onChange={e=>updateKc(nom,1,parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Kc fin de saison</label><input type="number" step="0.01" value={c.Kc[2]} onChange={e=>updateKc(nom,2,parseFloat(e.target.value)||0)}/></div>
+              </div>
+
+              <div className="form-row">
+                <div className="inp-group"><label>Stade initial (j)</label><input type="number" value={c.L[0]} onChange={e=>updateL(nom,0,parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Développement (j)</label><input type="number" value={c.L[1]} onChange={e=>updateL(nom,1,parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Mi-saison (j)</label><input type="number" value={c.L[2]} onChange={e=>updateL(nom,2,parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Fin de saison (j)</label><input type="number" value={c.L[3]} onChange={e=>updateL(nom,3,parseFloat(e.target.value)||0)}/></div>
+              </div>
+
+              <div className="form-row">
+                <div className="inp-group"><label>Zr — profondeur racinaire (m)</label><input type="number" step="0.01" value={c.Zr} onChange={e=>updateField(nom,'Zr',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>p — fraction d'épuisement (Tableau 22)</label><input type="number" step="0.01" value={c.p} onChange={e=>updateField(nom,'p',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>Cycle total (j)</label><input type="number" value={c.cycle} onChange={e=>updateField(nom,'cycle',parseFloat(e.target.value)||0)}/></div>
+              </div>
+
+              <div className="form-row">
+                <div className="inp-group"><label>N optimal (mg/kg)</label><input type="number" value={c.NPK.N} onChange={e=>updateNPK(nom,'N',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>P optimal (mg/kg)</label><input type="number" value={c.NPK.P} onChange={e=>updateNPK(nom,'P',parseFloat(e.target.value)||0)}/></div>
+                <div className="inp-group"><label>K optimal (mg/kg)</label><input type="number" value={c.NPK.K} onChange={e=>updateNPK(nom,'K',parseFloat(e.target.value)||0)}/></div>
+              </div>
+            </div>
+          ))}
+
+          <div className="form-row">
+            <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
+            <button className="btn-back" type="button" onClick={handleResetCultures}>↺ Réinitialiser aux valeurs par défaut</button>
+          </div>
         </form>
       )}
     </div>

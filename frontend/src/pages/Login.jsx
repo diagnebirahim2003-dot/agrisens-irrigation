@@ -107,19 +107,10 @@ export default function Login({ onLogin }) {
         localStorage.removeItem('agrisens_remember');
       }
       onLogin({ token: data.access_token, user, role, email: loginEmail });
-    } catch {
-      const users = getUsers();
-      const found = users.find(u => u.email === loginEmail && u.password === loginPwd);
-      if (found) {
-        if (remember) {
-        localStorage.setItem('agrisens_remember', JSON.stringify({ email: loginEmail, password: loginPwd }));
-      } else {
-        localStorage.removeItem('agrisens_remember');
-      }
-      onLogin({ token: 'local', user: found.prenom + ' ' + found.nom, role: found.role, email: found.email, profile: found });
-      } else {
-        setError('Email ou mot de passe incorrect.');
-      }
+    } catch (e) {
+      setError(e.message === 'Failed to fetch'
+        ? 'Impossible de joindre le service d\'authentification Keycloak.'
+        : 'Email ou mot de passe incorrect.');
     } finally { setLoading(false); }
   }
 
@@ -134,7 +125,7 @@ export default function Login({ onLogin }) {
     if (users.find(u => u.email === regEmail)) { setError('Cette adresse email est déjà utilisée.'); return; }
     users.push({ nom: regNom, prenom: regPrenom, nationalite: regNat, profession: regProf, maraichage: regMaraich, email: regEmail, password: regPwd, role: 'agronome', createdAt: new Date().toISOString() });
     localStorage.setItem('agrisens_users', JSON.stringify(users));
-    setSuccess('Compte créé avec succès ! Vous pouvez maintenant vous connecter.');
+    setSuccess('Demande enregistrée ! Un administrateur doit créer votre compte Keycloak avant que vous puissiez vous connecter.');
     setLoginEmail(regEmail);
     switchTab('login');
   }

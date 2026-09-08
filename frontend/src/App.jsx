@@ -4,6 +4,7 @@ import AdminPanel from './pages/AdminPanel';
 import Parcelles from './pages/Parcelles';
 import Calculs from './pages/Calculs';
 import Capteurs from './pages/Capteurs';
+import Graphes from './pages/Graphes';
 import logoImg from './assets/logo.png';
 import './App.css';
 
@@ -91,9 +92,9 @@ function Dashboard({ auth, setPage }) {
   const now      = new Date();
   const hour     = now.getHours();
   const greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
-  const parcelles= JSON.parse(localStorage.getItem('agrosens_parcelles') || '[]');
+  const parcelles= JSON.parse(localStorage.getItem('agrisens_parcelles') || '[]');
   const myParc   = auth.role==='admin' ? parcelles : parcelles.filter(p=>p.owner===auth.email);
-  const users    = JSON.parse(localStorage.getItem('agrosens_users') || '[]');
+  const users    = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
 
   const kpis = [
     { icon:'🧭', label:'Parcelles',    val:myParc.length, color:'#2e7d32', bg:'#e8f5e9' },
@@ -171,18 +172,6 @@ function PageWrap({ title, desc, children }) {
   );
 }
 
-function ComingSoon({ icon, label }) {
-  return (
-    <div className="main-content">
-      <div className="coming-soon">
-        <div className="cs-icon">{icon}</div>
-        <h2 className="cs-title">{label}</h2>
-        <p className="cs-desc">Cette section est en cours de développement.</p>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   const [auth, setAuth] = useState(null);
   const [page, setPage] = useState('dashboard');
@@ -200,7 +189,7 @@ export default function App() {
         {page==='parcelles' && <PageWrap title="🧭 Mes parcelles" desc="Gérez vos plots et cultures"><Parcelles auth={auth}/></PageWrap>}
         {page==='calculs'   && <PageWrap title="🧮 Calculs agronomiques" desc="ETo · ETc · RU · RFU — FAO-56"><Calculs auth={auth}/></PageWrap>}
         {page==='capteurs'  && <PageWrap title="📡 Données capteurs" desc="Capteur 8-en-1 + météo temps réel"><Capteurs auth={auth}/></PageWrap>}
-        {page==='graphes'   && <ComingSoon icon="📈" label="Graphes historiques"/>}
+        {page==='graphes'   && <PageWrap title="📈 Graphes" desc="Historique des relevés du capteur 8-en-1"><Graphes/></PageWrap>}
       </div>
 
       <BottomNav auth={auth} page={page} setPage={setPage}/>
