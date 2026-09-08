@@ -93,7 +93,10 @@ export default function Login({ onLogin }) {
       const username = loginEmail.split('@')[0];
       const res = await fetch(KEYCLOAK_TOKEN_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'ngrok-skip-browser-warning': 'true', // ignoré hors ngrok, évite la page d'avertissement en tunnel
+        },
         body: new URLSearchParams({ client_id: CONFIG.KEYCLOAK_CLIENT, username, password: loginPwd, grant_type: 'password' }),
       });
       const data = await res.json();
