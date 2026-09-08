@@ -50,6 +50,7 @@ services:
     depends_on:
       - orion
       - wilma-auth
+      - keycloak
 
 volumes:
   mongo_data:
