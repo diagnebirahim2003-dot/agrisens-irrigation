@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getSols } from '../utils/sols';
 import { getCulturesList } from '../utils/cultures';
-import { listParcelles, createParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
+import { listParcelles, createParcelle, updateParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
 import './Parcelles.css';
 
 function getDAS(semis) {
@@ -41,6 +41,7 @@ export default function Parcelles({ auth }) {
   const [loading,   setLoading]   = useState(true);
   const [view,      setView]      = useState('list');
   const [selected,  setSelected]  = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [error,     setError]     = useState('');
   const [success,   setSuccess]   = useState('');
   const mapRef = useRef(null);
@@ -91,6 +92,24 @@ export default function Parcelles({ auth }) {
     ], {color:'#2e7d32',fillColor:'#a5d6a7',fillOpacity:0.3,weight:2}).addTo(mapInstance);
   }
 
+  function startEdit(p) {
+    setEditingId(p.id);
+    setFNom(p.nom); setFCulture(p.culture); setFSol(p.sol);
+    setFSemis(p.semis ? p.semis.split('T')[0] : new Date().toISOString().split('T')[0]);
+    setFSup(String(p.superficie ?? ''));
+    setFLat(String(p.lat ?? '')); setFLng(String(p.lng ?? ''));
+    setFRegion(p.region || '');
+    setError(''); setSuccess('');
+    setView('add');
+  }
+
+  function resetForm() {
+    setEditingId(null);
+    setFNom(''); setFCulture('Laitue'); setFSol('Limono-argileux');
+    setFSemis(new Date().toISOString().split('T')[0]);
+    setFSup(''); setFLat('14.1500'); setFLng('-16.0700'); setFRegion('Kaolack');
+  }
+
   async function addParcelle(e) {
     e.preventDefault();
     setError(''); setSuccess('');
@@ -99,12 +118,20 @@ export default function Parcelles({ auth }) {
     if (isNaN(lat) || isNaN(lng)) { setError('Coordonnées GPS invalides.'); return; }
     setLoading(true);
     try {
-      await createParcelle(auth.token, { nom:fNom, culture:fCulture, sol:fSol,
-        semis:fSemis, superficie:parseFloat(fSup), lat, lng, region:fRegion,
-        owner:auth.email, ownerName:auth.user, createdAt:new Date().toISOString() });
+      if (editingId) {
+        const prev = parcelles.find(p => p.id === editingId) || {};
+        await updateParcelle(auth.token, editingId, { ...prev, nom:fNom, culture:fCulture, sol:fSol,
+          semis:fSemis, superficie:parseFloat(fSup), lat, lng, region:fRegion });
+        setSuccess(`✅ Parcelle "${fNom}" modifiée !`);
+      } else {
+        await createParcelle(auth.token, { nom:fNom, culture:fCulture, sol:fSol,
+          semis:fSemis, superficie:parseFloat(fSup), lat, lng, region:fRegion,
+          owner:auth.email, ownerName:auth.user, createdAt:new Date().toISOString() });
+        setSuccess(`✅ Parcelle "${fNom}" ajoutée !`);
+      }
       await reloadParcelles();
-      setSuccess(`✅ Parcelle "${fNom}" ajoutée !`);
-      setFNom(''); setFSup(''); setView('list');
+      resetForm();
+      setView('list');
     } catch (e) {
       setError(e.message);
       setLoading(false);
@@ -132,22 +159,29 @@ export default function Parcelles({ auth }) {
           {view !== 'list' && (
             <button className="btn-back-sm" onClick={() => {
               if (view === 'map') setView('detail');
+              else if (view === 'add') { resetForm(); setView(selected ? 'detail' : 'list'); }
               else { setView('list'); setSelected(null); }
             }}>← Retour</button>
           )}
           <span className="parc-toolbar-title">
             {view === 'list'   && `🧭 Mes parcelles (${parcelles.length})`}
-            {view === 'add'    && '➕ Nouvelle parcelle'}
+            {view === 'add'    && (editingId ? `✏️ Modifier ${fNom || ''}` : '➕ Nouvelle parcelle')}
             {view === 'detail' && `🧭 ${selected?.nom}`}
             {view === 'map'    && `📍 Carte — ${selected?.nom}`}
           </span>
         </div>
         {view === 'list' && auth.role !== 'agronome' && (
-          <button className="btn-add-parc" onClick={() => { setView('add'); setError(''); setSuccess(''); }}>
+          <button className="btn-add-parc" onClick={() => { resetForm(); setView('add'); setError(''); setSuccess(''); }}>
             ➕ Ajouter
           </button>
         )}
-        {view === 'detail' && (
+        {view === 'detail' && auth.role !== 'agronome' && (
+          <div style={{display:'flex', gap:'8px'}}>
+            <button className="btn-map" onClick={() => startEdit(selected)}>✏️ Modifier</button>
+            <button className="btn-map" onClick={() => setView('map')}>📍 Carte</button>
+          </div>
+        )}
+        {view === 'detail' && auth.role === 'agronome' && (
           <button className="btn-map" onClick={() => setView('map')}>📍 Carte</button>
         )}
       </div>
@@ -252,7 +286,7 @@ export default function Parcelles({ auth }) {
             </div>
             <div className="gps-hint">💡 Google Maps → appui long → copier les coordonnées</div>
           </div>
-          <button className="btn-save-parc" type="submit">💾 Enregistrer la parcelle</button>
+          <button className="btn-save-parc" type="submit">💾 {editingId ? 'Enregistrer les modifications' : 'Enregistrer la parcelle'}</button>
         </form>
       )}
 

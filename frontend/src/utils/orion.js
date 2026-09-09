@@ -80,6 +80,23 @@ export async function createParcelle(token, parcelle) {
   return fromEntity(entity);
 }
 
+// Met à jour les attributs d'une parcelle existante (PATCH partiel NGSI-v2).
+export async function updateParcelle(token, id, parcelle) {
+  const entity = toEntity(parcelle);
+  delete entity.id;
+  delete entity.type;
+  const res = await fetch(`${CONFIG.WILMA_URL}/entities/${encodeURIComponent(id)}/attrs`, {
+    method: 'PATCH',
+    headers: headers(token, { withBody: true }),
+    body: JSON.stringify(entity),
+  });
+  if (!res.ok) {
+    const body = await readBody(res);
+    throw new Error(`Orion (${res.status}) — modification de la parcelle impossible : ${body?.description || res.statusText}`);
+  }
+  return { id, ...parcelle };
+}
+
 export async function deleteParcelle(token, id) {
   const res = await fetch(`${CONFIG.WILMA_URL}/entities/${encodeURIComponent(id)}`, {
     method: 'DELETE',
