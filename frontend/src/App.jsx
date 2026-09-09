@@ -5,16 +5,18 @@ import Parcelles from './pages/Parcelles';
 import Calculs from './pages/Calculs';
 import Capteurs from './pages/Capteurs';
 import Graphes from './pages/Graphes';
+import Historique from './pages/Historique';
 import { listParcelles } from './utils/orion';
 import logoImg from './assets/logo.png';
 import './App.css';
 
 const NAV = [
-  { page:'dashboard', icon:'🏠', label:'Accueil'   },
-  { page:'parcelles', icon:'🧭', label:'Parcelles'  },
-  { page:'capteurs',  icon:'📡', label:'Capteurs'   },
-  { page:'calculs',   icon:'🧮', label:'Calculs'    },
-  { page:'graphes',   icon:'📈', label:'Graphes'    },
+  { page:'dashboard',   icon:'🏠', label:'Accueil'     },
+  { page:'parcelles',   icon:'🧭', label:'Parcelles'    },
+  { page:'capteurs',    icon:'📡', label:'Capteurs'     },
+  { page:'calculs',     icon:'🧮', label:'Calculs'      },
+  { page:'graphes',     icon:'📈', label:'Graphes'      },
+  { page:'historique',  icon:'📅', label:'Historique'   },
 ];
 
 function Sidebar({ auth, page, setPage, onLogout }) {
@@ -196,6 +198,7 @@ export default function App() {
         {page==='calculs'   && <PageWrap title="🧮 Calculs agronomiques" desc="ETo · ETc · RU · RFU — FAO-56"><Calculs auth={auth}/></PageWrap>}
         {page==='capteurs'  && <PageWrap title="📡 Données capteurs" desc="Capteur 8-en-1 + météo temps réel"><Capteurs auth={auth}/></PageWrap>}
         {page==='graphes'   && <PageWrap title="📈 Graphes" desc="Historique des relevés du capteur 8-en-1"><Graphes/></PageWrap>}
+        {page==='historique'&& <PageWrap><Historique/></PageWrap>}
       </div>
 
       <BottomNav auth={auth} page={page} setPage={setPage}/>

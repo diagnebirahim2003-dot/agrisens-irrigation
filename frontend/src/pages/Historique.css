@@ -1,0 +1,49 @@
+.hist-wrap { display:flex; flex-direction:column; gap:16px; }
+
+.hist-header { }
+.hist-title { font-size:1.1rem; font-weight:800; color:#1b3a1b; }
+.hist-sub { font-size:0.78rem; color:#6a7f6a; margin-top:4px; max-width:760px; }
+
+.hist-tabs { display:flex; gap:8px; flex-wrap:wrap; }
+.htab {
+  background:#f4f7f1; border:1px solid #dde5d7; border-radius:999px;
+  padding:8px 18px; font-size:0.82rem; font-weight:700; color:#4b5d51;
+  cursor:pointer; font-family:inherit; transition:all .15s;
+}
+.htab:hover { background:#eef2ea; }
+.htab.active { background:#1b5e20; color:#fff; border-color:#1b5e20; }
+
+.hist-toolbar {
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  background:#fff; border:1px solid #e0e8e0; border-radius:14px; padding:14px 18px;
+}
+.hist-meta { font-size:0.78rem; color:#4b5d51; }
+.hist-alert-count { color:#c62828; font-weight:700; }
+
+.btn-pdf {
+  background:#1b5e20; color:#fff; border:none; border-radius:10px;
+  padding:10px 18px; font-size:0.82rem; font-weight:700; cursor:pointer;
+  font-family:inherit; transition:background .15s;
+}
+.btn-pdf:hover { background:#164a19; }
+
+.hist-card { background:#fff; border:1px solid #e0e8e0; border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+.hist-card-title { font-size:0.85rem; font-weight:700; color:#1b3a1b; margin-bottom:12px; }
+.hist-empty { padding:24px; text-align:center; color:#6a7f6a; font-size:0.82rem; background:#f4f7f1; border-radius:10px; }
+
+.hist-table-wrap {
+  background:#fff; border:1px solid #e0e8e0; border-radius:16px;
+  overflow-x:auto; box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+.hist-table { width:100%; border-collapse:collapse; font-size:0.75rem; white-space:nowrap; }
+.hist-table th {
+  background:#f4f7f1; color:#1b3a1b; font-weight:700; text-align:left;
+  padding:10px 12px; position:sticky; top:0; border-bottom:2px solid #dde5d7;
+}
+.hist-table td { padding:8px 12px; border-bottom:1px solid #eef2ea; color:#33472f; }
+.hist-table tr:hover td { background:#f9fbf7; }
+.hist-table tr.row-alert td { background:#fff5f5; }
+.hist-table tr.row-alert:hover td { background:#ffecec; }
+
+.cell-danger { color:#c62828; font-weight:700; }
+.cell-ok { color:#2e7d32; font-weight:700; }
