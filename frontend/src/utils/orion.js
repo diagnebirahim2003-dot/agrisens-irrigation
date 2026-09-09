@@ -4,9 +4,10 @@
 // transmettre à Orion ; le header FIWARE-Service est ajouté par nginx.
 import { CONFIG } from './config';
 
-function headers(token) {
+// Orion refuse tout Content-Type sur les requêtes sans corps (GET/DELETE) — 400 sinon.
+function headers(token, { withBody = false } = {}) {
   return {
-    'Content-Type': 'application/json',
+    ...(withBody ? { 'Content-Type': 'application/json' } : {}),
     'Authorization': `Bearer ${token}`,
     'ngrok-skip-browser-warning': 'true', // ignoré hors ngrok, évite la page d'avertissement en tunnel
   };
@@ -56,7 +57,7 @@ function fromEntity(e) {
 export async function listParcelles(token, { owner } = {}) {
   const params = new URLSearchParams({ type: 'Parcelle', limit: '1000' });
   if (owner) params.set('q', `owner:${owner}`);
-  const res = await fetch(`${CONFIG.WILMA_URL}/entities?${params}`, { headers: headers(token) });
+  const res = await fetch(`${CONFIG.WILMA_URL}/entities?${params}`, { headers: headers(token) }); // GET : pas de Content-Type
   if (!res.ok) {
     const body = await readBody(res);
     throw new Error(`Orion (${res.status}) — lecture des parcelles impossible : ${body?.description || res.statusText}`);
@@ -69,7 +70,7 @@ export async function createParcelle(token, parcelle) {
   const entity = toEntity(parcelle);
   const res = await fetch(`${CONFIG.WILMA_URL}/entities`, {
     method: 'POST',
-    headers: headers(token),
+    headers: headers(token, { withBody: true }),
     body: JSON.stringify(entity),
   });
   if (!res.ok) {
