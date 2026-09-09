@@ -159,11 +159,11 @@ export default function Calculs({ auth }) {
     const d   = await res.json();
     if (!res.ok) throw new Error(d.message || 'Erreur OpenWeatherMap');
 
-    // Prochaines 24h (8 créneaux de 3h) plutôt qu'un filtre par jour calendaire :
+    // Prochaines 72h (24 créneaux de 3h) plutôt qu'un filtre par jour calendaire :
     // en fin de journée, il ne reste parfois qu'un seul créneau "aujourd'hui"
     // dans les prévisions (les créneaux passés ont disparu de la liste), ce qui
     // donnait Tmax = Tmin = cette unique valeur.
-    const points = d.list.slice(0, 8);
+    const points = d.list.slice(0, 24);
     const temps  = points.map(p => p.main.temp);
     const first  = points[0];
 
