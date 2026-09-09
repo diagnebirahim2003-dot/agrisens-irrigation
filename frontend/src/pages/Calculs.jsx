@@ -151,17 +151,27 @@ export default function Calculs({ auth }) {
   }, []);
 
   async function fetchMeteo(lat, lng) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${OWM_KEY}&units=metric&lang=fr`;
+    // L'endpoint "météo actuelle" renvoie souvent temp_min = temp_max pour les
+    // villes sans plusieurs stations (ex. Kaolack) — on utilise les prévisions
+    // 3h pour calculer un vrai Tmax/Tmin sur la journée en cours.
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${OWM_KEY}&units=metric&lang=fr`;
     const res = await fetch(url);
     const d   = await res.json();
     if (!res.ok) throw new Error(d.message || 'Erreur OpenWeatherMap');
+
+    const today = d.list[0].dt_txt.split(' ')[0];
+    const todayPoints = d.list.filter(p => p.dt_txt.startsWith(today));
+    const points = todayPoints.length > 0 ? todayPoints : d.list.slice(0, 8);
+    const temps  = points.map(p => p.main.temp);
+    const first  = points[0];
+
     return {
-      Tmax: d.main.temp_max,
-      Tmin: d.main.temp_min,
-      HR:   d.main.humidity,
-      u10:  d.wind.speed,
-      desc: d.weather[0].description,
-      ville:d.name,
+      Tmax: Math.max(...temps),
+      Tmin: Math.min(...temps),
+      HR:   first.main.humidity,
+      u10:  first.wind.speed,
+      desc: first.weather[0].description,
+      ville:d.city.name,
     };
   }
 
