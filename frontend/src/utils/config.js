@@ -1,5 +1,7 @@
 export const CONFIG = {
-  KEYCLOAK_BASE_URL: import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080',
+  // Passe par Wilma (nginx, port 1027) plutôt que directement par Keycloak (8080) :
+  // c'est nginx qui gère le CORS preflight (OPTIONS), y compris en local.
+  KEYCLOAK_BASE_URL: import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:1027',
   KEYCLOAK_REALM: import.meta.env.VITE_KEYCLOAK_REALM || 'agrotic',
   KEYCLOAK_CLIENT: import.meta.env.VITE_KEYCLOAK_CLIENT_ID || 'orion-pep',
   WILMA_URL: import.meta.env.VITE_WILMA_URL || 'http://localhost:1027/v2',
