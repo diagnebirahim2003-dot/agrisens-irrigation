@@ -53,37 +53,124 @@ function calculerJour(record, culture, cultures, sol) {
   };
 }
 
-// Graphique Sa (matin) vs Sc — deux courbes superposées + points rouges quand Sa < Sc
-function ChartSaSc({ jours }) {
-  const pts = jours.filter(j => j.matin);
-  if (pts.length < 2) return <div className="hist-empty">Pas assez de jours avec relevé pour tracer un graphique.</div>;
+// Stades phénologiques (Li/Ld/Lm/cycle en DAS) -> bandes de fond colorées sur les graphiques.
+const STAGE_DEFS = [
+  { key: 'ini',  label: 'Initial',        color: '#fdf1e0' },
+  { key: 'dev',  label: 'Développement',  color: '#e8f5e9' },
+  { key: 'mid',  label: 'Mi-saison',      color: '#e3f2fd' },
+  { key: 'late', label: 'Fin de saison',  color: '#f3e5f5' },
+  { key: 'done', label: 'Récolte',        color: '#f0f0ea' },
+];
 
-  const W = 720, H = 240, PAD = 40;
-  const allVals = pts.flatMap(j => [j.matin.Sa, j.Sc]);
-  const min = Math.min(...allVals, 0), max = Math.max(...allVals);
+function stageAtDas(c, das) {
+  const [Li, Ld, Lm] = c.L;
+  if (das <= Li)          return STAGE_DEFS[0];
+  if (das <= Li + Ld)     return STAGE_DEFS[1];
+  if (das <= Li + Ld + Lm)return STAGE_DEFS[2];
+  if (das <= c.cycle)     return STAGE_DEFS[3];
+  return STAGE_DEFS[4];
+}
+
+// Regroupe les jours consécutifs par stade -> segments {startIdx, endIdx, ...STAGE_DEFS}
+function computeStageBands(jours, c) {
+  const bands = [];
+  jours.forEach((j, i) => {
+    const s = stageAtDas(c, j.das);
+    const last = bands[bands.length - 1];
+    if (last && last.key === s.key) last.endIdx = i;
+    else bands.push({ ...s, startIdx: i, endIdx: i });
+  });
+  return bands;
+}
+
+// Graphique multi-courbes générique sur l'axe calendaire (un point par jour de météo réelle),
+// avec les stades phénologiques en fond et gestion des trous (relevés capteur manquants).
+function TimeChart({ title, jours, series, culture: c, unit = '' }) {
+  if (jours.length < 2) return <div className="hist-empty">Pas assez de jours pour tracer un graphique.</div>;
+
+  const W = 760, H = 220, PAD = 42, LEG_H = 22;
+  const n = jours.length;
+  const x = i => PAD + i * (W - 2 * PAD) / (n - 1);
+  const vals = series.flatMap(s => jours.map(s.get)).filter(v => v !== null && v !== undefined);
+  const min = Math.min(...vals, 0), max = Math.max(...vals);
   const range = (max - min) || 1;
-  const stepX = (W - 2 * PAD) / (pts.length - 1);
-  const x = i => PAD + i * stepX;
   const y = v => H - PAD - ((v - min) / range) * (H - 2 * PAD);
+  const bands = computeStageBands(jours, c);
 
-  const pathSa = pts.map((j, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(j.matin.Sa)}`).join(' ');
-  const pathSc = pts.map((j, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(j.Sc)}`).join(' ');
+  function pathFor(get) {
+    let d = '', drawing = false;
+    jours.forEach((j, i) => {
+      const v = get(j);
+      if (v === null || v === undefined) { drawing = false; return; }
+      d += (drawing ? 'L' : 'M') + x(i) + ',' + y(v) + ' ';
+      drawing = true;
+    });
+    return d;
+  }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="Sa vs Sc">
-      <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#dde5d7" />
-      <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#dde5d7" />
-      <text x={2} y={PAD} fontSize="10" fill="#4b5d51">{max.toFixed(0)} mm</text>
-      <text x={2} y={H - PAD} fontSize="10" fill="#4b5d51">{min.toFixed(0)} mm</text>
-      <path d={pathSc} fill="none" stroke="#e65100" strokeWidth="2" strokeDasharray="4,3" />
-      <path d={pathSa} fill="none" stroke="#1565c0" strokeWidth="2" />
-      {pts.map((j, i) => (
-        <circle key={j.date} cx={x(i)} cy={y(j.matin.Sa)} r={j.matin.decl ? 4 : 2.5}
-          fill={j.matin.decl ? '#c62828' : '#1565c0'} />
-      ))}
-      <text x={PAD} y={14} fontSize="11" fill="#1565c0">— Sa (stock mesuré, matin)</text>
-      <text x={PAD + 220} y={14} fontSize="11" fill="#e65100">┅ Sc (seuil critique)</text>
-    </svg>
+    <div className="hist-card">
+      <div className="hist-card-title">{title}</div>
+      <svg viewBox={`0 0 ${W} ${H + LEG_H}`} width="100%" height={H + LEG_H} role="img" aria-label={title}>
+        {bands.map(b => (
+          <rect key={b.startIdx} x={x(b.startIdx) - (b.startIdx === 0 ? 2 : 0)}
+            y={PAD} width={Math.max(1, x(b.endIdx) - x(b.startIdx) + 2)} height={H - 2 * PAD} fill={b.color} />
+        ))}
+        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c9d3c5" />
+        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c9d3c5" />
+        <text x={2} y={PAD} fontSize="10" fill="#4b5d51">{max.toFixed(1)}{unit}</text>
+        <text x={2} y={H - PAD} fontSize="10" fill="#4b5d51">{min.toFixed(1)}{unit}</text>
+        {series.map(s => (
+          <path key={s.key} d={pathFor(s.get)} fill="none" stroke={s.color} strokeWidth="2" strokeDasharray={s.dash || ''} />
+        ))}
+        {series.map((s, i) => (
+          <text key={s.key} x={PAD + i * 200} y={H + 16} fontSize="11" fill={s.color}>{s.dash ? '┅' : '━'} {s.label}</text>
+        ))}
+      </svg>
+      <div className="hist-stage-legend">
+        {[...new Set(bands.map(b => b.key))].map(k => {
+          const s = STAGE_DEFS.find(sd => sd.key === k);
+          return <span key={k} className="hist-stage-chip" style={{ background: s.color }}>{s.label}</span>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+// Courbe théorique du Kc en fonction du DAS (indépendante des dates de l'expérimentation) —
+// l'illustration FAO-56 classique des 4 stades phénologiques.
+function KcCurveChart({ cultures, culture }) {
+  const c = cultures[culture];
+  const pts = [];
+  for (let das = 0; das <= c.cycle; das++) pts.push(getKc(cultures, culture, das));
+  const W = 760, H = 200, PAD = 42;
+  const min = 0, max = Math.max(...pts) * 1.1;
+  const x = das => PAD + das * (W - 2 * PAD) / c.cycle;
+  const y = v => H - PAD - ((v - min) / (max - min)) * (H - 2 * PAD);
+  const path = pts.map((v, das) => `${das === 0 ? 'M' : 'L'}${x(das)},${y(v)}`).join(' ');
+  const bounds = [c.L[0], c.L[0] + c.L[1], c.L[0] + c.L[1] + c.L[2]];
+
+  return (
+    <div className="hist-card">
+      <div className="hist-card-title">📈 Courbe théorique du coefficient cultural Kc — {culture} (FAO-56)</div>
+      <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="Courbe Kc">
+        {[0, ...bounds, c.cycle].slice(0, -1).map((start, i) => {
+          const end = [...bounds, c.cycle][i];
+          return <rect key={i} x={x(start)} y={PAD} width={x(end) - x(start)} height={H - 2 * PAD} fill={STAGE_DEFS[i].color} />;
+        })}
+        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c9d3c5" />
+        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c9d3c5" />
+        <text x={2} y={PAD} fontSize="10" fill="#4b5d51">{max.toFixed(2)}</text>
+        <text x={2} y={H - PAD} fontSize="10" fill="#4b5d51">0</text>
+        <text x={W - PAD} y={H - PAD + 14} fontSize="10" fill="#4b5d51" textAnchor="end">{c.cycle} j (DAS)</text>
+        <path d={path} fill="none" stroke="#2e7d32" strokeWidth="2.5" />
+      </svg>
+      <div className="hist-stage-legend">
+        {STAGE_DEFS.slice(0, 4).map(s => (
+          <span key={s.key} className="hist-stage-chip" style={{ background: s.color }}>{s.label}</span>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -93,10 +180,14 @@ export default function Historique() {
   const cultureKeys = Object.keys(dataset);
   const [culture, setCulture] = useState(cultureKeys[0] || 'Gombo');
 
-  const jours = useMemo(
-    () => (dataset[culture] || []).map(r => calculerJour(r, culture, cultures, sol)),
-    [culture]
-  );
+  const jours = useMemo(() => {
+    let cumul = 0;
+    return (dataset[culture] || []).map(r => {
+      const j = calculerJour(r, culture, cultures, sol);
+      cumul += j.Di;
+      return { ...j, cumulDi: cumul };
+    });
+  }, [culture]);
   const joursAvecReleve = jours.filter(j => j.matin || j.soir);
   const nbDeclenchements = jours.filter(j => j.matin?.decl || j.soir?.decl).length;
 
@@ -163,10 +254,42 @@ export default function Historique() {
         <button className="btn-pdf" onClick={exportPDF}>⬇️ Télécharger en PDF</button>
       </div>
 
-      <div className="hist-card">
-        <div className="hist-card-title">💧 Stock d'eau mesuré (Sa) vs seuil critique (Sc) — relevés du matin</div>
-        <ChartSaSc jours={jours} />
-      </div>
+      <TimeChart
+        title="💧 Stock d'eau mesuré (Sa, matin) vs seuil critique (Sc)"
+        jours={jours} culture={cultures[culture]} unit=" mm"
+        series={[
+          { key: 'Sc', label: 'Sc — seuil critique', color: '#e65100', dash: '4,3', get: j => j.Sc },
+          { key: 'Sa', label: 'Sa — stock mesuré (matin)', color: '#1565c0', get: j => j.matin?.Sa ?? null },
+        ]}
+      />
+
+      <TimeChart
+        title="☀️ Évapotranspiration — ETo (référence) vs ETc (culture)"
+        jours={jours} culture={cultures[culture]} unit=" mm/j"
+        series={[
+          { key: 'ETo', label: 'ETo', color: '#f9a825', get: j => j.ETo },
+          { key: 'ETc', label: 'ETc', color: '#2e7d32', get: j => j.ETc },
+        ]}
+      />
+
+      <TimeChart
+        title="🌱 Humidité du sol mesurée — matin vs soir"
+        jours={jours} culture={cultures[culture]} unit="%"
+        series={[
+          { key: 'hm', label: 'Humidité matin', color: '#1565c0', get: j => j.matinData?.humidite ?? null },
+          { key: 'hs', label: 'Humidité soir', color: '#6a1b9a', dash: '4,3', get: j => j.soirData?.humidite ?? null },
+        ]}
+      />
+
+      <TimeChart
+        title="🚰 Dose d'irrigation théorique cumulée (Di) sur le cycle"
+        jours={jours} culture={cultures[culture]} unit=" mm"
+        series={[
+          { key: 'cum', label: 'Cumul Di', color: '#00897b', get: j => j.cumulDi },
+        ]}
+      />
+
+      <KcCurveChart cultures={cultures} culture={culture} />
 
       <div className="hist-table-wrap">
         <table className="hist-table">

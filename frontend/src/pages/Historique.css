@@ -31,6 +31,9 @@
 .hist-card-title { font-size:0.85rem; font-weight:700; color:#1b3a1b; margin-bottom:12px; }
 .hist-empty { padding:24px; text-align:center; color:#6a7f6a; font-size:0.82rem; background:#f4f7f1; border-radius:10px; }
 
+.hist-stage-legend { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.hist-stage-chip { font-size:0.68rem; font-weight:600; color:#4b5d51; padding:3px 10px; border-radius:999px; border:1px solid rgba(0,0,0,0.06); }
+
 .hist-table-wrap {
   background:#fff; border:1px solid #e0e8e0; border-radius:16px;
   overflow-x:auto; box-shadow:0 2px 8px rgba(0,0,0,0.05);
