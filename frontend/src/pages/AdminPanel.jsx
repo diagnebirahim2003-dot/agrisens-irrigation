@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
 import { getSols, saveSols, resetSols, DEFAULT_SOLS } from '../utils/sols';
+import { createAccountAsAdmin } from '../utils/accounts';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -24,6 +25,7 @@ export default function AdminPanel({ auth, onBack }) {
   const [tab, setTab]         = useState('list');
   const [error, setError]     = useState('');
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
   const [search, setSearch]   = useState('');
   const [editUser, setEditUser] = useState(null);
 
@@ -59,7 +61,7 @@ export default function AdminPanel({ auth, onBack }) {
     setUsers(u);
   }
 
-  function addUser(e) {
+  async function addUser(e) {
     e.preventDefault();
     setError(''); setSuccess('');
     if (!fNom || !fPrenom || !fEmail || !fPwd) {
@@ -75,19 +77,25 @@ export default function AdminPanel({ auth, onBack }) {
     if (users.find(u => u.email === fEmail)) {
       setError('Cette adresse email est déjà utilisée.'); return;
     }
-    users.push({
-      nom: fNom, prenom: fPrenom,
-      email: fEmail, password: fPwd,
-      role: fRole, nationalite: fNat,
-      profession: fProf, maraichage: fMaraich,
-      createdBy: auth.email,
-      createdAt: new Date().toISOString(),
-    });
-    saveUsers(users);
-    setSuccess(`✅ ${fRole === 'admin' ? 'Admin' : 'Technicien'} ${fPrenom} ${fNom} enregistré. Créez aussi son compte dans Keycloak pour qu'il puisse se connecter.`);
-    setFNom(''); setFPrenom(''); setFEmail(''); setFPwd('');
-    setFRole('technicien');
-    refresh();
+    setLoading(true);
+    try {
+      const username = fEmail.split('@')[0];
+      await createAccountAsAdmin(auth.token, { username, email: fEmail, password: fPwd, nom: fNom, prenom: fPrenom, role: fRole });
+      users.push({
+        nom: fNom, prenom: fPrenom,
+        email: fEmail, role: fRole, nationalite: fNat,
+        profession: fProf, maraichage: fMaraich,
+        createdBy: auth.email,
+        createdAt: new Date().toISOString(),
+      });
+      saveUsers(users);
+      setSuccess(`✅ ${fRole === 'admin' ? 'Admin' : fRole === 'technicien' ? 'Technicien' : 'Agronome'} ${fPrenom} ${fNom} créé — le compte Keycloak est actif, il peut se connecter dès maintenant.`);
+      setFNom(''); setFPrenom(''); setFEmail(''); setFPwd('');
+      setFRole('technicien');
+      refresh();
+    } catch (e) {
+      setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de création de compte.' : e.message);
+    } finally { setLoading(false); }
   }
 
   function deleteUser(email) {
@@ -374,8 +382,8 @@ export default function AdminPanel({ auth, onBack }) {
             <span className="pwd-hint">L'utilisateur pourra changer son mot de passe après connexion.</span>
           </div>
 
-          <button className="btn-add-user" type="submit">
-            ➕ Ajouter {fRole === 'admin' ? 'le co-administrateur' : 'le technicien'}
+          <button className="btn-add-user" type="submit" disabled={loading}>
+            {loading ? '⏳ Création…' : `➕ Ajouter ${fRole === 'admin' ? 'le co-administrateur' : 'le technicien'}`}
           </button>
         </form>
       )}

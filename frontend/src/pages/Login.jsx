@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CONFIG, KEYCLOAK_TOKEN_URL } from '../utils/config';
+import { registerAccount } from '../utils/accounts';
 import './Login.css';
 import logoImg from '../assets/logo.png';
 
@@ -103,7 +104,13 @@ export default function Login({ onLogin }) {
       if (!res.ok || data.error) throw new Error(data.error_description || 'Identifiants incorrects');
       const payload = JSON.parse(atob(data.access_token.split('.')[1]));
       const user = payload.preferred_username || username;
-      const role = user === 'admin' ? 'admin' : user === 'technicien' ? 'technicien' : 'agronome';
+      // Rôle réel (realm role Keycloak) si présent, sinon repli sur l'ancienne
+      // convention par nom d'utilisateur (comptes créés avant l'inscription automatique).
+      const roles = payload.realm_access?.roles || [];
+      const role = roles.includes('admin') ? 'admin'
+        : roles.includes('technicien') ? 'technicien'
+        : roles.includes('agronome') ? 'agronome'
+        : (user === 'admin' ? 'admin' : user === 'technicien' ? 'technicien' : 'agronome');
       if (remember) {
         localStorage.setItem('agrisens_remember', JSON.stringify({ email: loginEmail, password: loginPwd }));
       } else {
@@ -117,20 +124,29 @@ export default function Login({ onLogin }) {
     } finally { setLoading(false); }
   }
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
     setError(''); setSuccess('');
     if (!regNom || !regPrenom || !regEmail || !regPwd || !regPwd2) { setError('Remplissez tous les champs obligatoires.'); return; }
     if (!isGmail(regEmail)) { setError('Utilisez une adresse Gmail valide (@gmail.com).'); return; }
     if (regPwd.length < 6) { setError('Le mot de passe doit avoir au moins 6 caractères.'); return; }
     if (regPwd !== regPwd2) { setError('Les mots de passe ne correspondent pas.'); return; }
-    const users = getUsers();
-    if (users.find(u => u.email === regEmail)) { setError('Cette adresse email est déjà utilisée.'); return; }
-    users.push({ nom: regNom, prenom: regPrenom, nationalite: regNat, profession: regProf, maraichage: regMaraich, email: regEmail, password: regPwd, role: 'agronome', createdAt: new Date().toISOString() });
-    localStorage.setItem('agrisens_users', JSON.stringify(users));
-    setSuccess('Demande enregistrée ! Un administrateur doit créer votre compte Keycloak avant que vous puissiez vous connecter.');
-    setLoginEmail(regEmail);
-    switchTab('login');
+    setLoading(true);
+    try {
+      const username = regEmail.split('@')[0];
+      await registerAccount({ username, email: regEmail, password: regPwd, nom: regNom, prenom: regPrenom });
+      // Métadonnées locales (nationalité, profession, maraîchage) — Keycloak ne les stocke pas.
+      const users = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
+      users.push({ nom: regNom, prenom: regPrenom, nationalite: regNat, profession: regProf, maraichage: regMaraich, email: regEmail, role: 'agronome', createdAt: new Date().toISOString() });
+      localStorage.setItem('agrisens_users', JSON.stringify(users));
+      setSuccess('✅ Compte créé ! Vous pouvez vous connecter dès maintenant.');
+      setLoginEmail(regEmail);
+      switchTab('login');
+    } catch (e) {
+      setError(e.message === 'Failed to fetch'
+        ? 'Impossible de joindre le service d\'inscription.'
+        : e.message);
+    } finally { setLoading(false); }
   }
 
   function handleReset(e) {
@@ -215,7 +231,9 @@ export default function Login({ onLogin }) {
               <div className="inp-group"><label>Mot de passe *</label><PwdInput value={regPwd} onChange={e=>setRegPwd(e.target.value)} placeholder="Min. 6 caractères"/></div>
               <div className="inp-group"><label>Confirmer *</label><PwdInput value={regPwd2} onChange={e=>setRegPwd2(e.target.value)} placeholder="Répéter"/></div>
             </div>
-            <button className="btn-login" type="submit">✅ Créer mon compte</button>
+            <button className="btn-login" type="submit" disabled={loading}>
+              {loading ? '⏳ Création du compte…' : '✅ Créer mon compte'}
+            </button>
           </form>
         )}
 

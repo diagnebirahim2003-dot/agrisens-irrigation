@@ -38,6 +38,8 @@ services:
     environment:
       KEYCLOAK_URL: http://keycloak:8080
       KEYCLOAK_REALM: agrotic
+      REGISTRATION_CLIENT_ID: registration-service
+      REGISTRATION_CLIENT_SECRET: ${REGISTRATION_CLIENT_SECRET}
     depends_on:
       - keycloak
 
