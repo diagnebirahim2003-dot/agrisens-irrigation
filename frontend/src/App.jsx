@@ -198,7 +198,7 @@ export default function App() {
         {page==='calculs'   && <PageWrap title="🧮 Calculs agronomiques" desc="ETo · ETc · RU · RFU — FAO-56"><Calculs auth={auth}/></PageWrap>}
         {page==='capteurs'  && <PageWrap title="📡 Données capteurs" desc="Capteur 8-en-1 + météo temps réel"><Capteurs auth={auth}/></PageWrap>}
         {page==='graphes'   && <PageWrap title="📈 Graphes" desc="Historique des relevés du capteur 8-en-1"><Graphes/></PageWrap>}
-        {page==='historique'&& <PageWrap><Historique/></PageWrap>}
+        {page==='historique'&& <PageWrap><Historique auth={auth}/></PageWrap>}
       </div>
 
       <BottomNav auth={auth} page={page} setPage={setPage}/>

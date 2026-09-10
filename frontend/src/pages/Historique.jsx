@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import dataset from '../data/historique_experimentation.json';
 import { getCultures } from '../utils/cultures';
 import { getSol } from '../utils/sols';
+import { listParcelles } from '../utils/orion';
 import {
   getDOY, getDAS, getKc, getStage, calcRa, calcRs, calcETo,
   calcPajuste, calcRU, calcSc, calcSa, calcDi,
@@ -12,32 +13,28 @@ import './Historique.css';
 
 // Site expérimental — ET0_ETc_Calculateur.xlsx, feuille "Paramètres du site"
 const SITE_LAT = 14.1667;
-// Dates de semis réelles — ET0_ETc_Calculateur.xlsx, feuille "Cultures"
-const SEMIS = { Navet: '2026-06-25', Gombo: '2026-06-25', Laitue: '2026-07-25' };
-// Sol mesuré sur le site expérimental (Chapitre III du mémoire)
-const SOL_NOM = 'Sablo-limoneux';
 const CULTURE_ICONS = { Laitue: '🥬', Navet: '🌿', Gombo: '🫛' };
 
-function calculerJour(record, culture, cultures, sol) {
+function calculerJour(record, parc, cultures, sol) {
   const date  = new Date(record.date + 'T12:00:00');
   const doy   = getDOY(date);
-  const das   = getDAS(SEMIS[culture], date);
-  const c     = cultures[culture];
+  const das   = getDAS(parc.semis, date);
+  const c     = cultures[parc.culture];
 
   const Ra    = calcRa(SITE_LAT, doy);
   const Rs    = calcRs(record.Tmax, record.Tmin, Ra);
   const RHmoy = (record.RHmax + record.RHmin) / 2;
   const u2    = record.ventKmh / 3.6; // déjà à 2m (feuille ET0 FAO-56, colonne "Vent à 2m")
   const ETo   = calcETo(record.Tmax, record.Tmin, RHmoy, u2, Rs, Ra);
-  const Kc    = getKc(cultures, culture, das);
+  const Kc    = getKc(cultures, parc.culture, das);
   const ETc   = Kc * ETo;
-  const stage = getStage(cultures, culture, das);
+  const stage = getStage(cultures, parc.culture, das);
 
   const RU    = calcRU(sol.cc, sol.pf, c.Zr);
   const Pajus = calcPajuste(c.p, ETc);
   const RFU   = Pajus * RU;
   const Sc    = calcSc(sol.cc, c.Zr, RFU);
-  const Di    = calcDi(ETc, 2);
+  const Di    = calcDi(ETc, parc.superficie || 2);
 
   const decision = session => {
     if (!session) return null;
@@ -174,31 +171,57 @@ function KcCurveChart({ cultures, culture }) {
   );
 }
 
-export default function Historique() {
+export default function Historique({ auth }) {
   const cultures = getCultures();
-  const sol = getSol(SOL_NOM);
-  const cultureKeys = Object.keys(dataset);
-  const [culture, setCulture] = useState(cultureKeys[0] || 'Gombo');
+  const [parcelles, setParcelles] = useState([]);
+  const [loading,   setLoading]   = useState(true);
+  const [error,     setError]     = useState('');
+  const [selectedId, setSelectedId] = useState('');
+
+  // Chaque utilisateur ne voit que ses propres parcelles (l'admin les voit toutes) —
+  // un compte qui vient de s'inscrire n'a aucune parcelle, donc aucun historique : c'est attendu.
+  useEffect(() => {
+    (async () => {
+      setLoading(true); setError('');
+      try {
+        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+        setParcelles(list);
+        if (list.length > 0) setSelectedId(list[0].id);
+      } catch (e) {
+        setError(e.message);
+      } finally { setLoading(false); }
+    })();
+  }, []);
+
+  const parc = parcelles.find(p => p.id === selectedId);
+  // L'historique réel n'existe que pour les parcelles ayant réellement été suivies pendant
+  // l'expérimentation (données mesurées) — identifiées par leur nom exact, pas par culture,
+  // pour ne jamais mélanger les données d'une parcelle avec celles d'une autre.
+  const records = parc ? dataset[parc.nom] : null;
 
   const jours = useMemo(() => {
+    if (!parc || !records) return [];
+    const sol = getSol(parc.sol);
     let cumul = 0;
-    return (dataset[culture] || []).map(r => {
-      const j = calculerJour(r, culture, cultures, sol);
+    return records.map(r => {
+      const j = calculerJour(r, parc, cultures, sol);
       cumul += j.Di;
       return { ...j, cumulDi: cumul };
     });
-  }, [culture]);
+  }, [selectedId]);
+
   const joursAvecReleve = jours.filter(j => j.matin || j.soir);
   const nbDeclenchements = jours.filter(j => j.matin?.decl || j.soir?.decl).length;
 
   function exportPDF() {
+    const sol = getSol(parc.sol);
     const doc = new jsPDF({ orientation: 'landscape' });
     doc.setFontSize(14);
-    doc.text(`AgriSens — Historique expérimental — ${culture}`, 14, 12);
+    doc.text(`AgriSens — Historique expérimental — ${parc.nom}`, 14, 12);
     doc.setFontSize(9);
     doc.text(
-      `Site : Sinsing / Kaolack — Sol : ${SOL_NOM} (Hcc=${sol.cc}%, Hpf=${sol.pf}%) — ` +
-      `Semis : ${new Date(SEMIS[culture]).toLocaleDateString('fr-FR')} — ` +
+      `Culture : ${parc.culture} — Sol : ${parc.sol} (Hcc=${sol.cc}%, Hpf=${sol.pf}%) — ` +
+      `Semis : ${new Date(parc.semis).toLocaleDateString('fr-FR')} — ` +
       `Généré le ${new Date().toLocaleDateString('fr-FR')}`,
       14, 18
     );
@@ -222,7 +245,7 @@ export default function Historique() {
       styles: { fontSize: 6.5 },
       headStyles: { fillColor: [27, 94, 32] },
     });
-    doc.save(`agrisens_historique_${culture}.pdf`);
+    doc.save(`agrisens_historique_${parc.nom}.pdf`);
   }
 
   return (
@@ -232,106 +255,127 @@ export default function Historique() {
         <div className="hist-sub">
           ETo, ETc, RU, Sc et Sa recalculés jour par jour avec les formules de l'app,
           à partir des données réellement mesurées pendant l'expérimentation
-          (météo de terrain + capteur 8-en-1) — aucune valeur inventée.
+          (météo de terrain + capteur 8-en-1) — propres à chaque parcelle, aucune valeur inventée.
         </div>
       </div>
 
-      <div className="hist-tabs">
-        {cultureKeys.map(cu => (
-          <button key={cu} className={`htab ${culture === cu ? 'active' : ''}`} onClick={() => setCulture(cu)}>
-            {CULTURE_ICONS[cu] || '🌱'} {cu}
-          </button>
-        ))}
-      </div>
+      {error && <div className="hist-empty">{error}</div>}
 
-      <div className="hist-toolbar">
-        <div className="hist-meta">
-          Semis : <b>{new Date(SEMIS[culture]).toLocaleDateString('fr-FR')}</b> ·
-          {' '}{jours.length} jours de météo réelle ·
-          {' '}{joursAvecReleve.length} jours avec relevé capteur ·
-          {' '}<span className={nbDeclenchements > 0 ? 'hist-alert-count' : ''}>{nbDeclenchements} déclenchement(s) d'irrigation</span>
+      {loading ? (
+        <div className="hist-empty">⏳ Chargement des parcelles (Orion via Wilma)…</div>
+      ) : parcelles.length === 0 ? (
+        <div className="hist-empty">
+          🧭 Aucune parcelle. Créez-en une depuis "Parcelles" pour voir son historique ici.
         </div>
-        <button className="btn-pdf" onClick={exportPDF}>⬇️ Télécharger en PDF</button>
-      </div>
-
-      <TimeChart
-        title="💧 Stock d'eau mesuré (Sa, matin) vs seuil critique (Sc)"
-        jours={jours} culture={cultures[culture]} unit=" mm"
-        series={[
-          { key: 'Sc', label: 'Sc — seuil critique', color: '#e65100', dash: '4,3', get: j => j.Sc },
-          { key: 'Sa', label: 'Sa — stock mesuré (matin)', color: '#1565c0', get: j => j.matin?.Sa ?? null },
-        ]}
-      />
-
-      <TimeChart
-        title="☀️ Évapotranspiration — ETo (référence) vs ETc (culture)"
-        jours={jours} culture={cultures[culture]} unit=" mm/j"
-        series={[
-          { key: 'ETo', label: 'ETo', color: '#f9a825', get: j => j.ETo },
-          { key: 'ETc', label: 'ETc', color: '#2e7d32', get: j => j.ETc },
-        ]}
-      />
-
-      <TimeChart
-        title="🌱 Humidité du sol mesurée — matin vs soir"
-        jours={jours} culture={cultures[culture]} unit="%"
-        series={[
-          { key: 'hm', label: 'Humidité matin', color: '#1565c0', get: j => j.matinData?.humidite ?? null },
-          { key: 'hs', label: 'Humidité soir', color: '#6a1b9a', dash: '4,3', get: j => j.soirData?.humidite ?? null },
-        ]}
-      />
-
-      <TimeChart
-        title="🚰 Dose d'irrigation théorique cumulée (Di) sur le cycle"
-        jours={jours} culture={cultures[culture]} unit=" mm"
-        series={[
-          { key: 'cum', label: 'Cumul Di', color: '#00897b', get: j => j.cumulDi },
-        ]}
-      />
-
-      <KcCurveChart cultures={cultures} culture={culture} />
-
-      <div className="hist-table-wrap">
-        <table className="hist-table">
-          <thead>
-            <tr>
-              <th>Date</th><th>DAS</th><th>Stade</th>
-              <th>Tmax</th><th>Tmin</th><th>ETo</th><th>Kc</th><th>ETc</th>
-              <th>RU</th><th>Sc</th>
-              <th>Hum. matin</th><th>Sa matin</th><th>Décision matin</th>
-              <th>Hum. soir</th><th>Sa soir</th><th>Décision soir</th>
-              <th>Di</th>
-            </tr>
-          </thead>
-          <tbody>
-            {jours.map(j => (
-              <tr key={j.date} className={(j.matin?.decl || j.soir?.decl) ? 'row-alert' : ''}>
-                <td>{new Date(j.date + 'T12:00:00').toLocaleDateString('fr-FR')}</td>
-                <td>{j.das}</td>
-                <td>{j.stage}</td>
-                <td>{j.Tmax.toFixed(1)}°C</td>
-                <td>{j.Tmin.toFixed(1)}°C</td>
-                <td>{j.ETo.toFixed(2)}</td>
-                <td>{j.Kc.toFixed(2)}</td>
-                <td>{j.ETc.toFixed(2)}</td>
-                <td>{j.RU.toFixed(1)}</td>
-                <td>{j.Sc.toFixed(1)}</td>
-                <td>{j.matinData ? j.matinData.humidite.toFixed(1) + '%' : '—'}</td>
-                <td>{j.matin ? j.matin.Sa.toFixed(1) : '—'}</td>
-                <td className={j.matin?.decl ? 'cell-danger' : j.matin ? 'cell-ok' : ''}>
-                  {j.matin ? (j.matin.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
-                </td>
-                <td>{j.soirData ? j.soirData.humidite.toFixed(1) + '%' : '—'}</td>
-                <td>{j.soir ? j.soir.Sa.toFixed(1) : '—'}</td>
-                <td className={j.soir?.decl ? 'cell-danger' : j.soir ? 'cell-ok' : ''}>
-                  {j.soir ? (j.soir.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
-                </td>
-                <td>{j.Di.toFixed(2)}</td>
-              </tr>
+      ) : (
+        <>
+          <div className="hist-tabs">
+            {parcelles.map(p => (
+              <button key={p.id} className={`htab ${selectedId === p.id ? 'active' : ''}`} onClick={() => setSelectedId(p.id)}>
+                {CULTURE_ICONS[p.culture] || '🌱'} {p.nom}
+              </button>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+
+          {!records ? (
+            <div className="hist-empty">
+              📭 Aucun historique disponible pour "{parc.nom}" — cette parcelle n'a pas de données
+              mesurées importées (uniquement les 3 parcelles de l'expérimentation du mémoire en ont).
+            </div>
+          ) : (
+            <>
+              <div className="hist-toolbar">
+                <div className="hist-meta">
+                  Semis : <b>{new Date(parc.semis).toLocaleDateString('fr-FR')}</b> ·
+                  {' '}{jours.length} jours de météo réelle ·
+                  {' '}{joursAvecReleve.length} jours avec relevé capteur ·
+                  {' '}<span className={nbDeclenchements > 0 ? 'hist-alert-count' : ''}>{nbDeclenchements} déclenchement(s) d'irrigation</span>
+                </div>
+                <button className="btn-pdf" onClick={exportPDF}>⬇️ Télécharger en PDF</button>
+              </div>
+
+              <TimeChart
+                title="💧 Stock d'eau mesuré (Sa, matin) vs seuil critique (Sc)"
+                jours={jours} culture={cultures[parc.culture]} unit=" mm"
+                series={[
+                  { key: 'Sc', label: 'Sc — seuil critique', color: '#e65100', dash: '4,3', get: j => j.Sc },
+                  { key: 'Sa', label: 'Sa — stock mesuré (matin)', color: '#1565c0', get: j => j.matin?.Sa ?? null },
+                ]}
+              />
+
+              <TimeChart
+                title="☀️ Évapotranspiration — ETo (référence) vs ETc (culture)"
+                jours={jours} culture={cultures[parc.culture]} unit=" mm/j"
+                series={[
+                  { key: 'ETo', label: 'ETo', color: '#f9a825', get: j => j.ETo },
+                  { key: 'ETc', label: 'ETc', color: '#2e7d32', get: j => j.ETc },
+                ]}
+              />
+
+              <TimeChart
+                title="🌱 Humidité du sol mesurée — matin vs soir"
+                jours={jours} culture={cultures[parc.culture]} unit="%"
+                series={[
+                  { key: 'hm', label: 'Humidité matin', color: '#1565c0', get: j => j.matinData?.humidite ?? null },
+                  { key: 'hs', label: 'Humidité soir', color: '#6a1b9a', dash: '4,3', get: j => j.soirData?.humidite ?? null },
+                ]}
+              />
+
+              <TimeChart
+                title="🚰 Dose d'irrigation théorique cumulée (Di) sur le cycle"
+                jours={jours} culture={cultures[parc.culture]} unit=" mm"
+                series={[
+                  { key: 'cum', label: 'Cumul Di', color: '#00897b', get: j => j.cumulDi },
+                ]}
+              />
+
+              <KcCurveChart cultures={cultures} culture={parc.culture} />
+
+              <div className="hist-table-wrap">
+                <table className="hist-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th><th>DAS</th><th>Stade</th>
+                      <th>Tmax</th><th>Tmin</th><th>ETo</th><th>Kc</th><th>ETc</th>
+                      <th>RU</th><th>Sc</th>
+                      <th>Hum. matin</th><th>Sa matin</th><th>Décision matin</th>
+                      <th>Hum. soir</th><th>Sa soir</th><th>Décision soir</th>
+                      <th>Di</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jours.map(j => (
+                      <tr key={j.date} className={(j.matin?.decl || j.soir?.decl) ? 'row-alert' : ''}>
+                        <td>{new Date(j.date + 'T12:00:00').toLocaleDateString('fr-FR')}</td>
+                        <td>{j.das}</td>
+                        <td>{j.stage}</td>
+                        <td>{j.Tmax.toFixed(1)}°C</td>
+                        <td>{j.Tmin.toFixed(1)}°C</td>
+                        <td>{j.ETo.toFixed(2)}</td>
+                        <td>{j.Kc.toFixed(2)}</td>
+                        <td>{j.ETc.toFixed(2)}</td>
+                        <td>{j.RU.toFixed(1)}</td>
+                        <td>{j.Sc.toFixed(1)}</td>
+                        <td>{j.matinData ? j.matinData.humidite.toFixed(1) + '%' : '—'}</td>
+                        <td>{j.matin ? j.matin.Sa.toFixed(1) : '—'}</td>
+                        <td className={j.matin?.decl ? 'cell-danger' : j.matin ? 'cell-ok' : ''}>
+                          {j.matin ? (j.matin.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
+                        </td>
+                        <td>{j.soirData ? j.soirData.humidite.toFixed(1) + '%' : '—'}</td>
+                        <td>{j.soir ? j.soir.Sa.toFixed(1) : '—'}</td>
+                        <td className={j.soir?.decl ? 'cell-danger' : j.soir ? 'cell-ok' : ''}>
+                          {j.soir ? (j.soir.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
+                        </td>
+                        <td>{j.Di.toFixed(2)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
+        </>
+      )}
     </div>
   );
 }

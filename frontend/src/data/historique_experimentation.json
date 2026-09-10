@@ -1,973 +1,21 @@
 {
-  "Laitue": [
-    {
-      "date": "2026-07-25",
-      "Tmax": 34.0,
-      "Tmin": 27.0,
-      "RHmax": 84.0,
-      "RHmin": 63.0,
-      "ventKmh": 13.9,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-07-26",
-      "Tmax": 30.0,
-      "Tmin": 25.0,
-      "RHmax": 92.0,
-      "RHmin": 71.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-07-27",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 59.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-07-28",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
-      "ventKmh": 14.75,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-07-29",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 46.0,
-      "ventKmh": 18.5,
-      "matin": {
-        "temperature": 29.08,
-        "humidite": 17.87,
-        "ph": 7.38,
-        "ec": 205.33,
-        "n": 9.5,
-        "p": 14.0,
-        "k": 32.33
-      },
-      "soir": {
-        "temperature": 33.22,
-        "humidite": 17.37,
-        "ph": 5.95,
-        "ec": 104.0,
-        "n": 4.5,
-        "p": 6.5,
-        "k": 16.0
-      }
-    },
-    {
-      "date": "2026-07-30",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 79.0,
-      "RHmin": 47.0,
-      "ventKmh": 21.3,
-      "matin": {
-        "temperature": 29.23,
-        "humidite": 20.8,
-        "ph": 7.9,
-        "ec": 231.5,
-        "n": 11.5,
-        "p": 16.0,
-        "k": 36.5
-      },
-      "soir": {
-        "temperature": 31.32,
-        "humidite": 16.27,
-        "ph": 8.95,
-        "ec": 157.17,
-        "n": 7.5,
-        "p": 10.5,
-        "k": 25.0
-      }
-    },
-    {
-      "date": "2026-07-31",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 63.0,
-      "ventKmh": 15.7,
-      "matin": {
-        "temperature": 28.2,
-        "humidite": 17.08,
-        "ph": 5.98,
-        "ec": 237.67,
-        "n": 11.5,
-        "p": 16.5,
-        "k": 37.67
-      },
-      "soir": {
-        "temperature": 30.6,
-        "humidite": 21.33,
-        "ph": 7.93,
-        "ec": 194.33,
-        "n": 9.5,
-        "p": 13.0,
-        "k": 30.5
-      }
-    },
-    {
-      "date": "2026-08-01",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 62.0,
-      "ventKmh": 13.9,
-      "matin": {
-        "temperature": 29.23,
-        "humidite": 16.38,
-        "ph": 6.9,
-        "ec": 142.17,
-        "n": 7.0,
-        "p": 9.5,
-        "k": 22.0
-      },
-      "soir": {
-        "temperature": 31.55,
-        "humidite": 31.3,
-        "ph": 8.73,
-        "ec": 574.17,
-        "n": 28.0,
-        "p": 40.0,
-        "k": 91.5
-      }
-    },
-    {
-      "date": "2026-08-02",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
-      "ventKmh": 13.9,
-      "matin": {
-        "temperature": 30.75,
-        "humidite": 22.43,
-        "ph": 8.7,
-        "ec": 260.17,
-        "n": 12.5,
-        "p": 18.0,
-        "k": 41.0
-      },
-      "soir": {
-        "temperature": 32.22,
-        "humidite": 16.85,
-        "ph": 7.55,
-        "ec": 120.5,
-        "n": 5.5,
-        "p": 8.0,
-        "k": 19.0
-      }
-    },
-    {
-      "date": "2026-08-03",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
-      "ventKmh": 15.7,
-      "matin": {
-        "temperature": 30.55,
-        "humidite": 18.7,
-        "ph": 5.02,
-        "ec": 236.83,
-        "n": 11.5,
-        "p": 16.0,
-        "k": 37.5
-      },
-      "soir": {
-        "temperature": 34.38,
-        "humidite": 13.93,
-        "ph": 7.6,
-        "ec": 122.0,
-        "n": 5.5,
-        "p": 8.0,
-        "k": 19.5
-      }
-    },
-    {
-      "date": "2026-08-04",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 83.0,
-      "RHmin": 52.0,
-      "ventKmh": 12.9,
-      "matin": {
-        "temperature": 30.97,
-        "humidite": 24.77,
-        "ph": 8.27,
-        "ec": 489.33,
-        "n": 24.0,
-        "p": 34.0,
-        "k": 78.0
-      },
-      "soir": {
-        "temperature": 33.12,
-        "humidite": 20.88,
-        "ph": 7.57,
-        "ec": 315.5,
-        "n": 15.5,
-        "p": 21.5,
-        "k": 50.0
-      }
-    },
-    {
-      "date": "2026-08-05",
-      "Tmax": 32.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 65.0,
-      "ventKmh": 11.0,
-      "matin": {
-        "temperature": 30.5,
-        "humidite": 20.3,
-        "ph": 7.15,
-        "ec": 342.0,
-        "n": 16.5,
-        "p": 23.5,
-        "k": 54.5
-      },
-      "soir": null
-    },
-    {
-      "date": "2026-08-06",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 63.0,
-      "ventKmh": 9.3,
-      "matin": {
-        "temperature": 30.48,
-        "humidite": 18.45,
-        "ph": 5.5,
-        "ec": 279.0,
-        "n": 13.5,
-        "p": 19.0,
-        "k": 44.17
-      },
-      "soir": {
-        "temperature": 35.22,
-        "humidite": 17.65,
-        "ph": 4.43,
-        "ec": 140.67,
-        "n": 6.5,
-        "p": 9.5,
-        "k": 22.17
-      }
-    },
-    {
-      "date": "2026-08-07",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 56.0,
-      "ventKmh": 8.3,
-      "matin": {
-        "temperature": 27.85,
-        "humidite": 26.08,
-        "ph": 6.45,
-        "ec": 531.5,
-        "n": 26.33,
-        "p": 36.83,
-        "k": 84.67
-      },
-      "soir": {
-        "temperature": 33.33,
-        "humidite": 18.95,
-        "ph": 6.8,
-        "ec": 158.83,
-        "n": 7.5,
-        "p": 10.5,
-        "k": 25.0
-      }
-    },
-    {
-      "date": "2026-08-08",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
-      "ventKmh": 13.9,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-08-09",
-      "Tmax": 33.0,
-      "Tmin": 27.0,
-      "RHmax": 93.0,
-      "RHmin": 62.0,
-      "ventKmh": 16.7,
-      "matin": {
-        "temperature": 30.52,
-        "humidite": 26.82,
-        "ph": 7.45,
-        "ec": 608.5,
-        "n": 30.0,
-        "p": 42.0,
-        "k": 96.83
-      },
-      "soir": {
-        "temperature": 33.1,
-        "humidite": 18.12,
-        "ph": 7.97,
-        "ec": 195.83,
-        "n": 9.5,
-        "p": 13.0,
-        "k": 31.0
-      }
-    },
-    {
-      "date": "2026-08-10",
-      "Tmax": 39.0,
-      "Tmin": 27.0,
-      "RHmax": 95.0,
-      "RHmin": 58.0,
-      "ventKmh": 12.0,
-      "matin": null,
-      "soir": {
-        "temperature": 34.98,
-        "humidite": 16.15,
-        "ph": 9.53,
-        "ec": 259.17,
-        "n": 12.33,
-        "p": 17.5,
-        "k": 41.0
-      }
-    },
-    {
-      "date": "2026-08-11",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 59.0,
-      "ventKmh": 10.2,
-      "matin": {
-        "temperature": 31.12,
-        "humidite": 22.72,
-        "ph": 10.0,
-        "ec": 276.17,
-        "n": 13.5,
-        "p": 19.0,
-        "k": 43.5
-      },
-      "soir": {
-        "temperature": 32.67,
-        "humidite": 20.43,
-        "ph": 9.5,
-        "ec": 234.33,
-        "n": 11.5,
-        "p": 16.0,
-        "k": 37.0
-      }
-    },
-    {
-      "date": "2026-08-12",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 50.0,
-      "ventKmh": 12.06,
-      "matin": {
-        "temperature": 30.68,
-        "humidite": 26.47,
-        "ph": 10.0,
-        "ec": 341.67,
-        "n": 17.0,
-        "p": 23.5,
-        "k": 54.17
-      },
-      "soir": {
-        "temperature": 35.1,
-        "humidite": 18.42,
-        "ph": 10.0,
-        "ec": 170.5,
-        "n": 8.0,
-        "p": 11.0,
-        "k": 27.0
-      }
-    },
-    {
-      "date": "2026-08-13",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 57.0,
-      "ventKmh": 13.9,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-08-14",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 58.0,
-      "ventKmh": 9.3,
-      "matin": {
-        "temperature": 31.0,
-        "humidite": 35.12,
-        "ph": 9.98,
-        "ec": 195.67,
-        "n": 9.5,
-        "p": 13.5,
-        "k": 30.83
-      },
-      "soir": {
-        "temperature": 33.08,
-        "humidite": 24.63,
-        "ph": 7.0,
-        "ec": 110.17,
-        "n": 5.0,
-        "p": 7.33,
-        "k": 17.0
-      }
-    },
-    {
-      "date": "2026-08-15",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 57.0,
-      "ventKmh": 13.0,
-      "matin": {
-        "temperature": 31.77,
-        "humidite": 27.98,
-        "ph": 6.82,
-        "ec": 250.5,
-        "n": 12.0,
-        "p": 17.0,
-        "k": 39.83
-      },
-      "soir": {
-        "temperature": 33.1,
-        "humidite": 23.35,
-        "ph": 8.85,
-        "ec": 117.5,
-        "n": 5.0,
-        "p": 8.0,
-        "k": 18.0
-      }
-    },
-    {
-      "date": "2026-08-16",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 64.0,
-      "ventKmh": 10.2,
-      "matin": null,
-      "soir": null
-    },
-    {
-      "date": "2026-08-17",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 94.0,
-      "RHmin": 64.0,
-      "ventKmh": 8.3,
-      "matin": {
-        "temperature": 28.27,
-        "humidite": 55.48,
-        "ph": 6.9,
-        "ec": 222.33,
-        "n": 10.5,
-        "p": 15.0,
-        "k": 35.0
-      },
-      "soir": {
-        "temperature": 30.98,
-        "humidite": 32.52,
-        "ph": 7.2,
-        "ec": 232.67,
-        "n": 11.0,
-        "p": 16.0,
-        "k": 36.5
-      }
-    },
-    {
-      "date": "2026-08-18",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 63.0,
-      "ventKmh": 9.2,
-      "matin": {
-        "temperature": 29.65,
-        "humidite": 29.53,
-        "ph": 7.95,
-        "ec": 176.33,
-        "n": 8.5,
-        "p": 11.67,
-        "k": 27.67
-      },
-      "soir": {
-        "temperature": 30.6,
-        "humidite": 27.4,
-        "ph": 7.48,
-        "ec": 135.33,
-        "n": 6.33,
-        "p": 9.0,
-        "k": 21.0
-      }
-    },
-    {
-      "date": "2026-08-19",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 56.0,
-      "ventKmh": 10.2,
-      "matin": {
-        "temperature": 30.75,
-        "humidite": 29.93,
-        "ph": 8.45,
-        "ec": 239.0,
-        "n": 11.33,
-        "p": 15.83,
-        "k": 37.67
-      },
-      "soir": null
-    },
-    {
-      "date": "2026-08-20",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": {
-        "temperature": 29.42,
-        "humidite": 55.7,
-        "ph": 9.85,
-        "ec": 472.33,
-        "n": 23.0,
-        "p": 32.5,
-        "k": 75.17
-      }
-    },
-    {
-      "date": "2026-08-21",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 52.0,
-      "ventKmh": 12.05,
-      "matin": {
-        "temperature": 29.98,
-        "humidite": 32.13,
-        "ph": 9.7,
-        "ec": 302.33,
-        "n": 14.67,
-        "p": 20.67,
-        "k": 47.83
-      },
-      "soir": null
-    },
-    {
-      "date": "2026-08-22",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 52.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": {
-        "temperature": 33.6,
-        "humidite": 25.28,
-        "ph": 8.92,
-        "ec": 250.67,
-        "n": 12.0,
-        "p": 17.0,
-        "k": 39.5
-      }
-    },
-    {
-      "date": "2026-08-23",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 58.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": {
-        "temperature": 33.42,
-        "humidite": 24.28,
-        "ph": 7.38,
-        "ec": 247.5,
-        "n": 12.0,
-        "p": 17.0,
-        "k": 39.0
-      }
-    },
-    {
-      "date": "2026-08-24",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 99.0,
-      "RHmin": 61.0,
-      "ventKmh": 10.2,
-      "matin": null,
-      "soir": {
-        "temperature": 31.48,
-        "humidite": 44.0,
-        "ph": 9.38,
-        "ec": 603.5,
-        "n": 30.0,
-        "p": 42.0,
-        "k": 96.0
-      }
-    },
-    {
-      "date": "2026-08-25",
-      "Tmax": 35.0,
-      "Tmin": 25.0,
-      "RHmax": 91.0,
-      "RHmin": 60.0,
-      "ventKmh": 12.05,
-      "matin": {
-        "temperature": 33.25,
-        "humidite": 36.98,
-        "ph": 8.13,
-        "ec": 350.33,
-        "n": 17.0,
-        "p": 24.0,
-        "k": 55.5
-      },
-      "soir": {
-        "temperature": 33.97,
-        "humidite": 28.62,
-        "ph": 8.0,
-        "ec": 287.67,
-        "n": 14.0,
-        "p": 20.0,
-        "k": 45.5
-      }
-    },
-    {
-      "date": "2026-08-26",
-      "Tmax": 32.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 65.0,
-      "ventKmh": 11.1,
-      "matin": {
-        "temperature": 29.55,
-        "humidite": 28.7,
-        "ph": 7.9,
-        "ec": 179.17,
-        "n": 8.5,
-        "p": 12.0,
-        "k": 28.17
-      },
-      "soir": {
-        "temperature": 31.65,
-        "humidite": 25.8,
-        "ph": 7.9,
-        "ec": 226.0,
-        "n": 11.0,
-        "p": 15.5,
-        "k": 35.5
-      }
-    },
-    {
-      "date": "2026-08-27",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 55.0,
-      "ventKmh": 10.2,
-      "matin": {
-        "temperature": 31.22,
-        "humidite": 26.32,
-        "ph": 7.93,
-        "ec": 236.0,
-        "n": 11.0,
-        "p": 16.0,
-        "k": 37.17
-      },
-      "soir": {
-        "temperature": 34.67,
-        "humidite": 22.87,
-        "ph": 8.12,
-        "ec": 168.0,
-        "n": 8.0,
-        "p": 11.5,
-        "k": 26.5
-      }
-    },
-    {
-      "date": "2026-08-28",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 62.0,
-      "ventKmh": 11.1,
-      "matin": {
-        "temperature": 30.57,
-        "humidite": 30.88,
-        "ph": 8.4,
-        "ec": 384.5,
-        "n": 19.0,
-        "p": 26.5,
-        "k": 61.0
-      },
-      "soir": {
-        "temperature": 34.58,
-        "humidite": 27.32,
-        "ph": 8.5,
-        "ec": 319.33,
-        "n": 15.5,
-        "p": 22.0,
-        "k": 50.5
-      }
-    },
-    {
-      "date": "2026-08-29",
-      "Tmax": 31.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 72.0,
-      "ventKmh": 11.1,
-      "matin": null,
-      "soir": {
-        "temperature": 30.95,
-        "humidite": 50.08,
-        "ph": 9.48,
-        "ec": 459.0,
-        "n": 22.5,
-        "p": 31.5,
-        "k": 73.17
-      }
-    },
-    {
-      "date": "2026-08-30",
-      "Tmax": 34.0,
-      "Tmin": 25.0,
-      "RHmax": 93.0,
-      "RHmin": 64.0,
-      "ventKmh": 8.35,
-      "matin": null,
-      "soir": {
-        "temperature": 31.85,
-        "humidite": 31.68,
-        "ph": 10.0,
-        "ec": 310.33,
-        "n": 15.0,
-        "p": 21.5,
-        "k": 49.33
-      }
-    },
-    {
-      "date": "2026-08-31",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 62.0,
-      "ventKmh": 12.05,
-      "matin": null,
-      "soir": {
-        "temperature": 33.27,
-        "humidite": 30.35,
-        "ph": 9.05,
-        "ec": 310.0,
-        "n": 15.0,
-        "p": 21.17,
-        "k": 49.0
-      }
-    },
-    {
-      "date": "2026-09-01",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 57.0,
-      "ventKmh": 12.9,
-      "matin": null,
-      "soir": {
-        "temperature": 32.15,
-        "humidite": 27.0,
-        "ph": 8.48,
-        "ec": 239.0,
-        "n": 11.5,
-        "p": 16.0,
-        "k": 37.83
-      }
-    },
-    {
-      "date": "2026-09-02",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
-      "ventKmh": 11.1,
-      "matin": null,
-      "soir": {
-        "temperature": 33.4,
-        "humidite": 28.67,
-        "ph": 9.05,
-        "ec": 312.5,
-        "n": 15.0,
-        "p": 21.17,
-        "k": 49.5
-      }
-    },
-    {
-      "date": "2026-09-03",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 55.0,
-      "ventKmh": 10.2,
-      "matin": null,
-      "soir": {
-        "temperature": 32.1,
-        "humidite": 32.82,
-        "ph": 5.47,
-        "ec": 434.0,
-        "n": 21.0,
-        "p": 30.0,
-        "k": 69.0
-      }
-    },
-    {
-      "date": "2026-09-04",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 54.0,
-      "ventKmh": 11.1,
-      "matin": null,
-      "soir": {
-        "temperature": 31.37,
-        "humidite": 28.63,
-        "ph": 4.0,
-        "ec": 276.67,
-        "n": 13.0,
-        "p": 19.0,
-        "k": 44.0
-      }
-    },
-    {
-      "date": "2026-09-05",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 54.0,
-      "ventKmh": 11.1,
-      "matin": null,
-      "soir": {
-        "temperature": 32.73,
-        "humidite": 26.43,
-        "ph": 6.83,
-        "ec": 275.67,
-        "n": 13.0,
-        "p": 19.0,
-        "k": 44.0
-      }
-    },
-    {
-      "date": "2026-09-06",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 50.0,
-      "ventKmh": 11.1,
-      "matin": null,
-      "soir": {
-        "temperature": 33.9,
-        "humidite": 21.12,
-        "ph": 8.85,
-        "ec": 185.83,
-        "n": 9.0,
-        "p": 12.5,
-        "k": 29.0
-      }
-    },
-    {
-      "date": "2026-09-07",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 97.0,
-      "RHmin": 60.0,
-      "ventKmh": 10.2,
-      "matin": null,
-      "soir": {
-        "temperature": 32.28,
-        "humidite": 30.03,
-        "ph": 9.15,
-        "ec": 282.17,
-        "n": 13.33,
-        "p": 19.0,
-        "k": 44.67
-      }
-    },
-    {
-      "date": "2026-09-08",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 60.0,
-      "ventKmh": 8.3,
-      "matin": null,
-      "soir": {
-        "temperature": 31.67,
-        "humidite": 54.5,
-        "ph": 9.93,
-        "ec": 938.5,
-        "n": 46.5,
-        "p": 65.17,
-        "k": 149.67
-      }
-    },
-    {
-      "date": "2026-09-09",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 66.0,
-      "ventKmh": 9.2,
-      "matin": null,
-      "soir": {
-        "temperature": 31.05,
-        "humidite": 43.62,
-        "ph": 9.45,
-        "ec": 298.0,
-        "n": 14.33,
-        "p": 20.67,
-        "k": 47.33
-      }
-    }
-  ],
-  "Navet": [
+  "Navet_test": [
     {
       "date": "2026-06-25",
-      "Tmax": 36.0,
+      "Tmax": 36,
       "Tmin": 26.3,
-      "RHmax": 70.0,
-      "RHmin": 26.0,
-      "ventKmh": 17.0,
+      "RHmax": 70,
+      "RHmin": 26,
+      "ventKmh": 17,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-06-26",
-      "Tmax": 39.0,
+      "Tmax": 39,
       "Tmin": 25.6,
-      "RHmax": 80.0,
-      "RHmin": 26.0,
+      "RHmax": 80,
+      "RHmin": 26,
       "ventKmh": 19.3,
       "matin": null,
       "soir": null
@@ -976,18 +24,18 @@
       "date": "2026-06-27",
       "Tmax": 35.6,
       "Tmin": 24.3,
-      "RHmax": 88.0,
-      "RHmin": 44.0,
-      "ventKmh": 23.0,
+      "RHmax": 88,
+      "RHmin": 44,
+      "ventKmh": 23,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-06-28",
       "Tmax": 37.7,
-      "Tmin": 24.0,
-      "RHmax": 76.0,
-      "RHmin": 33.0,
+      "Tmin": 24,
+      "RHmax": 76,
+      "RHmin": 33,
       "ventKmh": 27.4,
       "matin": null,
       "soir": null
@@ -996,8 +44,8 @@
       "date": "2026-06-29",
       "Tmax": 36.4,
       "Tmin": 23.8,
-      "RHmax": 93.0,
-      "RHmin": 34.0,
+      "RHmax": 93,
+      "RHmin": 34,
       "ventKmh": 23.1,
       "matin": null,
       "soir": null
@@ -1006,8 +54,8 @@
       "date": "2026-06-30",
       "Tmax": 35.6,
       "Tmin": 22.7,
-      "RHmax": 90.0,
-      "RHmin": 36.0,
+      "RHmax": 90,
+      "RHmin": 36,
       "ventKmh": 27.1,
       "matin": null,
       "soir": null
@@ -1015,10 +63,10 @@
     {
       "date": "2026-07-01",
       "Tmax": 34.7,
-      "Tmin": 24.0,
-      "RHmax": 86.0,
-      "RHmin": 43.0,
-      "ventKmh": 20.0,
+      "Tmin": 24,
+      "RHmax": 86,
+      "RHmin": 43,
+      "ventKmh": 20,
       "matin": null,
       "soir": null
     },
@@ -1026,8 +74,8 @@
       "date": "2026-07-02",
       "Tmax": 36.8,
       "Tmin": 24.4,
-      "RHmax": 88.0,
-      "RHmin": 39.0,
+      "RHmax": 88,
+      "RHmin": 39,
       "ventKmh": 19.5,
       "matin": null,
       "soir": null
@@ -1036,8 +84,8 @@
       "date": "2026-07-03",
       "Tmax": 36.7,
       "Tmin": 25.8,
-      "RHmax": 79.0,
-      "RHmin": 37.0,
+      "RHmax": 79,
+      "RHmin": 37,
       "ventKmh": 12.9,
       "matin": null,
       "soir": null
@@ -1046,258 +94,258 @@
       "date": "2026-07-04",
       "Tmax": 36.8,
       "Tmin": 26.4,
-      "RHmax": 78.0,
-      "RHmin": 32.0,
+      "RHmax": 78,
+      "RHmin": 32,
       "ventKmh": 17.5,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-05",
-      "Tmax": 35.0,
-      "Tmin": 28.0,
-      "RHmax": 76.0,
-      "RHmin": 44.0,
-      "ventKmh": 24.0,
+      "Tmax": 35,
+      "Tmin": 28,
+      "RHmax": 76,
+      "RHmin": 44,
+      "ventKmh": 24,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-06",
-      "Tmax": 34.0,
-      "Tmin": 25.0,
-      "RHmax": 84.0,
-      "RHmin": 54.0,
-      "ventKmh": 24.0,
+      "Tmax": 34,
+      "Tmin": 25,
+      "RHmax": 84,
+      "RHmin": 54,
+      "ventKmh": 24,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-07",
-      "Tmax": 37.0,
-      "Tmin": 25.0,
-      "RHmax": 85.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 25,
+      "RHmax": 85,
+      "RHmin": 45,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-08",
-      "Tmax": 38.0,
-      "Tmin": 26.0,
-      "RHmax": 81.0,
-      "RHmin": 44.0,
+      "Tmax": 38,
+      "Tmin": 26,
+      "RHmax": 81,
+      "RHmin": 44,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-09",
-      "Tmax": 37.0,
-      "Tmin": 27.0,
-      "RHmax": 83.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 27,
+      "RHmax": 83,
+      "RHmin": 45,
       "ventKmh": 27.8,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-10",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 81.0,
-      "RHmin": 47.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 81,
+      "RHmin": 47,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-11",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 82.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 82,
+      "RHmin": 45,
       "ventKmh": 22.2,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-12",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 60.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 60,
       "ventKmh": 14.8,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-13",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 51.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 51,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-14",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 44.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 44,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-15",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 87.0,
-      "RHmin": 50.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 87,
+      "RHmin": 50,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-16",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 53.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 53,
       "ventKmh": 18.5,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-17",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 58.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 58,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-18",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-19",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 60.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 60,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-20",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 53.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 53,
       "ventKmh": 11.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-21",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 48.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 48,
       "ventKmh": 10.2,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-22",
-      "Tmax": 36.0,
-      "Tmin": 27.0,
-      "RHmax": 87.0,
-      "RHmin": 47.0,
-      "ventKmh": 13.0,
+      "Tmax": 36,
+      "Tmin": 27,
+      "RHmax": 87,
+      "RHmin": 47,
+      "ventKmh": 13,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-23",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 62.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 62,
       "ventKmh": 11.15,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-24",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 51.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 51,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-25",
-      "Tmax": 34.0,
-      "Tmin": 27.0,
-      "RHmax": 84.0,
-      "RHmin": 63.0,
+      "Tmax": 34,
+      "Tmin": 27,
+      "RHmax": 84,
+      "RHmin": 63,
       "ventKmh": 13.9,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-26",
-      "Tmax": 30.0,
-      "Tmin": 25.0,
-      "RHmax": 92.0,
-      "RHmin": 71.0,
+      "Tmax": 30,
+      "Tmin": 25,
+      "RHmax": 92,
+      "RHmin": 71,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-27",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 59.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 59,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-28",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
       "ventKmh": 14.75,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-29",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 46.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 46,
       "ventKmh": 18.5,
       "matin": {
         "temperature": 29.1,
@@ -1312,7 +360,7 @@
         "temperature": 32.3,
         "humidite": 15.6,
         "ph": 7.9,
-        "ec": 112.0,
+        "ec": 112,
         "n": 5.5,
         "p": 7.5,
         "k": 17.5
@@ -1320,17 +368,17 @@
     },
     {
       "date": "2026-07-30",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 79.0,
-      "RHmin": 47.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 79,
+      "RHmin": 47,
       "ventKmh": 21.3,
       "matin": {
         "temperature": 28.7,
         "humidite": 18.07,
         "ph": 7.05,
-        "ec": 130.0,
-        "n": 6.0,
+        "ec": 130,
+        "n": 6,
         "p": 8.5,
         "k": 20.5
       },
@@ -1339,17 +387,17 @@
         "humidite": 14.95,
         "ph": 7.9,
         "ec": 162.33,
-        "n": 8.0,
-        "p": 11.0,
+        "n": 8,
+        "p": 11,
         "k": 25.5
       }
     },
     {
       "date": "2026-07-31",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 63.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 63,
       "ventKmh": 15.7,
       "matin": {
         "temperature": 28.68,
@@ -1367,15 +415,15 @@
         "ec": 203.5,
         "n": 9.5,
         "p": 13.5,
-        "k": 32.0
+        "k": 32
       }
     },
     {
       "date": "2026-08-01",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 62.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 62,
       "ventKmh": 13.9,
       "matin": {
         "temperature": 27.98,
@@ -1383,7 +431,7 @@
         "ph": 7.5,
         "ec": 280.17,
         "n": 13.5,
-        "p": 19.0,
+        "p": 19,
         "k": 44.33
       },
       "soir": {
@@ -1393,15 +441,15 @@
         "ec": 547.67,
         "n": 26.5,
         "p": 37.5,
-        "k": 87.0
+        "k": 87
       }
     },
     {
       "date": "2026-08-02",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
       "ventKmh": 13.9,
       "matin": {
         "temperature": 29.68,
@@ -1418,16 +466,16 @@
         "ph": 6.73,
         "ec": 234.67,
         "n": 11.5,
-        "p": 16.0,
-        "k": 37.0
+        "p": 16,
+        "k": 37
       }
     },
     {
       "date": "2026-08-03",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
       "ventKmh": 15.7,
       "matin": {
         "temperature": 29.67,
@@ -1435,7 +483,7 @@
         "ph": 7.58,
         "ec": 395.5,
         "n": 19.33,
-        "p": 27.0,
+        "p": 27,
         "k": 62.83
       },
       "soir": {
@@ -1443,25 +491,25 @@
         "humidite": 16.55,
         "ph": 5.95,
         "ec": 244.67,
-        "n": 12.0,
-        "p": 17.0,
+        "n": 12,
+        "p": 17,
         "k": 38.5
       }
     },
     {
       "date": "2026-08-04",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 83.0,
-      "RHmin": 52.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 83,
+      "RHmin": 52,
       "ventKmh": 12.9,
       "matin": {
         "temperature": 29.85,
         "humidite": 24.12,
         "ph": 5.25,
         "ec": 324.67,
-        "n": 16.0,
-        "p": 22.0,
+        "n": 16,
+        "p": 22,
         "k": 51.5
       },
       "soir": {
@@ -1476,28 +524,28 @@
     },
     {
       "date": "2026-08-05",
-      "Tmax": 32.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 65.0,
-      "ventKmh": 11.0,
+      "Tmax": 32,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 65,
+      "ventKmh": 11,
       "matin": {
         "temperature": 29.57,
         "humidite": 26.33,
         "ph": 6.2,
         "ec": 392.33,
         "n": 19.5,
-        "p": 27.0,
+        "p": 27,
         "k": 62.33
       },
       "soir": null
     },
     {
       "date": "2026-08-06",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 63.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 63,
       "ventKmh": 9.3,
       "matin": {
         "temperature": 29.82,
@@ -1520,10 +568,10 @@
     },
     {
       "date": "2026-08-07",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 56.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 56,
       "ventKmh": 8.3,
       "matin": {
         "temperature": 28.53,
@@ -1531,14 +579,14 @@
         "ph": 6.45,
         "ec": 292.83,
         "n": 14.33,
-        "p": 20.0,
+        "p": 20,
         "k": 46.5
       },
       "soir": {
         "temperature": 30.1,
         "humidite": 19.43,
         "ph": 6.45,
-        "ec": 254.0,
+        "ec": 254,
         "n": 12.5,
         "p": 17.5,
         "k": 40.33
@@ -1546,70 +594,70 @@
     },
     {
       "date": "2026-08-08",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
       "ventKmh": 13.9,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-08-09",
-      "Tmax": 33.0,
-      "Tmin": 27.0,
-      "RHmax": 93.0,
-      "RHmin": 62.0,
+      "Tmax": 33,
+      "Tmin": 27,
+      "RHmax": 93,
+      "RHmin": 62,
       "ventKmh": 16.7,
       "matin": {
         "temperature": 30.5,
         "humidite": 62.13,
         "ph": 8.08,
         "ec": 372.17,
-        "n": 18.0,
+        "n": 18,
         "p": 25.5,
-        "k": 59.0
+        "k": 59
       },
       "soir": {
         "temperature": 31.77,
         "humidite": 20.8,
         "ph": 8.08,
         "ec": 173.33,
-        "n": 8.0,
+        "n": 8,
         "p": 11.5,
-        "k": 27.0
+        "k": 27
       }
     },
     {
       "date": "2026-08-10",
-      "Tmax": 39.0,
-      "Tmin": 27.0,
-      "RHmax": 95.0,
-      "RHmin": 58.0,
-      "ventKmh": 12.0,
+      "Tmax": 39,
+      "Tmin": 27,
+      "RHmax": 95,
+      "RHmin": 58,
+      "ventKmh": 12,
       "matin": null,
       "soir": {
         "temperature": 32.15,
         "humidite": 19.13,
         "ph": 8.88,
-        "ec": 166.0,
+        "ec": 166,
         "n": 7.5,
-        "p": 11.0,
-        "k": 26.0
+        "p": 11,
+        "k": 26
       }
     },
     {
       "date": "2026-08-11",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 59.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 59,
       "ventKmh": 10.2,
       "matin": {
         "temperature": 31.2,
         "humidite": 21.4,
-        "ph": 10.0,
-        "ec": 183.0,
+        "ph": 10,
+        "ec": 183,
         "n": 8.5,
         "p": 12.5,
         "k": 28.5
@@ -1617,63 +665,63 @@
       "soir": {
         "temperature": 31.73,
         "humidite": 18.8,
-        "ph": 10.0,
-        "ec": 281.0,
+        "ph": 10,
+        "ec": 281,
         "n": 13.67,
-        "p": 19.0,
+        "p": 19,
         "k": 44.17
       }
     },
     {
       "date": "2026-08-12",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 50.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 50,
       "ventKmh": 12.06,
       "matin": {
         "temperature": 30.92,
         "humidite": 16.42,
-        "ph": 10.0,
+        "ph": 10,
         "ec": 138.33,
         "n": 6.17,
-        "p": 9.0,
+        "p": 9,
         "k": 21.67
       },
       "soir": {
         "temperature": 31.02,
         "humidite": 16.73,
-        "ph": 10.0,
+        "ph": 10,
         "ec": 221.83,
-        "n": 11.0,
-        "p": 15.0,
-        "k": 35.0
+        "n": 11,
+        "p": 15,
+        "k": 35
       }
     },
     {
       "date": "2026-08-13",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 57.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 57,
       "ventKmh": 13.9,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-08-14",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 58.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 58,
       "ventKmh": 9.3,
       "matin": {
         "temperature": 28.32,
         "humidite": 32.75,
         "ph": 9.68,
-        "ec": 206.0,
+        "ec": 206,
         "n": 9.67,
-        "p": 14.0,
+        "p": 14,
         "k": 32.67
       },
       "soir": {
@@ -1681,18 +729,18 @@
         "humidite": 27.83,
         "ph": 8.45,
         "ec": 195.33,
-        "n": 9.0,
+        "n": 9,
         "p": 13.17,
-        "k": 31.0
+        "k": 31
       }
     },
     {
       "date": "2026-08-15",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 57.0,
-      "ventKmh": 13.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 57,
+      "ventKmh": 13,
       "matin": {
         "temperature": 30.85,
         "humidite": 26.35,
@@ -1714,32 +762,32 @@
     },
     {
       "date": "2026-08-16",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 64.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 64,
       "ventKmh": 10.2,
       "matin": null,
       "soir": null
     }
   ],
-  "Gombo": [
+  "Gombo_test": [
     {
       "date": "2026-06-25",
-      "Tmax": 36.0,
+      "Tmax": 36,
       "Tmin": 26.3,
-      "RHmax": 70.0,
-      "RHmin": 26.0,
-      "ventKmh": 17.0,
+      "RHmax": 70,
+      "RHmin": 26,
+      "ventKmh": 17,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-06-26",
-      "Tmax": 39.0,
+      "Tmax": 39,
       "Tmin": 25.6,
-      "RHmax": 80.0,
-      "RHmin": 26.0,
+      "RHmax": 80,
+      "RHmin": 26,
       "ventKmh": 19.3,
       "matin": null,
       "soir": null
@@ -1748,18 +796,18 @@
       "date": "2026-06-27",
       "Tmax": 35.6,
       "Tmin": 24.3,
-      "RHmax": 88.0,
-      "RHmin": 44.0,
-      "ventKmh": 23.0,
+      "RHmax": 88,
+      "RHmin": 44,
+      "ventKmh": 23,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-06-28",
       "Tmax": 37.7,
-      "Tmin": 24.0,
-      "RHmax": 76.0,
-      "RHmin": 33.0,
+      "Tmin": 24,
+      "RHmax": 76,
+      "RHmin": 33,
       "ventKmh": 27.4,
       "matin": null,
       "soir": null
@@ -1768,8 +816,8 @@
       "date": "2026-06-29",
       "Tmax": 36.4,
       "Tmin": 23.8,
-      "RHmax": 93.0,
-      "RHmin": 34.0,
+      "RHmax": 93,
+      "RHmin": 34,
       "ventKmh": 23.1,
       "matin": null,
       "soir": null
@@ -1778,8 +826,8 @@
       "date": "2026-06-30",
       "Tmax": 35.6,
       "Tmin": 22.7,
-      "RHmax": 90.0,
-      "RHmin": 36.0,
+      "RHmax": 90,
+      "RHmin": 36,
       "ventKmh": 27.1,
       "matin": null,
       "soir": null
@@ -1787,10 +835,10 @@
     {
       "date": "2026-07-01",
       "Tmax": 34.7,
-      "Tmin": 24.0,
-      "RHmax": 86.0,
-      "RHmin": 43.0,
-      "ventKmh": 20.0,
+      "Tmin": 24,
+      "RHmax": 86,
+      "RHmin": 43,
+      "ventKmh": 20,
       "matin": null,
       "soir": null
     },
@@ -1798,8 +846,8 @@
       "date": "2026-07-02",
       "Tmax": 36.8,
       "Tmin": 24.4,
-      "RHmax": 88.0,
-      "RHmin": 39.0,
+      "RHmax": 88,
+      "RHmin": 39,
       "ventKmh": 19.5,
       "matin": null,
       "soir": null
@@ -1808,8 +856,8 @@
       "date": "2026-07-03",
       "Tmax": 36.7,
       "Tmin": 25.8,
-      "RHmax": 79.0,
-      "RHmin": 37.0,
+      "RHmax": 79,
+      "RHmin": 37,
       "ventKmh": 12.9,
       "matin": null,
       "soir": null
@@ -1818,319 +866,319 @@
       "date": "2026-07-04",
       "Tmax": 36.8,
       "Tmin": 26.4,
-      "RHmax": 78.0,
-      "RHmin": 32.0,
+      "RHmax": 78,
+      "RHmin": 32,
       "ventKmh": 17.5,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-05",
-      "Tmax": 35.0,
-      "Tmin": 28.0,
-      "RHmax": 76.0,
-      "RHmin": 44.0,
-      "ventKmh": 24.0,
+      "Tmax": 35,
+      "Tmin": 28,
+      "RHmax": 76,
+      "RHmin": 44,
+      "ventKmh": 24,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-06",
-      "Tmax": 34.0,
-      "Tmin": 25.0,
-      "RHmax": 84.0,
-      "RHmin": 54.0,
-      "ventKmh": 24.0,
+      "Tmax": 34,
+      "Tmin": 25,
+      "RHmax": 84,
+      "RHmin": 54,
+      "ventKmh": 24,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-07",
-      "Tmax": 37.0,
-      "Tmin": 25.0,
-      "RHmax": 85.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 25,
+      "RHmax": 85,
+      "RHmin": 45,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-08",
-      "Tmax": 38.0,
-      "Tmin": 26.0,
-      "RHmax": 81.0,
-      "RHmin": 44.0,
+      "Tmax": 38,
+      "Tmin": 26,
+      "RHmax": 81,
+      "RHmin": 44,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-09",
-      "Tmax": 37.0,
-      "Tmin": 27.0,
-      "RHmax": 83.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 27,
+      "RHmax": 83,
+      "RHmin": 45,
       "ventKmh": 27.8,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-10",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 81.0,
-      "RHmin": 47.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 81,
+      "RHmin": 47,
       "ventKmh": 24.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-11",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 82.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 82,
+      "RHmin": 45,
       "ventKmh": 22.2,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-12",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 60.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 60,
       "ventKmh": 14.8,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-13",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 51.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 51,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-14",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 44.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 44,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-15",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 87.0,
-      "RHmin": 50.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 87,
+      "RHmin": 50,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-16",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 53.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 53,
       "ventKmh": 18.5,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-17",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 58.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 58,
       "ventKmh": 16.7,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-18",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-19",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 60.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 60,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-20",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 53.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 53,
       "ventKmh": 11.1,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-21",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 48.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 48,
       "ventKmh": 10.2,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-22",
-      "Tmax": 36.0,
-      "Tmin": 27.0,
-      "RHmax": 87.0,
-      "RHmin": 47.0,
-      "ventKmh": 13.0,
+      "Tmax": 36,
+      "Tmin": 27,
+      "RHmax": 87,
+      "RHmin": 47,
+      "ventKmh": 13,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-23",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 62.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 62,
       "ventKmh": 11.15,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-24",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 51.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 51,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-25",
-      "Tmax": 34.0,
-      "Tmin": 27.0,
-      "RHmax": 84.0,
-      "RHmin": 63.0,
+      "Tmax": 34,
+      "Tmin": 27,
+      "RHmax": 84,
+      "RHmin": 63,
       "ventKmh": 13.9,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-26",
-      "Tmax": 30.0,
-      "Tmin": 25.0,
-      "RHmax": 92.0,
-      "RHmin": 71.0,
+      "Tmax": 30,
+      "Tmin": 25,
+      "RHmax": 92,
+      "RHmin": 71,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-27",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 88.0,
-      "RHmin": 59.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 59,
       "ventKmh": 12.05,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-28",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
       "ventKmh": 14.75,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-07-29",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 46.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 46,
       "ventKmh": 18.5,
       "matin": {
         "temperature": 28.8,
         "humidite": 27.7,
         "ph": 5.38,
-        "ec": 358.0,
+        "ec": 358,
         "n": 17.5,
         "p": 24.5,
-        "k": 57.0
+        "k": 57
       },
       "soir": {
         "temperature": 34.1,
         "humidite": 15.72,
         "ph": 7.25,
-        "ec": 130.0,
-        "n": 6.0,
+        "ec": 130,
+        "n": 6,
         "p": 8.5,
         "k": 20.5
       }
     },
     {
       "date": "2026-07-30",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 79.0,
-      "RHmin": 47.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 79,
+      "RHmin": 47,
       "ventKmh": 21.3,
       "matin": {
         "temperature": 29.18,
         "humidite": 24.6,
         "ph": 7.3,
-        "ec": 272.0,
-        "n": 13.0,
+        "ec": 272,
+        "n": 13,
         "p": 18.5,
-        "k": 43.0
+        "k": 43
       },
       "soir": {
         "temperature": 30.68,
         "humidite": 21.67,
         "ph": 7.8,
         "ec": 233.5,
-        "n": 11.0,
+        "n": 11,
         "p": 15.5,
-        "k": 37.0
+        "k": 37
       }
     },
     {
       "date": "2026-07-31",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 63.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 63,
       "ventKmh": 15.7,
       "matin": {
         "temperature": 28.75,
         "humidite": 24.58,
         "ph": 6.85,
         "ec": 409.83,
-        "n": 20.0,
-        "p": 28.0,
-        "k": 65.0
+        "n": 20,
+        "p": 28,
+        "k": 65
       },
       "soir": {
         "temperature": 30.8,
@@ -2144,19 +1192,19 @@
     },
     {
       "date": "2026-08-01",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 62.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 62,
       "ventKmh": 13.9,
       "matin": {
         "temperature": 27.78,
         "humidite": 26.15,
         "ph": 7.85,
-        "ec": 447.0,
-        "n": 22.0,
-        "p": 31.0,
-        "k": 71.0
+        "ec": 447,
+        "n": 22,
+        "p": 31,
+        "k": 71
       },
       "soir": {
         "temperature": 31.67,
@@ -2165,15 +1213,15 @@
         "ec": 740.17,
         "n": 36.67,
         "p": 51.17,
-        "k": 118.0
+        "k": 118
       }
     },
     {
       "date": "2026-08-02",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
       "ventKmh": 13.9,
       "matin": {
         "temperature": 29.17,
@@ -2181,7 +1229,7 @@
         "ph": 9.25,
         "ec": 593.33,
         "n": 29.5,
-        "p": 41.0,
+        "p": 41,
         "k": 94.5
       },
       "soir": {
@@ -2189,17 +1237,17 @@
         "humidite": 22.4,
         "ph": 7.7,
         "ec": 248.83,
-        "n": 12.0,
-        "p": 17.0,
+        "n": 12,
+        "p": 17,
         "k": 39.5
       }
     },
     {
       "date": "2026-08-03",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 86.0,
-      "RHmin": 45.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
       "ventKmh": 15.7,
       "matin": {
         "temperature": 29.3,
@@ -2214,24 +1262,24 @@
         "temperature": 35.27,
         "humidite": 19.73,
         "ph": 4.18,
-        "ec": 160.0,
+        "ec": 160,
         "n": 7.5,
-        "p": 11.0,
-        "k": 25.0
+        "p": 11,
+        "k": 25
       }
     },
     {
       "date": "2026-08-04",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 83.0,
-      "RHmin": 52.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 83,
+      "RHmin": 52,
       "ventKmh": 12.9,
       "matin": {
         "temperature": 29.08,
         "humidite": 29.27,
         "ph": 6.47,
-        "ec": 561.0,
+        "ec": 561,
         "n": 27.67,
         "p": 38.67,
         "k": 89.33
@@ -2240,19 +1288,19 @@
         "temperature": 33.13,
         "humidite": 22.95,
         "ph": 7.52,
-        "ec": 264.0,
-        "n": 13.0,
-        "p": 18.0,
-        "k": 42.0
+        "ec": 264,
+        "n": 13,
+        "p": 18,
+        "k": 42
       }
     },
     {
       "date": "2026-08-05",
-      "Tmax": 32.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 65.0,
-      "ventKmh": 11.0,
+      "Tmax": 32,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 65,
+      "ventKmh": 11,
       "matin": {
         "temperature": 29.22,
         "humidite": 27.05,
@@ -2266,10 +1314,10 @@
     },
     {
       "date": "2026-08-06",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 96.0,
-      "RHmin": 63.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 63,
       "ventKmh": 9.3,
       "matin": {
         "temperature": 29.67,
@@ -2285,23 +1333,23 @@
         "humidite": 19.48,
         "ph": 4.8,
         "ec": 253.83,
-        "n": 12.0,
+        "n": 12,
         "p": 17.5,
-        "k": 40.0
+        "k": 40
       }
     },
     {
       "date": "2026-08-07",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 56.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 56,
       "ventKmh": 8.3,
       "matin": {
         "temperature": 28.03,
         "humidite": 26.57,
         "ph": 5.35,
-        "ec": 462.0,
+        "ec": 462,
         "n": 22.83,
         "p": 31.83,
         "k": 73.5
@@ -2312,26 +1360,26 @@
         "ph": 6.55,
         "ec": 175.5,
         "n": 8.5,
-        "p": 12.0,
+        "p": 12,
         "k": 27.5
       }
     },
     {
       "date": "2026-08-08",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 90.0,
-      "RHmin": 52.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
       "ventKmh": 13.9,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-08-09",
-      "Tmax": 33.0,
-      "Tmin": 27.0,
-      "RHmax": 93.0,
-      "RHmin": 62.0,
+      "Tmax": 33,
+      "Tmin": 27,
+      "RHmax": 93,
+      "RHmin": 62,
       "ventKmh": 16.7,
       "matin": {
         "temperature": 30.35,
@@ -2347,25 +1395,25 @@
         "humidite": 22.12,
         "ph": 7.12,
         "ec": 316.83,
-        "n": 15.0,
+        "n": 15,
         "p": 21.83,
         "k": 50.33
       }
     },
     {
       "date": "2026-08-10",
-      "Tmax": 39.0,
-      "Tmin": 27.0,
-      "RHmax": 95.0,
-      "RHmin": 58.0,
-      "ventKmh": 12.0,
+      "Tmax": 39,
+      "Tmin": 27,
+      "RHmax": 95,
+      "RHmin": 58,
+      "ventKmh": 12,
       "matin": {
         "temperature": 30.97,
         "humidite": 22.33,
         "ph": 9.4,
         "ec": 131.33,
-        "n": 6.0,
-        "p": 9.0,
+        "n": 6,
+        "p": 9,
         "k": 20.33
       },
       "soir": {
@@ -2380,44 +1428,44 @@
     },
     {
       "date": "2026-08-11",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 59.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 59,
       "ventKmh": 10.2,
       "matin": {
         "temperature": 30.8,
         "humidite": 25.55,
-        "ph": 8.0,
+        "ph": 8,
         "ec": 380.17,
         "n": 18.5,
-        "p": 26.0,
+        "p": 26,
         "k": 60.5
       },
       "soir": {
         "temperature": 33.1,
         "humidite": 24.78,
-        "ph": 9.0,
+        "ph": 9,
         "ec": 405.17,
-        "n": 20.0,
-        "p": 28.0,
+        "n": 20,
+        "p": 28,
         "k": 64.5
       }
     },
     {
       "date": "2026-08-12",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 50.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 50,
       "ventKmh": 12.06,
       "matin": {
         "temperature": 30.53,
         "humidite": 54.45,
-        "ph": 8.0,
+        "ph": 8,
         "ec": 3391.33,
         "n": 169.33,
-        "p": 237.0,
+        "p": 237,
         "k": 542.33
       },
       "soir": {
@@ -2425,44 +1473,44 @@
         "humidite": 18.87,
         "ph": 7.72,
         "ec": 230.17,
-        "n": 11.0,
+        "n": 11,
         "p": 15.67,
         "k": 36.5
       }
     },
     {
       "date": "2026-08-13",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 57.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 57,
       "ventKmh": 13.9,
       "matin": {
         "temperature": 30.97,
         "humidite": 21.27,
         "ph": 7.9,
-        "ec": 204.0,
-        "n": 10.0,
-        "p": 14.0,
-        "k": 32.0
+        "ec": 204,
+        "n": 10,
+        "p": 14,
+        "k": 32
       },
       "soir": null
     },
     {
       "date": "2026-08-14",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 58.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 58,
       "ventKmh": 9.3,
       "matin": {
         "temperature": 29.32,
         "humidite": 33.97,
-        "ph": 9.0,
+        "ph": 9,
         "ec": 240.17,
         "n": 11.5,
         "p": 16.5,
-        "k": 38.0
+        "k": 38
       },
       "soir": {
         "temperature": 32.52,
@@ -2471,16 +1519,16 @@
         "ec": 90.33,
         "n": 4.17,
         "p": 5.83,
-        "k": 14.0
+        "k": 14
       }
     },
     {
       "date": "2026-08-15",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 57.0,
-      "ventKmh": 13.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 57,
+      "ventKmh": 13,
       "matin": {
         "temperature": 30.6,
         "humidite": 29.22,
@@ -2488,13 +1536,13 @@
         "ec": 215.83,
         "n": 10.5,
         "p": 14.5,
-        "k": 34.0
+        "k": 34
       },
       "soir": {
         "temperature": 35.57,
         "humidite": 22.72,
-        "ph": 6.0,
-        "ec": 119.0,
+        "ph": 6,
+        "ec": 119,
         "n": 5.5,
         "p": 7.5,
         "k": 18.5
@@ -2502,20 +1550,20 @@
     },
     {
       "date": "2026-08-16",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 64.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 64,
       "ventKmh": 10.2,
       "matin": null,
       "soir": null
     },
     {
       "date": "2026-08-17",
-      "Tmax": 33.0,
-      "Tmin": 25.0,
-      "RHmax": 94.0,
-      "RHmin": 64.0,
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 94,
+      "RHmin": 64,
       "ventKmh": 8.3,
       "matin": {
         "temperature": 28.25,
@@ -2523,33 +1571,33 @@
         "ph": 6.83,
         "ec": 192.17,
         "n": 9.5,
-        "p": 13.0,
+        "p": 13,
         "k": 30.5
       },
       "soir": {
         "temperature": 31.03,
         "humidite": 24.55,
         "ph": 8.77,
-        "ec": 131.0,
-        "n": 6.0,
-        "p": 9.0,
+        "ec": 131,
+        "n": 6,
+        "p": 9,
         "k": 20.5
       }
     },
     {
       "date": "2026-08-18",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 63.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 63,
       "ventKmh": 9.2,
       "matin": {
         "temperature": 29.42,
         "humidite": 24.42,
         "ph": 6.85,
-        "ec": 123.0,
+        "ec": 123,
         "n": 5.5,
-        "p": 8.0,
+        "p": 8,
         "k": 19.5
       },
       "soir": {
@@ -2557,23 +1605,23 @@
         "humidite": 19.67,
         "ph": 8.5,
         "ec": 70.17,
-        "n": 3.0,
+        "n": 3,
         "p": 4.5,
         "k": 10.5
       }
     },
     {
       "date": "2026-08-19",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 56.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 56,
       "ventKmh": 10.2,
       "matin": {
         "temperature": 30.22,
         "humidite": 31.28,
         "ph": 6.72,
-        "ec": 398.0,
+        "ec": 398,
         "n": 19.17,
         "p": 27.5,
         "k": 63.17
@@ -2582,18 +1630,18 @@
         "temperature": 33.73,
         "humidite": 23.85,
         "ph": 7.67,
-        "ec": 165.0,
-        "n": 8.0,
-        "p": 11.0,
+        "ec": 165,
+        "n": 8,
+        "p": 11,
         "k": 25.67
       }
     },
     {
       "date": "2026-08-20",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
       "ventKmh": 12.05,
       "matin": null,
       "soir": {
@@ -2601,24 +1649,24 @@
         "humidite": 35.67,
         "ph": 9.45,
         "ec": 521.33,
-        "n": 26.0,
-        "p": 36.0,
+        "n": 26,
+        "p": 36,
         "k": 82.83
       }
     },
     {
       "date": "2026-08-21",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 52.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 52,
       "ventKmh": 12.05,
       "matin": {
         "temperature": 29.45,
         "humidite": 30.27,
         "ph": 8.53,
         "ec": 586.17,
-        "n": 29.0,
+        "n": 29,
         "p": 40.5,
         "k": 93.17
       },
@@ -2626,46 +1674,46 @@
     },
     {
       "date": "2026-08-22",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 52.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 52,
       "ventKmh": 12.05,
       "matin": null,
       "soir": {
         "temperature": 33.6,
         "humidite": 25.32,
         "ph": 8.6,
-        "ec": 167.0,
-        "n": 8.0,
-        "p": 11.0,
+        "ec": 167,
+        "n": 8,
+        "p": 11,
         "k": 26.5
       }
     },
     {
       "date": "2026-08-23",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 58.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 58,
       "ventKmh": 12.05,
       "matin": null,
       "soir": {
         "temperature": 33.92,
         "humidite": 20.85,
         "ph": 9.23,
-        "ec": 204.0,
+        "ec": 204,
         "n": 9.5,
-        "p": 14.0,
+        "p": 14,
         "k": 32.17
       }
     },
     {
       "date": "2026-08-24",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 99.0,
-      "RHmin": 61.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 99,
+      "RHmin": 61,
       "ventKmh": 10.2,
       "matin": null,
       "soir": {
@@ -2674,23 +1722,23 @@
         "ph": 9.02,
         "ec": 252.67,
         "n": 12.5,
-        "p": 17.0,
-        "k": 40.0
+        "p": 17,
+        "k": 40
       }
     },
     {
       "date": "2026-08-25",
-      "Tmax": 35.0,
-      "Tmin": 25.0,
-      "RHmax": 91.0,
-      "RHmin": 60.0,
+      "Tmax": 35,
+      "Tmin": 25,
+      "RHmax": 91,
+      "RHmin": 60,
       "ventKmh": 12.05,
       "matin": {
         "temperature": 30.77,
         "humidite": 28.43,
         "ph": 8.35,
         "ec": 270.17,
-        "n": 13.0,
+        "n": 13,
         "p": 18.5,
         "k": 42.5
       },
@@ -2699,17 +1747,17 @@
         "humidite": 21.95,
         "ph": 8.12,
         "ec": 128.33,
-        "n": 6.0,
+        "n": 6,
         "p": 8.5,
         "k": 20.33
       }
     },
     {
       "date": "2026-08-26",
-      "Tmax": 32.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 65.0,
+      "Tmax": 32,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 65,
       "ventKmh": 11.1,
       "matin": {
         "temperature": 28.73,
@@ -2717,7 +1765,7 @@
         "ph": 7.9,
         "ec": 376.5,
         "n": 18.5,
-        "p": 26.0,
+        "p": 26,
         "k": 59.5
       },
       "soir": {
@@ -2725,24 +1773,24 @@
         "humidite": 21.67,
         "ph": 7.87,
         "ec": 107.17,
-        "n": 5.0,
-        "p": 7.0,
+        "n": 5,
+        "p": 7,
         "k": 16.5
       }
     },
     {
       "date": "2026-08-27",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 89.0,
-      "RHmin": 55.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 55,
       "ventKmh": 10.2,
       "matin": {
         "temperature": 29.5,
         "humidite": 22.02,
-        "ph": 8.0,
-        "ec": 104.0,
-        "n": 5.0,
+        "ph": 8,
+        "ec": 104,
+        "n": 5,
         "p": 6.67,
         "k": 16.17
       },
@@ -2750,27 +1798,27 @@
         "temperature": 37.18,
         "humidite": 20.45,
         "ph": 6.45,
-        "ec": 155.0,
+        "ec": 155,
         "n": 7.5,
         "p": 10.5,
-        "k": 24.0
+        "k": 24
       }
     },
     {
       "date": "2026-08-28",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 62.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 62,
       "ventKmh": 11.1,
       "matin": {
         "temperature": 30.82,
         "humidite": 25.8,
         "ph": 8.4,
-        "ec": 203.0,
+        "ec": 203,
         "n": 9.5,
         "p": 13.5,
-        "k": 32.0
+        "k": 32
       },
       "soir": {
         "temperature": 34.65,
@@ -2779,15 +1827,15 @@
         "ec": 341.5,
         "n": 16.83,
         "p": 23.5,
-        "k": 54.0
+        "k": 54
       }
     },
     {
       "date": "2026-08-29",
-      "Tmax": 31.0,
-      "Tmin": 25.0,
-      "RHmax": 95.0,
-      "RHmin": 72.0,
+      "Tmax": 31,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 72,
       "ventKmh": 11.1,
       "matin": null,
       "soir": {
@@ -2795,35 +1843,35 @@
         "humidite": 30.13,
         "ph": 8.12,
         "ec": 253.5,
-        "n": 12.0,
+        "n": 12,
         "p": 17.5,
-        "k": 40.0
+        "k": 40
       }
     },
     {
       "date": "2026-08-30",
-      "Tmax": 34.0,
-      "Tmin": 25.0,
-      "RHmax": 93.0,
-      "RHmin": 64.0,
+      "Tmax": 34,
+      "Tmin": 25,
+      "RHmax": 93,
+      "RHmin": 64,
       "ventKmh": 8.35,
       "matin": null,
       "soir": {
         "temperature": 31.3,
         "humidite": 28.73,
-        "ph": 10.0,
+        "ph": 10,
         "ec": 275.67,
-        "n": 13.0,
-        "p": 19.0,
-        "k": 44.0
+        "n": 13,
+        "p": 19,
+        "k": 44
       }
     },
     {
       "date": "2026-08-31",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 62.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 62,
       "ventKmh": 12.05,
       "matin": null,
       "soir": {
@@ -2833,33 +1881,33 @@
         "ec": 158.33,
         "n": 7.67,
         "p": 10.83,
-        "k": 25.0
+        "k": 25
       }
     },
     {
       "date": "2026-09-01",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 57.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 57,
       "ventKmh": 12.9,
       "matin": null,
       "soir": {
-        "temperature": 32.0,
+        "temperature": 32,
         "humidite": 18.2,
         "ph": 7.93,
-        "ec": 75.0,
-        "n": 3.0,
-        "p": 5.0,
-        "k": 12.0
+        "ec": 75,
+        "n": 3,
+        "p": 5,
+        "k": 12
       }
     },
     {
       "date": "2026-09-02",
-      "Tmax": 34.0,
-      "Tmin": 26.0,
-      "RHmax": 92.0,
-      "RHmin": 65.0,
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
       "ventKmh": 11.1,
       "matin": null,
       "soir": {
@@ -2868,16 +1916,16 @@
         "ph": 6.68,
         "ec": 180.33,
         "n": 8.5,
-        "p": 12.0,
+        "p": 12,
         "k": 28.5
       }
     },
     {
       "date": "2026-09-03",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 55.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 55,
       "ventKmh": 10.2,
       "matin": null,
       "soir": {
@@ -2892,50 +1940,50 @@
     },
     {
       "date": "2026-09-04",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 54.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 54,
       "ventKmh": 11.1,
       "matin": null,
       "soir": {
         "temperature": 31.85,
         "humidite": 21.55,
         "ph": 6.85,
-        "ec": 161.0,
+        "ec": 161,
         "n": 7.5,
-        "p": 11.0,
+        "p": 11,
         "k": 25.5
       }
     },
     {
       "date": "2026-09-05",
-      "Tmax": 36.0,
-      "Tmin": 26.0,
-      "RHmax": 94.0,
-      "RHmin": 54.0,
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 54,
       "ventKmh": 11.1,
       "matin": null,
       "soir": {
         "temperature": 35.37,
         "humidite": 17.48,
         "ph": 5.75,
-        "ec": 96.0,
-        "n": 4.0,
-        "p": 6.0,
-        "k": 15.0
+        "ec": 96,
+        "n": 4,
+        "p": 6,
+        "k": 15
       }
     },
     {
       "date": "2026-09-06",
-      "Tmax": 37.0,
-      "Tmin": 26.0,
-      "RHmax": 95.0,
-      "RHmin": 50.0,
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 50,
       "ventKmh": 11.1,
       "matin": null,
       "soir": {
-        "temperature": 36.0,
+        "temperature": 36,
         "humidite": 21.7,
         "ph": 8.45,
         "ec": 119.83,
@@ -2946,28 +1994,28 @@
     },
     {
       "date": "2026-09-07",
-      "Tmax": 35.0,
-      "Tmin": 26.0,
-      "RHmax": 97.0,
-      "RHmin": 60.0,
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 97,
+      "RHmin": 60,
       "ventKmh": 10.2,
       "matin": null,
       "soir": {
         "temperature": 31.6,
         "humidite": 19.6,
         "ph": 8.6,
-        "ec": 161.0,
-        "n": 8.0,
-        "p": 11.0,
-        "k": 25.0
+        "ec": 161,
+        "n": 8,
+        "p": 11,
+        "k": 25
       }
     },
     {
       "date": "2026-09-08",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 91.0,
-      "RHmin": 60.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 60,
       "ventKmh": 8.3,
       "matin": null,
       "soir": {
@@ -2975,17 +2023,17 @@
         "humidite": 31.92,
         "ph": 9.63,
         "ec": 408.83,
-        "n": 20.0,
-        "p": 28.0,
-        "k": 65.0
+        "n": 20,
+        "p": 28,
+        "k": 65
       }
     },
     {
       "date": "2026-09-09",
-      "Tmax": 33.0,
-      "Tmin": 26.0,
-      "RHmax": 93.0,
-      "RHmin": 66.0,
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 66,
       "ventKmh": 9.2,
       "matin": null,
       "soir": {
@@ -2995,7 +2043,959 @@
         "ec": 172.83,
         "n": 8.5,
         "p": 11.67,
-        "k": 27.0
+        "k": 27
+      }
+    }
+  ],
+  "Laitue_test": [
+    {
+      "date": "2026-07-25",
+      "Tmax": 34,
+      "Tmin": 27,
+      "RHmax": 84,
+      "RHmin": 63,
+      "ventKmh": 13.9,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-07-26",
+      "Tmax": 30,
+      "Tmin": 25,
+      "RHmax": 92,
+      "RHmin": 71,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-07-27",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 88,
+      "RHmin": 59,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-07-28",
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
+      "ventKmh": 14.75,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-07-29",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 46,
+      "ventKmh": 18.5,
+      "matin": {
+        "temperature": 29.08,
+        "humidite": 17.87,
+        "ph": 7.38,
+        "ec": 205.33,
+        "n": 9.5,
+        "p": 14,
+        "k": 32.33
+      },
+      "soir": {
+        "temperature": 33.22,
+        "humidite": 17.37,
+        "ph": 5.95,
+        "ec": 104,
+        "n": 4.5,
+        "p": 6.5,
+        "k": 16
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 79,
+      "RHmin": 47,
+      "ventKmh": 21.3,
+      "matin": {
+        "temperature": 29.23,
+        "humidite": 20.8,
+        "ph": 7.9,
+        "ec": 231.5,
+        "n": 11.5,
+        "p": 16,
+        "k": 36.5
+      },
+      "soir": {
+        "temperature": 31.32,
+        "humidite": 16.27,
+        "ph": 8.95,
+        "ec": 157.17,
+        "n": 7.5,
+        "p": 10.5,
+        "k": 25
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 63,
+      "ventKmh": 15.7,
+      "matin": {
+        "temperature": 28.2,
+        "humidite": 17.08,
+        "ph": 5.98,
+        "ec": 237.67,
+        "n": 11.5,
+        "p": 16.5,
+        "k": 37.67
+      },
+      "soir": {
+        "temperature": 30.6,
+        "humidite": 21.33,
+        "ph": 7.93,
+        "ec": 194.33,
+        "n": 9.5,
+        "p": 13,
+        "k": 30.5
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 62,
+      "ventKmh": 13.9,
+      "matin": {
+        "temperature": 29.23,
+        "humidite": 16.38,
+        "ph": 6.9,
+        "ec": 142.17,
+        "n": 7,
+        "p": 9.5,
+        "k": 22
+      },
+      "soir": {
+        "temperature": 31.55,
+        "humidite": 31.3,
+        "ph": 8.73,
+        "ec": 574.17,
+        "n": 28,
+        "p": 40,
+        "k": 91.5
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
+      "ventKmh": 13.9,
+      "matin": {
+        "temperature": 30.75,
+        "humidite": 22.43,
+        "ph": 8.7,
+        "ec": 260.17,
+        "n": 12.5,
+        "p": 18,
+        "k": 41
+      },
+      "soir": {
+        "temperature": 32.22,
+        "humidite": 16.85,
+        "ph": 7.55,
+        "ec": 120.5,
+        "n": 5.5,
+        "p": 8,
+        "k": 19
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 86,
+      "RHmin": 45,
+      "ventKmh": 15.7,
+      "matin": {
+        "temperature": 30.55,
+        "humidite": 18.7,
+        "ph": 5.02,
+        "ec": 236.83,
+        "n": 11.5,
+        "p": 16,
+        "k": 37.5
+      },
+      "soir": {
+        "temperature": 34.38,
+        "humidite": 13.93,
+        "ph": 7.6,
+        "ec": 122,
+        "n": 5.5,
+        "p": 8,
+        "k": 19.5
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 83,
+      "RHmin": 52,
+      "ventKmh": 12.9,
+      "matin": {
+        "temperature": 30.97,
+        "humidite": 24.77,
+        "ph": 8.27,
+        "ec": 489.33,
+        "n": 24,
+        "p": 34,
+        "k": 78
+      },
+      "soir": {
+        "temperature": 33.12,
+        "humidite": 20.88,
+        "ph": 7.57,
+        "ec": 315.5,
+        "n": 15.5,
+        "p": 21.5,
+        "k": 50
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "Tmax": 32,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 65,
+      "ventKmh": 11,
+      "matin": {
+        "temperature": 30.5,
+        "humidite": 20.3,
+        "ph": 7.15,
+        "ec": 342,
+        "n": 16.5,
+        "p": 23.5,
+        "k": 54.5
+      },
+      "soir": null
+    },
+    {
+      "date": "2026-08-06",
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 96,
+      "RHmin": 63,
+      "ventKmh": 9.3,
+      "matin": {
+        "temperature": 30.48,
+        "humidite": 18.45,
+        "ph": 5.5,
+        "ec": 279,
+        "n": 13.5,
+        "p": 19,
+        "k": 44.17
+      },
+      "soir": {
+        "temperature": 35.22,
+        "humidite": 17.65,
+        "ph": 4.43,
+        "ec": 140.67,
+        "n": 6.5,
+        "p": 9.5,
+        "k": 22.17
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 56,
+      "ventKmh": 8.3,
+      "matin": {
+        "temperature": 27.85,
+        "humidite": 26.08,
+        "ph": 6.45,
+        "ec": 531.5,
+        "n": 26.33,
+        "p": 36.83,
+        "k": 84.67
+      },
+      "soir": {
+        "temperature": 33.33,
+        "humidite": 18.95,
+        "ph": 6.8,
+        "ec": 158.83,
+        "n": 7.5,
+        "p": 10.5,
+        "k": 25
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 90,
+      "RHmin": 52,
+      "ventKmh": 13.9,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-08-09",
+      "Tmax": 33,
+      "Tmin": 27,
+      "RHmax": 93,
+      "RHmin": 62,
+      "ventKmh": 16.7,
+      "matin": {
+        "temperature": 30.52,
+        "humidite": 26.82,
+        "ph": 7.45,
+        "ec": 608.5,
+        "n": 30,
+        "p": 42,
+        "k": 96.83
+      },
+      "soir": {
+        "temperature": 33.1,
+        "humidite": 18.12,
+        "ph": 7.97,
+        "ec": 195.83,
+        "n": 9.5,
+        "p": 13,
+        "k": 31
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "Tmax": 39,
+      "Tmin": 27,
+      "RHmax": 95,
+      "RHmin": 58,
+      "ventKmh": 12,
+      "matin": null,
+      "soir": {
+        "temperature": 34.98,
+        "humidite": 16.15,
+        "ph": 9.53,
+        "ec": 259.17,
+        "n": 12.33,
+        "p": 17.5,
+        "k": 41
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 59,
+      "ventKmh": 10.2,
+      "matin": {
+        "temperature": 31.12,
+        "humidite": 22.72,
+        "ph": 10,
+        "ec": 276.17,
+        "n": 13.5,
+        "p": 19,
+        "k": 43.5
+      },
+      "soir": {
+        "temperature": 32.67,
+        "humidite": 20.43,
+        "ph": 9.5,
+        "ec": 234.33,
+        "n": 11.5,
+        "p": 16,
+        "k": 37
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 50,
+      "ventKmh": 12.06,
+      "matin": {
+        "temperature": 30.68,
+        "humidite": 26.47,
+        "ph": 10,
+        "ec": 341.67,
+        "n": 17,
+        "p": 23.5,
+        "k": 54.17
+      },
+      "soir": {
+        "temperature": 35.1,
+        "humidite": 18.42,
+        "ph": 10,
+        "ec": 170.5,
+        "n": 8,
+        "p": 11,
+        "k": 27
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 57,
+      "ventKmh": 13.9,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-08-14",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 58,
+      "ventKmh": 9.3,
+      "matin": {
+        "temperature": 31,
+        "humidite": 35.12,
+        "ph": 9.98,
+        "ec": 195.67,
+        "n": 9.5,
+        "p": 13.5,
+        "k": 30.83
+      },
+      "soir": {
+        "temperature": 33.08,
+        "humidite": 24.63,
+        "ph": 7,
+        "ec": 110.17,
+        "n": 5,
+        "p": 7.33,
+        "k": 17
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 57,
+      "ventKmh": 13,
+      "matin": {
+        "temperature": 31.77,
+        "humidite": 27.98,
+        "ph": 6.82,
+        "ec": 250.5,
+        "n": 12,
+        "p": 17,
+        "k": 39.83
+      },
+      "soir": {
+        "temperature": 33.1,
+        "humidite": 23.35,
+        "ph": 8.85,
+        "ec": 117.5,
+        "n": 5,
+        "p": 8,
+        "k": 18
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 64,
+      "ventKmh": 10.2,
+      "matin": null,
+      "soir": null
+    },
+    {
+      "date": "2026-08-17",
+      "Tmax": 33,
+      "Tmin": 25,
+      "RHmax": 94,
+      "RHmin": 64,
+      "ventKmh": 8.3,
+      "matin": {
+        "temperature": 28.27,
+        "humidite": 55.48,
+        "ph": 6.9,
+        "ec": 222.33,
+        "n": 10.5,
+        "p": 15,
+        "k": 35
+      },
+      "soir": {
+        "temperature": 30.98,
+        "humidite": 32.52,
+        "ph": 7.2,
+        "ec": 232.67,
+        "n": 11,
+        "p": 16,
+        "k": 36.5
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 63,
+      "ventKmh": 9.2,
+      "matin": {
+        "temperature": 29.65,
+        "humidite": 29.53,
+        "ph": 7.95,
+        "ec": 176.33,
+        "n": 8.5,
+        "p": 11.67,
+        "k": 27.67
+      },
+      "soir": {
+        "temperature": 30.6,
+        "humidite": 27.4,
+        "ph": 7.48,
+        "ec": 135.33,
+        "n": 6.33,
+        "p": 9,
+        "k": 21
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 56,
+      "ventKmh": 10.2,
+      "matin": {
+        "temperature": 30.75,
+        "humidite": 29.93,
+        "ph": 8.45,
+        "ec": 239,
+        "n": 11.33,
+        "p": 15.83,
+        "k": 37.67
+      },
+      "soir": null
+    },
+    {
+      "date": "2026-08-20",
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": {
+        "temperature": 29.42,
+        "humidite": 55.7,
+        "ph": 9.85,
+        "ec": 472.33,
+        "n": 23,
+        "p": 32.5,
+        "k": 75.17
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 52,
+      "ventKmh": 12.05,
+      "matin": {
+        "temperature": 29.98,
+        "humidite": 32.13,
+        "ph": 9.7,
+        "ec": 302.33,
+        "n": 14.67,
+        "p": 20.67,
+        "k": 47.83
+      },
+      "soir": null
+    },
+    {
+      "date": "2026-08-22",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 52,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": {
+        "temperature": 33.6,
+        "humidite": 25.28,
+        "ph": 8.92,
+        "ec": 250.67,
+        "n": 12,
+        "p": 17,
+        "k": 39.5
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 58,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": {
+        "temperature": 33.42,
+        "humidite": 24.28,
+        "ph": 7.38,
+        "ec": 247.5,
+        "n": 12,
+        "p": 17,
+        "k": 39
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 99,
+      "RHmin": 61,
+      "ventKmh": 10.2,
+      "matin": null,
+      "soir": {
+        "temperature": 31.48,
+        "humidite": 44,
+        "ph": 9.38,
+        "ec": 603.5,
+        "n": 30,
+        "p": 42,
+        "k": 96
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "Tmax": 35,
+      "Tmin": 25,
+      "RHmax": 91,
+      "RHmin": 60,
+      "ventKmh": 12.05,
+      "matin": {
+        "temperature": 33.25,
+        "humidite": 36.98,
+        "ph": 8.13,
+        "ec": 350.33,
+        "n": 17,
+        "p": 24,
+        "k": 55.5
+      },
+      "soir": {
+        "temperature": 33.97,
+        "humidite": 28.62,
+        "ph": 8,
+        "ec": 287.67,
+        "n": 14,
+        "p": 20,
+        "k": 45.5
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "Tmax": 32,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 65,
+      "ventKmh": 11.1,
+      "matin": {
+        "temperature": 29.55,
+        "humidite": 28.7,
+        "ph": 7.9,
+        "ec": 179.17,
+        "n": 8.5,
+        "p": 12,
+        "k": 28.17
+      },
+      "soir": {
+        "temperature": 31.65,
+        "humidite": 25.8,
+        "ph": 7.9,
+        "ec": 226,
+        "n": 11,
+        "p": 15.5,
+        "k": 35.5
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 89,
+      "RHmin": 55,
+      "ventKmh": 10.2,
+      "matin": {
+        "temperature": 31.22,
+        "humidite": 26.32,
+        "ph": 7.93,
+        "ec": 236,
+        "n": 11,
+        "p": 16,
+        "k": 37.17
+      },
+      "soir": {
+        "temperature": 34.67,
+        "humidite": 22.87,
+        "ph": 8.12,
+        "ec": 168,
+        "n": 8,
+        "p": 11.5,
+        "k": 26.5
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 62,
+      "ventKmh": 11.1,
+      "matin": {
+        "temperature": 30.57,
+        "humidite": 30.88,
+        "ph": 8.4,
+        "ec": 384.5,
+        "n": 19,
+        "p": 26.5,
+        "k": 61
+      },
+      "soir": {
+        "temperature": 34.58,
+        "humidite": 27.32,
+        "ph": 8.5,
+        "ec": 319.33,
+        "n": 15.5,
+        "p": 22,
+        "k": 50.5
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "Tmax": 31,
+      "Tmin": 25,
+      "RHmax": 95,
+      "RHmin": 72,
+      "ventKmh": 11.1,
+      "matin": null,
+      "soir": {
+        "temperature": 30.95,
+        "humidite": 50.08,
+        "ph": 9.48,
+        "ec": 459,
+        "n": 22.5,
+        "p": 31.5,
+        "k": 73.17
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "Tmax": 34,
+      "Tmin": 25,
+      "RHmax": 93,
+      "RHmin": 64,
+      "ventKmh": 8.35,
+      "matin": null,
+      "soir": {
+        "temperature": 31.85,
+        "humidite": 31.68,
+        "ph": 10,
+        "ec": 310.33,
+        "n": 15,
+        "p": 21.5,
+        "k": 49.33
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 62,
+      "ventKmh": 12.05,
+      "matin": null,
+      "soir": {
+        "temperature": 33.27,
+        "humidite": 30.35,
+        "ph": 9.05,
+        "ec": 310,
+        "n": 15,
+        "p": 21.17,
+        "k": 49
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 57,
+      "ventKmh": 12.9,
+      "matin": null,
+      "soir": {
+        "temperature": 32.15,
+        "humidite": 27,
+        "ph": 8.48,
+        "ec": 239,
+        "n": 11.5,
+        "p": 16,
+        "k": 37.83
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "Tmax": 34,
+      "Tmin": 26,
+      "RHmax": 92,
+      "RHmin": 65,
+      "ventKmh": 11.1,
+      "matin": null,
+      "soir": {
+        "temperature": 33.4,
+        "humidite": 28.67,
+        "ph": 9.05,
+        "ec": 312.5,
+        "n": 15,
+        "p": 21.17,
+        "k": 49.5
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 55,
+      "ventKmh": 10.2,
+      "matin": null,
+      "soir": {
+        "temperature": 32.1,
+        "humidite": 32.82,
+        "ph": 5.47,
+        "ec": 434,
+        "n": 21,
+        "p": 30,
+        "k": 69
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 54,
+      "ventKmh": 11.1,
+      "matin": null,
+      "soir": {
+        "temperature": 31.37,
+        "humidite": 28.63,
+        "ph": 4,
+        "ec": 276.67,
+        "n": 13,
+        "p": 19,
+        "k": 44
+      }
+    },
+    {
+      "date": "2026-09-05",
+      "Tmax": 36,
+      "Tmin": 26,
+      "RHmax": 94,
+      "RHmin": 54,
+      "ventKmh": 11.1,
+      "matin": null,
+      "soir": {
+        "temperature": 32.73,
+        "humidite": 26.43,
+        "ph": 6.83,
+        "ec": 275.67,
+        "n": 13,
+        "p": 19,
+        "k": 44
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "Tmax": 37,
+      "Tmin": 26,
+      "RHmax": 95,
+      "RHmin": 50,
+      "ventKmh": 11.1,
+      "matin": null,
+      "soir": {
+        "temperature": 33.9,
+        "humidite": 21.12,
+        "ph": 8.85,
+        "ec": 185.83,
+        "n": 9,
+        "p": 12.5,
+        "k": 29
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "Tmax": 35,
+      "Tmin": 26,
+      "RHmax": 97,
+      "RHmin": 60,
+      "ventKmh": 10.2,
+      "matin": null,
+      "soir": {
+        "temperature": 32.28,
+        "humidite": 30.03,
+        "ph": 9.15,
+        "ec": 282.17,
+        "n": 13.33,
+        "p": 19,
+        "k": 44.67
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 91,
+      "RHmin": 60,
+      "ventKmh": 8.3,
+      "matin": null,
+      "soir": {
+        "temperature": 31.67,
+        "humidite": 54.5,
+        "ph": 9.93,
+        "ec": 938.5,
+        "n": 46.5,
+        "p": 65.17,
+        "k": 149.67
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "Tmax": 33,
+      "Tmin": 26,
+      "RHmax": 93,
+      "RHmin": 66,
+      "ventKmh": 9.2,
+      "matin": null,
+      "soir": {
+        "temperature": 31.05,
+        "humidite": 43.62,
+        "ph": 9.45,
+        "ec": 298,
+        "n": 14.33,
+        "p": 20.67,
+        "k": 47.33
       }
     }
   ]
