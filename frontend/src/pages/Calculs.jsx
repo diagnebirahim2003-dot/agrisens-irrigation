@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getSol } from '../utils/sols';
 import { getCultures } from '../utils/cultures';
 import { listParcelles } from '../utils/orion';
+import { getSol8 } from '../utils/historique';
 import {
   getDOY, getDAS, getKc, getStage, calcRa, calcRs, calcETo, u2FromU10,
   calcPajuste, calcRU, calcSc, calcSa, calcDi,
@@ -41,10 +42,11 @@ export default function Calculs({ auth }) {
     })();
   }, []);
 
+  // Le relevé capteur 8-en-1 est propre à chaque parcelle — on le recharge
+  // à chaque changement de sélection, plutôt qu'une unique clé globale.
   useEffect(() => {
-    const s8 = JSON.parse(localStorage.getItem('agrisens_sol8') || 'null');
-    if (s8) setSol8(s8);
-  }, []);
+    setSol8(selected ? getSol8(selected) : null);
+  }, [selected]);
 
   async function fetchMeteo(lat, lng) {
     // L'endpoint "météo actuelle" renvoie souvent temp_min = temp_max pour les

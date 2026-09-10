@@ -38,6 +38,15 @@
 .mc-val  { font-size:0.88rem; font-weight:700; color:#1b3a1b; }
 .mc-lbl  { font-size:0.62rem; color:#6a7f6a; text-transform:uppercase; margin-top:3px; }
 
+/* ── SÉLECTION PARCELLE ── */
+.parc-select-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; }
+.parc-select-item { display:flex; align-items:center; gap:10px; background:#fafcfa; border:1.5px solid #e0e8e0; border-radius:10px; padding:10px 12px; cursor:pointer; transition:all .2s; }
+.parc-select-item:hover { border-color:#a5d6a7; }
+.parc-select-item.active { border-color:#2e7d32; background:#e8f5e9; }
+.psi-icon { font-size:1.3rem; }
+.psi-nom { font-size:0.82rem; font-weight:700; color:#1b3a1b; }
+.psi-sub { font-size:0.68rem; color:#6a7f6a; margin-top:2px; }
+
 /* ── SERIAL ── */
 .btn-serial { width:100%; padding:13px; color:#fff; border:none; border-radius:10px; font-size:0.88rem; font-weight:700; cursor:pointer; font-family:inherit; transition:background .2s; margin-bottom:10px; }
 .btn-serial:disabled { opacity:0.7; cursor:not-allowed; }

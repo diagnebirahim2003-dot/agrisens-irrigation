@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getHistorique } from '../utils/historique';
+import { listParcelles } from '../utils/orion';
+import { getCultures } from '../utils/cultures';
 import './Graphes.css';
 
 const PARAMS = [
@@ -39,11 +41,31 @@ function LineChart({ points, color, unit }) {
   );
 }
 
-export default function Graphes() {
+export default function Graphes({ auth }) {
+  const CULTURES = getCultures();
+  const [parcelles,  setParcelles]  = useState([]);
+  const [parcLoading,setParcLoading]= useState(true);
+  const [selectedId, setSelectedId] = useState('');
   const [historique, setHistorique] = useState([]);
   const [param, setParam] = useState('humidite');
 
-  useEffect(() => { setHistorique(getHistorique()); }, []);
+  useEffect(() => {
+    (async () => {
+      setParcLoading(true);
+      try {
+        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+        setParcelles(list);
+        if (list.length > 0) setSelectedId(list[0].id);
+      } catch { /* Orion injoignable */ }
+      finally { setParcLoading(false); }
+    })();
+  }, []);
+
+  // Chaque parcelle/culture garde ses propres relevés — l'historique affiché
+  // ne concerne que la parcelle sélectionnée.
+  useEffect(() => {
+    setHistorique(selectedId ? getHistorique(selectedId) : []);
+  }, [selectedId]);
 
   const def = PARAMS.find(p => p.key === param);
   const points = historique
@@ -62,7 +84,27 @@ export default function Graphes() {
           </span>
         </div>
 
-        {historique.length === 0 ? (
+        {!parcLoading && parcelles.length > 0 && (
+          <div className="graph-params" style={{marginBottom:'14px'}}>
+            {parcelles.map(p => (
+              <button
+                key={p.id}
+                className={`graph-param-btn ${selectedId === p.id ? 'active' : ''}`}
+                onClick={() => setSelectedId(p.id)}
+              >
+                {CULTURES[p.culture]?.icon || '🌱'} {p.nom}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {parcLoading ? (
+          <div className="graph-empty">⏳ Chargement des parcelles…</div>
+        ) : parcelles.length === 0 ? (
+          <div className="graph-empty">
+            🧭 Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".
+          </div>
+        ) : historique.length === 0 ? (
           <div className="graph-empty">
             📡 Aucun relevé enregistré pour l'instant.<br />
             Connectez le capteur 8-en-1 depuis la page "Capteurs" pour commencer l'historisation.

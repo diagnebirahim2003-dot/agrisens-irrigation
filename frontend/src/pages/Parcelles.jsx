@@ -152,6 +152,61 @@ export default function Parcelles({ auth }) {
 
   const cInfo = name => CULTURES.find(x => x.nom === name) || CULTURES[0];
 
+  function renderCard(p) {
+    const das=getDAS(p.semis), kc=getKc(CULTURES,p.culture,das), stage=getStage(CULTURES,p.culture,das), ci=cInfo(p.culture);
+    const pct=Math.min(100, Math.round(das/ci.cycle*100));
+    return (
+      <div key={p.id} className="parc-card" onClick={() => { setSelected(p); setView('detail'); }}>
+        <div className="parc-card-header">
+          <div className="parc-card-icon">{ci.icon}</div>
+          <div className="parc-card-info">
+            <div className="parc-card-nom">{p.nom}</div>
+            <div className="parc-card-sub">{p.culture} · {p.superficie} ha · {p.region}</div>
+          </div>
+          <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
+        </div>
+        <div className="parc-card-body">
+          <div className="parc-stats">
+            <div className="parc-stat"><div className="ps-val">{das}</div><div className="ps-lbl">JAS</div></div>
+            <div className="parc-stat"><div className="ps-val">{kc.toFixed(2)}</div><div className="ps-lbl">Kc</div></div>
+            <div className="parc-stat"><div className="ps-val">{stage.label}</div><div className="ps-lbl">Stade</div></div>
+          </div>
+          <div className="parc-progress">
+            <div className="pp-label">
+              <span className={`stage-badge ${stage.css}`}>{stage.label}</span>
+              <span className="pp-pct">{pct}%</span>
+            </div>
+            <div className="pp-bar"><div className="pp-fill" style={{width:pct+'%'}}/></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Vue admin : parcelles regroupées par propriétaire, plutôt que mélangées.
+  function renderGroupedByOwner() {
+    const groups = new Map();
+    for (const p of parcelles) {
+      const key = p.owner || 'inconnu';
+      if (!groups.has(key)) groups.set(key, { ownerName: p.ownerName || p.owner || 'Propriétaire inconnu', owner: p.owner, items: [] });
+      groups.get(key).items.push(p);
+    }
+    return (
+      <>
+        {[...groups.values()].map(g => (
+          <div key={g.owner || g.ownerName} className="parc-owner-group">
+            <div className="parc-owner-header">
+              👤 {g.ownerName}{g.owner ? ` (${g.owner})` : ''} — {g.items.length} parcelle{g.items.length > 1 ? 's' : ''}
+            </div>
+            <div className="parc-grid">
+              {g.items.map(renderCard)}
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  }
+
   return (
     <div className="parc-wrap">
       <div className="parc-toolbar">
@@ -199,38 +254,11 @@ export default function Parcelles({ auth }) {
             <div className="parc-empty-title">Aucune parcelle</div>
             <div className="parc-empty-sub">Cliquez sur "+ Ajouter" pour commencer.</div>
           </div>
+        ) : auth.role === 'admin' ? (
+          renderGroupedByOwner()
         ) : (
           <div className="parc-grid">
-            {parcelles.map(p => {
-              const das=getDAS(p.semis), kc=getKc(CULTURES,p.culture,das), stage=getStage(CULTURES,p.culture,das), ci=cInfo(p.culture);
-              const pct=Math.min(100, Math.round(das/ci.cycle*100));
-              return (
-                <div key={p.id} className="parc-card" onClick={() => { setSelected(p); setView('detail'); }}>
-                  <div className="parc-card-header">
-                    <div className="parc-card-icon">{ci.icon}</div>
-                    <div className="parc-card-info">
-                      <div className="parc-card-nom">{p.nom}</div>
-                      <div className="parc-card-sub">{p.culture} · {p.superficie} ha · {p.region}</div>
-                    </div>
-                    <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
-                  </div>
-                  <div className="parc-card-body">
-                    <div className="parc-stats">
-                      <div className="parc-stat"><div className="ps-val">{das}</div><div className="ps-lbl">JAS</div></div>
-                      <div className="parc-stat"><div className="ps-val">{kc.toFixed(2)}</div><div className="ps-lbl">Kc</div></div>
-                      <div className="parc-stat"><div className="ps-val">{stage.label}</div><div className="ps-lbl">Stade</div></div>
-                    </div>
-                    <div className="parc-progress">
-                      <div className="pp-label">
-                        <span className={`stage-badge ${stage.css}`}>{stage.label}</span>
-                        <span className="pp-pct">{pct}%</span>
-                      </div>
-                      <div className="pp-bar"><div className="pp-fill" style={{width:pct+'%'}}/></div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {parcelles.map(renderCard)}
           </div>
         )
       )}

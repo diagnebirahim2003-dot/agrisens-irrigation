@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { pushReleve } from '../utils/historique';
+import { pushReleve, getSol8, setSol8 } from '../utils/historique';
 import { listParcelles } from '../utils/orion';
+import { getCultures } from '../utils/cultures';
 import './Capteurs.css';
 
 const OWM_KEY  = 'f376f93aee61a823a4c0eff15e47b0a0';
@@ -20,6 +21,16 @@ function gauge(val, min, max) {
 }
 
 export default function Capteurs({ auth }) {
+  const CULTURES = getCultures();
+
+  // Parcelles — le capteur doit être rattaché à UNE parcelle précise avant
+  // toute connexion, pour que chaque parcelle/culture garde ses propres
+  // données de sol indépendantes.
+  const [parcelles,   setParcelles]   = useState([]);
+  const [parcLoading, setParcLoading] = useState(true);
+  const [parcError,   setParcError]   = useState('');
+  const [selectedId,  setSelectedId]  = useState('');
+
   // 8-en-1 état
   const [port,       setPort]      = useState(null);
   const [serialSt,   setSerialSt]  = useState('disconnected');
@@ -42,10 +53,14 @@ export default function Capteurs({ auth }) {
 
   useEffect(() => {
     (async () => {
+      setParcLoading(true); setParcError('');
       try {
         const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+        setParcelles(list);
         if (list.length > 0) coordsRef.current = { lat: list[0].lat, lng: list[0].lng, nom: list[0].nom };
-      } catch { /* Orion injoignable : on garde les coordonnées par défaut du site */ }
+      } catch (e) {
+        setParcError(e.message); /* Orion injoignable : on garde les coordonnées par défaut du site */
+      } finally { setParcLoading(false); }
       fetchMeteo();
       timerRef.current = setInterval(fetchMeteo, 5 * 60 * 1000); // refresh 5 min
     })();
@@ -54,6 +69,28 @@ export default function Capteurs({ auth }) {
       disconnectSerial();
     };
   }, []);
+
+  // Changer de parcelle : on recharge son dernier relevé (ou on repart à vide),
+  // on recentre la météo sur ses coordonnées, et on coupe une éventuelle
+  // connexion capteur en cours (elle appartenait à l'ancienne parcelle).
+  function selectParcelle(id) {
+    if (id === selectedId) return;
+    disconnectSerial();
+    setSelectedId(id);
+    const p = parcelles.find(x => x.id === id);
+    if (p) {
+      coordsRef.current = { lat: p.lat, lng: p.lng, nom: p.nom };
+      fetchMeteo();
+    }
+    const saved = getSol8(id);
+    setSol(saved || {
+      humidite:null, temperature:null, ec:null,
+      ph:null, n:null, p:null, k:null, luminosite:null,
+      updatedAt:null
+    });
+  }
+
+  const selectedParc = parcelles.find(p => p.id === selectedId) || null;
 
   // ── MÉTÉO OpenWeatherMap ──────────────────────────────
   async function fetchMeteo() {
@@ -103,6 +140,11 @@ export default function Capteurs({ auth }) {
   // ── WEB SERIAL — Capteur 8-en-1 ──────────────────────
   async function connectSerial() {
     if (port) { disconnectSerial(); return; }
+
+    if (!selectedId) {
+      alert('Sélectionnez d\'abord une parcelle avant de connecter le capteur.');
+      return;
+    }
 
     if (!('serial' in navigator)) {
       alert('Web Serial API non supportée.\nUtilisez Chrome ou Edge (PC/Android).\n\nMode démonstration activé.');
@@ -181,11 +223,11 @@ export default function Capteurs({ auth }) {
           if (vals[7]) data.luminosite = vals[7];
         }
       }
-      if (Object.keys(data).length > 0) {
+      if (Object.keys(data).length > 0 && selectedId) {
         setSol(prev => {
           const merged = { ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') };
-          localStorage.setItem('agrisens_sol8', JSON.stringify({ ...merged, updatedAt: new Date().toISOString() }));
-          pushReleve(merged);
+          setSol8(selectedId, { ...merged, updatedAt: new Date().toISOString() });
+          pushReleve(merged, selectedId);
           return merged;
         });
       }
@@ -194,6 +236,7 @@ export default function Capteurs({ auth }) {
 
   // Démo data
   function demoData() {
+    if (!selectedId) return;
     const demo = {
       humidite:    Math.round((25 + Math.random()*40) * 10) / 10,
       temperature: Math.round((24 + Math.random()*10) * 10) / 10,
@@ -206,8 +249,8 @@ export default function Capteurs({ auth }) {
       updatedAt:   new Date().toLocaleTimeString('fr-FR'),
     };
     setSol(demo);
-    localStorage.setItem('agrisens_sol8', JSON.stringify({ ...demo, updatedAt: new Date().toISOString() }));
-    pushReleve(demo);
+    setSol8(selectedId, { ...demo, updatedAt: new Date().toISOString() });
+    pushReleve(demo, selectedId);
     setSerialSt('demo');
   }
 
@@ -293,17 +336,41 @@ export default function Capteurs({ auth }) {
           {sol.updatedAt && <span className="cap-ts">Dernière lecture : {sol.updatedAt}</span>}
         </div>
 
+        {/* Sélection de la parcelle — obligatoire avant toute connexion, pour
+            que chaque parcelle/culture garde ses propres données de sol. */}
+        {parcError && <div className="cap-warn">{parcError}</div>}
+        {parcLoading ? (
+          <div className="serial-hint">⏳ Chargement des parcelles…</div>
+        ) : parcelles.length === 0 ? (
+          <div className="cap-warn">Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".</div>
+        ) : (
+          <div className="parc-select-grid" style={{marginBottom:'14px'}}>
+            {parcelles.map(p => (
+              <div key={p.id}
+                className={`parc-select-item ${selectedId===p.id?'active':''}`}
+                onClick={() => selectParcelle(p.id)}>
+                <span className="psi-icon">{CULTURES[p.culture]?.icon||'🌱'}</span>
+                <div>
+                  <div className="psi-nom">{p.nom}</div>
+                  <div className="psi-sub">{p.culture}{p.ownerName ? ' · '+p.ownerName : ''}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         <button className="btn-serial"
           style={{background:serialColor}}
           onClick={connectSerial}
-          disabled={serialSt==='connecting'}>
-          {serialLabel}
+          disabled={serialSt==='connecting' || !selectedId}>
+          {!selectedId ? '📍 Sélectionnez une parcelle ci-dessus' : serialLabel}
         </button>
 
-        {serialSt === 'disconnected' && (
+        {serialSt === 'disconnected' && selectedId && (
           <div className="serial-hint">
             💡 Branchez le capteur 8-en-1 via USB-C puis cliquez "Connecter".<br/>
             Compatible Chrome et Edge sur PC et Android.
+            <br/>Les relevés seront enregistrés pour la parcelle « {selectedParc?.nom} ».
           </div>
         )}
 
