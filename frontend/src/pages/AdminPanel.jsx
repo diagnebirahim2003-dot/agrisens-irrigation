@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
 import { getSols, saveSols, resetSols, DEFAULT_SOLS } from '../utils/sols';
-import { createAccountAsAdmin } from '../utils/accounts';
+import { createAccountAsAdmin, deleteAccountAsAdmin } from '../utils/accounts';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -98,14 +98,28 @@ export default function AdminPanel({ auth, onBack }) {
     } finally { setLoading(false); }
   }
 
-  function deleteUser(email) {
+  async function deleteUser(email) {
     if (email === auth.email) {
       alert('Vous ne pouvez pas supprimer votre propre compte.'); return;
     }
-    if (!confirm('Supprimer cet utilisateur ?')) return;
-    const users = getUsers().filter(u => u.email !== email);
-    saveUsers(users);
-    refresh();
+    const confirmed = confirm(
+      `⚠️ Supprimer définitivement ${email} ?\n\n` +
+      `Son compte sera supprimé de l'application. Il ne pourra plus se connecter ` +
+      `tant qu'il ne se sera pas réinscrit.`
+    );
+    if (!confirmed) return;
+
+    setError(''); setSuccess('');
+    try {
+      const username = email.split('@')[0];
+      await deleteAccountAsAdmin(auth.token, username);
+      const users = getUsers().filter(u => u.email !== email);
+      saveUsers(users);
+      setSuccess(`✅ Compte ${email} supprimé définitivement. Cette personne ne peut plus se connecter.`);
+      refresh();
+    } catch (e) {
+      setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de suppression.' : e.message);
+    }
   }
 
   function changeRole(email, newRole) {

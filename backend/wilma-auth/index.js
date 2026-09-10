@@ -114,20 +114,29 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Création d'utilisateur par un admin — n'importe quel rôle, mais seulement si l'appelant
-// possède déjà lui-même le rôle "admin" dans son propre jeton.
-app.post('/admin/users', async (req, res) => {
+// Vérifie que l'appelant est authentifié et possède le rôle "admin" dans son propre jeton.
+// Renvoie le payload décodé, ou envoie directement la réponse d'erreur et renvoie null.
+async function requireAdmin(req, res) {
   let decoded;
   try {
     decoded = await verifyToken(req.headers['authorization']);
   } catch (err) {
-    return res.status(401).json({ error: 'Jeton invalide ou expiré.' });
+    res.status(401).json({ error: 'Jeton invalide ou expiré.' });
+    return null;
   }
-
   const callerRoles = decoded.realm_access?.roles || [];
   if (!callerRoles.includes('admin')) {
-    return res.status(403).json({ error: 'Seul un administrateur peut créer un compte.' });
+    res.status(403).json({ error: 'Seul un administrateur peut effectuer cette action.' });
+    return null;
   }
+  return decoded;
+}
+
+// Création d'utilisateur par un admin — n'importe quel rôle, mais seulement si l'appelant
+// possède déjà lui-même le rôle "admin" dans son propre jeton.
+app.post('/admin/users', async (req, res) => {
+  const decoded = await requireAdmin(req, res);
+  if (!decoded) return;
 
   const { username, email, password, nom, prenom, role } = req.body || {};
   if (!username || !email || !password) {
@@ -142,6 +151,42 @@ app.post('/admin/users', async (req, res) => {
   } catch (err) {
     console.log('Erreur création utilisateur (admin):', err.message);
     res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors de la création du compte.' });
+  }
+});
+
+// Suppression définitive d'un compte Keycloak par un admin. L'utilisateur supprimé
+// perd immédiatement toute possibilité de connexion tant qu'il ne se réinscrit pas.
+app.delete('/admin/users/:username', async (req, res) => {
+  const decoded = await requireAdmin(req, res);
+  if (!decoded) return;
+
+  const { username } = req.params;
+  if (decoded.preferred_username === username) {
+    return res.status(400).json({ error: 'Vous ne pouvez pas supprimer votre propre compte.' });
+  }
+
+  try {
+    const serviceToken = await getServiceToken();
+    const findRes = await fetch(
+      `${KEYCLOAK_URL}/admin/realms/${REALM}/users?username=${encodeURIComponent(username)}&exact=true`,
+      { headers: { Authorization: `Bearer ${serviceToken}` } }
+    );
+    if (!findRes.ok) throw Object.assign(new Error('Recherche de l\'utilisateur impossible.'), { status: findRes.status });
+    const found = await findRes.json();
+    if (!found.length) {
+      return res.status(404).json({ error: 'Aucun compte Keycloak avec ce nom d\'utilisateur.' });
+    }
+
+    const delRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users/${found[0].id}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${serviceToken}` },
+    });
+    if (!delRes.ok) throw Object.assign(new Error(`Keycloak (${delRes.status})`), { status: delRes.status });
+
+    res.status(200).json({ ok: true, username });
+  } catch (err) {
+    console.log('Erreur suppression utilisateur (admin):', err.message);
+    res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors de la suppression du compte.' });
   }
 });
 

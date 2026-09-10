@@ -170,19 +170,16 @@ export default function Parcelles({ auth }) {
             {view === 'map'    && `📍 Carte — ${selected?.nom}`}
           </span>
         </div>
-        {view === 'list' && auth.role !== 'agronome' && (
+        {view === 'list' && (
           <button className="btn-add-parc" onClick={() => { resetForm(); setView('add'); setError(''); setSuccess(''); }}>
             ➕ Ajouter
           </button>
         )}
-        {view === 'detail' && auth.role !== 'agronome' && (
+        {view === 'detail' && (
           <div style={{display:'flex', gap:'8px'}}>
             <button className="btn-map" onClick={() => startEdit(selected)}>✏️ Modifier</button>
             <button className="btn-map" onClick={() => setView('map')}>📍 Carte</button>
           </div>
-        )}
-        {view === 'detail' && auth.role === 'agronome' && (
-          <button className="btn-map" onClick={() => setView('map')}>📍 Carte</button>
         )}
       </div>
 
@@ -200,9 +197,7 @@ export default function Parcelles({ auth }) {
           <div className="parc-empty">
             <div className="parc-empty-icon">🧭</div>
             <div className="parc-empty-title">Aucune parcelle</div>
-            <div className="parc-empty-sub">
-              {auth.role === 'agronome' ? 'Aucune parcelle assignée.' : 'Cliquez sur "+ Ajouter" pour commencer.'}
-            </div>
+            <div className="parc-empty-sub">Cliquez sur "+ Ajouter" pour commencer.</div>
           </div>
         ) : (
           <div className="parc-grid">
@@ -217,9 +212,7 @@ export default function Parcelles({ auth }) {
                       <div className="parc-card-nom">{p.nom}</div>
                       <div className="parc-card-sub">{p.culture} · {p.superficie} ha · {p.region}</div>
                     </div>
-                    {auth.role !== 'agronome' && (
-                      <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
-                    )}
+                    <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
                   </div>
                   <div className="parc-card-body">
                     <div className="parc-stats">

@@ -38,3 +38,17 @@ export async function createAccountAsAdmin(token, { username, email, password, n
   if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
   return body;
 }
+
+// Suppression définitive du compte Keycloak d'un utilisateur — réservé à un admin.
+export async function deleteAccountAsAdmin(token, username) {
+  const res = await fetch(`${CONFIG.KEYCLOAK_BASE_URL}/admin/users/${encodeURIComponent(username)}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'ngrok-skip-browser-warning': 'true',
+    },
+  });
+  const body = await readBody(res);
+  if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
+  return body;
+}
