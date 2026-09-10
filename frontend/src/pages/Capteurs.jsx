@@ -147,8 +147,9 @@ export default function Capteurs({ auth }) {
     }
 
     if (!('serial' in navigator)) {
-      alert('Web Serial API non supportée.\nUtilisez Chrome ou Edge (PC/Android).\n\nMode démonstration activé.');
-      demoData(); return;
+      alert('Web Serial API non supportée par ce navigateur.\nUtilisez Chrome ou Edge (PC/Android) pour connecter le capteur 8-en-1.');
+      setSerialSt('unsupported');
+      return;
     }
 
     try {
@@ -158,9 +159,8 @@ export default function Capteurs({ auth }) {
       setPort(p); setSerialSt('connected');
       readLoop(p);
     } catch(e) {
-      if (e.name !== 'NotFoundError') setSerialSt('error');
-      else setSerialSt('disconnected');
-      demoData();
+      // Aucune valeur inventée : sans capteur réellement branché, sol reste vide.
+      setSerialSt(e.name === 'NotFoundError' ? 'disconnected' : 'error');
     }
   }
 
@@ -234,26 +234,6 @@ export default function Capteurs({ auth }) {
     } catch(e) {}
   }
 
-  // Démo data
-  function demoData() {
-    if (!selectedId) return;
-    const demo = {
-      humidite:    Math.round((25 + Math.random()*40) * 10) / 10,
-      temperature: Math.round((24 + Math.random()*10) * 10) / 10,
-      ec:          Math.round(200 + Math.random()*400),
-      ph:          Math.round((5.5 + Math.random()*2) * 10) / 10,
-      n:           Math.round(20 + Math.random()*80),
-      p:           Math.round(10 + Math.random()*50),
-      k:           Math.round(60 + Math.random()*120),
-      luminosite:  Math.round(400 + Math.random()*600),
-      updatedAt:   new Date().toLocaleTimeString('fr-FR'),
-    };
-    setSol(demo);
-    setSol8(selectedId, { ...demo, updatedAt: new Date().toISOString() });
-    pushReleve(demo, selectedId);
-    setSerialSt('demo');
-  }
-
   function windDir(deg) {
     const dirs = ['N','NE','E','SE','S','SO','O','NO'];
     return dirs[Math.round(deg / 45) % 8];
@@ -263,15 +243,15 @@ export default function Capteurs({ auth }) {
     disconnected: '🔌 Connecter le capteur 8-en-1',
     connecting:   '⏳ Connexion...',
     connected:    '✅ Connecté — Cliquer pour déconnecter',
-    demo:         '📊 Mode démo — Cliquer pour reconnecter',
-    error:        '❌ Erreur — Réessayer',
+    unsupported:  '❌ Navigateur non compatible (Chrome/Edge requis)',
+    error:        '❌ Erreur de connexion — Réessayer',
   }[serialSt];
 
   const serialColor = {
     disconnected: '#1565c0',
     connecting:   '#e65100',
     connected:    '#2e7d32',
-    demo:         '#6a1b9a',
+    unsupported:  '#c62828',
     error:        '#c62828',
   }[serialSt];
 

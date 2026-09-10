@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getSols } from '../utils/sols';
 import { getCulturesList } from '../utils/cultures';
 import { listParcelles, createParcelle, updateParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
+import { listAccountsAsAdmin } from '../utils/accounts';
 import './Parcelles.css';
 
 function getDAS(semis) {
@@ -44,6 +45,8 @@ export default function Parcelles({ auth }) {
   const [editingId, setEditingId] = useState(null);
   const [error,     setError]     = useState('');
   const [success,   setSuccess]   = useState('');
+  const [ownerNames,setOwnerNames]= useState({}); // email -> "Prénom NOM" (admin uniquement)
+  const [ownerTab,  setOwnerTab]  = useState('all');
   const mapRef = useRef(null);
 
   const [fNom,       setFNom]       = useState('');
@@ -66,6 +69,19 @@ export default function Parcelles({ auth }) {
   }
 
   useEffect(() => { reloadParcelles(); }, []);
+
+  // Noms réels (Prénom NOM) des propriétaires, via Keycloak — pour libeller
+  // les onglets admin autrement que par un simple nom d'utilisateur/email.
+  useEffect(() => {
+    if (auth.role !== 'admin') return;
+    listAccountsAsAdmin(auth.token).then(list => {
+      const map = {};
+      list.forEach(u => {
+        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+      });
+      setOwnerNames(map);
+    }).catch(() => { /* affichage dégradé (username brut) si Keycloak injoignable */ });
+  }, []);
 
   useEffect(() => {
     if (view === 'map' && selected) setTimeout(() => initMap(selected), 200);
@@ -183,28 +199,20 @@ export default function Parcelles({ auth }) {
     );
   }
 
-  // Vue admin : parcelles regroupées par propriétaire, plutôt que mélangées.
-  function renderGroupedByOwner() {
+  // Onglets admin : un onglet "Toutes" + un onglet par propriétaire, libellé
+  // avec son vrai Prénom NOM (Keycloak) plutôt qu'un email ou nom d'utilisateur.
+  function ownerLabel(owner, fallback) {
+    return ownerNames[owner] || fallback || owner || 'Propriétaire inconnu';
+  }
+
+  function getOwnerTabs() {
     const groups = new Map();
     for (const p of parcelles) {
       const key = p.owner || 'inconnu';
-      if (!groups.has(key)) groups.set(key, { ownerName: p.ownerName || p.owner || 'Propriétaire inconnu', owner: p.owner, items: [] });
-      groups.get(key).items.push(p);
+      if (!groups.has(key)) groups.set(key, { owner: p.owner, label: ownerLabel(p.owner, p.ownerName), count: 0 });
+      groups.get(key).count++;
     }
-    return (
-      <>
-        {[...groups.values()].map(g => (
-          <div key={g.owner || g.ownerName} className="parc-owner-group">
-            <div className="parc-owner-header">
-              👤 {g.ownerName}{g.owner ? ` (${g.owner})` : ''} — {g.items.length} parcelle{g.items.length > 1 ? 's' : ''}
-            </div>
-            <div className="parc-grid">
-              {g.items.map(renderCard)}
-            </div>
-          </div>
-        ))}
-      </>
-    );
+    return [...groups.values()];
   }
 
   return (
@@ -219,7 +227,7 @@ export default function Parcelles({ auth }) {
             }}>← Retour</button>
           )}
           <span className="parc-toolbar-title">
-            {view === 'list'   && `🧭 Mes parcelles (${parcelles.length})`}
+            {view === 'list'   && (auth.role === 'admin' ? `🧭 Toutes les parcelles (${parcelles.length})` : `🧭 Mes parcelles (${parcelles.length})`)}
             {view === 'add'    && (editingId ? `✏️ Modifier ${fNom || ''}` : '➕ Nouvelle parcelle')}
             {view === 'detail' && `🧭 ${selected?.nom}`}
             {view === 'map'    && `📍 Carte — ${selected?.nom}`}
@@ -254,12 +262,29 @@ export default function Parcelles({ auth }) {
             <div className="parc-empty-title">Aucune parcelle</div>
             <div className="parc-empty-sub">Cliquez sur "+ Ajouter" pour commencer.</div>
           </div>
-        ) : auth.role === 'admin' ? (
-          renderGroupedByOwner()
         ) : (
-          <div className="parc-grid">
-            {parcelles.map(renderCard)}
-          </div>
+          <>
+            {auth.role === 'admin' && (
+              <div className="parc-owner-tabs">
+                <button className={`parc-owner-tab ${ownerTab==='all'?'active':''}`} onClick={() => setOwnerTab('all')}>
+                  Toutes ({parcelles.length})
+                </button>
+                {getOwnerTabs().map(g => (
+                  <button key={g.owner || g.label}
+                    className={`parc-owner-tab ${ownerTab===g.owner?'active':''}`}
+                    onClick={() => setOwnerTab(g.owner)}>
+                    👤 Parcelle de : {g.label} ({g.count})
+                  </button>
+                ))}
+              </div>
+            )}
+            <div className="parc-grid">
+              {(auth.role === 'admin' && ownerTab !== 'all'
+                ? parcelles.filter(p => p.owner === ownerTab)
+                : parcelles
+              ).map(renderCard)}
+            </div>
+          </>
         )
       )}
 
