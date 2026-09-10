@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
 import { getSols, saveSols, resetSols, DEFAULT_SOLS } from '../utils/sols';
-import { createAccountAsAdmin, deleteAccountAsAdmin } from '../utils/accounts';
+import { createAccountAsAdmin, deleteAccountAsAdmin, listAccountsAsAdmin, changeAccountRole, resetAccountPassword } from '../utils/accounts';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -12,20 +12,24 @@ function isGmail(email) {
   return /^[^\s@]+@gmail\.com$/i.test(email);
 }
 
-function getUsers() {
+// Métadonnées locales (nationalité, profession, maraîchage) — Keycloak ne les stocke pas.
+// Purement décoratif : la vraie liste des comptes vient toujours de Keycloak (listAccountsAsAdmin),
+// jamais de ce localStorage, qui n'est visible que depuis le navigateur qui l'a écrit.
+function getLocalMeta() {
   return JSON.parse(localStorage.getItem('agrisens_users') || '[]');
 }
 
-function saveUsers(users) {
+function saveLocalMeta(users) {
   localStorage.setItem('agrisens_users', JSON.stringify(users));
 }
 
 export default function AdminPanel({ auth, onBack }) {
-  const [users, setUsers]     = useState(getUsers());
+  const [users, setUsers]     = useState([]);
   const [tab, setTab]         = useState('list');
   const [error, setError]     = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [listLoading, setListLoading] = useState(true);
   const [search, setSearch]   = useState('');
   const [editUser, setEditUser] = useState(null);
 
@@ -54,11 +58,29 @@ export default function AdminPanel({ auth, onBack }) {
     return m;
   });
 
-  useEffect(() => { setUsers(getUsers()); }, [tab]);
+  useEffect(() => { refresh(); }, [tab]);
 
-  function refresh() {
-    const u = getUsers();
-    setUsers(u);
+  async function refresh() {
+    setListLoading(true);
+    try {
+      const kcUsers = await listAccountsAsAdmin(auth.token);
+      const meta = getLocalMeta();
+      const merged = kcUsers.map(u => {
+        const email = u.email || `${u.username}@gmail.com`;
+        const m = meta.find(x => x.email === email);
+        return {
+          email, username: u.username,
+          nom: u.nom || m?.nom || '', prenom: u.prenom || m?.prenom || '',
+          role: u.role, enabled: u.enabled,
+          nationalite: m?.nationalite || '—', profession: m?.profession || '—',
+          maraichage: m?.maraichage, createdBy: m?.createdBy,
+          createdAt: m?.createdAt || u.createdAt,
+        };
+      });
+      setUsers(merged);
+    } catch (e) {
+      setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de gestion des comptes.' : e.message);
+    } finally { setListLoading(false); }
   }
 
   async function addUser(e) {
@@ -73,7 +95,6 @@ export default function AdminPanel({ auth, onBack }) {
     if (fPwd.length < 6) {
       setError('Mot de passe : minimum 6 caractères.'); return;
     }
-    const users = getUsers();
     if (users.find(u => u.email === fEmail)) {
       setError('Cette adresse email est déjà utilisée.'); return;
     }
@@ -81,24 +102,25 @@ export default function AdminPanel({ auth, onBack }) {
     try {
       const username = fEmail.split('@')[0];
       await createAccountAsAdmin(auth.token, { username, email: fEmail, password: fPwd, nom: fNom, prenom: fPrenom, role: fRole });
-      users.push({
+      const meta = getLocalMeta();
+      meta.push({
         nom: fNom, prenom: fPrenom,
-        email: fEmail, role: fRole, nationalite: fNat,
+        email: fEmail, nationalite: fNat,
         profession: fProf, maraichage: fMaraich,
         createdBy: auth.email,
         createdAt: new Date().toISOString(),
       });
-      saveUsers(users);
+      saveLocalMeta(meta);
       setSuccess(`✅ ${fRole === 'admin' ? 'Admin' : fRole === 'technicien' ? 'Technicien' : 'Agronome'} ${fPrenom} ${fNom} créé — le compte Keycloak est actif, il peut se connecter dès maintenant.`);
       setFNom(''); setFPrenom(''); setFEmail(''); setFPwd('');
       setFRole('technicien');
-      refresh();
+      await refresh();
     } catch (e) {
       setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de création de compte.' : e.message);
     } finally { setLoading(false); }
   }
 
-  async function deleteUser(email) {
+  async function deleteUser(email, username) {
     if (email === auth.email) {
       alert('Vous ne pouvez pas supprimer votre propre compte.'); return;
     }
@@ -111,32 +133,38 @@ export default function AdminPanel({ auth, onBack }) {
 
     setError(''); setSuccess('');
     try {
-      const username = email.split('@')[0];
       await deleteAccountAsAdmin(auth.token, username);
-      const users = getUsers().filter(u => u.email !== email);
-      saveUsers(users);
+      const meta = getLocalMeta().filter(u => u.email !== email);
+      saveLocalMeta(meta);
       setSuccess(`✅ Compte ${email} supprimé définitivement. Cette personne ne peut plus se connecter.`);
-      refresh();
+      await refresh();
     } catch (e) {
       setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de suppression.' : e.message);
     }
   }
 
-  function changeRole(email, newRole) {
+  async function changeRole(email, username, newRole) {
     if (email === auth.email) {
       alert('Vous ne pouvez pas modifier votre propre rôle.'); return;
     }
-    const users = getUsers().map(u => u.email === email ? { ...u, role: newRole } : u);
-    saveUsers(users);
-    refresh();
+    setError(''); setSuccess('');
+    try {
+      await changeAccountRole(auth.token, username, newRole);
+      await refresh();
+    } catch (e) {
+      setError(e.message === 'Failed to fetch' ? 'Impossible de joindre le service de gestion des comptes.' : e.message);
+    }
   }
 
-  function resetPwd(email) {
+  async function resetPwd(username) {
     const newPwd = prompt('Nouveau mot de passe (min. 6 caractères) :');
     if (!newPwd || newPwd.length < 6) { alert('Mot de passe trop court.'); return; }
-    const users = getUsers().map(u => u.email === email ? { ...u, password: newPwd } : u);
-    saveUsers(users);
-    alert('✅ Mot de passe réinitialisé.');
+    try {
+      await resetAccountPassword(auth.token, username, newPwd);
+      alert('✅ Mot de passe réinitialisé.');
+    } catch (e) {
+      alert('❌ ' + (e.message === 'Failed to fetch' ? 'Impossible de joindre le service.' : e.message));
+    }
   }
 
   function updateKc(nom, idx, val) {
@@ -261,6 +289,9 @@ export default function AdminPanel({ auth, onBack }) {
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
+          {listLoading ? (
+            <div className="empty-msg">⏳ Chargement des comptes (Keycloak)…</div>
+          ) : (
           <div className="users-list">
             {filtered.map(u => (
               <div className="user-card" key={u.email}>
@@ -274,7 +305,7 @@ export default function AdminPanel({ auth, onBack }) {
                       {u.maraichage === 'oui' && ' · 🥦 Maraîchage'}
                     </div>
                     <div className="user-date">
-                      Inscrit le {new Date(u.createdAt).toLocaleDateString('fr-FR')}
+                      {u.createdAt ? `Inscrit le ${new Date(u.createdAt).toLocaleDateString('fr-FR')}` : ''}
                       {u.createdBy && ` · Par ${u.createdBy}`}
                     </div>
                   </div>
@@ -287,17 +318,17 @@ export default function AdminPanel({ auth, onBack }) {
                     <select
                       className="select-role"
                       value={u.role}
-                      onChange={ev => changeRole(u.email, ev.target.value)}
+                      onChange={ev => changeRole(u.email, u.username, ev.target.value)}
                       disabled={u.email === auth.email}
                     >
                       {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
                     </select>
-                    <button className="btn-action reset" onClick={() => resetPwd(u.email)} title="Réinitialiser MDP">
+                    <button className="btn-action reset" onClick={() => resetPwd(u.username)} title="Réinitialiser MDP">
                       🔑
                     </button>
                     <button
                       className="btn-action delete"
-                      onClick={() => deleteUser(u.email)}
+                      onClick={() => deleteUser(u.email, u.username)}
                       disabled={u.email === auth.email}
                       title="Supprimer"
                     >
@@ -311,6 +342,7 @@ export default function AdminPanel({ auth, onBack }) {
               <div className="empty-msg">Aucun utilisateur trouvé.</div>
             )}
           </div>
+          )}
         </div>
       )}
 

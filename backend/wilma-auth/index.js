@@ -154,6 +154,17 @@ app.post('/admin/users', async (req, res) => {
   }
 });
 
+async function findUserByUsername(username, serviceToken) {
+  const findRes = await fetch(
+    `${KEYCLOAK_URL}/admin/realms/${REALM}/users?username=${encodeURIComponent(username)}&exact=true`,
+    { headers: { Authorization: `Bearer ${serviceToken}` } }
+  );
+  if (!findRes.ok) throw Object.assign(new Error('Recherche de l\'utilisateur impossible.'), { status: findRes.status });
+  const found = await findRes.json();
+  if (!found.length) throw Object.assign(new Error('Aucun compte Keycloak avec ce nom d\'utilisateur.'), { status: 404 });
+  return found[0];
+}
+
 // Suppression définitive d'un compte Keycloak par un admin. L'utilisateur supprimé
 // perd immédiatement toute possibilité de connexion tant qu'il ne se réinscrit pas.
 app.delete('/admin/users/:username', async (req, res) => {
@@ -167,17 +178,9 @@ app.delete('/admin/users/:username', async (req, res) => {
 
   try {
     const serviceToken = await getServiceToken();
-    const findRes = await fetch(
-      `${KEYCLOAK_URL}/admin/realms/${REALM}/users?username=${encodeURIComponent(username)}&exact=true`,
-      { headers: { Authorization: `Bearer ${serviceToken}` } }
-    );
-    if (!findRes.ok) throw Object.assign(new Error('Recherche de l\'utilisateur impossible.'), { status: findRes.status });
-    const found = await findRes.json();
-    if (!found.length) {
-      return res.status(404).json({ error: 'Aucun compte Keycloak avec ce nom d\'utilisateur.' });
-    }
+    const user = await findUserByUsername(username, serviceToken);
 
-    const delRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users/${found[0].id}`, {
+    const delRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users/${user.id}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${serviceToken}` },
     });
@@ -187,6 +190,119 @@ app.delete('/admin/users/:username', async (req, res) => {
   } catch (err) {
     console.log('Erreur suppression utilisateur (admin):', err.message);
     res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors de la suppression du compte.' });
+  }
+});
+
+// Liste tous les comptes réels du realm (source de vérité = Keycloak, jamais le
+// localStorage d'un navigateur) avec leur rôle, pour le tableau de bord admin.
+app.get('/admin/users', async (req, res) => {
+  const decoded = await requireAdmin(req, res);
+  if (!decoded) return;
+
+  try {
+    const serviceToken = await getServiceToken();
+    const listRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users?max=500`, {
+      headers: { Authorization: `Bearer ${serviceToken}` },
+    });
+    if (!listRes.ok) throw Object.assign(new Error(`Keycloak (${listRes.status})`), { status: listRes.status });
+    const users = await listRes.json();
+
+    const withRoles = await Promise.all(users.map(async u => {
+      const rolesRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users/${u.id}/role-mappings/realm`, {
+        headers: { Authorization: `Bearer ${serviceToken}` },
+      });
+      const roles = rolesRes.ok ? (await rolesRes.json()).map(r => r.name) : [];
+      const role = ROLES_VALIDES.find(r => roles.includes(r)) || 'agronome';
+      return {
+        username: u.username, email: u.email,
+        nom: u.lastName || '', prenom: u.firstName || '',
+        enabled: u.enabled, role,
+        createdAt: u.createdTimestamp ? new Date(u.createdTimestamp).toISOString() : null,
+      };
+    }));
+
+    res.status(200).json(withRoles);
+  } catch (err) {
+    console.log('Erreur listing utilisateurs (admin):', err.message);
+    res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors de la lecture des comptes.' });
+  }
+});
+
+// Change le rôle réel (realm role) d'un utilisateur — remplace tout rôle
+// admin/technicien/agronome existant par le nouveau.
+app.put('/admin/users/:username/role', async (req, res) => {
+  const decoded = await requireAdmin(req, res);
+  if (!decoded) return;
+
+  const { username } = req.params;
+  const { role } = req.body || {};
+  if (decoded.preferred_username === username) {
+    return res.status(400).json({ error: 'Vous ne pouvez pas modifier votre propre rôle.' });
+  }
+  if (!ROLES_VALIDES.includes(role)) {
+    return res.status(400).json({ error: 'Rôle invalide.' });
+  }
+
+  try {
+    const serviceToken = await getServiceToken();
+    const user = await findUserByUsername(username, serviceToken);
+    const mappingsUrl = `${KEYCLOAK_URL}/admin/realms/${REALM}/users/${user.id}/role-mappings/realm`;
+
+    const currentRes = await fetch(mappingsUrl, { headers: { Authorization: `Bearer ${serviceToken}` } });
+    const current = currentRes.ok ? await currentRes.json() : [];
+    const toRemove = current.filter(r => ROLES_VALIDES.includes(r.name));
+    if (toRemove.length) {
+      await fetch(mappingsUrl, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${serviceToken}` },
+        body: JSON.stringify(toRemove),
+      });
+    }
+
+    const roleRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/roles/${role}`, {
+      headers: { Authorization: `Bearer ${serviceToken}` },
+    });
+    if (!roleRes.ok) throw Object.assign(new Error(`Rôle "${role}" introuvable dans Keycloak.`), { status: 500 });
+    const roleObj = await roleRes.json();
+    await fetch(mappingsUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${serviceToken}` },
+      body: JSON.stringify([roleObj]),
+    });
+
+    res.status(200).json({ ok: true, username, role });
+  } catch (err) {
+    console.log('Erreur changement de rôle (admin):', err.message);
+    res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors du changement de rôle.' });
+  }
+});
+
+// Réinitialise le mot de passe d'un utilisateur (nouveau mot de passe définitif,
+// pas temporaire — l'utilisateur n'a rien à changer à sa prochaine connexion).
+app.put('/admin/users/:username/password', async (req, res) => {
+  const decoded = await requireAdmin(req, res);
+  if (!decoded) return;
+
+  const { username } = req.params;
+  const { password } = req.body || {};
+  if (!password || password.length < 6) {
+    return res.status(400).json({ error: 'Mot de passe trop court (minimum 6 caractères).' });
+  }
+
+  try {
+    const serviceToken = await getServiceToken();
+    const user = await findUserByUsername(username, serviceToken);
+    const resetRes = await fetch(`${KEYCLOAK_URL}/admin/realms/${REALM}/users/${user.id}/reset-password`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${serviceToken}` },
+      body: JSON.stringify({ type: 'password', value: password, temporary: false }),
+    });
+    if (!resetRes.ok) throw Object.assign(new Error(`Keycloak (${resetRes.status})`), { status: resetRes.status });
+
+    res.status(200).json({ ok: true, username });
+  } catch (err) {
+    console.log('Erreur réinitialisation mot de passe (admin):', err.message);
+    res.status(err.status || 500).json({ error: err.message || 'Erreur serveur lors de la réinitialisation.' });
   }
 });
 

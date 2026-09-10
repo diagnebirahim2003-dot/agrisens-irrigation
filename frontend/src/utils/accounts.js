@@ -52,3 +52,49 @@ export async function deleteAccountAsAdmin(token, username) {
   if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
   return body;
 }
+
+// Liste tous les comptes réels du realm Keycloak (source de vérité, pas le localStorage
+// d'un navigateur) — réservé à un admin.
+export async function listAccountsAsAdmin(token) {
+  const res = await fetch(`${CONFIG.KEYCLOAK_BASE_URL}/admin/users`, {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'ngrok-skip-browser-warning': 'true',
+    },
+  });
+  const body = await readBody(res);
+  if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
+  return body;
+}
+
+// Change le rôle réel d'un utilisateur dans Keycloak — réservé à un admin.
+export async function changeAccountRole(token, username, role) {
+  const res = await fetch(`${CONFIG.KEYCLOAK_BASE_URL}/admin/users/${encodeURIComponent(username)}/role`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'ngrok-skip-browser-warning': 'true',
+    },
+    body: JSON.stringify({ role }),
+  });
+  const body = await readBody(res);
+  if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
+  return body;
+}
+
+// Réinitialise le mot de passe d'un utilisateur dans Keycloak — réservé à un admin.
+export async function resetAccountPassword(token, username, password) {
+  const res = await fetch(`${CONFIG.KEYCLOAK_BASE_URL}/admin/users/${encodeURIComponent(username)}/password`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'ngrok-skip-browser-warning': 'true',
+    },
+    body: JSON.stringify({ password }),
+  });
+  const body = await readBody(res);
+  if (!res.ok) throw new Error(body.error || `Erreur (${res.status})`);
+  return body;
+}
