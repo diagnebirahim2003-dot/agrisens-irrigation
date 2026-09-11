@@ -21,14 +21,12 @@ function gauge(val, min, max) {
   return Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
 }
 
-// Rend visibles les caractères de contrôle (\r, \n, octets non imprimables) pour
-// que le format exact envoyé par le capteur (terminaison de ligne, etc.) soit lisible.
-function escapeRaw(s) {
-  return s
-    .replace(/\r/g, '\\r')
-    .replace(/\n/g, '\\n\n')
-    .replace(/[\x00-\x08\x0E-\x1F]/g, c => '\\x' + c.charCodeAt(0).toString(16).padStart(2, '0'));
-}
+// Trame Modbus RTU envoyée au capteur : esclave 0x01, fonction 0x03 (lecture
+// de registres de maintien), adresse de départ 0x0000, 7 registres, CRC inclus —
+// identique à la commande utilisée par le script Python de l'expérimentation
+// (COMMANDE_MODBUS). Le capteur ne parle que si on l'interroge ainsi : il
+// n'émet jamais de lui-même en continu.
+const MODBUS_CMD = new Uint8Array([0x01, 0x03, 0x00, 0x00, 0x00, 0x07, 0x04, 0x08]);
 
 export default function Capteurs({ auth }) {
   const CULTURES = getCultures();
@@ -56,8 +54,8 @@ export default function Capteurs({ auth }) {
   const [stabilizeLeft, setStabilizeLeft] = useState(0);
   const [saveMsg,       setSaveMsg]       = useState('');
   const stabilizeTimerRef = useRef(null);
-  // Lignes brutes reçues du port série — pour diagnostiquer le format exact
-  // envoyé par le capteur quand parseLine() n'arrive pas à en extraire de valeurs.
+  // Historique des échanges Modbus (trame envoyée / réponse reçue) — pour
+  // diagnostiquer la communication avec le capteur.
   const [rawLines, setRawLines] = useState([]);
 
   // Météo état
@@ -67,7 +65,8 @@ export default function Capteurs({ auth }) {
   const [lastFetch,  setLastFetch] = useState(null);
 
   const readerRef  = useRef(null);
-  const bufferRef  = useRef('');
+  const rxBufferRef= useRef([]); // octets bruts accumulés depuis le dernier sondage Modbus
+  const pollTimerRef = useRef(null);
   const timerRef   = useRef(null);
   const coordsRef  = useRef({ lat: SITE_LAT, lng: SITE_LNG, nom: 'USSEIN Kaolack' });
 
@@ -223,12 +222,16 @@ export default function Capteurs({ auth }) {
       setRawLines([]);
       startStabilizeCountdown();
       readLoop(p);
+      startPolling(p);
     } catch(e) {
       // Aucune valeur inventée : sans capteur réellement branché, sol reste vide.
       setSerialSt(e.name === 'NotFoundError' ? 'disconnected' : 'error');
     }
   }
 
+  // Écoute passive du port — accumule les octets bruts reçus. Le capteur ne
+  // répond jamais de lui-même : ces octets n'arrivent qu'en réponse à une
+  // trame Modbus envoyée par pollOnce().
   async function readLoop(p) {
     const reader = p.readable.getReader();
     readerRef.current = reader;
@@ -236,17 +239,7 @@ export default function Capteurs({ auth }) {
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
-        const chunk = new TextDecoder().decode(value);
-        // Capture TOUT ce qui arrive sur le port, même sans retour à la ligne —
-        // certains capteurs ne terminent pas leurs trames par '\n', et le panneau
-        // de diagnostic doit rester utile dans ce cas aussi.
-        if (chunk) {
-          setRawLines(prev => [...prev, chunk].slice(-30));
-        }
-        bufferRef.current += chunk;
-        const lines = bufferRef.current.split('\n');
-        bufferRef.current = lines.pop();
-        lines.forEach(parseLine);
+        if (value) rxBufferRef.current.push(...value);
       }
     } catch(e) {
       console.log('Serial ended:', e.message);
@@ -257,6 +250,49 @@ export default function Capteurs({ auth }) {
     }
   }
 
+  // Interroge le capteur en Modbus RTU (comme collecte_capteur.py) : envoie la
+  // commande de lecture des 7 registres, attend la réponse, puis décode
+  // Humidité/Température/EC/pH/N/P/K depuis les octets bruts.
+  async function pollOnce(p) {
+    if (!p || !p.writable) return;
+    rxBufferRef.current = [];
+    try {
+      const writer = p.writable.getWriter();
+      try { await writer.write(MODBUS_CMD); } finally { writer.releaseLock(); }
+    } catch (e) { return; }
+
+    await new Promise(r => setTimeout(r, 700));
+
+    const bytes = rxBufferRef.current.slice();
+    const hex = bytes.map(b => b.toString(16).padStart(2, '0')).join(' ');
+    const ts = new Date().toLocaleTimeString('fr-FR');
+    setRawLines(prev => [
+      ...prev,
+      `[${ts}] TX: 01 03 00 00 00 07 04 08  →  RX (${bytes.length} octet${bytes.length>1?'s':''}): ${hex || '(aucune réponse)'}`,
+    ].slice(-12));
+
+    if (bytes.length >= 17 && bytes[0] === 0x01 && bytes[1] === 0x03) {
+      const humidite    = ((bytes[3] << 8) | bytes[4]) / 10;
+      const temperature = ((bytes[5] << 8) | bytes[6]) / 10;
+      const ec          = (bytes[7] << 8) | bytes[8];
+      const ph          = ((bytes[9] << 8) | bytes[10]) / 10;
+      const n           = (bytes[11] << 8) | bytes[12];
+      const pVal        = (bytes[13] << 8) | bytes[14];
+      const k           = (bytes[15] << 8) | bytes[16];
+      setSol(prev => ({ ...prev, humidite, temperature, ec, ph, n, p: pVal, k, updatedAt: new Date().toLocaleTimeString('fr-FR') }));
+    }
+  }
+
+  function startPolling(p) {
+    clearInterval(pollTimerRef.current);
+    pollOnce(p);
+    pollTimerRef.current = setInterval(() => pollOnce(p), 4000);
+  }
+
+  function stopPolling() {
+    clearInterval(pollTimerRef.current);
+  }
+
   async function disconnectSerial() {
     try {
       if (readerRef.current) { await readerRef.current.cancel(); readerRef.current = null; }
@@ -264,44 +300,7 @@ export default function Capteurs({ auth }) {
     } catch(e) {}
     setSerialSt('disconnected');
     stopStabilizeCountdown();
-  }
-
-  // Parser ligne capteur
-  // Format: "HUM:42.5,TEMP:28.1,EC:350,PH:6.8,N:45,P:30,K:120,LUX:850"
-  // ou CSV: "42.5,28.1,350,6.8,45,30,120,850"
-  function parseLine(line) {
-    line = line.trim();
-    if (!line) return;
-    try {
-      let data = {};
-      if (line.includes(':')) {
-        line.split(',').forEach(p => {
-          const [k, v] = p.split(':');
-          const map = {
-            HUM:'humidite', MOISTURE:'humidite',
-            TEMP:'temperature', TEMP_SOIL:'temperature',
-            EC:'ec', PH:'ph',
-            N:'n', NO3:'n',
-            P:'p', PH2:'p',
-            K:'k',
-            LUX:'luminosite', LIGHT:'luminosite',
-          };
-          if (map[k?.trim()]) data[map[k.trim()]] = parseFloat(v);
-        });
-      } else {
-        const vals = line.split(',').map(Number);
-        if (vals.length >= 7) {
-          [data.humidite, data.temperature, data.ec,
-           data.ph, data.n, data.p, data.k] = vals;
-          if (vals[7]) data.luminosite = vals[7];
-        }
-      }
-      // Affichage en direct seulement — la sauvegarde se fait explicitement
-      // via le bouton "Enregistrer cette mesure", pas à chaque trame reçue.
-      if (Object.keys(data).length > 0 && selectedId) {
-        setSol(prev => ({ ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') }));
-      }
-    } catch(e) {}
+    stopPolling();
   }
 
   function windDir(deg) {
@@ -451,8 +450,8 @@ export default function Capteurs({ auth }) {
 
         {serialSt === 'connected' && stabilizeLeft === 0 && sol.humidite === null && (
           <div className="cap-warn">
-            ⚠️ Le port est connecté mais aucune valeur exploitable n'a été reçue.
-            Regardez le panneau "Lignes brutes reçues" ci-dessous pour voir ce qu'envoie réellement le capteur.
+            ⚠️ Le capteur est interrogé toutes les 4s (protocole Modbus) mais ne répond pas exploitablement.
+            Regardez le panneau de communication ci-dessous pour voir ce qui est envoyé/reçu.
           </div>
         )}
 
@@ -465,8 +464,8 @@ export default function Capteurs({ auth }) {
 
         {rawLines.length > 0 && (
           <details className="raw-debug" open={serialSt === 'connected' && sol.humidite === null}>
-            <summary>🔍 Lignes brutes reçues du capteur ({rawLines.length})</summary>
-            <pre className="raw-lines">{rawLines.map(escapeRaw).join('') || '(rien reçu pour l\'instant)'}</pre>
+            <summary>🔍 Communication Modbus avec le capteur ({rawLines.length})</summary>
+            <pre className="raw-lines">{rawLines.join('\n')}</pre>
           </details>
         )}
 
