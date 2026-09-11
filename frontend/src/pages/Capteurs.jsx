@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { pushReleve, getSol8, setSol8 } from '../utils/historique';
 import { listParcelles } from '../utils/orion';
+import { listAccountsAsAdmin } from '../utils/accounts';
 import { getCultures } from '../utils/cultures';
 import './Capteurs.css';
 
@@ -30,6 +31,7 @@ export default function Capteurs({ auth }) {
   const [parcLoading, setParcLoading] = useState(true);
   const [parcError,   setParcError]   = useState('');
   const [selectedId,  setSelectedId]  = useState('');
+  const [ownerNames,  setOwnerNames]  = useState({}); // email -> "Prénom NOM" (admin uniquement)
 
   // 8-en-1 état
   const [port,       setPort]      = useState(null);
@@ -68,6 +70,19 @@ export default function Capteurs({ auth }) {
       clearInterval(timerRef.current);
       disconnectSerial();
     };
+  }, []);
+
+  // Noms réels (Prénom NOM) des propriétaires — pour que l'admin sache
+  // à qui appartient chaque parcelle/culture.
+  useEffect(() => {
+    if (auth.role !== 'admin') return;
+    listAccountsAsAdmin(auth.token).then(list => {
+      const map = {};
+      list.forEach(u => {
+        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+      });
+      setOwnerNames(map);
+    }).catch(() => { /* affichage dégradé si Keycloak injoignable */ });
   }, []);
 
   // Changer de parcelle : on recharge son dernier relevé (ou on repart à vide),
@@ -332,7 +347,10 @@ export default function Capteurs({ auth }) {
                 <span className="psi-icon">{CULTURES[p.culture]?.icon||'🌱'}</span>
                 <div>
                   <div className="psi-nom">{p.nom}</div>
-                  <div className="psi-sub">{p.culture}{p.ownerName ? ' · '+p.ownerName : ''}</div>
+                  <div className="psi-sub">
+                    {p.culture}
+                    {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
+                  </div>
                 </div>
               </div>
             ))}
@@ -350,7 +368,10 @@ export default function Capteurs({ auth }) {
           <div className="serial-hint">
             💡 Branchez le capteur 8-en-1 via USB-C puis cliquez "Connecter".<br/>
             Compatible Chrome et Edge sur PC et Android.
-            <br/>Les relevés seront enregistrés pour la parcelle « {selectedParc?.nom} ».
+            <br/>Les relevés seront enregistrés pour la parcelle « {selectedParc?.nom} »
+            ({selectedParc?.culture}{auth.role === 'admin' && selectedParc
+              ? ` · 👤 ${ownerNames[selectedParc.owner] || selectedParc.ownerName || selectedParc.owner}`
+              : ''}).
           </div>
         )}
 

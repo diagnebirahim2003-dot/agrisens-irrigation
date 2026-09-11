@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getHistorique } from '../utils/historique';
 import { listParcelles } from '../utils/orion';
+import { listAccountsAsAdmin } from '../utils/accounts';
 import { getCultures } from '../utils/cultures';
 import './Graphes.css';
 
@@ -46,6 +47,7 @@ export default function Graphes({ auth }) {
   const [parcelles,  setParcelles]  = useState([]);
   const [parcLoading,setParcLoading]= useState(true);
   const [selectedId, setSelectedId] = useState('');
+  const [ownerNames, setOwnerNames] = useState({}); // email -> "Prénom NOM" (admin uniquement)
   const [historique, setHistorique] = useState([]);
   const [param, setParam] = useState('humidite');
 
@@ -59,6 +61,19 @@ export default function Graphes({ auth }) {
       } catch { /* Orion injoignable */ }
       finally { setParcLoading(false); }
     })();
+  }, []);
+
+  // Noms réels (Prénom NOM) des propriétaires — pour que l'admin sache
+  // à qui appartient chaque parcelle/culture.
+  useEffect(() => {
+    if (auth.role !== 'admin') return;
+    listAccountsAsAdmin(auth.token).then(list => {
+      const map = {};
+      list.forEach(u => {
+        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+      });
+      setOwnerNames(map);
+    }).catch(() => { /* affichage dégradé si Keycloak injoignable */ });
   }, []);
 
   // Chaque parcelle/culture garde ses propres relevés — l'historique affiché
@@ -92,7 +107,8 @@ export default function Graphes({ auth }) {
                 className={`graph-param-btn ${selectedId === p.id ? 'active' : ''}`}
                 onClick={() => setSelectedId(p.id)}
               >
-                {CULTURES[p.culture]?.icon || '🌱'} {p.nom}
+                {CULTURES[p.culture]?.icon || '🌱'} {p.nom} — {p.culture}
+                {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
               </button>
             ))}
           </div>
