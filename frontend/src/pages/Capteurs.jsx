@@ -47,6 +47,9 @@ export default function Capteurs({ auth }) {
   const [stabilizeLeft, setStabilizeLeft] = useState(0);
   const [saveMsg,       setSaveMsg]       = useState('');
   const stabilizeTimerRef = useRef(null);
+  // Lignes brutes reçues du port série — pour diagnostiquer le format exact
+  // envoyé par le capteur quand parseLine() n'arrive pas à en extraire de valeurs.
+  const [rawLines, setRawLines] = useState([]);
 
   // Météo état
   const [meteo,      setMeteo]     = useState(null);
@@ -208,6 +211,7 @@ export default function Capteurs({ auth }) {
       const p = await navigator.serial.requestPort();
       await p.open({ baudRate:9600, dataBits:8, stopBits:1, parity:'none' });
       setPort(p); setSerialSt('connected');
+      setRawLines([]);
       startStabilizeCountdown();
       readLoop(p);
     } catch(e) {
@@ -226,6 +230,9 @@ export default function Capteurs({ auth }) {
         bufferRef.current += new TextDecoder().decode(value);
         const lines = bufferRef.current.split('\n');
         bufferRef.current = lines.pop();
+        if (lines.length > 0) {
+          setRawLines(prev => [...prev, ...lines.map(l => l.trim()).filter(Boolean)].slice(-12));
+        }
         lines.forEach(parseLine);
       }
     } catch(e) {
@@ -422,10 +429,17 @@ export default function Capteurs({ auth }) {
           </div>
         )}
 
-        {serialSt === 'connected' && stabilizeLeft === 0 && (
+        {serialSt === 'connected' && stabilizeLeft === 0 && sol.humidite !== null && (
           <div className="serial-hint ready">
             ✅ Mesures stabilisées — les valeurs continuent de se mettre à jour en direct avec le capteur.
             Cliquez "Enregistrer" pour sauvegarder la dernière lecture.
+          </div>
+        )}
+
+        {serialSt === 'connected' && stabilizeLeft === 0 && sol.humidite === null && (
+          <div className="cap-warn">
+            ⚠️ Le port est connecté mais aucune valeur exploitable n'a été reçue.
+            Regardez le panneau "Lignes brutes reçues" ci-dessous pour voir ce qu'envoie réellement le capteur.
           </div>
         )}
 
@@ -435,6 +449,13 @@ export default function Capteurs({ auth }) {
           </button>
         )}
         {saveMsg && <div className="cap-success">{saveMsg}</div>}
+
+        {rawLines.length > 0 && (
+          <details className="raw-debug" open={serialSt === 'connected' && sol.humidite === null}>
+            <summary>🔍 Lignes brutes reçues du capteur ({rawLines.length})</summary>
+            <pre className="raw-lines">{rawLines.join('\n')}</pre>
+          </details>
+        )}
 
         <div className="sol-grid">
 
