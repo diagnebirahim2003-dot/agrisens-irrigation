@@ -251,6 +251,9 @@ export default function AdminPanel({ auth, onBack }) {
             <div className="admin-sub">Connecté en tant que {auth.user} · Admin</div>
           </div>
         </div>
+        <button className="btn-back" onClick={refresh} disabled={listLoading} title="Recharger sans se reconnecter">
+          {listLoading ? '⏳' : '🔄'} Actualiser
+        </button>
       </div>
 
       {/* Stats */}

@@ -51,30 +51,30 @@ export default function Graphes({ auth }) {
   const [historique, setHistorique] = useState([]);
   const [param, setParam] = useState('humidite');
 
-  useEffect(() => {
-    (async () => {
-      setParcLoading(true);
-      try {
-        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
-        setParcelles(list);
-        if (list.length > 0) setSelectedId(list[0].id);
-      } catch { /* Orion injoignable */ }
-      finally { setParcLoading(false); }
-    })();
-  }, []);
+  // Recharge la liste des parcelles (et, pour l'admin, les noms réels des
+  // propriétaires) depuis Orion/Keycloak — sans avoir besoin de se reconnecter.
+  async function reloadParcelles() {
+    setParcLoading(true);
+    try {
+      const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+      setParcelles(list);
+      if (list.length > 0 && !selectedId) setSelectedId(list[0].id);
+    } catch { /* Orion injoignable */ }
+    finally { setParcLoading(false); }
 
-  // Noms réels (Prénom NOM) des propriétaires — pour que l'admin sache
-  // à qui appartient chaque parcelle/culture.
-  useEffect(() => {
-    if (auth.role !== 'admin') return;
-    listAccountsAsAdmin(auth.token).then(list => {
-      const map = {};
-      list.forEach(u => {
-        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
-      });
-      setOwnerNames(map);
-    }).catch(() => { /* affichage dégradé si Keycloak injoignable */ });
-  }, []);
+    if (auth.role === 'admin') {
+      try {
+        const users = await listAccountsAsAdmin(auth.token);
+        const map = {};
+        users.forEach(u => {
+          if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+        });
+        setOwnerNames(map);
+      } catch { /* affichage dégradé si Keycloak injoignable */ }
+    }
+  }
+
+  useEffect(() => { reloadParcelles(); }, []);
 
   // Chaque parcelle/culture garde ses propres relevés — l'historique affiché
   // ne concerne que la parcelle sélectionnée.
@@ -94,9 +94,14 @@ export default function Graphes({ auth }) {
       <div className="graph-section">
         <div className="graph-header">
           <div className="graph-title">📈 Historique des relevés — Capteur 8-en-1</div>
-          <span className="graph-count">
-            {historique.length} relevé{historique.length > 1 ? 's' : ''} enregistré{historique.length > 1 ? 's' : ''}
-          </span>
+          <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
+            <span className="graph-count">
+              {historique.length} relevé{historique.length > 1 ? 's' : ''} enregistré{historique.length > 1 ? 's' : ''}
+            </span>
+            <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger sans se reconnecter">
+              {parcLoading ? '⏳' : '🔄'} Actualiser
+            </button>
+          </div>
         </div>
 
         {!parcLoading && parcelles.length > 0 && (

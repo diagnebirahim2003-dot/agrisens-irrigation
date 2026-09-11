@@ -53,36 +53,40 @@ export default function Capteurs({ auth }) {
   const timerRef   = useRef(null);
   const coordsRef  = useRef({ lat: SITE_LAT, lng: SITE_LNG, nom: 'USSEIN Kaolack' });
 
-  useEffect(() => {
-    (async () => {
-      setParcLoading(true); setParcError('');
+  // Recharge la liste des parcelles (et, pour l'admin, les noms réels des
+  // propriétaires) depuis Orion/Keycloak — sans avoir besoin de se reconnecter.
+  async function reloadParcelles() {
+    setParcLoading(true); setParcError('');
+    try {
+      const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+      setParcelles(list);
+      if (list.length > 0 && !selectedId) {
+        coordsRef.current = { lat: list[0].lat, lng: list[0].lng, nom: list[0].nom };
+      }
+    } catch (e) {
+      setParcError(e.message); /* Orion injoignable : on garde les coordonnées par défaut du site */
+    } finally { setParcLoading(false); }
+
+    if (auth.role === 'admin') {
       try {
-        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
-        setParcelles(list);
-        if (list.length > 0) coordsRef.current = { lat: list[0].lat, lng: list[0].lng, nom: list[0].nom };
-      } catch (e) {
-        setParcError(e.message); /* Orion injoignable : on garde les coordonnées par défaut du site */
-      } finally { setParcLoading(false); }
-      fetchMeteo();
-      timerRef.current = setInterval(fetchMeteo, 5 * 60 * 1000); // refresh 5 min
-    })();
+        const users = await listAccountsAsAdmin(auth.token);
+        const map = {};
+        users.forEach(u => {
+          if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+        });
+        setOwnerNames(map);
+      } catch { /* affichage dégradé si Keycloak injoignable */ }
+    }
+  }
+
+  useEffect(() => {
+    reloadParcelles();
+    fetchMeteo();
+    timerRef.current = setInterval(fetchMeteo, 5 * 60 * 1000); // refresh 5 min
     return () => {
       clearInterval(timerRef.current);
       disconnectSerial();
     };
-  }, []);
-
-  // Noms réels (Prénom NOM) des propriétaires — pour que l'admin sache
-  // à qui appartient chaque parcelle/culture.
-  useEffect(() => {
-    if (auth.role !== 'admin') return;
-    listAccountsAsAdmin(auth.token).then(list => {
-      const map = {};
-      list.forEach(u => {
-        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
-      });
-      setOwnerNames(map);
-    }).catch(() => { /* affichage dégradé si Keycloak injoignable */ });
   }, []);
 
   // Changer de parcelle : on recharge son dernier relevé (ou on repart à vide),
@@ -333,6 +337,11 @@ export default function Capteurs({ auth }) {
 
         {/* Sélection de la parcelle — obligatoire avant toute connexion, pour
             que chaque parcelle/culture garde ses propres données de sol. */}
+        <div style={{display:'flex', justifyContent:'flex-end', marginBottom:'8px'}}>
+          <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger la liste des parcelles sans se reconnecter">
+            {parcLoading ? '⏳' : '🔄'} Actualiser les parcelles
+          </button>
+        </div>
         {parcError && <div className="cap-warn">{parcError}</div>}
         {parcLoading ? (
           <div className="serial-hint">⏳ Chargement des parcelles…</div>

@@ -180,18 +180,19 @@ export default function Historique({ auth }) {
 
   // Chaque utilisateur ne voit que ses propres parcelles (l'admin les voit toutes) —
   // un compte qui vient de s'inscrire n'a aucune parcelle, donc aucun historique : c'est attendu.
-  useEffect(() => {
-    (async () => {
-      setLoading(true); setError('');
-      try {
-        const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
-        setParcelles(list);
-        if (list.length > 0) setSelectedId(list[0].id);
-      } catch (e) {
-        setError(e.message);
-      } finally { setLoading(false); }
-    })();
-  }, []);
+  // reloadParcelles() peut être rappelée manuellement (bouton Actualiser) sans se reconnecter.
+  async function reloadParcelles() {
+    setLoading(true); setError('');
+    try {
+      const list = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+      setParcelles(list);
+      if (list.length > 0 && !selectedId) setSelectedId(list[0].id);
+    } catch (e) {
+      setError(e.message);
+    } finally { setLoading(false); }
+  }
+
+  useEffect(() => { reloadParcelles(); }, []);
 
   const parc = parcelles.find(p => p.id === selectedId);
   // L'historique réel n'existe que pour les parcelles ayant réellement été suivies pendant
@@ -250,13 +251,18 @@ export default function Historique({ auth }) {
 
   return (
     <div className="hist-wrap">
-      <div className="hist-header">
-        <div className="hist-title">📅 Historique de l'expérimentation</div>
-        <div className="hist-sub">
-          ETo, ETc, RU, Sc et Sa recalculés jour par jour avec les formules de l'app,
-          à partir des données réellement mesurées pendant l'expérimentation
-          (météo de terrain + capteur 8-en-1) — propres à chaque parcelle, aucune valeur inventée.
+      <div className="hist-header" style={{display:'flex', alignItems:'flex-start', justifyContent:'space-between', gap:'12px', flexWrap:'wrap'}}>
+        <div>
+          <div className="hist-title">📅 Historique de l'expérimentation</div>
+          <div className="hist-sub">
+            ETo, ETc, RU, Sc et Sa recalculés jour par jour avec les formules de l'app,
+            à partir des données réellement mesurées pendant l'expérimentation
+            (météo de terrain + capteur 8-en-1) — propres à chaque parcelle, aucune valeur inventée.
+          </div>
         </div>
+        <button className="btn-refresh" onClick={reloadParcelles} disabled={loading} title="Recharger sans se reconnecter">
+          {loading ? '⏳' : '🔄'} Actualiser
+        </button>
       </div>
 
       {error && <div className="hist-empty">{error}</div>}

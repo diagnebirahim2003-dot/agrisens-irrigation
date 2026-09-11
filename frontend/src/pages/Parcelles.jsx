@@ -58,6 +58,22 @@ export default function Parcelles({ auth }) {
   const [fLng,       setFLng]       = useState('-16.0700');
   const [fRegion,    setFRegion]    = useState('Kaolack');
 
+  // Noms réels (Prénom NOM) des propriétaires, via Keycloak — pour libeller
+  // les onglets admin autrement que par un simple nom d'utilisateur/email.
+  async function reloadOwnerNames() {
+    if (auth.role !== 'admin') return;
+    try {
+      const list = await listAccountsAsAdmin(auth.token);
+      const map = {};
+      list.forEach(u => {
+        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+      });
+      setOwnerNames(map);
+    } catch { /* affichage dégradé (username brut) si Keycloak injoignable */ }
+  }
+
+  // Recharge tout depuis Orion/Keycloak, sans se déconnecter — utile quand
+  // d'autres utilisateurs ont ajouté des parcelles ou se sont inscrits entre-temps.
   async function reloadParcelles() {
     setLoading(true); setError('');
     try {
@@ -66,22 +82,10 @@ export default function Parcelles({ auth }) {
     } catch (e) {
       setError(e.message);
     } finally { setLoading(false); }
+    reloadOwnerNames();
   }
 
   useEffect(() => { reloadParcelles(); }, []);
-
-  // Noms réels (Prénom NOM) des propriétaires, via Keycloak — pour libeller
-  // les onglets admin autrement que par un simple nom d'utilisateur/email.
-  useEffect(() => {
-    if (auth.role !== 'admin') return;
-    listAccountsAsAdmin(auth.token).then(list => {
-      const map = {};
-      list.forEach(u => {
-        if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
-      });
-      setOwnerNames(map);
-    }).catch(() => { /* affichage dégradé (username brut) si Keycloak injoignable */ });
-  }, []);
 
   useEffect(() => {
     if (view === 'map' && selected) setTimeout(() => initMap(selected), 200);
@@ -234,9 +238,14 @@ export default function Parcelles({ auth }) {
           </span>
         </div>
         {view === 'list' && (
-          <button className="btn-add-parc" onClick={() => { resetForm(); setView('add'); setError(''); setSuccess(''); }}>
-            ➕ Ajouter
-          </button>
+          <div style={{display:'flex', gap:'8px'}}>
+            <button className="btn-refresh-parc" onClick={reloadParcelles} disabled={loading} title="Recharger sans se reconnecter">
+              {loading ? '⏳' : '🔄'} Actualiser
+            </button>
+            <button className="btn-add-parc" onClick={() => { resetForm(); setView('add'); setError(''); setSuccess(''); }}>
+              ➕ Ajouter
+            </button>
+          </div>
         )}
         {view === 'detail' && (
           <div style={{display:'flex', gap:'8px'}}>

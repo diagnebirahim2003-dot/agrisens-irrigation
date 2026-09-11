@@ -4,6 +4,10 @@
 .hist-title { font-size:1.1rem; font-weight:800; color:#1b3a1b; }
 .hist-sub { font-size:0.78rem; color:#6a7f6a; margin-top:4px; max-width:760px; }
 
+.btn-refresh { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; border-radius:8px; padding:6px 14px; font-size:0.78rem; font-weight:700; cursor:pointer; font-family:inherit; transition:all .2s; flex-shrink:0; }
+.btn-refresh:hover { background:#bbdefb; }
+.btn-refresh:disabled { opacity:0.6; cursor:not-allowed; }
+
 .hist-tabs { display:flex; gap:8px; flex-wrap:wrap; }
 .htab {
   background:#f4f7f1; border:1px solid #dde5d7; border-radius:999px;

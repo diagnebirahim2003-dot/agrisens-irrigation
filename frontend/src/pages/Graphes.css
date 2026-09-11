@@ -6,6 +6,10 @@
 .graph-title { font-size:0.9rem; font-weight:700; color:#1b3a1b; }
 .graph-count { font-size:0.72rem; color:#6a7f6a; }
 
+.btn-refresh { background:#e3f2fd; color:#1565c0; border:1px solid #90caf9; border-radius:8px; padding:6px 14px; font-size:0.78rem; font-weight:700; cursor:pointer; font-family:inherit; transition:all .2s; }
+.btn-refresh:hover { background:#bbdefb; }
+.btn-refresh:disabled { opacity:0.6; cursor:not-allowed; }
+
 .graph-empty { padding:32px 16px; text-align:center; color:#6a7f6a; font-size:0.85rem; background:#f4f7f1; border-radius:10px; }
 
 .graph-params { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }

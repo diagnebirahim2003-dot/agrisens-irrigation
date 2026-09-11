@@ -29,18 +29,20 @@ export default function Calculs({ auth }) {
   const [error,     setError]     = useState('');
   const [result,    setResult]    = useState(null);
 
-  useEffect(() => {
-    (async () => {
-      setParcLoading(true); setParcError('');
-      try {
-        const mine = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
-        setParcelles(mine);
-        if (mine.length > 0) setSelected(mine[0].id);
-      } catch (e) {
-        setParcError(e.message);
-      } finally { setParcLoading(false); }
-    })();
-  }, []);
+  // Recharge la liste des parcelles depuis Orion — sans avoir besoin de se
+  // reconnecter (utile quand une parcelle vient d'être ajoutée/modifiée).
+  async function reloadParcelles() {
+    setParcLoading(true); setParcError('');
+    try {
+      const mine = await listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email });
+      setParcelles(mine);
+      if (mine.length > 0 && !selected) setSelected(mine[0].id);
+    } catch (e) {
+      setParcError(e.message);
+    } finally { setParcLoading(false); }
+  }
+
+  useEffect(() => { reloadParcelles(); }, []);
 
   // Le relevé capteur 8-en-1 est propre à chaque parcelle — on le recharge
   // à chaque changement de sélection, plutôt qu'une unique clé globale.
@@ -141,7 +143,12 @@ export default function Calculs({ auth }) {
 
       {/* Sélection parcelle */}
       <div className="calc-card">
-        <div className="cc-title">📍 Sélection de la parcelle</div>
+        <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'12px'}}>
+          <div className="cc-title" style={{marginBottom:0}}>📍 Sélection de la parcelle</div>
+          <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger sans se reconnecter">
+            {parcLoading ? '⏳' : '🔄'} Actualiser
+          </button>
+        </div>
         {parcError && <div className="calc-error">{parcError}</div>}
         {parcLoading ? (
           <div className="calc-empty">⏳ Chargement des parcelles (Orion via Wilma)…</div>

@@ -4,6 +4,8 @@
 .parc-toolbar-title{font-size:1rem;font-weight:700;color:#1b3a1b;}
 .btn-back-sm{background:#f5f8f5;border:1px solid #e0e8e0;border-radius:8px;padding:7px 14px;cursor:pointer;font-size:0.82rem;font-weight:700;color:#1b5e20;font-family:inherit;}
 .btn-add-parc{background:#2e7d32;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.82rem;font-weight:700;font-family:inherit;}
+.btn-refresh-parc{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.82rem;font-weight:700;font-family:inherit;}
+.btn-refresh-parc:disabled{opacity:0.6;cursor:not-allowed;}
 .btn-map{background:#1565c0;color:#fff;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:0.82rem;font-weight:700;font-family:inherit;}
 .parc-error{background:#ffebee;color:#c62828;padding:10px 14px;border-radius:8px;font-size:0.8rem;margin-bottom:12px;}
 .parc-success{background:#e8f5e9;color:#1b5e20;padding:10px 14px;border-radius:8px;font-size:0.8rem;margin-bottom:12px;}
