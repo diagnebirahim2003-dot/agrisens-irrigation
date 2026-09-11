@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getSol } from '../utils/sols';
 import { getCultures } from '../utils/cultures';
 import { listParcelles } from '../utils/orion';
+import { listAccountsAsAdmin } from '../utils/accounts';
 import { getSol8 } from '../utils/historique';
 import {
   getDOY, getDAS, getKc, getStage, calcRa, calcRs, calcETo, u2FromU10,
@@ -23,6 +24,7 @@ export default function Calculs({ auth }) {
   const [parcLoading,setParcLoading]= useState(true);
   const [parcError,  setParcError]  = useState('');
   const [selected,  setSelected]  = useState('');
+  const [ownerNames,setOwnerNames]= useState({}); // email -> "Prénom NOM" (admin uniquement)
   const [meteo,     setMeteo]     = useState(null);
   const [sol8,      setSol8]      = useState(null);
   const [loading,   setLoading]   = useState(false);
@@ -40,6 +42,17 @@ export default function Calculs({ auth }) {
     } catch (e) {
       setParcError(e.message);
     } finally { setParcLoading(false); }
+
+    if (auth.role === 'admin') {
+      try {
+        const users = await listAccountsAsAdmin(auth.token);
+        const map = {};
+        users.forEach(u => {
+          if (u.email) map[u.email] = [u.prenom, u.nom].filter(Boolean).join(' ') || u.username;
+        });
+        setOwnerNames(map);
+      } catch { /* affichage dégradé si Keycloak injoignable */ }
+    }
   }
 
   useEffect(() => { reloadParcelles(); }, []);
@@ -163,7 +176,10 @@ export default function Calculs({ auth }) {
                 <span className="psi-icon">{CULTURES[p.culture]?.icon||'🌱'}</span>
                 <div>
                   <div className="psi-nom">{p.nom}</div>
-                  <div className="psi-sub">{p.culture} · {getDAS(p.semis)} JAS</div>
+                  <div className="psi-sub">
+                    {p.culture} · {getDAS(p.semis)} JAS
+                    {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
+                  </div>
                 </div>
               </div>
             ))}
