@@ -21,6 +21,15 @@ function gauge(val, min, max) {
   return Math.min(100, Math.max(0, ((val - min) / (max - min)) * 100));
 }
 
+// Rend visibles les caractères de contrôle (\r, \n, octets non imprimables) pour
+// que le format exact envoyé par le capteur (terminaison de ligne, etc.) soit lisible.
+function escapeRaw(s) {
+  return s
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n\n')
+    .replace(/[\x00-\x08\x0E-\x1F]/g, c => '\\x' + c.charCodeAt(0).toString(16).padStart(2, '0'));
+}
+
 export default function Capteurs({ auth }) {
   const CULTURES = getCultures();
 
@@ -227,12 +236,16 @@ export default function Capteurs({ auth }) {
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
-        bufferRef.current += new TextDecoder().decode(value);
+        const chunk = new TextDecoder().decode(value);
+        // Capture TOUT ce qui arrive sur le port, même sans retour à la ligne —
+        // certains capteurs ne terminent pas leurs trames par '\n', et le panneau
+        // de diagnostic doit rester utile dans ce cas aussi.
+        if (chunk) {
+          setRawLines(prev => [...prev, chunk].slice(-30));
+        }
+        bufferRef.current += chunk;
         const lines = bufferRef.current.split('\n');
         bufferRef.current = lines.pop();
-        if (lines.length > 0) {
-          setRawLines(prev => [...prev, ...lines.map(l => l.trim()).filter(Boolean)].slice(-12));
-        }
         lines.forEach(parseLine);
       }
     } catch(e) {
@@ -453,7 +466,7 @@ export default function Capteurs({ auth }) {
         {rawLines.length > 0 && (
           <details className="raw-debug" open={serialSt === 'connected' && sol.humidite === null}>
             <summary>🔍 Lignes brutes reçues du capteur ({rawLines.length})</summary>
-            <pre className="raw-lines">{rawLines.join('\n')}</pre>
+            <pre className="raw-lines">{rawLines.map(escapeRaw).join('') || '(rien reçu pour l\'instant)'}</pre>
           </details>
         )}
 
