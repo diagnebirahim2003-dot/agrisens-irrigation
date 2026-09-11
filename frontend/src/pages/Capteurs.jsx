@@ -41,6 +41,12 @@ export default function Capteurs({ auth }) {
     ph:null, n:null, p:null, k:null, luminosite:null,
     updatedAt:null
   });
+  // Le capteur oscille juste après le branchement — on attend 30s avant de
+  // permettre l'enregistrement d'une mesure, même si l'affichage en direct
+  // continue de bouger pendant ce temps.
+  const [stabilizeLeft, setStabilizeLeft] = useState(0);
+  const [saveMsg,       setSaveMsg]       = useState('');
+  const stabilizeTimerRef = useRef(null);
 
   // Météo état
   const [meteo,      setMeteo]     = useState(null);
@@ -111,6 +117,32 @@ export default function Capteurs({ auth }) {
 
   const selectedParc = parcelles.find(p => p.id === selectedId) || null;
 
+  function startStabilizeCountdown() {
+    clearInterval(stabilizeTimerRef.current);
+    setStabilizeLeft(30);
+    stabilizeTimerRef.current = setInterval(() => {
+      setStabilizeLeft(s => {
+        if (s <= 1) { clearInterval(stabilizeTimerRef.current); return 0; }
+        return s - 1;
+      });
+    }, 1000);
+  }
+
+  function stopStabilizeCountdown() {
+    clearInterval(stabilizeTimerRef.current);
+    setStabilizeLeft(0);
+  }
+
+  // Enregistre un instantané de la dernière mesure affichée — la lecture en
+  // direct n'est plus sauvegardée automatiquement à chaque trame reçue.
+  function saveMeasure() {
+    if (!selectedId || sol.humidite === null) return;
+    setSol8(selectedId, { ...sol, updatedAt: new Date().toISOString() });
+    pushReleve(sol, selectedId);
+    setSaveMsg(`✅ Mesure enregistrée pour « ${selectedParc?.nom} »`);
+    setTimeout(() => setSaveMsg(''), 4000);
+  }
+
   // ── MÉTÉO OpenWeatherMap ──────────────────────────────
   async function fetchMeteo() {
     const coords = coordsRef.current;
@@ -176,6 +208,7 @@ export default function Capteurs({ auth }) {
       const p = await navigator.serial.requestPort();
       await p.open({ baudRate:9600, dataBits:8, stopBits:1, parity:'none' });
       setPort(p); setSerialSt('connected');
+      startStabilizeCountdown();
       readLoop(p);
     } catch(e) {
       // Aucune valeur inventée : sans capteur réellement branché, sol reste vide.
@@ -210,6 +243,7 @@ export default function Capteurs({ auth }) {
       if (port) { await port.close(); setPort(null); }
     } catch(e) {}
     setSerialSt('disconnected');
+    stopStabilizeCountdown();
   }
 
   // Parser ligne capteur
@@ -242,13 +276,10 @@ export default function Capteurs({ auth }) {
           if (vals[7]) data.luminosite = vals[7];
         }
       }
+      // Affichage en direct seulement — la sauvegarde se fait explicitement
+      // via le bouton "Enregistrer cette mesure", pas à chaque trame reçue.
       if (Object.keys(data).length > 0 && selectedId) {
-        setSol(prev => {
-          const merged = { ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') };
-          setSol8(selectedId, { ...merged, updatedAt: new Date().toISOString() });
-          pushReleve(merged, selectedId);
-          return merged;
-        });
+        setSol(prev => ({ ...prev, ...data, updatedAt: new Date().toLocaleTimeString('fr-FR') }));
       }
     } catch(e) {}
   }
@@ -377,12 +408,33 @@ export default function Capteurs({ auth }) {
           <div className="serial-hint">
             💡 Branchez le capteur 8-en-1 via USB-C puis cliquez "Connecter".<br/>
             Compatible Chrome et Edge sur PC et Android.
-            <br/>Les relevés seront enregistrés pour la parcelle « {selectedParc?.nom} »
+            <br/>Les mesures seront rattachées à la parcelle « {selectedParc?.nom} »
             ({selectedParc?.culture}{auth.role === 'admin' && selectedParc
               ? ` · 👤 ${ownerNames[selectedParc.owner] || selectedParc.ownerName || selectedParc.owner}`
               : ''}).
           </div>
         )}
+
+        {serialSt === 'connected' && stabilizeLeft > 0 && (
+          <div className="serial-hint stabilizing">
+            ⏳ Stabilisation du capteur en cours — encore {stabilizeLeft}s.
+            Les valeurs ci-dessous bougent, c'est normal : attendez la fin du compte à rebours avant d'enregistrer une mesure.
+          </div>
+        )}
+
+        {serialSt === 'connected' && stabilizeLeft === 0 && (
+          <div className="serial-hint ready">
+            ✅ Mesures stabilisées — les valeurs continuent de se mettre à jour en direct avec le capteur.
+            Cliquez "Enregistrer" pour sauvegarder la dernière lecture.
+          </div>
+        )}
+
+        {serialSt === 'connected' && (
+          <button className="btn-save-measure" onClick={saveMeasure} disabled={stabilizeLeft > 0 || sol.humidite === null}>
+            💾 Enregistrer cette mesure
+          </button>
+        )}
+        {saveMsg && <div className="cap-success">{saveMsg}</div>}
 
         <div className="sol-grid">
 

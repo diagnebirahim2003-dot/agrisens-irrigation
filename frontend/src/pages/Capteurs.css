@@ -52,6 +52,14 @@
 .btn-serial:disabled { opacity:0.7; cursor:not-allowed; }
 
 .serial-hint { background:#e3f2fd; color:#1565c0; padding:12px 16px; border-radius:10px; font-size:0.78rem; line-height:1.6; margin-bottom:14px; border:1px solid #90caf9; }
+.serial-hint.stabilizing { background:#fff3e0; color:#e65100; border-color:#ffcc80; }
+.serial-hint.ready { background:#e8f5e9; color:#1b5e20; border-color:#a5d6a7; }
+
+.btn-save-measure { width:100%; padding:12px; background:#1b5e20; color:#fff; border:none; border-radius:10px; font-size:0.85rem; font-weight:700; cursor:pointer; font-family:inherit; margin-bottom:14px; transition:background .2s; }
+.btn-save-measure:hover:not(:disabled) { background:#154a19; }
+.btn-save-measure:disabled { opacity:0.5; cursor:not-allowed; }
+
+.cap-success { background:#e8f5e9; color:#1b5e20; padding:10px 14px; border-radius:8px; font-size:0.78rem; margin-bottom:14px; border:1px solid #a5d6a7; }
 
 /* ── SOL CARDS ── */
 .sol-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
