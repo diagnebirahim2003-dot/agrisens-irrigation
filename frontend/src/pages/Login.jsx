@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { CONFIG, KEYCLOAK_TOKEN_URL } from '../utils/config';
 import { registerAccount } from '../utils/accounts';
+import {
+  IconEye, IconEyeOff, IconMail, IconAlertTriangle, IconLoader, IconKey,
+  IconCheck, IconChevronLeft,
+} from '../components/Icons';
 import './Login.css';
 import logoImg from '../assets/logo.png';
 
@@ -50,7 +54,7 @@ function PwdInput({ value, onChange, placeholder }) {
         onClick={() => setShow(s => !s)}
         aria-label={show ? 'Masquer' : 'Afficher'}
       >
-        {show ? '🙈' : '👁️'}
+        {show ? <IconEyeOff size={17}/> : <IconEye size={17}/>}
       </button>
     </div>
   );
@@ -178,7 +182,7 @@ export default function Login({ onLogin }) {
               <label>Email Gmail</label>
               <input type="email" placeholder="exemple@gmail.com"
                 value={loginEmail} onChange={e=>setLoginEmail(e.target.value)}/>
-              {loginEmail && <span className="email-display">✉️ {loginEmail}</span>}
+              {loginEmail && <span className="email-display"><IconMail size={12}/> {loginEmail}</span>}
             </div>
             <div className="inp-group">
               <label>Mot de passe</label>
@@ -199,7 +203,7 @@ export default function Login({ onLogin }) {
               <span className="login-link" onClick={()=>switchTab('reset')}>Mot de passe oublié ?</span>
             </div>
             <button className="btn-login" type="submit" disabled={loading}>
-              {loading ? '⏳ Connexion…' : '🔐 Se connecter'}
+              {loading ? <><IconLoader size={15} className="spin"/> Connexion…</> : <><IconKey size={15}/> Se connecter</>}
             </button>
           </form>
         )}
@@ -224,31 +228,31 @@ export default function Login({ onLogin }) {
             <div className="inp-group">
               <label>Email Gmail * <span className="gmail-hint">(@gmail.com requis)</span></label>
               <input type="email" placeholder="exemple@gmail.com" value={regEmail} onChange={e=>setRegEmail(e.target.value)}/>
-              {regEmail && isGmail(regEmail)  && <span className="email-display">✉️ {regEmail}</span>}
-              {regEmail && !isGmail(regEmail) && <span className="field-error">⚠️ Utilisez une adresse @gmail.com</span>}
+              {regEmail && isGmail(regEmail)  && <span className="email-display"><IconMail size={12}/> {regEmail}</span>}
+              {regEmail && !isGmail(regEmail) && <span className="field-error"><IconAlertTriangle size={12}/> Utilisez une adresse @gmail.com</span>}
             </div>
             <div className="form-row">
               <div className="inp-group"><label>Mot de passe *</label><PwdInput value={regPwd} onChange={e=>setRegPwd(e.target.value)} placeholder="Min. 6 caractères"/></div>
               <div className="inp-group"><label>Confirmer *</label><PwdInput value={regPwd2} onChange={e=>setRegPwd2(e.target.value)} placeholder="Répéter"/></div>
             </div>
             <button className="btn-login" type="submit" disabled={loading}>
-              {loading ? '⏳ Création du compte…' : '✅ Créer mon compte'}
+              {loading ? <><IconLoader size={15} className="spin"/> Création du compte…</> : <><IconCheck size={15}/> Créer mon compte</>}
             </button>
           </form>
         )}
 
         {tab === 'reset' && (
           <form onSubmit={handleReset}>
-            <p style={{fontSize:'0.8rem',color:'#6a7f6a',marginBottom:'14px'}}>
+            <p style={{fontSize:'0.8rem',color:'var(--ink-soft)',marginBottom:'14px'}}>
               Entrez votre adresse Gmail pour recevoir un lien de réinitialisation.
             </p>
             <div className="inp-group">
               <label>Email Gmail</label>
               <input type="email" placeholder="exemple@gmail.com" value={resetEmail} onChange={e=>setResetEmail(e.target.value)}/>
-              {resetEmail && isGmail(resetEmail) && <span className="email-display">✉️ {resetEmail}</span>}
+              {resetEmail && isGmail(resetEmail) && <span className="email-display"><IconMail size={12}/> {resetEmail}</span>}
             </div>
-            <button className="btn-login" type="submit">📧 Envoyer le lien</button>
-            <p className="login-link" onClick={()=>switchTab('login')}>← Retour</p>
+            <button className="btn-login" type="submit"><IconMail size={15}/> Envoyer le lien</button>
+            <p className="login-link" onClick={()=>switchTab('login')}><IconChevronLeft size={13}/> Retour</p>
           </form>
         )}
       </div>
