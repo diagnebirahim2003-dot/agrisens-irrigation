@@ -3,6 +3,13 @@ import { pushReleve, getSol8, setSol8 } from '../utils/historique';
 import { listParcelles } from '../utils/orion';
 import { listAccountsAsAdmin } from '../utils/accounts';
 import { getCultures } from '../utils/cultures';
+import {
+  IconRefresh, IconLoader, IconPlug, IconCheck, IconX, IconMapPin,
+  IconAlertTriangle, IconThermometer, IconFlask, IconZap, IconSprout,
+  IconSun, IconCloud, IconWind, IconGauge, IconCloudRain, IconEye,
+  IconSearch, IconArrowDown, IconArrowUp, IconAntenna, IconUser,
+  IconInfo, IconDroplet,
+} from '../components/Icons';
 import './Capteurs.css';
 
 const OWM_KEY  = 'f376f93aee61a823a4c0eff15e47b0a0';
@@ -150,7 +157,7 @@ export default function Capteurs({ auth }) {
     if (!selectedId || sol.humidite === null) return;
     setSol8(selectedId, { ...sol, updatedAt: new Date().toISOString() });
     pushReleve(sol, selectedId);
-    setSaveMsg(`✅ Mesure enregistrée pour « ${selectedParc?.nom} »`);
+    setSaveMsg(`Mesure enregistrée pour « ${selectedParc?.nom} »`);
     setTimeout(() => setSaveMsg(''), 4000);
   }
 
@@ -309,19 +316,19 @@ export default function Capteurs({ auth }) {
   }
 
   const serialLabel = {
-    disconnected: '🔌 Connecter le capteur 8-en-1',
-    connecting:   '⏳ Connexion...',
-    connected:    '✅ Connecté — Cliquer pour déconnecter',
-    unsupported:  '❌ Navigateur non compatible (Chrome/Edge requis)',
-    error:        '❌ Erreur de connexion — Réessayer',
+    disconnected: <><IconPlug size={16}/> Connecter le capteur 8-en-1</>,
+    connecting:   <><IconLoader size={16} className="spin"/> Connexion...</>,
+    connected:    <><IconCheck size={16}/> Connecté — Cliquer pour déconnecter</>,
+    unsupported:  <><IconX size={16}/> Navigateur non compatible (Chrome/Edge requis)</>,
+    error:        <><IconX size={16}/> Erreur de connexion — Réessayer</>,
   }[serialSt];
 
   const serialColor = {
-    disconnected: '#1565c0',
-    connecting:   '#e65100',
-    connected:    '#2e7d32',
-    unsupported:  '#c62828',
-    error:        '#c62828',
+    disconnected: 'var(--water)',
+    connecting:   'var(--warning)',
+    connected:    'var(--accent)',
+    unsupported:  'var(--critical)',
+    error:        'var(--critical)',
   }[serialSt];
 
   return (
@@ -330,15 +337,15 @@ export default function Capteurs({ auth }) {
       {/* ── MÉTÉO ── */}
       <div className="cap-section">
         <div className="cap-section-header">
-          <div className="cap-section-title">⛅ Météo en temps réel — OpenWeatherMap</div>
+          <div className="cap-section-title"><IconCloud size={17}/> Météo en temps réel — OpenWeatherMap</div>
           <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
             {lastFetch && <span className="cap-ts">Mis à jour : {lastFetch}</span>}
             <button className="btn-refresh" onClick={fetchMeteo} disabled={meteoLoad}>
-              {meteoLoad ? '⏳' : '🔄'} Actualiser
+              <IconRefresh size={14} className={meteoLoad ? 'spin' : ''}/> Actualiser
             </button>
           </div>
         </div>
-        {meteoErr && <div className="cap-warn">{meteoErr} — données de démonstration affichées</div>}
+        {meteoErr && <div className="cap-warn"><IconAlertTriangle size={15}/> {meteoErr} — données de démonstration affichées</div>}
         {meteo && (
           <>
             <div className="meteo-top">
@@ -348,7 +355,7 @@ export default function Capteurs({ auth }) {
                 <div>
                   <div className="meteo-temp">{meteo.temp.toFixed(1)}°C</div>
                   <div className="meteo-desc">{meteo.desc}</div>
-                  <div className="meteo-loc">📍 {meteo.site}</div>
+                  <div className="meteo-loc"><IconMapPin size={12}/> {meteo.site}</div>
                 </div>
               </div>
               <div className="meteo-feels">
@@ -358,17 +365,17 @@ export default function Capteurs({ auth }) {
             </div>
             <div className="meteo-grid">
               {[
-                { icon:'🌡️', lbl:'Tmax',      val:meteo.temp_max.toFixed(1)+'°C', cls:'' },
-                { icon:'🌡️', lbl:'Tmin',      val:meteo.temp_min.toFixed(1)+'°C', cls:'' },
-                { icon:'💧', lbl:'Hum. air',  val:meteo.humidite+'%',             cls:statusClass(meteo.humidite,30,80) },
-                { icon:'💨', lbl:'Vent',       val:meteo.vent+' m/s '+windDir(meteo.vent_dir), cls:'' },
-                { icon:'📊', lbl:'Pression',   val:meteo.pression+' hPa',         cls:'' },
-                { icon:'☁️', lbl:'Nuages',     val:meteo.nuage+'%',               cls:'' },
-                { icon:'🌧️', lbl:'Pluie 1h',  val:meteo.pluie+' mm',             cls:'' },
-                { icon:'👁️', lbl:'Visibilité', val:meteo.visib+' km',             cls:'' },
+                { Icon:IconThermometer, lbl:'Tmax',      val:meteo.temp_max.toFixed(1)+'°C', cls:'' },
+                { Icon:IconThermometer, lbl:'Tmin',      val:meteo.temp_min.toFixed(1)+'°C', cls:'' },
+                { Icon:IconDroplet,     lbl:'Hum. air',  val:meteo.humidite+'%',             cls:statusClass(meteo.humidite,30,80) },
+                { Icon:IconWind,        lbl:'Vent',       val:meteo.vent+' m/s '+windDir(meteo.vent_dir), cls:'' },
+                { Icon:IconGauge,       lbl:'Pression',   val:meteo.pression+' hPa',         cls:'' },
+                { Icon:IconCloud,       lbl:'Nuages',     val:meteo.nuage+'%',               cls:'' },
+                { Icon:IconCloudRain,   lbl:'Pluie 1h',  val:meteo.pluie+' mm',             cls:'' },
+                { Icon:IconEye,         lbl:'Visibilité', val:meteo.visib+' km',             cls:'' },
               ].map(m => (
                 <div key={m.lbl} className="meteo-card">
-                  <div className="mc-icon">{m.icon}</div>
+                  <div className="mc-icon"><m.Icon size={18}/></div>
                   <div className={`mc-val ${m.cls}`}>{m.val}</div>
                   <div className="mc-lbl">{m.lbl}</div>
                 </div>
@@ -381,7 +388,7 @@ export default function Capteurs({ auth }) {
       {/* ── CAPTEUR 8-EN-1 ── */}
       <div className="cap-section">
         <div className="cap-section-header">
-          <div className="cap-section-title">📡 Capteur 8-en-1 — Sol (USB-C Web Serial)</div>
+          <div className="cap-section-title"><IconAntenna size={17}/> Capteur 8-en-1 — Sol (USB-C Web Serial)</div>
           {sol.updatedAt && <span className="cap-ts">Dernière lecture : {sol.updatedAt}</span>}
         </div>
 
@@ -389,14 +396,14 @@ export default function Capteurs({ auth }) {
             que chaque parcelle/culture garde ses propres données de sol. */}
         <div style={{display:'flex', justifyContent:'flex-end', marginBottom:'8px'}}>
           <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger la liste des parcelles sans se reconnecter">
-            {parcLoading ? '⏳' : '🔄'} Actualiser les parcelles
+            <IconRefresh size={14} className={parcLoading ? 'spin' : ''}/> Actualiser les parcelles
           </button>
         </div>
-        {parcError && <div className="cap-warn">{parcError}</div>}
+        {parcError && <div className="cap-warn"><IconAlertTriangle size={15}/> {parcError}</div>}
         {parcLoading ? (
-          <div className="serial-hint">⏳ Chargement des parcelles…</div>
+          <div className="serial-hint"><IconLoader size={15} className="spin"/> Chargement des parcelles…</div>
         ) : parcelles.length === 0 ? (
-          <div className="cap-warn">Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".</div>
+          <div className="cap-warn"><IconAlertTriangle size={15}/> Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".</div>
         ) : (
           <div className="parc-select-grid" style={{marginBottom:'14px'}}>
             {parcelles.map(p => (
@@ -408,7 +415,7 @@ export default function Capteurs({ auth }) {
                   <div className="psi-nom">{p.nom}</div>
                   <div className="psi-sub">
                     {p.culture}
-                    {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
+                    {auth.role === 'admin' && <> · <IconUser size={11}/> {ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}</>}
                   </div>
                 </div>
               </div>
@@ -420,51 +427,51 @@ export default function Capteurs({ auth }) {
           style={{background:serialColor}}
           onClick={connectSerial}
           disabled={serialSt==='connecting' || !selectedId}>
-          {!selectedId ? '📍 Sélectionnez une parcelle ci-dessus' : serialLabel}
+          {!selectedId ? <><IconMapPin size={16}/> Sélectionnez une parcelle ci-dessus</> : serialLabel}
         </button>
 
         {serialSt === 'disconnected' && selectedId && (
           <div className="serial-hint">
-            💡 Branchez le capteur 8-en-1 via USB-C puis cliquez "Connecter".<br/>
+            <IconInfo size={15}/> Branchez le capteur 8-en-1 via USB-C puis cliquez "Connecter".<br/>
             Compatible Chrome et Edge sur PC et Android.
             <br/>Les mesures seront rattachées à la parcelle « {selectedParc?.nom} »
             ({selectedParc?.culture}{auth.role === 'admin' && selectedParc
-              ? ` · 👤 ${ownerNames[selectedParc.owner] || selectedParc.ownerName || selectedParc.owner}`
+              ? <> · <IconUser size={11}/> {ownerNames[selectedParc.owner] || selectedParc.ownerName || selectedParc.owner}</>
               : ''}).
           </div>
         )}
 
         {serialSt === 'connected' && stabilizeLeft > 0 && (
           <div className="serial-hint stabilizing">
-            ⏳ Stabilisation du capteur en cours — encore {stabilizeLeft}s.
+            <IconLoader size={15} className="spin"/> Stabilisation du capteur en cours — encore {stabilizeLeft}s.
             Les valeurs ci-dessous bougent, c'est normal : attendez la fin du compte à rebours avant d'enregistrer une mesure.
           </div>
         )}
 
         {serialSt === 'connected' && stabilizeLeft === 0 && sol.humidite !== null && (
           <div className="serial-hint ready">
-            ✅ Mesures stabilisées — les valeurs continuent de se mettre à jour en direct avec le capteur.
+            <IconCheck size={15}/> Mesures stabilisées — les valeurs continuent de se mettre à jour en direct avec le capteur.
             Cliquez "Enregistrer" pour sauvegarder la dernière lecture.
           </div>
         )}
 
         {serialSt === 'connected' && stabilizeLeft === 0 && sol.humidite === null && (
           <div className="cap-warn">
-            ⚠️ Le capteur est interrogé toutes les 4s (protocole Modbus) mais ne répond pas exploitablement.
+            <IconAlertTriangle size={15}/> Le capteur est interrogé toutes les 4s (protocole Modbus) mais ne répond pas exploitablement.
             Regardez le panneau de communication ci-dessous pour voir ce qui est envoyé/reçu.
           </div>
         )}
 
         {serialSt === 'connected' && (
           <button className="btn-save-measure" onClick={saveMeasure} disabled={stabilizeLeft > 0 || sol.humidite === null}>
-            💾 Enregistrer cette mesure
+            <IconCheck size={15}/> Enregistrer cette mesure
           </button>
         )}
-        {saveMsg && <div className="cap-success">{saveMsg}</div>}
+        {saveMsg && <div className="cap-success"><IconCheck size={15}/> {saveMsg}</div>}
 
         {rawLines.length > 0 && (
           <details className="raw-debug" open={serialSt === 'connected' && sol.humidite === null}>
-            <summary>🔍 Communication Modbus avec le capteur ({rawLines.length})</summary>
+            <summary><IconSearch size={14}/> Communication Modbus avec le capteur ({rawLines.length})</summary>
             <pre className="raw-lines">{rawLines.join('\n')}</pre>
           </details>
         )}
@@ -474,7 +481,7 @@ export default function Capteurs({ auth }) {
           {/* Humidité sol */}
           <div className="sol-card">
             <div className="sc-header">
-              <span className="sc-icon">💧</span>
+              <span className="sc-icon"><IconDroplet size={17}/></span>
               <span className="sc-title">Humidité sol</span>
             </div>
             <div className={`sc-val ${statusClass(sol.humidite, 20, 80)}`}>
@@ -489,7 +496,7 @@ export default function Capteurs({ auth }) {
           {/* Température sol */}
           <div className="sol-card">
             <div className="sc-header">
-              <span className="sc-icon">🌡️</span>
+              <span className="sc-icon"><IconThermometer size={17}/></span>
               <span className="sc-title">Temp. sol</span>
             </div>
             <div className={`sc-val ${statusClass(sol.temperature, 18, 35)}`}>
@@ -504,7 +511,7 @@ export default function Capteurs({ auth }) {
           {/* pH */}
           <div className="sol-card">
             <div className="sc-header">
-              <span className="sc-icon">🧪</span>
+              <span className="sc-icon"><IconFlask size={17}/></span>
               <span className="sc-title">pH</span>
             </div>
             <div className={`sc-val ${statusClass(sol.ph, 5.5, 7.5)}`}>
@@ -519,7 +526,7 @@ export default function Capteurs({ auth }) {
           {/* EC */}
           <div className="sol-card">
             <div className="sc-header">
-              <span className="sc-icon">⚡</span>
+              <span className="sc-icon"><IconZap size={17}/></span>
               <span className="sc-title">EC</span>
             </div>
             <div className={`sc-val ${statusClass(sol.ec, 200, 800)}`}>
@@ -533,13 +540,13 @@ export default function Capteurs({ auth }) {
 
           {/* NPK */}
           {[
-            { key:'n', icon:'🌿', lbl:'Azote N',     unit:'mg/kg', min:50, max:200, color:'npk-n' },
-            { key:'p', icon:'🌿', lbl:'Phosphore P', unit:'mg/kg', min:20, max:80,  color:'npk-p' },
-            { key:'k', icon:'🌿', lbl:'Potassium K', unit:'mg/kg', min:60, max:200, color:'npk-k' },
+            { key:'n', lbl:'Azote N',     unit:'mg/kg', min:50, max:200, color:'npk-n' },
+            { key:'p', lbl:'Phosphore P', unit:'mg/kg', min:20, max:80,  color:'npk-p' },
+            { key:'k', lbl:'Potassium K', unit:'mg/kg', min:60, max:200, color:'npk-k' },
           ].map(el => (
             <div key={el.key} className="sol-card">
               <div className="sc-header">
-                <span className="sc-icon">{el.icon}</span>
+                <span className="sc-icon"><IconSprout size={17}/></span>
                 <span className="sc-title">{el.lbl}</span>
               </div>
               <div className={`sc-val ${statusClass(sol[el.key], el.min, el.max)}`}>
@@ -555,7 +562,7 @@ export default function Capteurs({ auth }) {
           {/* Luminosité */}
           <div className="sol-card">
             <div className="sc-header">
-              <span className="sc-icon">☀️</span>
+              <span className="sc-icon"><IconSun size={17}/></span>
               <span className="sc-title">Luminosité</span>
             </div>
             <div className="sc-val val-neutral">
@@ -572,7 +579,7 @@ export default function Capteurs({ auth }) {
         {/* Alerte NPK */}
         {sol.n !== null && (
           <div className="npk-alert-wrap">
-            <div className="npk-alert-title">🔬 Analyse NPK vs valeurs optimales (FAO AGRIS)</div>
+            <div className="npk-alert-title"><IconFlask size={15}/> Analyse NPK vs valeurs optimales (FAO AGRIS)</div>
             <div className="npk-table">
               {[
                 { el:'N', val:sol.n, laitue:150, navet:100, gombo:120 },
@@ -591,7 +598,11 @@ export default function Capteurs({ auth }) {
                         <div className="npk-opt">Opt: {opt}</div>
                         {deficit !== null && (
                           <div className="npk-def">
-                            {deficit > 0 ? '▼ -'+deficit : deficit < 0 ? '▲ +'+Math.abs(deficit) : '✓'}
+                            {deficit > 0
+                              ? <><IconArrowDown size={11}/> -{deficit}</>
+                              : deficit < 0
+                                ? <><IconArrowUp size={11}/> +{Math.abs(deficit)}</>
+                                : <IconCheck size={11}/>}
                           </div>
                         )}
                       </div>

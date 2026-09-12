@@ -110,3 +110,71 @@ export function IconTable(props) {
 export function IconLoader(props) {
   return <Base {...props}><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5"/></Base>;
 }
+
+export function IconPlug(props) {
+  return <Base {...props}><path d="M9 3.5v5M15 3.5v5"/><path d="M6.5 8.5h11v3a5.5 5.5 0 0 1-11 0z"/><path d="M12 16.5V21"/></Base>;
+}
+
+export function IconCheck(props) {
+  return <Base {...props}><path d="m4.5 12.5 5 5 10-11"/></Base>;
+}
+
+export function IconX(props) {
+  return <Base {...props}><line x1="5.5" y1="5.5" x2="18.5" y2="18.5"/><line x1="18.5" y1="5.5" x2="5.5" y2="18.5"/></Base>;
+}
+
+export function IconAlertTriangle(props) {
+  return <Base {...props}><path d="M12 4 3 20h18Z"/><line x1="12" y1="10" x2="12" y2="14.5"/><line x1="12" y1="17" x2="12" y2="17"/></Base>;
+}
+
+export function IconFlask(props) {
+  return <Base {...props}><path d="M9.5 3.5h5"/><path d="M10.5 4v6l-5.5 9.5A1.5 1.5 0 0 0 6.3 21.7h11.4a1.5 1.5 0 0 0 1.3-2.2L13.5 10V4"/><line x1="8" y1="15" x2="16" y2="15"/></Base>;
+}
+
+export function IconZap(props) {
+  return <Base {...props}><path d="M12.5 3 5 13.5h6l-1 7.5L19 10.5h-6.5z"/></Base>;
+}
+
+export function IconSprout(props) {
+  return <Base {...props}><path d="M12 21v-9"/><path d="M12 12C12 7.5 8.5 5 4.5 5 4.5 9.5 8 12 12 12Z"/><path d="M12 9c0-3.3 2.7-5 6-5 0 3.3-2.7 5-6 5Z"/></Base>;
+}
+
+export function IconSun(props) {
+  return <Base {...props}><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.3M12 19.2v2.3M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.3M19.2 12h2.3M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></Base>;
+}
+
+export function IconCloud(props) {
+  return <Base {...props}><path d="M7 18.5a4.3 4.3 0 0 1-.7-8.5 5.5 5.5 0 0 1 10.6-1.7A4 4 0 0 1 17 18.5Z"/></Base>;
+}
+
+export function IconThermometer(props) {
+  return <Base {...props}><path d="M12 14.5V5a2 2 0 1 0-4 0v9.5a3.5 3.5 0 1 0 4 0Z"/></Base>;
+}
+
+export function IconWind(props) {
+  return <Base {...props}><path d="M3.5 8h11a2.5 2.5 0 1 0-2.3-3.5"/><path d="M3.5 12.5h14a2.5 2.5 0 1 1-2.3 3.5"/><path d="M3.5 17h8"/></Base>;
+}
+
+export function IconGauge(props) {
+  return <Base {...props}><circle cx="12" cy="13" r="8"/><path d="M12 13 15.5 9"/><path d="M9 5.5h6"/></Base>;
+}
+
+export function IconCloudRain(props) {
+  return <Base {...props}><path d="M7 16a4.3 4.3 0 0 1-.7-8.5 5.5 5.5 0 0 1 10.6-1.7A4 4 0 0 1 17 16Z"/><line x1="8.5" y1="19" x2="8.5" y2="21.5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="15.5" y1="19" x2="15.5" y2="21.5"/></Base>;
+}
+
+export function IconEye(props) {
+  return <Base {...props}><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.6"/></Base>;
+}
+
+export function IconSearch(props) {
+  return <Base {...props}><circle cx="11" cy="11" r="6.5"/><line x1="20" y1="20" x2="15.7" y2="15.7"/></Base>;
+}
+
+export function IconArrowDown(props) {
+  return <Base {...props}><line x1="12" y1="4.5" x2="12" y2="19.5"/><path d="m6 13.5 6 6 6-6"/></Base>;
+}
+
+export function IconArrowUp(props) {
+  return <Base {...props}><line x1="12" y1="19.5" x2="12" y2="4.5"/><path d="m6 10.5 6-6 6 6"/></Base>;
+}
