@@ -11,24 +11,25 @@
   --surface-2: #eef2ea;
   --line:      #dde6dc;
 
-  /* Accent agronomique (identité de la marque) */
-  --accent:        #1f6b45;
-  --accent-strong: #123f28;
-  --accent-soft:   #e1efe6;
+  /* Accent agronomique (identité de la marque) — vert vif et lumineux */
+  --accent:        #17a24f;
+  --accent-strong: #0b6b39;
+  --accent-soft:   #d9f5e3;
+  --accent-bright: #9ee331;  /* touche lime pour les reflets/highlights */
 
   /* Accents secondaires — un par domaine, pas décoratifs */
-  --water:      #2a628f;  /* capteurs / météo / hydrique */
-  --water-soft: #e2eef6;
-  --earth:      #a3703f;  /* sol / calculs / bilan */
-  --earth-soft: #f3e9dd;
-  --plum:       #6a4c8c;  /* données / graphes */
-  --plum-soft:  #ece3f4;
+  --water:      #1f7dbf;  /* capteurs / météo / hydrique */
+  --water-soft: #dcf0fb;
+  --earth:      #c2812f;  /* sol / calculs / bilan */
+  --earth-soft: #faecd7;
+  --plum:       #7c4fc9;  /* données / graphes */
+  --plum-soft:  #ece2fa;
 
   /* Sémantique (jamais réutilisée comme couleur décorative) */
-  --success:  #1f7a4d;
-  --warning:  #b5730a;
-  --critical: #b23a2e;
-  --critical-soft: #f8e6e3;
+  --success:  #17a24f;
+  --warning:  #c2812f;
+  --critical: #d13b30;
+  --critical-soft: #fbe4e1;
 
   /* Alias rétro-compatibles (anciens noms encore utilisés localement) */
   --green: var(--accent); --green-d: var(--accent-strong); --green-l: var(--accent-soft);
@@ -75,7 +76,7 @@ h1, h2, h3 { font-family:var(--font-display); text-wrap:balance; }
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(18,63,40,0.22);
+  box-shadow: 0 4px 14px rgba(11,107,57,0.22);
 }
 
 .sb-name    { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--ink); letter-spacing:-0.2px; }
@@ -202,14 +203,14 @@ h1, h2, h3 { font-family:var(--font-display); text-wrap:balance; }
   border-radius: 22px;
   padding: 26px 28px 30px;
   margin-bottom: 28px;
-  box-shadow: 0 16px 40px rgba(18,63,40,0.25);
+  box-shadow: 0 16px 40px rgba(11,107,57,0.25);
 }
 
 .dash-hero-glow {
   position: absolute;
   top: -60px; right: -60px;
-  width: 240px; height: 240px;
-  background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 70%);
+  width: 260px; height: 260px;
+  background: radial-gradient(circle, rgba(158,227,49,0.35) 0%, rgba(158,227,49,0) 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -218,7 +219,7 @@ h1, h2, h3 { font-family:var(--font-display); text-wrap:balance; }
   position: absolute;
   bottom: -90px; left: -40px;
   width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -289,7 +290,7 @@ h1, h2, h3 { font-family:var(--font-display); text-wrap:balance; }
   padding: 18px 18px;
   transition: transform 0.2s, box-shadow .2s;
 }
-.kpi-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(18,63,40,0.09); }
+.kpi-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(11,107,57,0.09); }
 
 .kpi-icon {
   width: 46px; height: 46px;
@@ -345,7 +346,7 @@ h1, h2, h3 { font-family:var(--font-display); text-wrap:balance; }
 
 .nav-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(18,63,40,0.1);
+  box-shadow: 0 14px 30px rgba(11,107,57,0.1);
 }
 
 .nc-top {
