@@ -66,3 +66,47 @@ export function IconWrench(props) {
 export function IconDroplet(props) {
   return <Base {...props}><path d="M12 3.5s6 6.7 6 11a6 6 0 1 1-12 0c0-4.3 6-11 6-11Z"/></Base>;
 }
+
+export function IconEdit(props) {
+  return <Base {...props}><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17z"/><path d="m14 6 4 4"/></Base>;
+}
+
+export function IconTrash(props) {
+  return <Base {...props}><path d="M5 7h14"/><path d="M9.5 7V5a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 14.5 5v2"/><path d="M7 7l1 12.5A1.5 1.5 0 0 0 9.5 21h5a1.5 1.5 0 0 0 1.5-1.5L17 7"/><line x1="10" y1="11" x2="10" y2="16.5"/><line x1="14" y1="11" x2="14" y2="16.5"/></Base>;
+}
+
+export function IconMapPin(props) {
+  return <Base {...props}><path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></Base>;
+}
+
+export function IconRefresh(props) {
+  return <Base {...props}><path d="M4 12a8 8 0 0 1 13.5-5.8L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.5 5.8L4 15.5"/><path d="M4 20v-4.5h4.5"/></Base>;
+}
+
+export function IconPlus(props) {
+  return <Base {...props}><line x1="12" y1="4.5" x2="12" y2="19.5"/><line x1="4.5" y1="12" x2="19.5" y2="12"/></Base>;
+}
+
+export function IconChevronLeft(props) {
+  return <Base {...props}><path d="m14.5 4.5-7 7.5 7 7.5"/></Base>;
+}
+
+export function IconUser(props) {
+  return <Base {...props}><circle cx="12" cy="8" r="3.4"/><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0"/></Base>;
+}
+
+export function IconInfo(props) {
+  return <Base {...props}><circle cx="12" cy="12" r="9"/><line x1="12" y1="10.5" x2="12" y2="16"/><line x1="12" y1="7.2" x2="12" y2="7.2"/></Base>;
+}
+
+export function IconLayers(props) {
+  return <Base {...props}><path d="m12 3.5 8.5 4.8L12 13l-8.5-4.7Z"/><path d="m3.5 12.8 8.5 4.7 8.5-4.7"/><path d="m3.5 16.9 8.5 4.7 8.5-4.7"/></Base>;
+}
+
+export function IconTable(props) {
+  return <Base {...props}><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><line x1="3.5" y1="10" x2="20.5" y2="10"/><line x1="3.5" y1="15" x2="20.5" y2="15"/><line x1="12" y1="4.5" x2="12" y2="19.5"/></Base>;
+}
+
+export function IconLoader(props) {
+  return <Base {...props}><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5"/></Base>;
+}

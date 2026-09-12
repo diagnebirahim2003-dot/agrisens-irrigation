@@ -3,6 +3,11 @@ import { getSols } from '../utils/sols';
 import { getCulturesList } from '../utils/cultures';
 import { listParcelles, createParcelle, updateParcelle, deleteParcelle as deleteParcelleOrion } from '../utils/orion';
 import { listAccountsAsAdmin } from '../utils/accounts';
+import {
+  IconCompass, IconEdit, IconTrash, IconMapPin, IconRefresh, IconPlus,
+  IconChevronLeft, IconUser, IconInfo, IconLayers, IconTable, IconLoader,
+  IconLeaf, IconCalculator,
+} from '../components/Icons';
 import './Parcelles.css';
 
 function getDAS(semis) {
@@ -100,7 +105,7 @@ export default function Parcelles({ auth }) {
     window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       { attribution:'© OpenStreetMap' }).addTo(mapInstance);
     const icon = window.L.divIcon({
-      html:`<div style="background:#2e7d32;color:#fff;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.3)">🧭 ${p.nom}</div>`,
+      html:`<div style="background:var(--accent);color:#fff;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.3)">${p.nom}</div>`,
       className:'', iconAnchor:[40,20]
     });
     window.L.marker([p.lat, p.lng], {icon}).addTo(mapInstance)
@@ -109,7 +114,7 @@ export default function Parcelles({ auth }) {
     window.L.polygon([
       [p.lat+off,p.lng-off],[p.lat+off,p.lng+off],
       [p.lat-off,p.lng+off],[p.lat-off,p.lng-off],
-    ], {color:'#2e7d32',fillColor:'#a5d6a7',fillOpacity:0.3,weight:2}).addTo(mapInstance);
+    ], {color:'#1f6b45',fillColor:'#a5d6a7',fillOpacity:0.3,weight:2}).addTo(mapInstance);
   }
 
   function startEdit(p) {
@@ -183,7 +188,7 @@ export default function Parcelles({ auth }) {
             <div className="parc-card-nom">{p.nom}</div>
             <div className="parc-card-sub">{p.culture} · {p.superficie} ha · {p.region}</div>
           </div>
-          <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}>🗑️</button>
+          <button className="btn-del-parc" onClick={e => { e.stopPropagation(); removeParcelle(p.id); }}><IconTrash size={17}/></button>
         </div>
         <div className="parc-card-body">
           <div className="parc-stats">
@@ -228,29 +233,29 @@ export default function Parcelles({ auth }) {
               if (view === 'map') setView('detail');
               else if (view === 'add') { resetForm(); setView(selected ? 'detail' : 'list'); }
               else { setView('list'); setSelected(null); }
-            }}>← Retour</button>
+            }}><IconChevronLeft size={15}/> Retour</button>
           )}
           <span className="parc-toolbar-title">
-            {view === 'list'   && (auth.role === 'admin' ? `🧭 Toutes les parcelles (${parcelles.length})` : `🧭 Mes parcelles (${parcelles.length})`)}
-            {view === 'add'    && (editingId ? `✏️ Modifier ${fNom || ''}` : '➕ Nouvelle parcelle')}
-            {view === 'detail' && `🧭 ${selected?.nom}`}
-            {view === 'map'    && `📍 Carte — ${selected?.nom}`}
+            {view === 'list'   && <><IconCompass size={17}/> {auth.role === 'admin' ? `Toutes les parcelles (${parcelles.length})` : `Mes parcelles (${parcelles.length})`}</>}
+            {view === 'add'    && <><IconEdit size={17}/> {editingId ? `Modifier ${fNom || ''}` : 'Nouvelle parcelle'}</>}
+            {view === 'detail' && <><IconCompass size={17}/> {selected?.nom}</>}
+            {view === 'map'    && <><IconMapPin size={17}/> Carte — {selected?.nom}</>}
           </span>
         </div>
         {view === 'list' && (
           <div style={{display:'flex', gap:'8px'}}>
             <button className="btn-refresh-parc" onClick={reloadParcelles} disabled={loading} title="Recharger sans se reconnecter">
-              {loading ? '⏳' : '🔄'} Actualiser
+              <IconLoader size={15} className={loading ? 'spin' : ''}/> Actualiser
             </button>
             <button className="btn-add-parc" onClick={() => { resetForm(); setView('add'); setError(''); setSuccess(''); }}>
-              ➕ Ajouter
+              <IconPlus size={15}/> Ajouter
             </button>
           </div>
         )}
         {view === 'detail' && (
           <div style={{display:'flex', gap:'8px'}}>
-            <button className="btn-map" onClick={() => startEdit(selected)}>✏️ Modifier</button>
-            <button className="btn-map" onClick={() => setView('map')}>📍 Carte</button>
+            <button className="btn-map" onClick={() => startEdit(selected)}><IconEdit size={15}/> Modifier</button>
+            <button className="btn-map" onClick={() => setView('map')}><IconMapPin size={15}/> Carte</button>
           </div>
         )}
       </div>
@@ -261,15 +266,15 @@ export default function Parcelles({ auth }) {
       {view === 'list' && (
         loading ? (
           <div className="parc-empty">
-            <div className="parc-empty-icon">⏳</div>
+            <div className="parc-empty-icon"><IconLoader size={40} className="spin"/></div>
             <div className="parc-empty-title">Chargement des parcelles…</div>
             <div className="parc-empty-sub">Connexion à Orion via Wilma</div>
           </div>
         ) : parcelles.length === 0 ? (
           <div className="parc-empty">
-            <div className="parc-empty-icon">🧭</div>
+            <div className="parc-empty-icon"><IconCompass size={40}/></div>
             <div className="parc-empty-title">Aucune parcelle</div>
-            <div className="parc-empty-sub">Cliquez sur "+ Ajouter" pour commencer.</div>
+            <div className="parc-empty-sub">Cliquez sur "Ajouter" pour commencer.</div>
           </div>
         ) : (
           <>
@@ -282,7 +287,7 @@ export default function Parcelles({ auth }) {
                   <button key={g.owner || g.label}
                     className={`parc-owner-tab ${ownerTab===g.owner?'active':''}`}
                     onClick={() => setOwnerTab(g.owner)}>
-                    👤 Parcelle de : {g.label} ({g.count})
+                    <IconUser size={13}/> {g.label} ({g.count})
                   </button>
                 ))}
               </div>
@@ -300,7 +305,7 @@ export default function Parcelles({ auth }) {
       {view === 'add' && (
         <form className="parc-form" onSubmit={addParcelle}>
           <div className="form-section">
-            <div className="form-section-title">🌾 Informations générales</div>
+            <div className="form-section-title"><IconInfo size={16}/> Informations générales</div>
             <div className="form-row">
               <div className="inp-group"><label>Nom *</label><input type="text" placeholder="Parcelle Nord" value={fNom} onChange={e=>setFNom(e.target.value)}/></div>
               <div className="inp-group"><label>Région</label><input type="text" placeholder="Kaolack" value={fRegion} onChange={e=>setFRegion(e.target.value)}/></div>
@@ -311,7 +316,7 @@ export default function Parcelles({ auth }) {
             </div>
           </div>
           <div className="form-section">
-            <div className="form-section-title">🌱 Culture</div>
+            <div className="form-section-title"><IconLeaf size={16}/> Culture</div>
             <div className="culture-grid">
               {CULTURES.map(c => (
                 <div key={c.nom} className={`culture-item ${fCulture===c.nom?'selected':''}`} onClick={() => setFCulture(c.nom)}>
@@ -323,7 +328,7 @@ export default function Parcelles({ auth }) {
             </div>
           </div>
           <div className="form-section">
-            <div className="form-section-title">🪨 Type de sol</div>
+            <div className="form-section-title"><IconLayers size={16}/> Type de sol</div>
             <div className="sol-grid">
               {SOLS.map(s => (
                 <div key={s.nom} className={`sol-item ${fSol===s.nom?'selected':''}`} onClick={() => setFSol(s.nom)}>
@@ -334,14 +339,14 @@ export default function Parcelles({ auth }) {
             </div>
           </div>
           <div className="form-section">
-            <div className="form-section-title">📍 Coordonnées GPS</div>
+            <div className="form-section-title"><IconMapPin size={16}/> Coordonnées GPS</div>
             <div className="form-row">
               <div className="inp-group"><label>Latitude *</label><input type="number" placeholder="14.1500" step="0.0001" value={fLat} onChange={e=>setFLat(e.target.value)}/></div>
               <div className="inp-group"><label>Longitude *</label><input type="number" placeholder="-16.0700" step="0.0001" value={fLng} onChange={e=>setFLng(e.target.value)}/></div>
             </div>
-            <div className="gps-hint">💡 Google Maps → appui long → copier les coordonnées</div>
+            <div className="gps-hint"><IconInfo size={15}/> Google Maps → appui long → copier les coordonnées</div>
           </div>
-          <button className="btn-save-parc" type="submit">💾 {editingId ? 'Enregistrer les modifications' : 'Enregistrer la parcelle'}</button>
+          <button className="btn-save-parc" type="submit">{editingId ? 'Enregistrer les modifications' : 'Enregistrer la parcelle'}</button>
         </form>
       )}
 
@@ -369,7 +374,7 @@ export default function Parcelles({ auth }) {
               </div>
             </div>
             <div className="detail-section">
-              <div className="detail-section-title">🧮 Paramètres agronomiques</div>
+              <div className="detail-section-title"><IconCalculator size={16}/> Paramètres agronomiques</div>
               <div className="detail-grid">
                 <div className="detail-item highlight"><div className="di-val green">{kc.toFixed(3)}</div><div className="di-lbl">Kc actuel</div></div>
                 <div className="detail-item"><div className="di-val">{p.sol}</div><div className="di-lbl">Type de sol</div></div>
@@ -380,7 +385,7 @@ export default function Parcelles({ auth }) {
               </div>
             </div>
             <div className="detail-section">
-              <div className="detail-section-title">📊 Kc par stade (FAO-56 + Protocole)</div>
+              <div className="detail-section-title"><IconTable size={16}/> Kc par stade (FAO-56 + Protocole)</div>
               <div className="kc-table">
                 {[
                   {label:'Initial',       days:`0–${ci.L[0]}j`,                              kc:ci.Kc[0], active:das<=ci.L[0]},
