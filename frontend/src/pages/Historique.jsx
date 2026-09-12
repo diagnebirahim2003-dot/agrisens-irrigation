@@ -9,6 +9,10 @@ import {
   getDOY, getDAS, getKc, getStage, calcRa, calcRs, calcETo,
   calcPajuste, calcRU, calcSc, calcSa, calcDi,
 } from '../utils/agro';
+import {
+  IconCalendar, IconRefresh, IconLoader, IconCompass, IconInfo, IconDroplet,
+  IconSun, IconLeaf, IconArrowDown, IconTrendUp, IconCheck, IconAlertTriangle,
+} from '../components/Icons';
 import './Historique.css';
 
 // Site expérimental — ET0_ETc_Calculateur.xlsx, feuille "Paramètres du site"
@@ -52,11 +56,11 @@ function calculerJour(record, parc, cultures, sol) {
 
 // Stades phénologiques (Li/Ld/Lm/cycle en DAS) -> bandes de fond colorées sur les graphiques.
 const STAGE_DEFS = [
-  { key: 'ini',  label: 'Initial',        color: '#fdf1e0' },
-  { key: 'dev',  label: 'Développement',  color: '#e8f5e9' },
-  { key: 'mid',  label: 'Mi-saison',      color: '#e3f2fd' },
-  { key: 'late', label: 'Fin de saison',  color: '#f3e5f5' },
-  { key: 'done', label: 'Récolte',        color: '#f0f0ea' },
+  { key: 'ini',  label: 'Initial',        color: '#f3e9dd' },
+  { key: 'dev',  label: 'Développement',  color: '#e1efe6' },
+  { key: 'mid',  label: 'Mi-saison',      color: '#e2eef6' },
+  { key: 'late', label: 'Fin de saison',  color: '#ece3f4' },
+  { key: 'done', label: 'Récolte',        color: '#eef2ea' },
 ];
 
 function stageAtDas(c, das) {
@@ -113,10 +117,10 @@ function TimeChart({ title, jours, series, culture: c, unit = '' }) {
           <rect key={b.startIdx} x={x(b.startIdx) - (b.startIdx === 0 ? 2 : 0)}
             y={PAD} width={Math.max(1, x(b.endIdx) - x(b.startIdx) + 2)} height={H - 2 * PAD} fill={b.color} />
         ))}
-        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c9d3c5" />
-        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c9d3c5" />
-        <text x={2} y={PAD} fontSize="10" fill="#4b5d51">{max.toFixed(1)}{unit}</text>
-        <text x={2} y={H - PAD} fontSize="10" fill="#4b5d51">{min.toFixed(1)}{unit}</text>
+        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c7d0c2" />
+        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c7d0c2" />
+        <text x={2} y={PAD} fontSize="10" fill="#52685a">{max.toFixed(1)}{unit}</text>
+        <text x={2} y={H - PAD} fontSize="10" fill="#52685a">{min.toFixed(1)}{unit}</text>
         {series.map(s => (
           <path key={s.key} d={pathFor(s.get)} fill="none" stroke={s.color} strokeWidth="2" strokeDasharray={s.dash || ''} />
         ))}
@@ -149,18 +153,18 @@ function KcCurveChart({ cultures, culture }) {
 
   return (
     <div className="hist-card">
-      <div className="hist-card-title">📈 Courbe théorique du coefficient cultural Kc — {culture} (FAO-56)</div>
+      <div className="hist-card-title"><IconTrendUp size={15}/> Courbe théorique du coefficient cultural Kc — {culture} (FAO-56)</div>
       <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="Courbe Kc">
         {[0, ...bounds, c.cycle].slice(0, -1).map((start, i) => {
           const end = [...bounds, c.cycle][i];
           return <rect key={i} x={x(start)} y={PAD} width={x(end) - x(start)} height={H - 2 * PAD} fill={STAGE_DEFS[i].color} />;
         })}
-        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c9d3c5" />
-        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c9d3c5" />
-        <text x={2} y={PAD} fontSize="10" fill="#4b5d51">{max.toFixed(2)}</text>
-        <text x={2} y={H - PAD} fontSize="10" fill="#4b5d51">0</text>
-        <text x={W - PAD} y={H - PAD + 14} fontSize="10" fill="#4b5d51" textAnchor="end">{c.cycle} j (DAS)</text>
-        <path d={path} fill="none" stroke="#2e7d32" strokeWidth="2.5" />
+        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c7d0c2" />
+        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c7d0c2" />
+        <text x={2} y={PAD} fontSize="10" fill="#52685a">{max.toFixed(2)}</text>
+        <text x={2} y={H - PAD} fontSize="10" fill="#52685a">0</text>
+        <text x={W - PAD} y={H - PAD + 14} fontSize="10" fill="#52685a" textAnchor="end">{c.cycle} j (DAS)</text>
+        <path d={path} fill="none" stroke="#1f6b45" strokeWidth="2.5" />
       </svg>
       <div className="hist-stage-legend">
         {STAGE_DEFS.slice(0, 4).map(s => (
@@ -253,7 +257,7 @@ export default function Historique({ auth }) {
     <div className="hist-wrap">
       <div className="hist-header" style={{display:'flex', alignItems:'flex-start', justifyContent:'space-between', gap:'12px', flexWrap:'wrap'}}>
         <div>
-          <div className="hist-title">📅 Historique de l'expérimentation</div>
+          <div className="hist-title"><IconCalendar size={19}/> Historique de l'expérimentation</div>
           <div className="hist-sub">
             ETo, ETc, RU, Sc et Sa recalculés jour par jour avec les formules de l'app,
             à partir des données réellement mesurées pendant l'expérimentation
@@ -261,17 +265,17 @@ export default function Historique({ auth }) {
           </div>
         </div>
         <button className="btn-refresh" onClick={reloadParcelles} disabled={loading} title="Recharger sans se reconnecter">
-          {loading ? '⏳' : '🔄'} Actualiser
+          <IconRefresh size={14} className={loading ? 'spin' : ''}/> Actualiser
         </button>
       </div>
 
       {error && <div className="hist-empty">{error}</div>}
 
       {loading ? (
-        <div className="hist-empty">⏳ Chargement des parcelles (Orion via Wilma)…</div>
+        <div className="hist-empty"><IconLoader size={16} className="spin"/> Chargement des parcelles (Orion via Wilma)…</div>
       ) : parcelles.length === 0 ? (
         <div className="hist-empty">
-          🧭 Aucune parcelle. Créez-en une depuis "Parcelles" pour voir son historique ici.
+          <IconCompass size={16}/> Aucune parcelle. Créez-en une depuis "Parcelles" pour voir son historique ici.
         </div>
       ) : (
         <>
@@ -285,7 +289,7 @@ export default function Historique({ auth }) {
 
           {!records ? (
             <div className="hist-empty">
-              📭 Aucun historique disponible pour "{parc.nom}" — cette parcelle n'a pas de données
+              <IconInfo size={16}/> Aucun historique disponible pour "{parc.nom}" — cette parcelle n'a pas de données
               mesurées importées (uniquement les 3 parcelles de l'expérimentation du mémoire en ont).
             </div>
           ) : (
@@ -297,38 +301,38 @@ export default function Historique({ auth }) {
                   {' '}{joursAvecReleve.length} jours avec relevé capteur ·
                   {' '}<span className={nbDeclenchements > 0 ? 'hist-alert-count' : ''}>{nbDeclenchements} déclenchement(s) d'irrigation</span>
                 </div>
-                <button className="btn-pdf" onClick={exportPDF}>⬇️ Télécharger en PDF</button>
+                <button className="btn-pdf" onClick={exportPDF}><IconArrowDown size={15}/> Télécharger en PDF</button>
               </div>
 
               <TimeChart
-                title="💧 Stock d'eau mesuré (Sa, matin) vs seuil critique (Sc)"
+                title={<><IconDroplet size={15}/> Stock d'eau mesuré (Sa, matin) vs seuil critique (Sc)</>}
                 jours={jours} culture={cultures[parc.culture]} unit=" mm"
                 series={[
-                  { key: 'Sc', label: 'Sc — seuil critique', color: '#e65100', dash: '4,3', get: j => j.Sc },
-                  { key: 'Sa', label: 'Sa — stock mesuré (matin)', color: '#1565c0', get: j => j.matin?.Sa ?? null },
+                  { key: 'Sc', label: 'Sc — seuil critique', color: '#b5730a', dash: '4,3', get: j => j.Sc },
+                  { key: 'Sa', label: 'Sa — stock mesuré (matin)', color: '#2a628f', get: j => j.matin?.Sa ?? null },
                 ]}
               />
 
               <TimeChart
-                title="☀️ Évapotranspiration — ETo (référence) vs ETc (culture)"
+                title={<><IconSun size={15}/> Évapotranspiration — ETo (référence) vs ETc (culture)</>}
                 jours={jours} culture={cultures[parc.culture]} unit=" mm/j"
                 series={[
-                  { key: 'ETo', label: 'ETo', color: '#f9a825', get: j => j.ETo },
-                  { key: 'ETc', label: 'ETc', color: '#2e7d32', get: j => j.ETc },
+                  { key: 'ETo', label: 'ETo', color: '#d9a441', get: j => j.ETo },
+                  { key: 'ETc', label: 'ETc', color: '#1f6b45', get: j => j.ETc },
                 ]}
               />
 
               <TimeChart
-                title="🌱 Humidité du sol mesurée — matin vs soir"
+                title={<><IconLeaf size={15}/> Humidité du sol mesurée — matin vs soir</>}
                 jours={jours} culture={cultures[parc.culture]} unit="%"
                 series={[
-                  { key: 'hm', label: 'Humidité matin', color: '#1565c0', get: j => j.matinData?.humidite ?? null },
-                  { key: 'hs', label: 'Humidité soir', color: '#6a1b9a', dash: '4,3', get: j => j.soirData?.humidite ?? null },
+                  { key: 'hm', label: 'Humidité matin', color: '#2a628f', get: j => j.matinData?.humidite ?? null },
+                  { key: 'hs', label: 'Humidité soir', color: '#6a4c8c', dash: '4,3', get: j => j.soirData?.humidite ?? null },
                 ]}
               />
 
               <TimeChart
-                title="🚰 Dose d'irrigation théorique cumulée (Di) sur le cycle"
+                title={<><IconTrendUp size={15}/> Dose d'irrigation théorique cumulée (Di) sur le cycle</>}
                 jours={jours} culture={cultures[parc.culture]} unit=" mm"
                 series={[
                   { key: 'cum', label: 'Cumul Di', color: '#00897b', get: j => j.cumulDi },
@@ -365,12 +369,12 @@ export default function Historique({ auth }) {
                         <td>{j.matinData ? j.matinData.humidite.toFixed(1) + '%' : '—'}</td>
                         <td>{j.matin ? j.matin.Sa.toFixed(1) : '—'}</td>
                         <td className={j.matin?.decl ? 'cell-danger' : j.matin ? 'cell-ok' : ''}>
-                          {j.matin ? (j.matin.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
+                          {j.matin ? (j.matin.decl ? <><IconAlertTriangle size={11}/> Irrigation</> : <><IconCheck size={11}/> Suffisant</>) : '—'}
                         </td>
                         <td>{j.soirData ? j.soirData.humidite.toFixed(1) + '%' : '—'}</td>
                         <td>{j.soir ? j.soir.Sa.toFixed(1) : '—'}</td>
                         <td className={j.soir?.decl ? 'cell-danger' : j.soir ? 'cell-ok' : ''}>
-                          {j.soir ? (j.soir.decl ? '🚨 Irrigation' : '✅ Suffisant') : '—'}
+                          {j.soir ? (j.soir.decl ? <><IconAlertTriangle size={11}/> Irrigation</> : <><IconCheck size={11}/> Suffisant</>) : '—'}
                         </td>
                         <td>{j.Di.toFixed(2)}</td>
                       </tr>

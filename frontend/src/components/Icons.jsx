@@ -178,3 +178,15 @@ export function IconArrowDown(props) {
 export function IconArrowUp(props) {
   return <Base {...props}><line x1="12" y1="19.5" x2="12" y2="4.5"/><path d="m6 10.5 6-6 6 6"/></Base>;
 }
+
+export function IconGlobe(props) {
+  return <Base {...props}><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9Z"/></Base>;
+}
+
+export function IconKey(props) {
+  return <Base {...props}><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5"/><path d="m16.5 6.5 2.5 2.5"/><path d="m14 9 2.2 2.2"/></Base>;
+}
+
+export function IconMail(props) {
+  return <Base {...props}><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 6.5 8 6.5 8-6.5"/></Base>;
+}

@@ -3,6 +3,9 @@ import { getHistorique } from '../utils/historique';
 import { listParcelles } from '../utils/orion';
 import { listAccountsAsAdmin } from '../utils/accounts';
 import { getCultures } from '../utils/cultures';
+import {
+  IconTrendUp, IconRefresh, IconLoader, IconCompass, IconAntenna, IconUser,
+} from '../components/Icons';
 import './Graphes.css';
 
 const PARAMS = [
@@ -32,10 +35,10 @@ function LineChart({ points, color, unit }) {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="Graphique d'historique">
-      <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#dde5d7" />
-      <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#dde5d7" />
-      <text x={2} y={PAD} fontSize="11" fill="#4b5d51">{max.toFixed(1)}{unit}</text>
-      <text x={2} y={H - PAD} fontSize="11" fill="#4b5d51">{min.toFixed(1)}{unit}</text>
+      <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#dde6dc" />
+      <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#dde6dc" />
+      <text x={2} y={PAD} fontSize="11" fill="#52685a">{max.toFixed(1)}{unit}</text>
+      <text x={2} y={H - PAD} fontSize="11" fill="#52685a">{min.toFixed(1)}{unit}</text>
       {coords.length > 1 && <path d={path} fill="none" stroke={color} strokeWidth="2" />}
       {last && <circle cx={last[0]} cy={last[1]} r="4" fill={color} />}
     </svg>
@@ -93,13 +96,13 @@ export default function Graphes({ auth }) {
     <div className="graph-wrap">
       <div className="graph-section">
         <div className="graph-header">
-          <div className="graph-title">📈 Historique des relevés — Capteur 8-en-1</div>
+          <div className="graph-title"><IconTrendUp size={17}/> Historique des relevés — Capteur 8-en-1</div>
           <div style={{display:'flex', alignItems:'center', gap:'8px'}}>
             <span className="graph-count">
               {historique.length} relevé{historique.length > 1 ? 's' : ''} enregistré{historique.length > 1 ? 's' : ''}
             </span>
             <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger sans se reconnecter">
-              {parcLoading ? '⏳' : '🔄'} Actualiser
+              <IconRefresh size={14} className={parcLoading ? 'spin' : ''}/> Actualiser
             </button>
           </div>
         </div>
@@ -113,21 +116,21 @@ export default function Graphes({ auth }) {
                 onClick={() => setSelectedId(p.id)}
               >
                 {CULTURES[p.culture]?.icon || '🌱'} {p.nom} — {p.culture}
-                {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
+                {auth.role === 'admin' && <> · <IconUser size={11}/> {ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}</>}
               </button>
             ))}
           </div>
         )}
 
         {parcLoading ? (
-          <div className="graph-empty">⏳ Chargement des parcelles…</div>
+          <div className="graph-empty"><IconLoader size={17} className="spin"/> Chargement des parcelles…</div>
         ) : parcelles.length === 0 ? (
           <div className="graph-empty">
-            🧭 Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".
+            <IconCompass size={17}/> Aucune parcelle. Créez d'abord une parcelle dans "Parcelles".
           </div>
         ) : historique.length === 0 ? (
           <div className="graph-empty">
-            📡 Aucun relevé enregistré pour l'instant.<br />
+            <IconAntenna size={17}/> Aucun relevé enregistré pour l'instant.<br />
             Connectez le capteur 8-en-1 depuis la page "Capteurs" pour commencer l'historisation.
           </div>
         ) : (

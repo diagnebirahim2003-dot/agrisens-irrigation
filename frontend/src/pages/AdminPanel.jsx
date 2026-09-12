@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { getCultures, saveCultures, resetCultures } from '../utils/cultures';
 import { getSols, saveSols, resetSols, DEFAULT_SOLS } from '../utils/sols';
 import { createAccountAsAdmin, deleteAccountAsAdmin, listAccountsAsAdmin, changeAccountRole, resetAccountPassword } from '../utils/accounts';
+import {
+  IconChevronLeft, IconRefresh, IconLoader, IconUsers, IconPlus, IconLeaf,
+  IconLayers, IconSearch, IconTrash, IconShield, IconWrench,
+  IconGlobe, IconKey, IconMail, IconAlertTriangle, IconEdit,
+} from '../components/Icons';
 import './AdminPanel.css';
 
 const ROLES = ['admin', 'technicien', 'agronome'];
@@ -239,20 +244,20 @@ export default function AdminPanel({ auth, onBack }) {
     agronome:   'badge-agro',
   }[r] || 'badge-agro');
 
-  const roleIcon = r => ({ admin:'👑', technicien:'🔧', agronome:'🌿' }[r] || '👤');
+  const RoleIcon = r => ({ admin:IconShield, technicien:IconWrench, agronome:IconLeaf }[r] || IconLeaf);
 
   return (
     <div className="admin-panel">
       <div className="admin-header">
         <div className="admin-header-left">
-          <button className="btn-back" onClick={onBack}>← Retour</button>
+          <button className="btn-back" onClick={onBack}><IconChevronLeft size={15}/> Retour</button>
           <div>
-            <div className="admin-title">👥 Gestion des utilisateurs</div>
+            <div className="admin-title"><IconUsers size={18}/> Gestion des utilisateurs</div>
             <div className="admin-sub">Connecté en tant que {auth.user} · Admin</div>
           </div>
         </div>
         <button className="btn-back" onClick={refresh} disabled={listLoading} title="Recharger sans se reconnecter">
-          {listLoading ? '⏳' : '🔄'} Actualiser
+          <IconRefresh size={14} className={listLoading ? 'spin' : ''}/> Actualiser
         </button>
       </div>
 
@@ -267,16 +272,16 @@ export default function AdminPanel({ auth, onBack }) {
       {/* Tabs */}
       <div className="admin-tabs">
         <button className={`atab ${tab==='list'?'active':''}`} onClick={()=>{setTab('list');setError('');setSuccess('');}}>
-          📋 Liste des utilisateurs
+          <IconUsers size={14}/> Liste des utilisateurs
         </button>
         <button className={`atab ${tab==='add'?'active':''}`} onClick={()=>{setTab('add');setError('');setSuccess('');}}>
-          ➕ Ajouter un utilisateur
+          <IconPlus size={14}/> Ajouter un utilisateur
         </button>
         <button className={`atab ${tab==='cultures'?'active':''}`} onClick={()=>{setTab('cultures');setError('');setSuccess('');}}>
-          🌱 Cultures
+          <IconLeaf size={14}/> Cultures
         </button>
         <button className={`atab ${tab==='sols'?'active':''}`} onClick={()=>{setTab('sols');setError('');setSuccess('');}}>
-          🪨 Sols
+          <IconLayers size={14}/> Sols
         </button>
       </div>
 
@@ -286,23 +291,28 @@ export default function AdminPanel({ auth, onBack }) {
       {/* LISTE */}
       {tab === 'list' && (
         <div>
-          <input
-            className="search-input"
-            placeholder="🔍 Rechercher un utilisateur..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
+          <div className="search-wrap">
+            <IconSearch size={15} className="search-icon"/>
+            <input
+              className="search-input"
+              placeholder="Rechercher un utilisateur..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
+          </div>
           {listLoading ? (
-            <div className="empty-msg">⏳ Chargement des comptes (Keycloak)…</div>
+            <div className="empty-msg"><IconLoader size={18} className="spin"/> Chargement des comptes (Keycloak)…</div>
           ) : (
           <div className="users-list">
-            {filtered.map(u => (
+            {filtered.map(u => {
+              const RIcon = RoleIcon(u.role);
+              return (
               <div className="user-card" key={u.email}>
                 <div className="user-card-left">
                   <div className="user-avatar">{u.prenom?.[0]}{u.nom?.[0]}</div>
                   <div>
                     <div className="user-name">{u.prenom} {u.nom}</div>
-                    <div className="user-email">✉️ {u.email}</div>
+                    <div className="user-email"><IconMail size={12}/> {u.email}</div>
                     <div className="user-meta">
                       {u.nationalite} · {u.profession}
                       {u.maraichage === 'oui' && ' · 🥦 Maraîchage'}
@@ -315,7 +325,7 @@ export default function AdminPanel({ auth, onBack }) {
                 </div>
                 <div className="user-card-right">
                   <span className={`role-badge ${roleBadge(u.role)}`}>
-                    {roleIcon(u.role)} {u.role}
+                    <RIcon size={12}/> {u.role}
                   </span>
                   <div className="user-actions">
                     <select
@@ -327,7 +337,7 @@ export default function AdminPanel({ auth, onBack }) {
                       {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
                     </select>
                     <button className="btn-action reset" onClick={() => resetPwd(u.username)} title="Réinitialiser MDP">
-                      🔑
+                      <IconKey size={15}/>
                     </button>
                     <button
                       className="btn-action delete"
@@ -335,12 +345,13 @@ export default function AdminPanel({ auth, onBack }) {
                       disabled={u.email === auth.email}
                       title="Supprimer"
                     >
-                      🗑️
+                      <IconTrash size={15}/>
                     </button>
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
             {filtered.length === 0 && (
               <div className="empty-msg">Aucun utilisateur trouvé.</div>
             )}
@@ -397,7 +408,7 @@ export default function AdminPanel({ auth, onBack }) {
                 className={`role-select-item ${fRole==='technicien'?'selected':''}`}
                 onClick={()=>setFRole('technicien')}
               >
-                <span className="role-select-icon">🔧</span>
+                <span className="role-select-icon"><IconWrench size={22}/></span>
                 <span className="role-select-name">Technicien</span>
                 <span className="role-select-desc">Lecture + modification des capteurs</span>
               </div>
@@ -405,7 +416,7 @@ export default function AdminPanel({ auth, onBack }) {
                 className={`role-select-item ${fRole==='admin'?'selected':''}`}
                 onClick={()=>setFRole('admin')}
               >
-                <span className="role-select-icon">👑</span>
+                <span className="role-select-icon"><IconShield size={22}/></span>
                 <span className="role-select-name">Co-administrateur</span>
                 <span className="role-select-desc">Toutes les autorisations</span>
               </div>
@@ -418,8 +429,8 @@ export default function AdminPanel({ auth, onBack }) {
               type="email" placeholder="exemple@gmail.com"
               value={fEmail} onChange={e=>setFEmail(e.target.value)}
             />
-            {fEmail && isGmail(fEmail) && <span className="email-ok">✉️ {fEmail}</span>}
-            {fEmail && !isGmail(fEmail) && <span className="email-err">⚠️ Adresse @gmail.com requise</span>}
+            {fEmail && isGmail(fEmail) && <span className="email-ok"><IconMail size={12}/> {fEmail}</span>}
+            {fEmail && !isGmail(fEmail) && <span className="email-err"><IconAlertTriangle size={12}/> Adresse @gmail.com requise</span>}
           </div>
 
           <div className="inp-group">
@@ -432,7 +443,7 @@ export default function AdminPanel({ auth, onBack }) {
           </div>
 
           <button className="btn-add-user" type="submit" disabled={loading}>
-            {loading ? '⏳ Création…' : `➕ Ajouter ${fRole === 'admin' ? 'le co-administrateur' : 'le technicien'}`}
+            {loading ? <><IconLoader size={15} className="spin"/> Création…</> : <><IconPlus size={15}/> Ajouter {fRole === 'admin' ? 'le co-administrateur' : 'le technicien'}</>}
           </button>
         </form>
       )}
@@ -445,7 +456,7 @@ export default function AdminPanel({ auth, onBack }) {
           </div>
 
           {Object.entries(cultures).map(([nom, c]) => (
-            <div key={nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
+            <div key={nom} className="form-row" style={{flexDirection:'column', border:'1px solid var(--line)', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
               <div className="add-form-title" style={{marginBottom:8}}>{c.icon} {nom}</div>
 
               <div className="form-row">
@@ -476,8 +487,8 @@ export default function AdminPanel({ auth, onBack }) {
           ))}
 
           <div className="form-row">
-            <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
-            <button className="btn-back" type="button" onClick={handleResetCultures}>↺ Réinitialiser aux valeurs par défaut</button>
+            <button className="btn-add-user" type="submit">Enregistrer les paramètres</button>
+            <button className="btn-back" type="button" onClick={handleResetCultures}>Réinitialiser aux valeurs par défaut</button>
           </div>
         </form>
       )}
@@ -494,17 +505,17 @@ export default function AdminPanel({ auth, onBack }) {
             const mode = solsMode[s.nom] || 'fao';
             const editable = mode === 'custom';
             return (
-              <div key={s.nom} className="form-row" style={{flexDirection:'column', border:'1px solid #ddd', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
-                <div className="add-form-title" style={{marginBottom:8}}>🪨 {s.nom}</div>
+              <div key={s.nom} className="form-row" style={{flexDirection:'column', border:'1px solid var(--line)', borderRadius:8, padding:'12px', marginBottom:'16px'}}>
+                <div className="add-form-title" style={{marginBottom:8, display:'flex', alignItems:'center', gap:8}}><IconLayers size={16}/> {s.nom}</div>
 
                 <div className="inp-group" style={{marginBottom:8}}>
                   <label>Source de la valeur</label>
                   <div className="radio-group">
                     <label className="radio-label">
-                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='fao'} onChange={()=>setSolMode(s.nom,'fao')}/> 🌍 Valeurs FAO/USDA par défaut
+                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='fao'} onChange={()=>setSolMode(s.nom,'fao')}/> <IconGlobe size={14}/> Valeurs FAO/USDA par défaut
                     </label>
                     <label className="radio-label">
-                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='custom'} onChange={()=>setSolMode(s.nom,'custom')}/> ✏️ Mes propres valeurs (mesurées)
+                      <input type="radio" name={`solmode-${s.nom}`} checked={mode==='custom'} onChange={()=>setSolMode(s.nom,'custom')}/> <IconEdit size={14}/> Mes propres valeurs (mesurées)
                     </label>
                   </div>
                 </div>
@@ -519,8 +530,8 @@ export default function AdminPanel({ auth, onBack }) {
           })}
 
           <div className="form-row">
-            <button className="btn-add-user" type="submit">💾 Enregistrer les paramètres</button>
-            <button className="btn-back" type="button" onClick={handleResetSols}>↺ Réinitialiser aux valeurs par défaut</button>
+            <button className="btn-add-user" type="submit">Enregistrer les paramètres</button>
+            <button className="btn-back" type="button" onClick={handleResetSols}>Réinitialiser aux valeurs par défaut</button>
           </div>
         </form>
       )}
