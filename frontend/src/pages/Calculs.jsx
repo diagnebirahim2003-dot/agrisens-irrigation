@@ -8,6 +8,11 @@ import {
   getDOY, getDAS, getKc, getStage, calcRa, calcRs, calcETo, u2FromU10,
   calcPajuste, calcRU, calcSc, calcSa, calcDi,
 } from '../utils/agro';
+import {
+  IconCalculator, IconMapPin, IconRefresh, IconLoader, IconSun, IconLeaf,
+  IconDroplet, IconSprout, IconAlertTriangle, IconCheck, IconAntenna,
+  IconZap, IconUser,
+} from '../components/Icons';
 import './Calculs.css';
 
 // ═══════════════════════════════════════════════════
@@ -131,10 +136,10 @@ export default function Calculs({ auth }) {
       const Sa     = humSol !== null ? calcSa(humSol, c.Zr) : null;
       let reco, recoClass;
       if (Sa !== null) {
-        if (Sa < Sc) { reco = '🚨 IRRIGATION DÉCLENCHÉE'; recoClass = 'danger'; }
-        else         { reco = '✅ STOCK SUFFISANT — AUCUN ARROSAGE'; recoClass = 'ok'; }
+        if (Sa < Sc) { reco = 'IRRIGATION DÉCLENCHÉE'; recoClass = 'danger'; }
+        else         { reco = 'STOCK SUFFISANT — AUCUN ARROSAGE'; recoClass = 'ok'; }
       } else {
-        reco = '📡 Connecter le capteur 8-en-1 pour recommandation';
+        reco = 'Connecter le capteur 8-en-1 pour recommandation';
         recoClass = 'info';
       }
 
@@ -150,21 +155,21 @@ export default function Calculs({ auth }) {
   return (
     <div className="calc-wrap">
       <div className="calc-header">
-        <div className="calc-title">🧮 Calculs agronomiques</div>
+        <div className="calc-title"><IconCalculator size={19}/> Calculs agronomiques</div>
         <div className="calc-sub">ETo · ETc · RU · RFU · Sc · Di — Méthode FAO-56 Penman-Monteith</div>
       </div>
 
       {/* Sélection parcelle */}
       <div className="calc-card">
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'12px'}}>
-          <div className="cc-title" style={{marginBottom:0}}>📍 Sélection de la parcelle</div>
+          <div className="cc-title" style={{marginBottom:0}}><IconMapPin size={14}/> Sélection de la parcelle</div>
           <button className="btn-refresh" onClick={reloadParcelles} disabled={parcLoading} title="Recharger sans se reconnecter">
-            {parcLoading ? '⏳' : '🔄'} Actualiser
+            <IconRefresh size={14} className={parcLoading ? 'spin' : ''}/> Actualiser
           </button>
         </div>
         {parcError && <div className="calc-error">{parcError}</div>}
         {parcLoading ? (
-          <div className="calc-empty">⏳ Chargement des parcelles (Orion via Wilma)…</div>
+          <div className="calc-empty"><IconLoader size={16} className="spin"/> Chargement des parcelles (Orion via Wilma)…</div>
         ) : parcelles.length === 0 ? (
           <div className="calc-empty">Aucune parcelle. Créez une parcelle d'abord.</div>
         ) : (
@@ -178,7 +183,7 @@ export default function Calculs({ auth }) {
                   <div className="psi-nom">{p.nom}</div>
                   <div className="psi-sub">
                     {p.culture} · {getDAS(p.semis)} JAS
-                    {auth.role === 'admin' && ` · 👤 ${ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}`}
+                    {auth.role === 'admin' && <> · <IconUser size={11}/> {ownerNames[p.owner] || p.ownerName || p.owner || 'Propriétaire inconnu'}</>}
                   </div>
                 </div>
               </div>
@@ -187,7 +192,7 @@ export default function Calculs({ auth }) {
         )}
         {parc && (
           <button className="btn-calc" onClick={lancerCalcul} disabled={loading}>
-            {loading ? '⏳ Calcul en cours…' : '⚡ Lancer les calculs'}
+            {loading ? <><IconLoader size={15} className="spin"/> Calcul en cours…</> : <><IconZap size={15}/> Lancer les calculs</>}
           </button>
         )}
         {error && <div className="calc-error">{error}</div>}
@@ -198,7 +203,7 @@ export default function Calculs({ auth }) {
         <>
           {/* Météo */}
           <div className="calc-card">
-            <div className="cc-title">🌤️ Données météo — OpenWeatherMap · {result.wx.ville}</div>
+            <div className="cc-title"><IconSun size={14}/> Données météo — OpenWeatherMap · {result.wx.ville}</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val">{result.wx.Tmax.toFixed(1)}°C</div><div className="ri-lbl">Tmax</div></div>
               <div className="res-item"><div className="ri-val">{result.wx.Tmin.toFixed(1)}°C</div><div className="ri-lbl">Tmin</div></div>
@@ -211,7 +216,7 @@ export default function Calculs({ auth }) {
 
           {/* Calculs ETo */}
           <div className="calc-card">
-            <div className="cc-title">☀️ Rayonnement et ETo — Hargreaves + Penman-Monteith</div>
+            <div className="cc-title"><IconSun size={14}/> Rayonnement et ETo — Hargreaves + Penman-Monteith</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val amber">{result.Ra.toFixed(2)}</div><div className="ri-lbl">Ra (MJ/m²/j)</div></div>
               <div className="res-item"><div className="ri-val amber">{result.Rs.toFixed(2)}</div><div className="ri-lbl">Rs (MJ/m²/j)</div></div>
@@ -223,7 +228,7 @@ export default function Calculs({ auth }) {
 
           {/* ETc + Kc */}
           <div className="calc-card">
-            <div className="cc-title">🌱 Évapotranspiration culture — {result.parc.culture} {CULTURES[result.parc.culture]?.icon}</div>
+            <div className="cc-title"><IconLeaf size={14}/> Évapotranspiration culture — {result.parc.culture} {CULTURES[result.parc.culture]?.icon}</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val">{result.das} j</div><div className="ri-lbl">DAS</div></div>
               <div className="res-item"><div className="ri-val">{result.stage}</div><div className="ri-lbl">Stade</div></div>
@@ -234,7 +239,7 @@ export default function Calculs({ auth }) {
 
           {/* RU / RFU / Sc / Di */}
           <div className="calc-card">
-            <div className="cc-title">💧 Bilan hydrique — Sol {result.parc.sol} de la parcelle (Hcc={result.sol.cc}%, Hpf={result.sol.pf}%)</div>
+            <div className="cc-title"><IconDroplet size={14}/> Bilan hydrique — Sol {result.parc.sol} de la parcelle (Hcc={result.sol.cc}%, Hpf={result.sol.pf}%)</div>
             <div className="res-grid">
               <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div></div>
               <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div></div>
@@ -250,7 +255,7 @@ export default function Calculs({ auth }) {
           {/* Déficit NPK */}
           {result.npkDef ? (
             <div className="calc-card">
-              <div className="cc-title">🌿 Déficit nutritif NPK — Capteur 8-en-1</div>
+              <div className="cc-title"><IconSprout size={14}/> Déficit nutritif NPK — Capteur 8-en-1</div>
               <div className="res-grid">
                 {['N','P','K'].map(el => (
                   <div key={el} className={`res-item ${result.npkDef[el]>0?'alerte':''}`}>
@@ -270,9 +275,9 @@ export default function Calculs({ auth }) {
             </div>
           ) : (
             <div className="calc-card info-card">
-              <div className="cc-title">🌿 Déficit nutritif NPK</div>
+              <div className="cc-title"><IconSprout size={14}/> Déficit nutritif NPK</div>
               <div className="calc-empty">
-                📡 Connectez le capteur 8-en-1 pour calculer les déficits N, P, K.<br/>
+                <IconAntenna size={16}/> Connectez le capteur 8-en-1 pour calculer les déficits N, P, K.<br/>
                 Valeurs optimales : N={CULTURES[result.parc.culture]?.NPK.N} · 
                 P={CULTURES[result.parc.culture]?.NPK.P} · 
                 K={CULTURES[result.parc.culture]?.NPK.K} mg/kg
@@ -283,7 +288,13 @@ export default function Calculs({ auth }) {
           {/* RECOMMANDATION */}
           <div className={`reco-card reco-${result.recoClass}`}>
             <div className="reco-icon">
-              {result.recoClass==='danger'?'🚨':result.recoClass==='warn'?'⚠️':result.recoClass==='ok'?'✅':'📡'}
+              {result.recoClass==='danger'
+                ? <IconAlertTriangle size={26}/>
+                : result.recoClass==='warn'
+                  ? <IconAlertTriangle size={26}/>
+                  : result.recoClass==='ok'
+                    ? <IconCheck size={26}/>
+                    : <IconAntenna size={26}/>}
             </div>
             <div>
               <div className="reco-title">{result.reco}</div>
