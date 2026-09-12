@@ -213,11 +213,11 @@ export default function Calculs({ auth }) {
           <div className="calc-card">
             <div className="cc-title">☀️ Rayonnement et ETo — Hargreaves + Penman-Monteith</div>
             <div className="res-grid">
-              <div className="res-item"><div className="ri-val amber">{result.Ra.toFixed(2)}</div><div className="ri-lbl">Ra (MJ/m²/j)</div><div className="ri-form">Extraterrestre</div></div>
-              <div className="res-item"><div className="ri-val amber">{result.Rs.toFixed(2)}</div><div className="ri-lbl">Rs (MJ/m²/j)</div><div className="ri-form">0,16×√(Tmax-Tmin)×Ra</div></div>
-              <div className="res-item"><div className="ri-val amber">{(0.77*result.Rs).toFixed(2)}</div><div className="ri-lbl">Rns (MJ/m²/j)</div><div className="ri-form">0,77 × Rs</div></div>
-              <div className="res-item"><div className="ri-val amber">{(0.75*result.Ra).toFixed(2)}</div><div className="ri-lbl">Rso (MJ/m²/j)</div><div className="ri-form">0,75 × Ra</div></div>
-              <div className="res-item highlight"><div className="ri-val green">{result.ETo.toFixed(3)}</div><div className="ri-lbl">ETo (mm/j)</div><div className="ri-form">Penman-Monteith FAO-56</div></div>
+              <div className="res-item"><div className="ri-val amber">{result.Ra.toFixed(2)}</div><div className="ri-lbl">Ra (MJ/m²/j)</div></div>
+              <div className="res-item"><div className="ri-val amber">{result.Rs.toFixed(2)}</div><div className="ri-lbl">Rs (MJ/m²/j)</div></div>
+              <div className="res-item"><div className="ri-val amber">{(0.77*result.Rs).toFixed(2)}</div><div className="ri-lbl">Rns (MJ/m²/j)</div></div>
+              <div className="res-item"><div className="ri-val amber">{(0.75*result.Ra).toFixed(2)}</div><div className="ri-lbl">Rso (MJ/m²/j)</div></div>
+              <div className="res-item highlight"><div className="ri-val green">{result.ETo.toFixed(3)}</div><div className="ri-lbl">ETo (mm/j)</div></div>
             </div>
           </div>
 
@@ -225,10 +225,10 @@ export default function Calculs({ auth }) {
           <div className="calc-card">
             <div className="cc-title">🌱 Évapotranspiration culture — {result.parc.culture} {CULTURES[result.parc.culture]?.icon}</div>
             <div className="res-grid">
-              <div className="res-item"><div className="ri-val">{result.das} j</div><div className="ri-lbl">DAS</div><div className="ri-form">Jours après semis</div></div>
-              <div className="res-item"><div className="ri-val">{result.stage}</div><div className="ri-lbl">Stade</div><div className="ri-form">Phénologique</div></div>
-              <div className="res-item highlight"><div className="ri-val green">{result.Kc.toFixed(3)}</div><div className="ri-lbl">Kc</div><div className="ri-form">Coeff. cultural FAO</div></div>
-              <div className="res-item highlight"><div className="ri-val green">{result.ETc.toFixed(3)}</div><div className="ri-lbl">ETc (mm/j)</div><div className="ri-form">Kc × ETo</div></div>
+              <div className="res-item"><div className="ri-val">{result.das} j</div><div className="ri-lbl">DAS</div></div>
+              <div className="res-item"><div className="ri-val">{result.stage}</div><div className="ri-lbl">Stade</div></div>
+              <div className="res-item highlight"><div className="ri-val green">{result.Kc.toFixed(3)}</div><div className="ri-lbl">Kc</div></div>
+              <div className="res-item highlight"><div className="ri-val green">{result.ETc.toFixed(3)}</div><div className="ri-lbl">ETc (mm/j)</div></div>
             </div>
           </div>
 
@@ -236,14 +236,14 @@ export default function Calculs({ auth }) {
           <div className="calc-card">
             <div className="cc-title">💧 Bilan hydrique — Sol {result.parc.sol} de la parcelle (Hcc={result.sol.cc}%, Hpf={result.sol.pf}%)</div>
             <div className="res-grid">
-              <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div><div className="ri-form">(Hcc-Hpf)/100×Da×Zr×1000</div></div>
-              <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div><div className="ri-form">p + 0,04×(5-ETc)</div></div>
-              <div className="res-item highlight"><div className="ri-val blue">{result.RFU.toFixed(1)}</div><div className="ri-lbl">RFU (mm)</div><div className="ri-form">p_ajusté × RU</div></div>
-              <div className="res-item"><div className="ri-val red">{result.Sc.toFixed(1)}</div><div className="ri-lbl">Sc (mm) — Seuil critique</div><div className="ri-form">Hcc/100×Zr×1000 − RFU</div></div>
+              <div className="res-item"><div className="ri-val blue">{result.RU.toFixed(1)}</div><div className="ri-lbl">RU (mm)</div></div>
+              <div className="res-item"><div className="ri-val blue">{result.Pajus.toFixed(2)}</div><div className="ri-lbl">p ajusté</div></div>
+              <div className="res-item highlight"><div className="ri-val blue">{result.RFU.toFixed(1)}</div><div className="ri-lbl">RFU (mm)</div></div>
+              <div className="res-item"><div className="ri-val red">{result.Sc.toFixed(1)}</div><div className="ri-lbl">Sc (mm) — Seuil critique</div></div>
               {result.Sa !== null && (
-                <div className="res-item highlight"><div className="ri-val blue">{result.Sa.toFixed(1)}</div><div className="ri-lbl">Sa (mm) — Stock actuel</div><div className="ri-form">θactuel × Zr × 1000</div></div>
+                <div className="res-item highlight"><div className="ri-val blue">{result.Sa.toFixed(1)}</div><div className="ri-lbl">Sa (mm) — Stock actuel</div></div>
               )}
-              <div className="res-item highlight"><div className="ri-val green">{result.Di.toFixed(2)}</div><div className="ri-lbl">Di (mm/plot)</div><div className="ri-form">ETc × 2 m²</div></div>
+              <div className="res-item highlight"><div className="ri-val green">{result.Di.toFixed(2)}</div><div className="ri-lbl">Di (mm/plot)</div></div>
             </div>
           </div>
 
@@ -258,14 +258,14 @@ export default function Calculs({ auth }) {
                       {result.npkDef[el]>0 ? '-'+result.npkDef[el].toFixed(1) : 'OK'}
                     </div>
                     <div className="ri-lbl">Déficit {el} (mg/kg)</div>
-                    <div className="ri-form">
-                      Optimal: {CULTURES[result.parc.culture]?.NPK[el]} mg/kg
-                    </div>
                   </div>
                 ))}
               </div>
               <div className="npk-sources">
-                Source : FAO AGRIS — valeurs optimales pour {result.parc.culture}
+                Valeurs optimales (FAO AGRIS) pour {result.parc.culture} :
+                N={CULTURES[result.parc.culture]?.NPK.N} ·
+                P={CULTURES[result.parc.culture]?.NPK.P} ·
+                K={CULTURES[result.parc.culture]?.NPK.K} mg/kg
               </div>
             </div>
           ) : (
@@ -304,26 +304,6 @@ export default function Calculs({ auth }) {
             </div>
           </div>
 
-          {/* Détail formules */}
-          <div className="calc-card formules-card">
-            <div className="cc-title">📐 Récapitulatif des formules utilisées</div>
-            <div className="formule-list">
-              <div className="formule-item"><span className="f-name">Rs</span><span className="f-eq">= 0,16 × √(Tmax−Tmin) × Ra</span><span className="f-src">Hargreaves, Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Rns</span><span className="f-eq">= 0,77 × Rs</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Rso</span><span className="f-eq">= 0,75 × Ra</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">ea</span><span className="f-eq">= (HR/100) × es</span><span className="f-src">Chap.3 mémoire (simplifié)</span></div>
-              <div className="formule-item"><span className="f-name">ETo</span><span className="f-eq">= Penman-Monteith FAO-56</span><span className="f-src">FAO-56 Eq.6</span></div>
-              <div className="formule-item"><span className="f-name">ETc</span><span className="f-eq">= Kc × ETo</span><span className="f-src">FAO-56</span></div>
-              <div className="formule-item"><span className="f-name">RU</span><span className="f-eq">= (Hcc−Hpf)/100 × Zr × 1000</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">p</span><span className="f-eq">= p_table + 0,04×(5−ETc)</span><span className="f-src">FAO-56 T.22, Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">RFU</span><span className="f-eq">= p_ajusté × RU</span><span className="f-src">FAO-56 Eq.83</span></div>
-              <div className="formule-item"><span className="f-name">Sc</span><span className="f-eq">= Hcc/100 × Zr × 1000 − RFU</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Sa</span><span className="f-eq">= θactuel × Zr × 1000</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Décision</span><span className="f-eq">Sa &lt; Sc → irrigation ; sinon aucun arrosage</span><span className="f-src">RG-I4, Chap.3/4 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Di</span><span className="f-eq">= ETc × superficie_plot</span><span className="f-src">Chap.3 mémoire</span></div>
-              <div className="formule-item"><span className="f-name">Déficit NPK</span><span className="f-eq">= Valeur_optimale − Valeur_capteur</span><span className="f-src">Protocole + FAO AGRIS</span></div>
-            </div>
-          </div>
         </>
       )}
     </div>

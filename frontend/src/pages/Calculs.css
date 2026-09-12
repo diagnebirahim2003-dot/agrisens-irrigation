@@ -30,7 +30,6 @@
 .ri-val.amber{color:#e65100;}
 .ri-val.red{color:#c62828;}
 .ri-lbl{font-size:0.65rem;color:#6a7f6a;text-transform:uppercase;margin-top:3px;}
-.ri-form{font-size:0.6rem;color:#9aaa9a;margin-top:2px;font-style:italic;}
 .npk-sources{font-size:0.68rem;color:#9aaa9a;margin-top:10px;text-align:center;}
 .reco-card{border-radius:14px;padding:18px 20px;margin-bottom:14px;display:flex;align-items:flex-start;gap:14px;}
 .reco-card.reco-danger{background:linear-gradient(135deg,#ffebee,#ffcdd2);border:2px solid #c62828;}
@@ -40,11 +39,4 @@
 .reco-icon{font-size:2rem;flex-shrink:0;}
 .reco-title{font-size:1rem;font-weight:700;color:#1b3a1b;margin-bottom:6px;}
 .reco-detail{font-size:0.78rem;color:#3a5a3a;margin-top:4px;}
-.formules-card{background:#1b3a1b;}
-.formules-card .cc-title{color:#69f0ae;}
-.formule-list{display:flex;flex-direction:column;gap:6px;}
-.formule-item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;flex-wrap:wrap;}
-.f-name{font-family:'Courier New',monospace;font-weight:700;color:#69f0ae;min-width:60px;font-size:0.82rem;}
-.f-eq{font-family:'Courier New',monospace;color:#fff;font-size:0.78rem;flex:1;}
-.f-src{font-size:0.65rem;color:#9aaa9a;white-space:nowrap;}
-@media(max-width:600px){.res-grid{grid-template-columns:repeat(2,1fr);}.formule-item{flex-direction:column;align-items:flex-start;}}
+@media(max-width:600px){.res-grid{grid-template-columns:repeat(2,1fr);}}
