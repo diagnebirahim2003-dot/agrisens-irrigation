@@ -132,25 +132,31 @@ function Dashboard({ auth, setPage }) {
 
   return (
     <div className="main-content">
-      <div className="dash-greeting">
-        <div>
-          <h1 className="dash-hello">{greeting}, {auth.user.split(' ')[0]}</h1>
-          <p className="dash-date">
-            {now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
-            {' · '}USSEIN Kaolack
-          </p>
+      <div className="dash-hero">
+        <div className="dash-hero-glow"/>
+        <div className="dash-hero-top">
+          <div className="dash-badge-role">
+            <role.Icon size={14}/> {role.label}
+          </div>
+          <div className="dash-hero-live">
+            <span className="live-pulse"/> Système actif
+          </div>
         </div>
-        <div className="dash-badge-role">
-          <role.Icon size={15}/> {role.label}
-        </div>
+        <h1 className="dash-hello">{greeting}, {auth.user.split(' ')[0]}</h1>
+        <p className="dash-date">
+          {now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+          {' · '}USSEIN Kaolack
+        </p>
       </div>
 
       <div className="kpi-row">
         {kpis.map(k => (
           <div key={k.label} className={`kpi-card ${k.cls}`}>
-            <div className="kpi-icon"><k.Icon size={18}/></div>
-            <div className="kpi-val">{k.val}</div>
-            <div className="kpi-lbl">{k.label}</div>
+            <div className="kpi-icon"><k.Icon size={19}/></div>
+            <div className="kpi-body">
+              <div className="kpi-val">{k.val}</div>
+              <div className="kpi-lbl">{k.label}</div>
+            </div>
           </div>
         ))}
       </div>
@@ -160,8 +166,9 @@ function Dashboard({ auth, setPage }) {
         {cards.map(c => (
           <div key={c.page} className={`nav-card ${c.cls}`}
             onClick={() => setPage(c.page)}>
+            <div className="nc-band"/>
             <div className="nc-top">
-              <div className="nc-icon"><c.Icon size={20}/></div>
+              <div className="nc-icon"><c.Icon size={21}/></div>
               <span className="nc-arrow"><IconArrowRight size={16}/></span>
             </div>
             <div className="nc-label">{c.label}</div>
