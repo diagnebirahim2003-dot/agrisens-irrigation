@@ -194,3 +194,7 @@ export function IconMail(props) {
 export function IconEyeOff(props) {
   return <Base {...props}><path d="M3.5 3.5l17 17"/><path d="M10.6 5.7A9.9 9.9 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a15.5 15.5 0 0 1-3.3 4.1M6.6 7.1A15.4 15.4 0 0 0 2.5 12S6 18.5 12 18.5a9.6 9.6 0 0 0 3.2-.55"/><path d="M9.9 10a2.6 2.6 0 0 0 3.7 3.7"/></Base>;
 }
+
+export function IconMoon(props) {
+  return <Base {...props}><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></Base>;
+}

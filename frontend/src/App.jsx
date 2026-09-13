@@ -11,9 +11,40 @@ import logoImg from './assets/logo.png';
 import {
   IconHome, IconCompass, IconAntenna, IconCalculator, IconTrendUp,
   IconCalendar, IconUsers, IconLogout, IconArrowRight,
-  IconShield, IconLeaf, IconWrench, IconDroplet,
+  IconShield, IconLeaf, IconWrench, IconDroplet, IconSun, IconMoon,
 } from './components/Icons';
 import './App.css';
+
+const OWM_KEY = 'f376f93aee61a823a4c0eff15e47b0a0';
+const SITE_LAT = 14.15, SITE_LNG = -16.07;
+
+function useTheme() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('agrisens_theme') || 'light');
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('agrisens_theme', theme);
+  }, [theme]);
+  return [theme, setTheme];
+}
+
+// Illustration de champ (rangs de culture en perspective + soleil + gouttes) — en
+// SVG intégré plutôt qu'une photo hébergée à l'extérieur, pour que le hero du
+// Dashboard reste fiable hors-ligne (PWA) et ne dépende d'aucun service tiers.
+function HeroField() {
+  return (
+    <svg className="dash-hero-field" viewBox="0 0 700 220" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <circle cx="610" cy="46" r="34" fill="rgba(255,255,255,0.16)"/>
+      <circle cx="610" cy="46" r="20" fill="rgba(255,255,255,0.22)"/>
+      {[0,1,2,3,4,5,6].map(i => (
+        <path key={i}
+          d={`M${-40 + i*70},220 L${170 + i*70},220 L${360 + i*24},130 L${330 + i*24},130 Z`}
+          fill={i % 2 === 0 ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.05)'}/>
+      ))}
+      <path d="M40,150c8-14 26-14 34 0M120,168c8-14 26-14 34 0M480,158c8-14 26-14 34 0"
+        stroke="rgba(255,255,255,0.35)" strokeWidth="4" strokeLinecap="round" fill="none"/>
+    </svg>
+  );
+}
 
 const NAV = [
   { page:'dashboard',   Icon:IconHome,       label:'Accueil'     },
@@ -30,7 +61,7 @@ const ROLE = {
   technicien: { label:'Technicien',     Icon:IconWrench, cls:'role-tech'  },
 };
 
-function Sidebar({ auth, page, setPage, onLogout }) {
+function Sidebar({ auth, page, setPage, onLogout, theme, setTheme }) {
   const initials = auth.user.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
   const role = ROLE[auth.role] || ROLE.agronome;
   const nav = auth.role === 'admin'
@@ -61,9 +92,15 @@ function Sidebar({ auth, page, setPage, onLogout }) {
       </nav>
 
       <div className="sb-bottom">
-        <div className="sb-live">
-          <span className="live-pulse"/>
-          <span>Système actif</span>
+        <div className="sb-live-row">
+          <div className="sb-live">
+            <span className="live-pulse"/>
+            <span>Système actif</span>
+          </div>
+          <button className="sb-theme-toggle" onClick={() => setTheme(t => t==='dark'?'light':'dark')}
+            title={theme==='dark' ? 'Mode clair' : 'Mode sombre'}>
+            {theme==='dark' ? <IconSun size={15}/> : <IconMoon size={15}/>}
+          </button>
         </div>
         <div className="sb-user">
           <div className={`sb-avatar ${role.cls}`}>
@@ -105,13 +142,21 @@ function Dashboard({ auth, setPage }) {
   const hour     = now.getHours();
   const greeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
   const [nbParcelles, setNbParcelles] = useState(0);
+  const [kpiLoading, setKpiLoading]   = useState(true);
+  const [meteo, setMeteo]             = useState(null); // pas de valeur avant une vraie réponse OpenWeatherMap
   const users = JSON.parse(localStorage.getItem('agrisens_users') || '[]');
   const role = ROLE[auth.role] || ROLE.agronome;
 
   useEffect(() => {
     listParcelles(auth.token, auth.role === 'admin' ? {} : { owner: auth.email })
       .then(list => setNbParcelles(list.length))
-      .catch(() => setNbParcelles(0));
+      .catch(() => setNbParcelles(0))
+      .finally(() => setKpiLoading(false));
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${SITE_LAT}&lon=${SITE_LNG}&appid=${OWM_KEY}&units=metric&lang=fr`)
+      .then(res => res.json())
+      .then(d => { if (d.main) setMeteo({ temp: Math.round(d.main.temp), humidite: d.main.humidity }); })
+      .catch(() => {}); // pas de météo affichée si l'appel échoue — jamais de valeur inventée
   }, []);
 
   const kpis = [
@@ -133,20 +178,24 @@ function Dashboard({ auth, setPage }) {
   return (
     <div className="main-content">
       <div className="dash-hero">
-        <div className="dash-hero-glow"/>
-        <div className="dash-hero-top">
-          <div className="dash-badge-role">
-            <role.Icon size={14}/> {role.label}
+        <div className="dash-hero-overlay"/>
+        <HeroField/>
+        <div className="dash-hero-content">
+          <div className="dash-hero-top">
+            <div className="dash-badge-role">
+              <role.Icon size={14}/> {role.label}
+            </div>
+            <div className="dash-hero-live">
+              <span className="live-pulse"/> Système actif
+            </div>
           </div>
-          <div className="dash-hero-live">
-            <span className="live-pulse"/> Système actif
-          </div>
+          <h1 className="dash-hello">{greeting}, {auth.user.split(' ')[0]}</h1>
+          <p className="dash-date">
+            USSEIN Kaolack
+            {' · '}{now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'})}
+            {meteo && <> · {meteo.temp}°C · Humidité {meteo.humidite}%</>}
+          </p>
         </div>
-        <h1 className="dash-hello">{greeting}, {auth.user.split(' ')[0]}</h1>
-        <p className="dash-date">
-          {now.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
-          {' · '}USSEIN Kaolack
-        </p>
       </div>
 
       <div className="kpi-row">
@@ -154,7 +203,9 @@ function Dashboard({ auth, setPage }) {
           <div key={k.label} className={`kpi-card ${k.cls}`}>
             <div className="kpi-icon"><k.Icon size={19}/></div>
             <div className="kpi-body">
-              <div className="kpi-val">{k.val}</div>
+              {kpiLoading
+                ? <div className="kpi-skeleton"/>
+                : <div className="kpi-val">{k.val}</div>}
               <div className="kpi-lbl">{k.label}</div>
             </div>
           </div>
@@ -167,12 +218,12 @@ function Dashboard({ auth, setPage }) {
           <div key={c.page} className={`nav-card ${c.cls}`}
             onClick={() => setPage(c.page)}>
             <div className="nc-band"/>
-            <div className="nc-top">
-              <div className="nc-icon"><c.Icon size={21}/></div>
-              <span className="nc-arrow"><IconArrowRight size={16}/></span>
-            </div>
+            <div className="nc-medallion"><c.Icon size={26}/></div>
             <div className="nc-label">{c.label}</div>
             <div className="nc-desc">{c.desc}</div>
+            <div className="nc-open">
+              Ouvrir <IconArrowRight size={14}/>
+            </div>
           </div>
         ))}
       </div>
@@ -197,12 +248,13 @@ function PageWrap({ title, desc, children }) {
 export default function App() {
   const [auth, setAuth] = useState(null);
   const [page, setPage] = useState('dashboard');
+  const [theme, setTheme] = useTheme();
 
   if (!auth) return <Login onLogin={a => { setAuth(a); setPage('dashboard'); }}/>;
 
   return (
     <div className="app-shell">
-      <Sidebar auth={auth} page={page} setPage={setPage}
+      <Sidebar auth={auth} page={page} setPage={setPage} theme={theme} setTheme={setTheme}
         onLogout={() => { setAuth(null); setPage('dashboard'); }}/>
 
       <div className="app-body">
