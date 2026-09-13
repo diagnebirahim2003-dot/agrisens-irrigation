@@ -1,6 +1,6 @@
 .cap-wrap { font-family:var(--font); display:flex; flex-direction:column; gap:20px; }
 
-.cap-section { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(18,63,40,0.05); }
+.cap-section { background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(18,63,40,0.05); animation:fadeInUp .35s ease both; }
 
 .cap-section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
 

@@ -5,7 +5,7 @@
 .admin-title { display:flex; align-items:center; gap:8px; font-size:1.1rem; font-weight:700; color:var(--ink); font-family:var(--font-display); }
 .admin-sub { font-size:0.72rem; color:var(--ink-soft); margin-top:2px; }
 .admin-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
-.stat-box { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center; }
+.stat-box { background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center; animation:fadeInUp .35s ease both; }
 .stat-num { font-size:1.6rem; font-weight:700; color:var(--ink); font-family:var(--font-display); }
 .stat-num.admin-c { color:var(--warning); }
 .stat-num.tech-c  { color:var(--plum); }
@@ -21,7 +21,7 @@
 .search-input { width:100%; padding:10px 14px 10px 38px; border:2px solid var(--line); border-radius:10px; font-size:0.88rem; outline:none; font-family:inherit; color:var(--ink); background:var(--surface); box-sizing:border-box; }
 .search-input:focus { border-color:var(--accent-strong); }
 .users-list { display:flex; flex-direction:column; gap:10px; }
-.user-card { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.user-card { background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:12px; padding:14px 16px; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; animation:fadeInUp .3s ease both; }
 .user-card-left { display:flex; align-items:flex-start; gap:12px; flex:1; }
 .user-avatar { width:44px; height:44px; border-radius:50%; background:var(--accent-soft); color:var(--accent-strong); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.9rem; flex-shrink:0; }
 .user-name  { font-weight:700; font-size:0.9rem; color:var(--ink); }
@@ -42,7 +42,7 @@
 .empty-msg { display:flex; align-items:center; justify-content:center; gap:8px; text-align:center; padding:40px; color:var(--ink-faint); font-size:0.88rem; }
 .spin { animation:spin 1s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
-.add-form { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; }
+.add-form { background:color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:14px; padding:20px; animation:fadeInUp .35s ease both; }
 .add-form-title { font-size:0.9rem; font-weight:700; color:var(--ink); margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--line); }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .inp-group { margin-bottom:14px; }

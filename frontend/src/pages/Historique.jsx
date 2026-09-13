@@ -117,10 +117,10 @@ function TimeChart({ title, jours, series, culture: c, unit = '' }) {
           <rect key={b.startIdx} x={x(b.startIdx) - (b.startIdx === 0 ? 2 : 0)}
             y={PAD} width={Math.max(1, x(b.endIdx) - x(b.startIdx) + 2)} height={H - 2 * PAD} fill={b.color} />
         ))}
-        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c7d0c2" />
-        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c7d0c2" />
-        <text x={2} y={PAD} fontSize="10" fill="#52685a">{max.toFixed(1)}{unit}</text>
-        <text x={2} y={H - PAD} fontSize="10" fill="#52685a">{min.toFixed(1)}{unit}</text>
+        <line className="chart-axis-line" x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} />
+        <line className="chart-axis-line" x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} />
+        <text className="chart-axis-text" x={2} y={PAD} fontSize="10">{max.toFixed(1)}{unit}</text>
+        <text className="chart-axis-text" x={2} y={H - PAD} fontSize="10">{min.toFixed(1)}{unit}</text>
         {series.map(s => (
           <path key={s.key} d={pathFor(s.get)} fill="none" stroke={s.color} strokeWidth="2" strokeDasharray={s.dash || ''} />
         ))}
@@ -159,12 +159,12 @@ function KcCurveChart({ cultures, culture }) {
           const end = [...bounds, c.cycle][i];
           return <rect key={i} x={x(start)} y={PAD} width={x(end) - x(start)} height={H - 2 * PAD} fill={STAGE_DEFS[i].color} />;
         })}
-        <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#c7d0c2" />
-        <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#c7d0c2" />
-        <text x={2} y={PAD} fontSize="10" fill="#52685a">{max.toFixed(2)}</text>
-        <text x={2} y={H - PAD} fontSize="10" fill="#52685a">0</text>
-        <text x={W - PAD} y={H - PAD + 14} fontSize="10" fill="#52685a" textAnchor="end">{c.cycle} j (DAS)</text>
-        <path d={path} fill="none" stroke="#1f6b45" strokeWidth="2.5" />
+        <line className="chart-axis-line" x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} />
+        <line className="chart-axis-line" x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} />
+        <text className="chart-axis-text" x={2} y={PAD} fontSize="10">{max.toFixed(2)}</text>
+        <text className="chart-axis-text" x={2} y={H - PAD} fontSize="10">0</text>
+        <text className="chart-axis-text" x={W - PAD} y={H - PAD + 14} fontSize="10" textAnchor="end">{c.cycle} j (DAS)</text>
+        <path className="chart-kc-line" d={path} fill="none" strokeWidth="2.5" />
       </svg>
       <div className="hist-stage-legend">
         {STAGE_DEFS.slice(0, 4).map(s => (

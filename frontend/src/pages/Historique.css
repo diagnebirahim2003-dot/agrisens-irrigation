@@ -35,7 +35,11 @@
 }
 .btn-pdf:hover { filter:brightness(1.1); }
 
-.hist-card { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(18,63,40,0.05); }
+.hist-card { background:color-mix(in srgb, var(--surface) 85%, transparent); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 2px 8px rgba(18,63,40,0.05); animation:fadeInUp .4s ease both; }
+
+.chart-axis-line { stroke: var(--line); }
+.chart-axis-text { fill: var(--ink-soft); }
+.chart-kc-line { stroke: var(--accent); }
 .hist-card-title { display:flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:700; color:var(--ink); margin-bottom:12px; font-family:var(--font-display); }
 .hist-empty { display:flex; align-items:center; justify-content:center; gap:8px; padding:24px; text-align:center; color:var(--ink-soft); font-size:0.82rem; background:var(--surface-2); border-radius:10px; }
 

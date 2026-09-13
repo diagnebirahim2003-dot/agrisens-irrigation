@@ -2,7 +2,7 @@
 .calc-header{margin-bottom:16px;}
 .calc-title{display:flex;align-items:center;gap:9px;font-size:1.1rem;font-weight:700;color:var(--ink);font-family:var(--font-display);}
 .calc-sub{font-size:0.75rem;color:var(--ink-soft);margin-top:2px;}
-.calc-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;}
+.calc-card{background:color-mix(in srgb, var(--surface) 88%, transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;animation:fadeInUp .35s ease both;}
 .calc-card.info-card{background:var(--surface-2);}
 .cc-title{display:flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:700;color:var(--earth);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:12px;}
 .btn-refresh{display:inline-flex;align-items:center;gap:6px;background:var(--water-soft);color:var(--water);border:1px solid var(--water-soft);border-radius:8px;padding:6px 14px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;}

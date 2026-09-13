@@ -1,5 +1,5 @@
-.login-bg { font-family:var(--font); min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--accent-strong),var(--accent)); padding:20px; }
-.login-card { background:var(--surface); border-radius:20px; padding:36px 40px; max-width:480px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; }
+.login-bg { font-family:var(--font); min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--accent-strong),var(--accent) 60%,var(--turquoise)); padding:20px; }
+.login-card { background:color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter:blur(10px); border-radius:20px; padding:36px 40px; max-width:480px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; animation:fadeInUp .4s ease both; }
 .login-logo { text-align:center; margin-bottom:6px; }
 .login-title { text-align:center; font-size:1.4rem; font-weight:700; color:var(--accent-strong); margin:0 0 4px; font-family:var(--font-display); }
 .login-sub { text-align:center; font-size:0.75rem; color:var(--ink-soft); margin:0 0 18px; }

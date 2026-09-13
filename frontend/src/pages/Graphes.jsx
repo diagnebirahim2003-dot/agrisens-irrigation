@@ -35,10 +35,10 @@ function LineChart({ points, color, unit }) {
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} width="100%" height={H} role="img" aria-label="Graphique d'historique">
-      <line x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} stroke="#dde6dc" />
-      <line x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} stroke="#dde6dc" />
-      <text x={2} y={PAD} fontSize="11" fill="#52685a">{max.toFixed(1)}{unit}</text>
-      <text x={2} y={H - PAD} fontSize="11" fill="#52685a">{min.toFixed(1)}{unit}</text>
+      <line className="chart-axis-line" x1={PAD} y1={H - PAD} x2={W - PAD} y2={H - PAD} />
+      <line className="chart-axis-line" x1={PAD} y1={PAD} x2={PAD} y2={H - PAD} />
+      <text className="chart-axis-text" x={2} y={PAD} fontSize="11">{max.toFixed(1)}{unit}</text>
+      <text className="chart-axis-text" x={2} y={H - PAD} fontSize="11">{min.toFixed(1)}{unit}</text>
       {coords.length > 1 && <path d={path} fill="none" stroke={color} strokeWidth="2" />}
       {last && <circle cx={last[0]} cy={last[1]} r="4" fill={color} />}
     </svg>
