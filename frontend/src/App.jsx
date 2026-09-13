@@ -46,6 +46,19 @@ function HeroField() {
   );
 }
 
+// Motif décoratif discret (feuilles + gouttes) posé en filigrane derrière le
+// contenu du Dashboard — purement esthétique, jamais un indicateur de donnée.
+function LeafDropPattern() {
+  return (
+    <svg className="dash-pattern" viewBox="0 0 400 300" aria-hidden="true">
+      <path d="M40 40c22 0 38 16 38 38-22 0-38-16-38-38Z" fill="var(--accent)"/>
+      <path d="M360 90c-20 4-32 22-28 42 20-4 32-22 28-42Z" fill="var(--turquoise)"/>
+      <circle cx="70" cy="220" r="7" fill="var(--water)"/>
+      <path d="M310 240c0 8-6 13-13 13s-13-5-13-13c0-8 13-24 13-24s13 16 13 24Z" fill="var(--accent)"/>
+    </svg>
+  );
+}
+
 const NAV = [
   { page:'dashboard',   Icon:IconHome,       label:'Accueil'     },
   { page:'parcelles',   Icon:IconCompass,    label:'Parcelles'    },
@@ -176,7 +189,8 @@ function Dashboard({ auth, setPage }) {
   ];
 
   return (
-    <div className="main-content">
+    <div className="main-content dash-page">
+      <LeafDropPattern/>
       <div className="dash-hero">
         <div className="dash-hero-overlay"/>
         <HeroField/>
@@ -185,7 +199,7 @@ function Dashboard({ auth, setPage }) {
             <div className="dash-badge-role">
               <role.Icon size={14}/> {role.label}
             </div>
-            <div className="dash-hero-live">
+            <div className="dash-hero-live-pill">
               <span className="live-pulse"/> Système actif
             </div>
           </div>
@@ -208,6 +222,9 @@ function Dashboard({ auth, setPage }) {
                 : <div className="kpi-val">{k.val}</div>}
               <div className="kpi-lbl">{k.label}</div>
             </div>
+            <svg className="kpi-wave" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 18 Q 10 6, 20 14 T 40 12 T 60 16 T 80 8" fill="none" strokeWidth="2"/>
+            </svg>
           </div>
         ))}
       </div>
