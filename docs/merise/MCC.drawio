@@ -1,0 +1,54 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="MCC" id="mcc_agrisens">
+    <mxGraphModel grid="0" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1500" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;" value="MCC — Système de gestion d'irrigation AgriSens" vertex="1"><mxGeometry x="380" y="0" width="740" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="legend_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;dashed=1;fontSize=10;align=left;verticalAlign=top;spacing=6;" value="Légende&#10;&#10;Acteur interne (vert, contour épais)&#10;Acteur externe (bleu, contour fin)" vertex="1"><mxGeometry x="1180" y="770" width="300" height="90" as="geometry"/></mxCell>
+
+        <!-- Actors -->
+        <mxCell id="technicien" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Technicien&#10;(moi et mon binôme)" vertex="1"><mxGeometry x="620" y="380" width="220" height="100" as="geometry"/></mxCell>
+
+        <mxCell id="utilisateur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Utilisateur&#10;(notre encadreur)" vertex="1"><mxGeometry x="630" y="30" width="200" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="bayeur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Bayeur&#10;(moi et mon binôme)" vertex="1"><mxGeometry x="80" y="150" width="200" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="openweather" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Open Weather" vertex="1"><mxGeometry x="1150" y="150" width="200" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="capteur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Capteur 8-en-1" vertex="1"><mxGeometry x="1150" y="590" width="200" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="fourn_intrant" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#000000;strokeWidth=1;fontSize=13;" value="Fournisseur intrant" vertex="1"><mxGeometry x="80" y="590" width="200" height="90" as="geometry"/></mxCell>
+
+        <mxCell id="fourn_capteur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#000000;strokeWidth=1;fontSize=13;" value="Fournisseur capteur" vertex="1"><mxGeometry x="630" y="790" width="200" height="90" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Fournisseur intrant -->
+        <mxCell id="e1" edge="1" parent="1" source="technicien" target="fourn_intrant" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" value="&#9312; Commande d'intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fourn_intrant" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="&#9313; Livraison / facture des intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Fournisseur capteur -->
+        <mxCell id="e3" edge="1" parent="1" source="technicien" target="fourn_capteur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" value="&#9314; Commande de capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="fourn_capteur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;" value="&#9315; Livraison / facture des capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Bayeur -->
+        <mxCell id="e5" edge="1" parent="1" source="technicien" target="bayeur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" value="&#9316; Demande de financement"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="bayeur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" value="&#9317; Octroi des fonds"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Capteur 8-en-1 -->
+        <mxCell id="e7" edge="1" parent="1" source="technicien" target="capteur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="&#9318; Interrogation / relevé"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="capteur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" value="&#9319; Données du sol (humidité, T°, pH, N/P/K...)"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Open Weather -->
+        <mxCell id="e9" edge="1" parent="1" source="technicien" target="openweather" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" value="&#9320; Requête météo"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="openweather" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" value="&#9321; Données météorologiques"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- Flows: Technicien <-> Utilisateur -->
+        <mxCell id="e11" edge="1" parent="1" source="technicien" target="utilisateur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.3;exitY=0;exitDx=0;exitDy=0;entryX=0.3;entryY=1;entryDx=0;entryDy=0;" value="&#9322; Rapport / résultats des parcelles"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="utilisateur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.7;entryY=0;entryDx=0;entryDy=0;" value="&#9323; Consignes / validation"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
