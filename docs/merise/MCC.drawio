@@ -14,7 +14,7 @@
 
         <mxCell id="utilisateur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Utilisateur&#10;(notre encadreur)" vertex="1"><mxGeometry x="630" y="30" width="200" height="90" as="geometry"/></mxCell>
 
-        <mxCell id="bayeur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Bayeur&#10;(moi et mon binôme)" vertex="1"><mxGeometry x="80" y="150" width="200" height="90" as="geometry"/></mxCell>
+        <mxCell id="bayeur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Bailleur&#10;(moi et mon binôme)" vertex="1"><mxGeometry x="80" y="150" width="200" height="90" as="geometry"/></mxCell>
 
         <mxCell id="openweather" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#000000;strokeWidth=2;fontStyle=1;fontSize=13;" value="Open Weather" vertex="1"><mxGeometry x="1150" y="150" width="200" height="90" as="geometry"/></mxCell>
 
@@ -25,16 +25,16 @@
         <mxCell id="fourn_capteur" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#000000;strokeWidth=1;fontSize=13;" value="Fournisseur capteur" vertex="1"><mxGeometry x="630" y="790" width="200" height="90" as="geometry"/></mxCell>
 
         <!-- Flows: Technicien <-> Fournisseur intrant -->
-        <mxCell id="e1" edge="1" parent="1" source="technicien" target="fourn_intrant" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" value="&#9312; Commande d'intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e2" edge="1" parent="1" source="fourn_intrant" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="&#9313; Livraison / facture des intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="technicien" target="fourn_intrant" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" value="&#9314; Commande d'intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fourn_intrant" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="&#9315; Livraison / facture des intrants"><mxGeometry relative="1" as="geometry"/></mxCell>
 
         <!-- Flows: Technicien <-> Fournisseur capteur -->
-        <mxCell id="e3" edge="1" parent="1" source="technicien" target="fourn_capteur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" value="&#9314; Commande de capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e4" edge="1" parent="1" source="fourn_capteur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;" value="&#9315; Livraison / facture des capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="technicien" target="fourn_capteur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.3;entryY=0;entryDx=0;entryDy=0;" value="&#9316; Commande de capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="fourn_capteur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0.7;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=1;entryDx=0;entryDy=0;" value="&#9317; Livraison / facture des capteurs"><mxGeometry relative="1" as="geometry"/></mxCell>
 
-        <!-- Flows: Technicien <-> Bayeur -->
-        <mxCell id="e5" edge="1" parent="1" source="technicien" target="bayeur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" value="&#9316; Demande de financement"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e6" edge="1" parent="1" source="bayeur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" value="&#9317; Octroi des fonds"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <!-- Flows: Technicien <-> Bailleur -->
+        <mxCell id="e5" edge="1" parent="1" source="technicien" target="bayeur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" value="&#9312; Demande de financement"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="bayeur" target="technicien" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" value="&#9313; Fonds mis à disposition"><mxGeometry relative="1" as="geometry"/></mxCell>
 
         <!-- Flows: Technicien <-> Capteur 8-en-1 -->
         <mxCell id="e7" edge="1" parent="1" source="technicien" target="capteur" style="html=1;endArrow=block;rounded=0;fontSize=10;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" value="&#9318; Interrogation / relevé"><mxGeometry relative="1" as="geometry"/></mxCell>
