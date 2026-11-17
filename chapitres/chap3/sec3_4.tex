@@ -1,0 +1,40 @@
+\section{Présentation des outils d'acquisition de données}
+Dans le cadre de notre étude, les outils mobilisés relèvent principalement des plateformes et des systèmes de collecte de données, notamment Google Earth, 
+l’application météorologique du smartphone et les capteurs. Ces outils permettent d’obtenir des données exploitables nécessaires pour réaliser les divers calculs.
+
+\subsection{Acquisition des données géographiques et météorologiques}
+Les coordonnées géographiques (\textbf{latitude = 14 et altitude = 3}) du site expérimental ont été déterminées à l’aide de Google Earth.
+
+Les données météorologiques nécessaires au calcul de $ET_0$ ($T_{max}$, $T_{min}$, $RH_{max}$, $RH_{min}$ et $U_2$) ont été relevées à partir de l’application AccuWeather.
+
+Pour le développement de l’application du pilotage de l’irrigation et de la fertilisation, \textbf{l’acquisition des données météorologiques sera automatisée à l’aide de l’API OpenWeather}. 
+Les méthodes de calcul de l’$ET_0$ et de l’$ET_c$ seront conservées ; seule la source des données météorologiques changera.
+
+\subsection{Le capteur 8-en-1}
+Le capteur 8-en-1 a été utilisé pour mesurer les paramètres du sol dans les différents plots, notamment la température, l’humidité, l'$EC$, le $pH$ et les teneurs en $N$, $P$ $K$. 
+L’humidité a particulièrement contribué au suivi de l’état hydrique du sol, tandis que les autres paramètres ont permis de suivre son évolution physicochimique.
+
+\begin{figure}[H]
+    \centering
+    \imgstd{images/26_mon_8_en_1.jpg}
+    \caption{Capteur de sol 8-en-1. }
+    \label{fig:notreCapteur}
+\end{figure}
+Les données météorologiques et les mesures du sol constituent les principales données utilisées pour le suivi de l’expérimentation et l’évaluation des besoins en eau des cultures.
+
+\subsection{Caractérisation des paramètres du sol étudiés}
+Les paramètres réellement étudiés sont : la température,l'humidité, le $pH$, le $EC$, $N$, $P$ et $K$. Ils sont mesurés à l’aide du capteur 8-en-1.
+
+\subsubsection{La température du sol et l'humidité du sol}
+La mesure de la température a permis de suivre son évolution au cours du cycle cultural. Les données collectées ont permis de caractériser les conditions du sol et de les mettre en relation avec les autres paramètres étudiés.
+
+L’humidité du sol a permis de suivre l’évolution de la disponibilité en eau dans les plots tests. Les mesures ont permis d’apprécier les conditions hydriques du sol et d’adapter l’irrigation en fonction du $S_c$ défini, afin de maintenir des conditions favorables au développement des cultures.
+
+\subsubsection{ Le  potentiel hydrogène du sol}
+La mesure du $pH$ a permis de suivre son évolution au cours du cycle cultural. Les données collectées ont permis de caractériser les conditions physicochimiques du sol dans les différents plots et d’observer les variations éventuelles entre les plots T et les plots TS.
+
+\subsubsection{L'électroconductivité ou conductivité électrique}
+La mesure de la conductivité électrique (EC) a permis de suivre l’évolution des conditions physicochimiques du sol. Ces mesures ont complété les données relatives à l’humidité, à la température et au $pH$, notamment pour observer les variations de la teneur en sels solubles.
+
+\subsubsection{L'azote, le phosphore et le potassium}
+Le suivi de l’azote $N$, du phosphore $P$ et du potassium $K$ a permis d’obtenir des informations complémentaires sur l’état nutritif du sol et sur les conditions favorables au développement des cultures.

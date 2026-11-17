@@ -1,0 +1,152 @@
+\section{Irrigation}
+Pour piloter l’irrigation, nous procédons par détermination de $ET_c$, qui dépend de $ET_0$ du jour et du $K_c$ de chaque culture. Les $K_c$ de nos trois cultures sont déjà définis dans notre protocole, ils se diffèrent selon la spéculation et le stade de développement des cultures. Au début de notre expérimentation, nous faisions le calcul de $ET_c$ manuellement, puis nous avons établi un classeur Excel dans lequel les calculs sont effectués automatiquement dès que les paramètres météorologiques $T_{max}$, $T_{min}$, $RH_{max}$, $RH_{min}$ et la vitesse du vent $U_2$ sont renseignés, ainsi que la date du jour correspondante. La date nous renseigne sur le numéro du jour de l’année correspondant. Cela nous aide à déterminer le rayonnement solaire à partir de la formule de Hargreaves \cite{koc_reference_2023}.
+
+\subsection{Détermination manuelle des paramètres pour l’irrigation}
+Ici nous avons donné les formules principales et les détails nous les avons en annexe (voir l’Annexe~\ref{ann:et0}).
+\subsubsection{Détermination de \texorpdfstring{$ET_0$}{ET0}}
+L’évapotranspiration de référence $ET_0$ est calculée selon la méthode de Penman-Monteith recommandée par la FAO-56 \cite[chap.~3]{allen_crop_1998-1}
+
+\begin{equation}
+    ET_0 = \frac{0{,}408 \times \Delta \times (R_n - G) + \gamma \times \dfrac{900}{T + 273} \times u_2 \times (e_s - e_a)}{\Delta + \gamma \times (1 + 0{,}34 \times u_2)}
+    \label{eq:et0_final}
+\end{equation}
+
+Où :
+\begin{itemize}[label=$\bullet$]
+   	\item $ET_0$ : évapotranspiration de référence (mm/jour) ;
+ 
+    \item $\Delta$ : pente de la courbe de pression de vapeur saturante (kPa/°C) ;
+
+    \item $R_n$ : rayonnement net (MJ/m²/jour) ;
+
+    \item $G$ : flux de chaleur dans le sol (MJ/m²/jour), considéré comme négligeable à l’échelle journalière ;
+
+    \item $\gamma$ : constante psychrométrique (kPa/°C) ;
+
+    \item $T$ : température moyenne journalière (°C) ;
+
+    \item $u_2$ : vitesse du vent à 2 m de hauteur (m/s) ;
+
+    \item $e_s-e_a$ : déficit de pression de vapeur (kPa).
+
+\end{itemize}
+Le calcul nécessite les données météorologiques suivantes : $T_{max}$ et $T_{min}$, $RH_{max}$ et $RH_{min}$ et vitesse du vent. La latitude et l’altitude du site sont aussi utilisées dans les calculs des paramètres intermédiaires.
+
+Le rayonnement extraterrestre $R_a$ est déterminé à partir de la latitude et du jour de l’année, tandis que le rayonnement solaire $R_s$ est estimé par la formule de Hargreaves \cite{koc_reference_2023}, en utilisant un coefficient $K_{Rs}=0,16$.
+Le rayonnement net $R_n$, les pressions de vapeur $e_s$ et $e_a$, le déficit de pression de vapeur et les autres paramètres sont ensuite déterminés conformément à la méthode FAO-56 \cite[chap.~3]{allen_crop_1998-1}
+
+\subsubsection{Détermination de \texorpdfstring{$ET_c$}{ETc} en mm/jour}
+L’évapotranspiration culturale est calculée à partir de l’$ET_0$ et du coefficient cultural $K_c$ :
+
+\begin{equation}
+    ET_c = ET_0 \times K_c \quad \text{mm/jour}
+    \label{eq:etc_final}
+\end{equation}
+Où :
+\begin{itemize}[label=$\bullet$]
+   	\item $ET_c$ : évapotranspiration culturale (mm/jour) ;
+
+    \item $ET_0$ : évapotranspiration de référence (mm/jour) ;
+
+    \item $K_c$ : coefficient cultural correspondant à la culture et à son stade de développement.
+\end{itemize}
+
+\subsubsection{Détermination de la dose théorique d’irrigation}
+Pour connaître la dose d'irrigation journaliere en litres, nous avons multiplié $ET_c$ par la surface de chaque plot. Pour notre expérimentation avec des plots de 2~m\textsuperscript{2}, nous avons :
+
+\begin{equation}
+    D_i = ET_c \times 2
+    \label{eq:dose_irrigation}
+\end{equation}
+
+Avec :
+\begin{itemize}[label=$\bullet$]
+   	\item $D_i$ : dose théorique journalière (L/jour) ;
+
+    \item $ET_c$ : évapotranspiration culturale (mm/jour) ;
+
+\end{itemize}
+
+Cette conversion repose sur l’équivalence entre 1 mm d’eau et 1 L/m².
+
+\subsection{Détermination automatique des paramètres de \texorpdfstring{$ET_0$}{ET0} sur Excel}
+\subsubsection{Détermination automatique des paramètres sur Excel}
+Pour éviter les erreurs de calcul et optimiser la gestion du temps, nous avons établi un classeur Excel comportant quatre feuilles permettant d'automatiser l'ensemble des calculs. 
+Dans ce classeur, la latitude et l'altitude du site sont renseignées une seule fois, tandis que les paramètres indiqués en bleu, notamment la date, $T_{\max}$, $T_{\min}$, $RH_{\max}$, $RH_{\min}$ et $u_2$, sont renseignés quotidiennement.
+Ici nous avons illustré avec une seule capture l'apercu du classeur et les détails sont présentés en annexe (voir l’Annexe~\ref{ann:et0}).
+
+\begin{itemize}[label=$\bullet$]
+   	\item \textbf{La feuille ET0 FAO-56 :}
+\end{itemize}
+    
+    \begin{figure}[H]
+    \centering
+    \imgstd{images/18_ET0_partie1.jpg}
+    \caption{Feuille de calcul automatique de $ET_0$ première partie. }
+    \label{fig:partie1}
+\end{figure}
+
+\subsection{Détermination des paramètres hydriques du sol (\texorpdfstring{$H_{cc}$, $RFU$, $P$, $RU$}{Hcc, RFU, P, RU} et \texorpdfstring{$S_c$}{Sc})}
+L’humidité à la capacité au champ ($H_{cc}$) correspond à la quantité d’eau retenue par un sol après saturation et après écoulement de l’eau excédentaire. 
+Pour déterminer la $Hcc$ de notre sol, nous avons préalablement inondé les plots, puis nous les avons laissés pendant 24 heures. Après cette période, nous avons mesuré l’humidité du sol. \textbf{La valeur obtenue est de 28~\% (soit 0,28)}.
+
+Le point de flétrissement permanent $H_{pf}$ correspond à la quantité minimale d’eau du sol en dessous de laquelle les plantes ne peuvent plus extraire suffisamment d’eau et subissent un flétrissement irréversible. Dans notre expérimentation, il a été estimé par une méthode de classe texturale, en utilisant des valeurs de référence issues des tables FAO ou USDA. Étant donné que notre sol est de texture \textbf{sablo-limoneux}, $H_{pf}$ =0,11 \cite[chap.~7,Table.~19]{allen_crop_1998-1}.
+
+\subsubsection{Détermination de la réserve utile}
+La réserve utile $RU$ représente la quantité d’eau que le sol peut retenir et restituer aux racines. Elle est calculée selon la formule suivante \cite[chap.~8]{allen_crop_1998-1}
+La réserve facilement utilisable ($RFU$) représente la fraction de la $RU$ que la plante peut extraire du sol avant l’apparition d’un stress hydrique. 
+La fraction d’épuisement $p$ correspond à la proportion de la $RU$ mobilisable avant l’apparition d’un stress hydrique. Sa valeur dépend notamment de la culture et de l’$ET_c$. 
+Pour tenir compte des variations journalières de l’$ET_c$ au cours de l’expérimentation, la valeur de référence est ajustée selon la relation proposée par la FAO-56 \cite{allen_crop_1998-1}.
+
+Le \textbf{seuil critique} $S_c$ correspond au niveau d’humidité du sol à partir duquel l’eau facilement disponible pour la culture devient insuffisante. Il constitue le seuil de déclenchement de l’irrigation afin d’éviter un stress hydrique. 
+Le \textbf{stock actuel d’eau} $S_a$ fait référence à la quantité d’eau réellement présente dans la zone racinaire à un moment précis. Il représente l’indicateur principal du déclenchement ou non de l’irrigation.
+
+{\small
+\begin{longtable}{|p{3.6cm}|p{6.2cm}|p{4.2cm}|}
+    \caption{Paramètres hydriques du sol et équations utilisées}
+    \label{tab:parametres_hydriques} \\
+    \hline
+    \textbf{Paramètre} & \textbf{Méthode de détermination ou équation} & \textbf{Valeur ou précision} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Paramètre} & \textbf{Méthode de détermination ou équation} & \textbf{Valeur ou précision} \\
+    \hline
+    \endhead
+    Humidité à la capacité au champ ($H_{cc}$) & Inondation des plots, attente de 24 heures, puis mesure de l'humidité du sol & 0,28 (28~\%) \\
+    \hline
+    Point de flétrissement permanent ($H_{pf}$) & Estimation à partir de la classe texturale et des valeurs de référence FAO/USDA \cite[chap.~7, table~19]{allen_crop_1998-1} & 0,11 \\
+    \hline
+    Réserve utile ($RU$) & $RU = (H_{cc} - H_{pf}) \times Z_r \times 1000$ \cite[chap.~8]{allen_crop_1998-1} & Calculée selon la culture \\
+    \hline
+    Réserve facilement utilisable ($RFU$) & $RFU = p \times RU$ \cite[chap.~8]{allen_crop_1998-1} & Calculée selon la culture et $ET_c$ \\
+    \hline
+    Fraction de déplétion ajustée ($p$) & $p = p_{\text{tab}} + 0{,}04 \times (5 - ET_c)$ \cite[chap.~8, table~22]{allen_crop_1998-1} & Résultat limité entre 0,1 et 0,8 \\
+    \hline
+    Seuil critique ($S_c$) & $S_c = (H_{cc} \times Z_r \times 1000) - RFU$ & Seuil de déclenchement de l'irrigation \\
+    \hline
+    Stock actuel d'eau ($S_a$) & $S_a = \theta_{\text{actuel}} \times Z_r \times 1000$ & Exprimé en mm \\
+    \hline
+\end{longtable}
+}
+
+Avec : $Hcc$ : humidité du sol à la capacité au champ ; $H_{pf}$ : humidité du sol au point de flétrissement permanent ; $Z_r$ : profondeur racinaire, exprimée en mètres ; $p$ : fraction d’épuisement ajustée ; 
+$p_{tab}$ : valeur de référence de la fraction d’épuisement selon la culture ; $ET_c$ : évapotranspiration culturale journalière, exprimée en mm/jour ; $\theta_{\text{actuel}}$ : l'humidité volumique du sol mesurée par le capteur 8-en-1 à l'instant t (en m³/m³).
+
+Les profondeurs racinaires ont été déterminées à partir des valeurs de référence de la FAO-56, en fonction des cultures \cite[chap.~8,Table.~22]{allen_crop_1998-1}
+
+\begin{table}[H]
+    \centering
+    \caption{Profondeurs racinaires de référence des trois cultures}
+    \label{tab:profondeurs_racinaires}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+        \hline
+        \textbf{Cultures} & \textbf{Laitue} & \textbf{Navet} & \textbf{Gombo} \\
+        \hline
+        $Z_r$ (m) & 0,35 & 0,50 & 0,60 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Les paramètres déterminés ont permis le suivi de l’état hydrique du sol et le pilotage de l’irrigation. 
+La section suivante présente les principaux outils mobilisés pour l’acquisition des données météorologiques et agronomiques nécessaires au suivi de notre expérimentation.

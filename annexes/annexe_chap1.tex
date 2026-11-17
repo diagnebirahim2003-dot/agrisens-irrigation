@@ -1,0 +1,122 @@
+% ===== ANNEXE A : éléments retirés du chapitre 1 (section sur les calculs) =====
+\chapter{DÉTAILS DES MÉTHODES DE CALCUL DES BESOINS EN EAU DES CULTURES}
+\label{ann:calculs}
+
+\section{Équation de Penman-Monteith selon la méthode FAO-56}
+
+La méthode FAO-56 de Penman-Monteith permet de calculer l'évapotranspiration de référence ($ET_0$) à partir de données météorologiques. Elle prend en compte le rayonnement net, le flux de chaleur dans le sol, la température de l'air, la vitesse du vent et les paramètres liés à la pression de vapeur d'eau.
+
+L'équation journalière est la suivante :
+
+\begin{equation}
+    ET_0 = \frac{0{,}408 \times \Delta \times (R_n - G) + \gamma \times \dfrac{900}{T + 273} \times u_2 \times (e_s - e_a)}{\Delta + \gamma \times (1 + 0{,}34 \times u_2)}
+    \label{eq:ann_penman_monteith}
+\end{equation}
+
+Les variables de l'équation sont définies dans le Tableau~\ref{tab:ann_variables_pm}.
+
+\begin{table}[H]
+    \centering
+    \caption{Variables de l'équation de Penman-Monteith}
+    \label{tab:ann_variables_pm}
+    \begin{tabular}{|p{2cm}|p{7.5cm}|p{3cm}|}
+        \hline
+        \textbf{Symbole} & \textbf{Signification} & \textbf{Unité} \\
+        \hline
+        $ET_0$ & Évapotranspiration de référence & mm/j \\
+        \hline
+        $R_n$ & Rayonnement net à la surface & MJ/m\textsuperscript{2}/j \\
+        \hline
+        $G$ & Flux de chaleur dans le sol & MJ/m\textsuperscript{2}/j \\
+        \hline
+        $T$ & Température moyenne de l'air à 2~m & °C \\
+        \hline
+        $u_2$ & Vitesse du vent à 2~m & m/s \\
+        \hline
+        $e_s$ & Pression de vapeur saturante & kPa \\
+        \hline
+        $e_a$ & Pression de vapeur réelle & kPa \\
+        \hline
+        $\Delta$ & Pente de la courbe de pression de vapeur & kPa/°C \\
+        \hline
+        $\gamma$ & Constante psychrométrique & kPa/°C \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Autres méthodes d'estimation de l'évapotranspiration}
+
+Lorsque les données météorologiques nécessaires à la méthode de Penman-Monteith ne sont pas disponibles, d'autres méthodes peuvent être employées.
+
+\begin{itemize}[label=$\bullet$]
+    \item \textbf{Hargreaves-Samani :} cette méthode utilise principalement les températures minimale et maximale ainsi que le rayonnement extraterrestre. Elle est plus simple à appliquer, mais sa précision dépend des conditions climatiques et d'une éventuelle calibration locale.
+    \item \textbf{Priestley-Taylor :} cette méthode repose principalement sur le bilan énergétique de la surface.
+    \item \textbf{Méthode du bac d'évaporation :} elle utilise l'évaporation mesurée dans un bac, convertie en estimation de l'évapotranspiration à l'aide d'un coefficient approprié.
+\end{itemize}
+
+\section{Calcul de la réserve utile et de la réserve facilement utilisable}
+
+La réserve utile ($RU$) correspond à la quantité d'eau que le sol peut retenir et mettre à disposition des plantes entre la capacité au champ et le point de flétrissement permanent.
+
+Elle est calculée par :
+
+\begin{equation}
+    RU = 1000 \times (\theta_{\mathrm{CC}} - \theta_{\mathrm{PFP}}) \times Z_r
+    \label{eq:ann_ru}
+\end{equation}
+
+\noindent avec :
+
+\begin{itemize}[label=$\bullet$]
+    \item $RU$ : réserve utile, en mm ;
+    \item $\theta_{\mathrm{CC}}$ : teneur en eau à la capacité au champ, en m\textsuperscript{3}/m\textsuperscript{3} ;
+    \item $\theta_{\mathrm{PFP}}$ : teneur en eau au point de flétrissement permanent, en m\textsuperscript{3}/m\textsuperscript{3} ;
+    \item $Z_r$ : profondeur racinaire, en m.
+\end{itemize}
+
+La réserve facilement utilisable ($RFU$) représente la quantité d'eau que la culture peut prélever avant de subir un stress hydrique significatif. Elle est estimée par :
+
+\begin{equation}
+    RFU = RU \times p
+    \label{eq:ann_rfu}
+\end{equation}
+
+\noindent où $p$ est la fraction de la réserve utile que la culture peut consommer avant l'apparition d'un stress hydrique significatif. Cette fraction varie selon la culture et la demande évaporative.
+
+\section{Approche duale du coefficient cultural}
+
+L'approche duale distingue la transpiration de la culture et l'évaporation du sol. Le coefficient cultural total est exprimé par :
+
+\begin{equation}
+    K_c = K_{cb} + K_e
+    \label{eq:ann_kc}
+\end{equation}
+
+L'évapotranspiration culturale est alors calculée par :
+
+\begin{equation}
+    ET_c = (K_{cb} + K_e) \times ET_0
+    \label{eq:ann_etc_dual}
+\end{equation}
+
+\noindent avec :
+
+\begin{itemize}[label=$\bullet$]
+    \item $K_{cb}$ : coefficient cultural basal, représentant principalement la transpiration de la culture ;
+    \item $K_e$ : coefficient d'évaporation du sol.
+\end{itemize}
+
+Cette approche est particulièrement utile lorsque les pluies et les irrigations sont irrégulières, car l'évaporation du sol varie selon son état d'humidité.
+
+\section{Prise en compte du stress hydrique}
+
+Lorsque l'eau disponible dans le sol devient insuffisante, la transpiration de la culture diminue. Le coefficient de stress hydrique $K_s$, compris entre 0 et 1, permet de représenter cette réduction.
+
+Dans l'approche duale, l'évapotranspiration culturale ajustée est estimée par :
+
+\begin{equation}
+    ET_{c,\mathrm{aj}} = (K_s \times K_{cb} + K_e) \times ET_0
+    \label{eq:ann_etc_aj}
+\end{equation}
+
+Une valeur de $K_s$ proche de 1 indique une absence ou une faible limitation hydrique, tandis qu'une valeur plus faible traduit une réduction de la transpiration liée au stress hydrique.

@@ -1,0 +1,236 @@
+\section{Les deux grandes catégories de modèles et le diagramme de Gantt}
+En Merise, on distingue deux grandes catégories de modèles : les modèles de traitement (MCC, MCT et MOT) et les modèles de données (MCD et MLD). Dans notre méthodologie de conception, nous avons étudié les trois différents modèles de traitements.
+La représentation graphique des modèles est presentée a la fin de chaque sous section concernée et le diagramme de Gantt sera présenté dans l’Annexe~\ref{ann:diagrammes}.
+
+\subsection{Modèle Conceptuel de Communication (MCC)}
+Le MCC représente les acteurs impliqués dans le processus étudié ainsi que les flux d’informations échangés entre eux. 
+Dans cette étude, il met en évidence les relations entre les acteurs internes et externes, notamment \textbf{le technicien, l’utilisateur, les fournisseurs, le bailleur et le capteur 8-en-1}. 
+
+\begin{longtable}{|p{1cm}|p{6.5cm}|p{6.5cm}|}
+    \caption{Représentation des flux}
+    \label{tab:flux} \\
+    \hline
+    \textbf{N°} & \textbf{Émetteur $\rightarrow$ Récepteur} & \textbf{Libellé du flux} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{N°} & \textbf{Émetteur $\rightarrow$ Récepteur} & \textbf{Libellé du flux} \\
+    \hline
+    \endhead
+    1 & Technicien $\rightarrow$ Fournisseur capteur & Commande de capteurs \\
+    \hline
+    2 & Fournisseur capteur $\rightarrow$ Technicien & Établissement et transmission du devis \\
+    \hline
+    3 & Technicien $\rightarrow$ Fournisseur capteur & Devis accepté \\
+    \hline
+    4 & Technicien $\rightarrow$ Bailleur & Demande de fonds (capteur) \\
+    \hline
+    5 & Bailleur $\rightarrow$ Technicien & Fonds mis à disposition (capteur) \\
+    \hline
+    6 & Technicien $\rightarrow$ Fournisseur capteur & Paiement \\
+    \hline
+    7 & Fournisseur capteur $\rightarrow$ Technicien & Livraison \\
+    \hline
+    8 & Technicien $\rightarrow$ Fournisseur intrant & Commande des intrants \\
+    \hline
+    9 & Fournisseur intrant $\rightarrow$ Technicien & Établissement et transmission du devis \\
+    \hline
+    10 & Technicien $\rightarrow$ Fournisseur intrant & Devis accepté \\
+    \hline
+    11 & Technicien $\rightarrow$ Bailleur & Demande de fonds (intrants) \\
+    \hline
+    12 & Bailleur $\rightarrow$ Technicien & Fonds mis à disposition (intrants) \\
+    \hline
+    13 & Technicien $\rightarrow$ Fournisseur intrant & Paiement \\
+    \hline
+    14 & Fournisseur intrant $\rightarrow$ Technicien & Livraison \\
+    \hline
+    15 & Technicien $\rightarrow$ Capteur 8-en-1 & Configuration du capteur \\
+    \hline
+    16 & Capteur 8-en-1 $\rightarrow$ Technicien & Envoi des données du sol \\
+    \hline
+    17 & Technicien $\rightarrow$ OpenWeather & Requête \\
+    \hline
+    18 & OpenWeather $\rightarrow$ Technicien & Envoi des données météorologiques \\
+    \hline
+    19 & Technicien $\rightarrow$ Utilisateur & Transmission des résultats et recommandations \\
+    \hline
+    20 & Utilisateur $\rightarrow$ Technicien & Retour \\
+    \hline
+\end{longtable}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/MCC.pdf}
+    \caption{Modèle conceptuel de communication (MCC). }
+    \label{fig:mcc}
+\end{figure}
+
+\subsection{Modèle Conceptuel de Traitement (MCT)} 
+Le MCT décrit l’enchaînement des opérations du processus, depuis l’identification des besoins en équipements jusqu’à la transmission des résultats. 
+Il met en évidence les \textbf{événements déclencheurs, les opérations réalisées, les conditions de leur exécution et les résultats obtenus}. 
+Le tableau récapitulatif présente les principales opérations du processus.
+
+{\small
+\begin{longtable}{|p{0.8cm}|p{4.2cm}|p{4.2cm}|p{4.8cm}|}
+    \caption{Correspondance entre les opérations, les événements déclencheurs et les résultats du MCT}
+    \label{tab:operations_mct} \\
+    \hline
+    \textbf{N°} & \textbf{Opération} & \textbf{Événement(s) déclencheur(s)} & \textbf{Résultat} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{N°} & \textbf{Opération} & \textbf{Événement(s) déclencheur(s)} & \textbf{Résultat} \\
+    \hline
+    \endhead
+    1 & Commander le capteur 8-en-1 auprès du fournisseur capteur & Besoin du capteur identifié et accord de l'utilisateur & En attente du devis \\
+    \hline
+    2 & Traitement du devis & Devis reçu & Acceptation ou refus ; si refus, fin de prestation \\
+    \hline
+    3 & Paiement & Acceptation du devis, demande de fonds et réception des fonds & Paiement effectué \\
+    \hline
+    4 & Installer et configurer le capteur & Capteur livré (ou reçu) & Capteur opérationnel \\
+    \hline
+    5 & Réaliser l'étude du sol (collecte des données du sol à l'aide du 8-en-1) & Accord de l'utilisateur & Collecte de données effectuée \\
+    \hline
+    6 & Analyse des résultats & Collecte effectuée & Besoin de correction identifié (si résultats valides) et ne pas se prononcer (si résultats invalides) \\
+    \hline
+    7 & Commande d'intrants & Accord de l'utilisateur & Attente du devis \\
+    \hline
+    8 & Traitement du devis & Devis reçu & Fin de prestation si devis refusé, ou demande de fonds si devis accepté \\
+    \hline
+    9 & Paiement & Fonds reçus & Paiement effectué \\
+    \hline
+    10 & Réceptionner les intrants & Livraison d'intrants & Intrants reçus \\
+    \hline
+    11 & Réaliser l'amendement sur la parcelle & Besoin de correction identifié et intrants reçus & Parcelle amendée \\
+    \hline
+    12 & Configuration et relevés de données (à chaque connexion du capteur) & Parcelle amendée & Données du sol reçues \\
+    \hline
+    13 & Requête AccuWeather & Parcelle amendée & Données météo reçues si connexion disponible, ou en attente de connexion si connexion non disponible \\
+    \hline
+    14 & Calculer les indicateurs agronomiques & Données du sol reçues et données météo reçues & Indicateurs agronomiques calculés \\
+    \hline
+    15 & Évaluer le besoin d'irrigation & Indicateurs agronomiques calculés & Irrigation nécessaire si $S_a < S_c$, ou stock suffisant (ne pas irriguer) si $S_a \geq S_c$ \\
+    \hline
+    16 & Irriguer la parcelle & Irrigation nécessaire et eau disponible & Irrigation réalisée \\
+    \hline
+    17 & Évaluer le besoin de fertilisation & Indicateurs agronomiques calculés & Fertilisation nécessaire si déficit de N/P/K, ou stock suffisant si pas de déficit \\
+    \hline
+    18 & Fertiliser la parcelle & Fertilisation nécessaire et disponibilité des intrants & Fertilisation réalisée \\
+    \hline
+    19 & Consolider les résultats et rédiger le rapport d'avancement & Irrigation réalisée, stock suffisant (ne pas irriguer), fertilisation réalisée et stock suffisant (ne pas fertiliser) & Rapport d'avancement rédigé \\
+    \hline
+    20 & Transmission du rapport & Rapport d'avancement rédigé & \\
+    \hline
+\end{longtable}
+}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT1.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 1/6. }
+    \label{fig:mct1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT2.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 2/6. }
+    \label{fig:mct2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT3.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 3/6. }
+    \label{fig:mct3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT4.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 4/6. }
+    \label{fig:mct4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT5.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 5/6. }
+    \label{fig:mct5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MCT6.pdf}
+    \caption{Modèle conceptuel de traitement (MCT), partie 6/6. }
+    \label{fig:mct6}
+\end{figure}
+
+\subsection{Modèle Organisationnel de Traitement (MOT)}
+Le MOT complète le MCT en précisant, pour chaque opération, les modalités organisationnelles de son exécution, notamment \textbf{le lieu, le moment et la nature} du traitement. 
+Il permet ainsi de distinguer les opérations manuelles de celles envisagées comme automatisables.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_1.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 1/9. }
+    \label{fig:mot1.1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_2.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 2/9. }
+    \label{fig:mot1.2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_3.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 3/9. }
+    \label{fig:mot1.3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_4.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 4/9. }
+    \label{fig:mot1.4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_5.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 5/9. }
+    \label{fig:mot1.5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_6.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 6/9. }
+    \label{fig:mot1.6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_7.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 7/9. }
+    \label{fig:mot1.7}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_8.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 8/9. }
+    \label{fig:mot1.8}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, height=0.85\textheight, keepaspectratio]{images/MOT1_9.pdf}
+    \caption{Modèle organisationnel de traitement (MOT), partie 9/9. }
+    \label{fig:mot1.9}
+\end{figure}

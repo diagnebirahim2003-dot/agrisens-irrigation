@@ -1,0 +1,242 @@
+\section{Applications numériques et fondements théoriques de la gestion de l’irrigation}
+\subsection{Panorama des applications numériques d’aide à la prise de décision d’irrigation}
+Les applications numériques d'aide à la décision en irrigation permettent d'exploiter les données agronomiques, pédologiques et météorologiques pour optimiser la gestion de l'eau. 
+Plusieurs outils et systèmes ont été développés avec de différentes approches et fonctionnalités.
+
+{\small
+\begin{longtable}{|p{3.4cm}|p{5.6cm}|p{5cm}|}
+    \caption{Comparaison de quelques outils et travaux relatifs à la gestion numérique de l'irrigation}
+    \label{tab:comparaison_outils_irrigation} \\
+    \hline
+    \textbf{Outil ou travail} & \textbf{Approche utilisée} & \textbf{Principaux apports} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Outil ou travail} & \textbf{Approche utilisée} & \textbf{Principaux apports} \\
+    \hline
+    \endhead
+    CROPWAT (FAO) & Calcul des besoins en eau des cultures et planification de l'irrigation à partir de données climatiques, culturales et pédologiques. & Aide à déterminer les besoins en eau et à planifier l'irrigation. \\
+    \hline
+    IrrigaSys & Système d'aide à la décision utilisant des données météorologiques et un modèle de bilan hydrique du sol. & Propose des calendriers d'irrigation accessibles sur plusieurs supports numériques. \\
+    \hline
+    Bluleaf & Application mobile intégrant des données météorologiques, culturales et des mesures d'humidité du sol. & Facilite la planification de l'irrigation à partir du bilan hydrique et des prévisions météorologiques. \\
+    \hline
+    Irrigator Pro & Système d'aide à la décision combinant les caractéristiques culturales, les données météorologiques et les mesures du sol. & Aide à programmer l'irrigation et a évolué vers une utilisation sur le web et les appareils mobiles. \\
+    \hline
+    idCROP & Application mobile associant des modèles de simulation des cultures, des données météorologiques et une analyse économique. & Propose des calendriers d'irrigation et permet d'évaluer les conséquences économiques des stratégies retenues. \\
+    \hline
+\end{longtable}
+}
+
+\begin{itemize}[label=$\bullet$]
+    \item \textbf{Apport et positionnement de notre application AgriSens}
+    
+    Dans ce contexte, notre application se présente comme un instrument d’aide à la prise de décision hybride et accessible. Elle comble les insuffisances des solutions actuelles en associant : 
+    \begin{itemize}[label=$\circ$]
+    \item Modélisation hydrique dynamique : grâce au calcul en temps réel de $ET_0$ (avec la formule la plus recommandée) et de $ET_c$, en tenant compte du $K_c$ et du stade de développement de chacune de nos cultures choisies.
+    
+    \item Une évaluation complète de la santé du sol : en associant le contrôle de l’eau à la surveillance permanente des indicateurs physico-chimiques (pH, EC, N, P, K) mesurées du terrain.
+
+    \item Une architecture et une ergonomie sur mesure : Une interface accessible sur mobile et web, offrant une centralisation multi-parcelles et un historique détaillé, garantissant une gestion rigoureuse et rationnelle de l’eau.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Approches de calcul des besoins en eau des cultures et de l'évapotranspiration}
+Les besoins en eau d’une culture correspondent à la quantité d’eau nécessaire pour compenser les pertes principalement liées à l'évapotranspiration, qui regroupe \textbf{l'évaporation} de l'eau du sol et la \textbf{transpiration} des plantes. Trois grandeurs sont généralement distinguées : 
+
+\begin{table}[H]
+    \centering
+    \caption{Correspondance entre grandeur, définition et utilisation}
+    \label{tab:grandeurs_et}
+    \begin{tabular}{|p{2.8cm}|p{6cm}|p{5.5cm}|}
+        \hline
+        \textbf{Grandeur} & \textbf{Définition} & \textbf{Utilisation} \\
+        \hline
+        $ET_0$ & Évapotranspiration d'une surface végétale de référence & Caractérisation de la demande climatique \\
+        \hline
+        $ET_c$ & Évapotranspiration d'une culture donnée & Calcul des besoins culturaux \\
+        \hline
+        $ET_{c,\mathrm{aj}}$ & Évapotranspiration en situation de stress ou de contraintes & Gestion en conditions réelles \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{itemize}[label=$\bullet$]
+   	\item \textbf{Approche climatique}
+ 
+    Cette approche estime l'évapotranspiration à partir des données météorologiques. La méthode FAO-56 de Penman-Monteith \cite{allen_crop_1998-1} constitue la référence recommandée pour calculer $ET_0$. D'autres méthodes, comme Hargreaves-Samani \cite{koc_reference_2023} peuvent être utilisées lorsque les données climatiques disponibles sont limitées.
+
+   	\item \textbf{Approche par bilan hydrique du sol}
+   	
+    Le bilan hydrique permet de représenter les entrées et les sorties d’eau dans la zone racinaire sous une forme simplifiée :
+
+    \begin{equation}
+    \Delta S = P + I + R_c - ET_c - D - R
+    \label{eq:bilan_hydrique}
+    \end{equation}
+
+    La $RU$ représente la quantité d’eau disponible entre la capacité au champ et le point de flétrissement permanent :
+    \begin{equation}
+    RU = 1000\,(\theta_{CC} - \theta_{PFP})\,Z_r
+    \label{eq:ru}
+    \end{equation}
+
+    La $RFU$, correspondant à la fraction de la $RU$ que la culture peut consommer avant l’apparition d’un stress hydrique significatif, est donnée par :
+    \begin{equation}
+        RFU = RU \times p
+        \label{eq:rfu}
+    \end{equation}
+
+    \item \textbf{Approche fondée sur les capteurs}
+    
+    Les capteurs d'humidité permettent le suivi de l'état hydrique du sol et le déclenchement de l'irrigation lorsque l'humidité descend sous un seuil défini. Le suivi à différentes profondeurs peut aussi aider à vérifier que l'eau atteint la zone racinaire sans provoquer de drainage excessif.
+
+    \item \textbf{Approche directe et télédétection}
+
+    Les méthodes directes, comme les lysimètres permettent de mesurer l'évapotranspiration, mais leur coût limite leur utilisation. La télédétection exploite les données aériennes ou satellitaires afin de suivre l'état hydrique et le développement des cultures sur des surfaces grandes. Ces méthodes n'ont pas été utilisées directement dans notre expérimentation, mais elles constituent des outils complémentaires.
+
+\end{itemize}
+
+\subsection{Méthode FAO-56 de Penman-Monteith, coefficient cultural (\texorpdfstring{$K_c$}{Kc}) et évapotranspiration culturale (\texorpdfstring{$ET_c$}{ETc})}
+
+La méthode FAO-56 de Penman-Monteith \cite{allen_crop_1998-1} constitue la méthode de référence recommandée pour déterminer l'évapotranspiration de référence. Elle combine le bilan énergétique de la surface et les mécanismes aérodynamiques qui influencent le transfert de vapeur d’eau vers l'atmosphère. A l’echelle journaliere, l'équation s'écrit :
+\begin{equation}
+    ET_0 = \frac{0{,}408\,\Delta\,(R_n - G) + \gamma\,\dfrac{900}{T + 273}\,u_2\,(e_s - e_a)}{\Delta + \gamma\,(1 + 0{,}34\,u_2)}
+    \label{eq:penman_monteith}
+\end{equation}
+Les principales variables de cette équation sont présentées dans le tableau ci-dessous.
+
+\begin{table}[H]
+    \centering
+    \caption{Correspondance entre symboles et signification pour la formule $ET_0$}
+    \label{tab:symboles_et0}
+    \begin{tabular}{|p{3cm}|p{10cm}|}
+        \hline
+        \textbf{Symbole} & \textbf{Signification} \\
+        \hline
+        $R_n$ & Rayonnement net à la surface en MJ/m\textsuperscript{2}/jour \\
+        \hline
+        $G$ & Flux de chaleur dans le sol en MJ/m\textsuperscript{2}/jour \\
+        \hline
+        $T$ & Température moyenne de l'air à 2 m en °C \\
+        \hline
+        $u_2$ & Vitesse du vent à 2 m, en m/s \\
+        \hline
+        $e_s$ & Pression de la vapeur saturante, en kPa \\
+        \hline
+        $e_a$ & Pression de la vapeur réelle, en kPa \\
+        \hline
+        $e_s - e_a$ & Déficit de pression de vapeur, en kPa \\
+        \hline
+        $\Delta$ & Pente de la courbe de pression de vapeur, en kPa/°C \\
+        \hline
+        $\gamma$ & Constante psychrométrique, en kPa/°C \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Le calcul de l’évapotranspiration culturale repose ensuite sur le coefficient cultural $K_c$, qui traduit les différences entre les besoins hydriques d’une culture et ceux de la surface de référence \cite{allen_crop_1998-1}. L’$ET_c$ est calculée par : 
+\begin{equation}
+    ET_c = K_c \times ET_0
+    \label{eq:etc}
+\end{equation}
+Le $K_c$ varie selon le stade de développement de la culture. Le cycle cultural est généralement divisé en quatre phases : initiale, développement, mi-saison et fin de saison. Les valeurs caractéristiques sont notées $Kc_ini$, $Kc_mid$ et $Kc_end$.
+
+Des ajustements peuvent être essentiels selon les conditions climatiques, la variété et les pratiques culturales. Lorsque la disponibilité en eau devient insuffisante, 
+l'évapotranspiration réelle peut être inferieure à l'$ET_c$ standard. Un coefficient de stress hydrique ($K_s$) compris entre 0 et 1 peut alors être utilisé afin d'ajuster l'estimation des besoins en eau. 
+Dans l'approche à coefficient cultural unique, cet ajustement s'écrit sous cette forme : 
+\begin{equation}
+    ET_{c,\mathrm{aj}} = (K_s \times K_{cb} \times ET_0) + (K_e \times ET_0)
+    \label{eq:etc_aj}
+\end{equation}
+Les développements mathématiques complémentaires et les étapes détaillées de calcul des paramètres sont présentés en annexe (voir l’Annexe~\ref{ann:calculs}).
+
+\subsection{Travaux antérieurs orientés sur différentes zones}
+
+\begin{itemize}[label=$\bullet$]
+   	\item \textbf{Travaux et orientations en zones tropicales}
+
+En zones tropicales, l’irrigation numérique concerne notamment les cultures maraîchères, le riz, le maïs et les cultures sous serre. Les systèmes utilisent des capteurs, des microcontrôleurs, une transmission GSM ou LoRa et une interface mobile. Ces conditions soulèvent plusieurs difficultés particulières : 
+
+    \begin{itemize}[label=$\circ$]
+  	  \item Une humidité atmosphérique élevée peut réduire la demande évaporative à certaines périodes.
+  	
+  	  \item Une forte variabilité spatiale et temporelle des pluies.
+  	  
+      \item Un rayonnement élevé et des températures élevées pendant les périodes sèches.
+  	  
+      \item Une couverture nuageuse qui limite l’utilisation régulière des images satellitaires optiques.
+	\end{itemize}
+
+Les systèmes les plus pertinents combinent les mesures locales et le bilan hydrique pour éviter les erreurs d’irrigation liées aux pluies non enregistrées ou aux mesures non représentatives d’un capteur unique.
+\end{itemize}
+
+\begin{itemize}[label=$\bullet$]
+   	\item \textbf{Travaux et orientations en zones sahéliennes}
+
+En zone sahélienne, l’irrigation numérique répond à la rareté de l’eau, aux températures élevées et à la forte demande évaporative, notamment pour le maraîchage, les cultures de contre-saison et le pompage solaire. 
+Les systèmes étudiés dans ces environnements cherchent généralement à :
+
+    \begin{itemize}[label=$\circ$]
+  	    \item Réduire les pertes d’eau dues aux apports excessifs.
+  	  
+  	    \item Ajuster les doses aux différents stades culturaux.
+
+        \item Prévenir le stress hydrique pendant les périodes critiques.
+
+        \item Adapter le fonctionnement des pompes solaires à la disponibilité énergétique.
+    \end{itemize}
+
+Les principaux défis sont l’ensoleillement intense, la poussière, la chaleur extrême, l’accès limité à l’électricité, au réseau et à la maintenance, ainsi que l’entretien des équipements, le vieillissement des batteries et la dérive des capteurs.
+\end{itemize}
+
+\begin{itemize}[label=$\bullet$]
+   	\item \textbf{Enseignement des travaux antérieurs}
+
+Les systèmes d’irrigation intelligents associent capteurs d’humidité, stations météo, calcul de l’évapotranspiration, communications sans fil et plateformes de traitement. 
+Ils évoluent vers des approches combinant plusieurs variables et des modèles prédictifs. Les enseignements sont :  
+
+    \begin{itemize}[label=$\circ$]
+  	    \item La calibration locale selon la texture, la salinité et la densité apparente du sol.
+  	
+  	    \item La redondance : plusieurs capteurs et plusieurs profondeurs améliorent la fiabilité.
+  	
+        \item Validation agronomique : économie d’eau sans baisse excessive du rendement ou de la qualité.
+    
+        \item Mode hors ligne : maintien des calculs essentiels et du stockage en cas d’interruption du réseau.
+
+        \item Le coût total doit être évalué : il faut considérer l’achat, l’installation, la connectivité, le remplacement des batteries, la calibration et la maintenance.
+	\end{itemize}
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+   
+ 
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

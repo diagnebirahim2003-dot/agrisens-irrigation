@@ -1,0 +1,69 @@
+\section{Implémentation de l’application AgriSens}
+L’application est directement accessible depuis un navigateur (Edge ou Chrome) et peut également être téléchargée et installée. Cette section présente son interface ainsi qu’un aperçu synthétique de ses principales fonctionnalités.
+%%%%%%%%%% CREATION DE COMPTE : INSCRIPTION %%%%%%%%%%%%%
+
+Lors du premier accès à l’application, la création de compte est obligatoire. La figure ci-dessus présente les étapes à remplir. 
+Cette étape s’effectue une seule fois et uniquement lorsque l’utilisateur ne possède pas de compte. Ainsi, après le remplissage du formulaire, l’utilisateur clique sur le bouton \textit{“Créer mon compte”} afin de créer son compte.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/1_a_pour_appli.jpeg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/1_b_pour_appli.jpeg}
+    \end{minipage}
+    \caption{Interface de création de compte (parties 1 et 2). }
+    \label{fig:inscription}
+\end{figure}
+
+Une fois le compte créé, l'utilisateur pourra enfin se connecter. Les figures en paralélles montrent la page de connexion à gauche et la page d'acceuil à droite.
+
+%%%%%%% SE CONNECTER AVEC LE COMPTE CREER %%%%%%%%%%
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/1_c_pour_appli.jpeg}
+    \caption{Interface de connexion. }
+    \label{fig:conexion}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/1_d_pour_appli.jpeg}
+    \caption{Interface de connexion. }
+    \label{fig:dashboard}
+    \end{minipage}
+\end{figure}
+
+Sur cette interface d'accueil figurent les informations récentes de l’utilisateur s’il s’est déjà connecté, dans le cas contraire, elle est vide. En dessous de cette interface, on retrouve les autres fonctionnalités de l'application : \textit{PARCELLES, CAPTEURS, CALCULS, GRAPHES et HISTORIQUES}.
+
+{\small
+\begin{longtable}{|p{2.6cm}|p{5.7cm}|p{5.7cm}|}
+    \caption{Fonctionnalités de l'application, entrées et sorties}
+    \label{tab:fonctionnalites_appli} \\
+    \hline
+    \textbf{Fonctionnalité} & \textbf{Entrées} & \textbf{Sorties} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Fonctionnalité} & \textbf{Entrées} & \textbf{Sorties} \\
+    \hline
+    \endhead
+    \textbf{Parcelles} & Nom et superficie de la parcelle, culture choisie, date de semis & Parcelle enregistrée, stade de développement et nombre de jours calculés automatiquement \\
+    \hline
+    \textbf{Capteurs} & Données météorologiques collectées automatiquement et données du sol collectées à l'aide du capteur 8-en-1 & Affichage des données météorologiques et des paramètres du sol \\
+    \hline
+    \textbf{Calculs} & Données météorologiques, données du sol et paramètres culturaux & $ET_0$, $ET_c$, dose d'irrigation ($D_i$), stock actuel d'eau ($S_a$) et décision d'irrigation \\
+    \hline
+    \textbf{Graphes} & Données de croissance des plantes, paramètres météorologiques et données d'irrigation & Courbes d'évolution des plantes, des paramètres météorologiques, des besoins hydriques et des doses d'irrigation apportées \\
+    \hline
+    \textbf{Historiques} & Données enregistrées au cours du cycle cultural & Historique de la spéculation choisie en fin de cycle \\
+    \hline
+\end{longtable}
+}

@@ -1,0 +1,102 @@
+\section{Paramètres capteurs et méthodologie de calcul}
+\subsection{Paramètres capteurs}
+La collecte des données édaphiques a été réalisée à l’aide d’un capteur 8-en-1 mesurant la température, l’humidité, le $pH$, la $EC$ et les teneurs en $N$, $P$ et $K$. 
+Les données climatiques, notamment la température, l’humidité de l’air et la vitesse du vent, ont été relevées à partir d’une application météorologique (AccuWeather).
+
+Les paramètres mesurés ont servi au suivi des conditions du sol, tandis que les données climatiques ont été utilisées pour estimer les besoins en eau des cultures.
+
+\begin{longtable}{|p{0.8cm}|p{3cm}|p{3cm}|p{1.8cm}|p{5cm}|}
+    \caption{Capteurs et paramètres mesurés sur la parcelle expérimentale}
+    \label{tab:capteurs_parametres} \\
+    \hline
+    \textbf{N°} & \textbf{Capteur / Instrument} & \textbf{Paramètre mesuré} & \textbf{Unité} & \textbf{Utilisation dans les calculs} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{N°} & \textbf{Capteur / Instrument} & \textbf{Paramètre mesuré} & \textbf{Unité} & \textbf{Utilisation dans les calculs} \\
+    \hline
+    \endhead
+    1 & \multirow{3}{3cm}{Application météo} & Température de l'air & °C & Calcul de $ET_0$ (formule de Penman-Monteith) \\
+    \cline{1-1}\cline{3-5}
+    2 & & Humidité relative de l'air & \% & Calcul de $e_s$, $e_a$ et du déficit de pression de vapeur \\
+    \cline{1-1}\cline{3-5}
+    3 & & Vitesse du vent & m/s & Calcul de $ET_0$ et de l'évapotranspiration potentielle \\
+    \hline
+    4 & \multirow{7}{3cm}{Capteur 8-en-1} & Température du sol & °C & Calcul du flux thermique du sol \\
+    \cline{1-1}\cline{3-5}
+    5 & & Humidité volumique du sol & \% (m\textsuperscript{3}/m\textsuperscript{3}) & Suivi du déficit hydrique, déclenchement des irrigations \\
+    \cline{1-1}\cline{3-5}
+    6 & & pH du sol & --- & Évaluation de la disponibilité des nutriments, ajustement de la fertilisation \\
+    \cline{1-1}\cline{3-5}
+    7 & & Conductivité électrique du sol & \textmu S\,cm$^{-1}$ & Contrôle de la salinité, adaptation des doses de fertilisation \\
+    \cline{1-1}\cline{3-5}
+    8 & & Teneur en azote (N) & mg/kg & Diagnostic de fertilité, correction et ajustement des apports d'intrant \\
+    \cline{1-1}\cline{3-5}
+    9 & & Teneur en phosphore (P) & mg/kg & Diagnostic de fertilité, correction et ajustement des apports d'intrant \\
+    \cline{1-1}\cline{3-5}
+    10 & & Teneur en potassium (K) & mg/kg & Diagnostic de fertilité, correction et ajustement des apports d'intrant \\
+    \hline
+    11 & Calculé via une formule & Ensoleillement ou rayonnement solaire & W/m\textsuperscript{2} & Calcul du rayonnement net ($R_n$) et de $ET_0$ \\
+    \hline
+\end{longtable}
+
+\subsection{Besoins des cultures et Méthodologie de calcul}
+\subsubsection{Besoins en eau}
+Les besoins en eau des cultures ont été estimés à partir de l’$ET_0$ et du $K_c$, selon la relation présentée au chapitre 1 : 
+
+\begin{equation}
+    ET_c = K_c \times ET_0
+    \label{eq:etc2}
+\end{equation}
+
+L’$ET_0$ a été calculée selon la méthode FAO-56 Penman-Monteith \cite{allen_crop_1998-1}, à partir des données météorologiques recueillies dans AccuWeather et des variables intermédiaires nécessaires au calcul. Les calculs ont été réalisés dans Excel.
+
+
+\subsubsection{Variables climatiques utilisées}
+Les données climatiques utilisées comprenaient les températures maximale et minimale, l’humidité relative maximale et minimale et la vitesse du vent. 
+Le rayonnement solaire a été estimé à l’aide de la formule de Hargreaves. Ces données ont servi au calcul journalier de $ET_0$, puis à l’estimation de $ET_c$ pour chaque spéculation.
+
+
+\subsubsection{Coefficients culturaux et stades de développement}
+Les $K_c$ ont été appliqués en fonction des cultures étudiées et de leurs stades de développement. Les valeurs retenues pour le gombo, la laitue et le navet sont présentées dans le tableau ci-dessous : 
+
+\begin{table}[H]
+    \centering
+    \caption{Coefficients culturaux ($K_c$) par culture et par stade de développement}
+    \label{tab:coefficients_kc}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{4cm}|p{3cm}|}
+        \hline
+        \textbf{Culture} & \textbf{$K_c$ initial} & \textbf{$K_c$ milieu de saison} & \textbf{$K_c$ final} \\
+        \hline
+        Laitue & 0,70 & 1,05 & 0,95 \\
+        \hline
+        Navet & 0,70 & 1,00 & 0,95 \\
+        \hline
+        Gombo & 0,40 & 1,00 & 0,75 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Les stades de développement et leurs durées indicatives ont servi à déterminer le $K_c$ applicable à chaque période du cycle. 
+Les besoins en eau ainsi estimés ont ensuite été utilisés pour déterminer les doses d’irrigation.
+
+\subsection{Besoin en élément nutritif}
+Ces cultures maraîchères ont des exigences nutritives spécifiques. Pour maximiser leur productivité, il est essentiel de trouver un équilibre entre les nutriments en $N$, en $P$, et en $K$. 
+Pour ce faire, nous avons opté systématiquement pour une fertilisation de fond utilisant de la matière organique bien décomposée et du compost liquide à base de fientes de volaille. Toutefois, chaque culture requiert un ou des besoins nutritifs dominants, le tableau suivant donne les valeurs ($N$, $P$, $K$) seuils déclenchant la fertilisation pour chaque culture :
+
+\begin{table}[H]
+    \centering
+    \caption{Valeurs seuils déclenchant la fertilisation sur les plots TS}
+    \label{tab:seuils_fertilisation_ts}
+    \begin{tabular}{|p{3cm}|p{3.4cm}|p{3.8cm}|p{3.8cm}|}
+        \hline
+        \textbf{Culture} & \textbf{Azote (N) (mg/kg)} & \textbf{Phosphore (P) (mg/kg)} & \textbf{Potassium (K) (mg/kg)} \\
+        \hline
+        Gombo & 40 & 32,5 & 125 \\
+        \hline
+        Navet & 40 & 32,5 & 125 \\
+        \hline
+        Laitue & 60 & 32,5 & 125 \\
+        \hline
+    \end{tabular}
+\end{table}

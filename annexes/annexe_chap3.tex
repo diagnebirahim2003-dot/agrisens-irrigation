@@ -1,0 +1,205 @@
+% ===== ANNEXE C : éléments retirés du chapitre 3 (partie irrigation) =====
+\chapter{DÉTAIL DES CALCULS DE \texorpdfstring{$ET_0$}{ET0} ET CLASSEUR EXCEL}
+\label{ann:et0}
+
+\section{Détermination des paramètres de \texorpdfstring{$ET_0$}{ET0}}
+
+\subsection{Détermination du rayonnement extraterrestre}
+
+Le rayonnement extraterrestre $R_a$ ne se mesure pas, il se calcule par une formule astronomique, uniquement à partir de la latitude du lieu et du numéro du jour de l'année ($J$). Pour le déterminer, voici la méthode que nous avons adoptée \cite[chap.~3]{allen_crop_1998-1} :
+
+\begin{equation}
+    d_r = 1 + 0{,}033 \times \cos\left(2\pi \times \frac{J}{365}\right)
+    \label{eq:dr}
+\end{equation}
+\noindent C'est la distance relative Terre-Soleil.
+
+\begin{equation}
+    \delta = 0{,}409 \times \sin\left(2\pi \times \frac{J}{365} - 1{,}39\right)
+    \label{eq:declinaison}
+\end{equation}
+\noindent Déclinaison solaire.
+
+\begin{equation}
+    \omega_s = \arccos\left(-\tan(\text{latitude}) \times \tan(\delta)\right)
+    \label{eq:angle_horaire}
+\end{equation}
+\noindent Angle horaire du coucher du soleil.
+
+\begin{equation}
+    R_a = \frac{24 \times 60}{\pi} \times 0{,}0820 \times d_r \times \left[\omega_s \times \sin(\text{latitude}) \times \sin(\delta) + \cos(\text{latitude}) \times \cos(\delta) \times \sin(\omega_s)\right]
+    \label{eq:ra}
+\end{equation}
+\noindent Rayonnement extraterrestre.
+
+Les valeurs (0,0820 ; 0,033 ; 0,409 ; 1,39 ; $24 \times 60/\pi$) sont des constantes astronomiques et solaires universelles, valables partout dans le monde.
+
+\noindent \textbf{NB : les fonctions $\sin$, $\cos$, $\tan$ et $\arccos$ doivent être calculées avec des angles en radians.}
+
+\subsection{Détermination du rayonnement solaire}
+
+\begin{equation}
+    R_s = K_{Rs} \times \sqrt{T_{\max} - T_{\min}} \times R_a
+    \label{eq:rs_hargreaves}
+\end{equation}
+\noindent Formule de Hargreaves \cite{allen_crop_1998-1,koc_reference_2023}.
+
+$K_{Rs}$ est le coefficient d'ajustement, généralement 0,16 pour les régions intérieures et 0,19 pour les régions côtières. \textbf{Dans notre cas, nous utilisons la valeur 0,16.}
+
+\subsection{Détermination de la pression de vapeur saturante}
+
+La pression de vapeur saturante se calcule comme suit \cite[chap.~3]{allen_crop_1998-1} :
+
+\begin{equation}
+    e_s(T_{\max}) = 0{,}6108 \times \exp\left(\frac{17{,}27 \times T_{\max}}{T_{\max} + 237{,}3}\right) \quad \text{kPa}
+    \label{eq:es_tmax}
+\end{equation}
+
+\begin{equation}
+    e_s(T_{\min}) = 0{,}6108 \times \exp\left(\frac{17{,}27 \times T_{\min}}{T_{\min} + 237{,}3}\right) \quad \text{kPa}
+    \label{eq:es_tmin}
+\end{equation}
+
+\begin{equation}
+    e_s = \frac{e_s(T_{\max}) + e_s(T_{\min})}{2}
+    \label{eq:es_moy}
+\end{equation}
+
+\subsection{Détermination de la pression de vapeur réelle}
+
+La pression de vapeur réelle se calcule comme suit \cite[chap.~3]{allen_crop_1998-1} :
+
+\begin{equation}
+    e_a = \frac{e_s(T_{\min}) \times \dfrac{RH_{\max}}{100} + e_s(T_{\max}) \times \dfrac{RH_{\min}}{100}}{2} \quad \text{kPa}
+    \label{eq:ea}
+\end{equation}
+
+\subsection{Déficit de pression de vapeur}
+
+\begin{equation}
+    DPV = e_s - e_a \quad \text{kPa}
+    \label{eq:dpv}
+\end{equation}
+
+\subsection{Détermination du rayonnement net}
+
+$R_n$ dépend de $R_s$, de $T$ et de $e_a$ \cite{koc_reference_2023}.
+
+\begin{equation}
+    R_n = R_{ns} - R_{nl} \quad \text{MJ/m}^2\text{/j}
+    \label{eq:rn}
+\end{equation}
+
+\noindent avec :
+
+\begin{equation}
+    R_{ns} = 0{,}77 \times R_s
+    \label{eq:rns}
+\end{equation}
+
+\begin{equation}
+    T = \frac{T_{\max} + T_{\min}}{2}
+    \label{eq:t_moy}
+\end{equation}
+
+\noindent température moyenne journalière, utilisée plus loin dans la formule finale de $ET_0$.
+
+\begin{equation}
+    \begin{split}
+        R_{nl} ={}& 4{,}903 \times 10^{-9} \times \frac{(T_{\max} + 273{,}16)^4 + (T_{\min} + 273{,}16)^4}{2} \\
+        & \times \left(0{,}34 - 0{,}14\sqrt{e_a}\right) \times \left(1{,}35 \times \frac{R_s}{R_{so}} - 0{,}35\right)
+    \end{split}
+    \label{eq:rnl}
+\end{equation}
+
+\noindent avec $R_{so} = 0{,}75 \times R_a$, le rayonnement de ciel clair.
+
+Il est important de préciser que, dans le calcul de $R_{nl}$, le terme de température à la puissance 4 (issu de la loi de Stefan-Boltzmann, conformément à la méthode standardisée FAO-56 \cite[chap.~3]{allen_crop_1998-1}) n'utilise pas la température moyenne $T$, mais la moyenne des puissances 4 de $T_{\max}$ et $T_{\min}$ exprimées en Kelvin. Cette nuance est distincte de la température moyenne $T = (T_{\max} + T_{\min})/2$, laquelle intervient plus loin dans le calcul de $ET_0$.
+
+\subsection{Pente de la courbe de vapeur}
+
+Elle se détermine de la façon suivante \cite{koc_reference_2023} :
+
+\begin{equation}
+    \Delta = \frac{4098 \times e_s}{(T + 237{,}3)^2} \quad \text{kPa/°C}
+    \label{eq:pente_vapeur}
+\end{equation}
+
+\subsection{Détermination de \texorpdfstring{$G$}{G}}
+
+$G$ représente le flux de chaleur dans le sol, c'est l'énergie utilisée pour réchauffer ou refroidir le sol. Pendant une journée, le sol reçoit de la chaleur pendant certaines heures et en restitue pendant d'autres. Donc, sur une journée, ces échanges peuvent être considérés comme faibles, voire nuls, par rapport au rayonnement net. Ainsi, si $G \approx 0$, alors $R_n - G = R_n$.
+
+\subsection{Détermination de la constante psychrométrique}
+
+$\gamma$ est une valeur fixe \cite{koc_reference_2023}.
+
+\begin{equation}
+    \gamma = 0{,}000665 \times P
+    \label{eq:gamma}
+\end{equation}
+
+\begin{equation}
+    P = 101{,}3 \times \left(\frac{293 - 0{,}0065 \times z}{293}\right)^{5{,}26}
+    \label{eq:pression_atm}
+\end{equation}
+
+\noindent où $z$ est l'altitude du site, soit $z = 3$~m dans notre cas.
+
+\begin{equation}
+    P \approx 101{,}26~\text{kPa}
+    \label{eq:p_valeur}
+\end{equation}
+
+\begin{equation}
+    \gamma \approx 0{,}0673~\text{kPa/°C}
+    \label{eq:gamma_valeur}
+\end{equation}
+
+\subsection{Vitesse du vent (\texorpdfstring{$u_2$}{u2})}
+
+$u_2$ représente la vitesse du vent ; elle ne se calcule pas ici, elle est récupérée depuis AccuWeather.
+
+\section{Classeur Excel de calcul automatique}
+
+% Cette partie vient juste après la partie irrigation :
+% c'est le classeur qui regroupe les formules de l'irrigation.
+
+\begin{figure}[H]
+    \centering
+    \imgstd{images/19_ET0_partie2.jpg}
+    \caption{Feuille de calcul automatique de $ET_0$ seconde partie. }
+    \label{fig:partie2}
+\end{figure}
+
+\begin{itemize}[label=$\bullet$]
+    \item \textbf{La feuille $ET_c$ :} elle récupère automatiquement la date concernée et la valeur de $ET_0$ afin de déterminer $ET_c$. Cette dernière est calculée en multipliant $ET_0$ par le $K_c$ correspondant au stade de développement de la culture. La figure ci-dessous présente un aperçu de cette feuille.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \imgstd{images/20_ETc.jpg}
+    \caption{Feuille de calcul automatique de $ET_c$. }
+    \label{fig:ETC3}
+\end{figure}
+
+\begin{itemize}[label=$\bullet$]
+    \item \textbf{Feuille culture :} cette feuille regroupe les $K_c$ des différentes spéculations en fonction de leurs stades de développement.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \imgstd{images/21_culture.jpg}
+    \caption{Feuille culture. }
+    \label{fig:culture3}
+\end{figure}
+
+\begin{itemize}[label=$\bullet$]
+    \item \textbf{Feuille Notes \& Formules :} cette feuille rassemble l'ensemble des formules utilisées pour effectuer les différents calculs.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \imgstd{images/22_note_formule.jpg}
+    \caption{Feuille Notes \& Formules. }
+    \label{fig:formule3}
+\end{figure}

@@ -1,0 +1,47 @@
+\section{Choix de la méthode d’analyse : Pourquoi MERISE}
+Plusieurs méthodes d'analyse et de conception des systèmes d'information existent : Merise (Méthode d’Étude et de Réalisation Informatique pour les Systèmes d’Entreprise), UML (Unified Modeling Language), ou encore des approches agiles qui privilégient des itérations rapides plutôt que toute modélisation conceptuelle en amont. Le choix d'une méthode n'est jamais neutre : il détermine comment le problème est découpé, ce qui est formalisé en premier, et ce qui passe au second. Quatre raisons principales nous ont amenés à choisir Merise, chacune directement liée à la nature particulière de notre travail.
+
+\subsection{Une méthode qui sépare la réflexion de la technique}
+La méthode Merise  distingue trois niveaux d’abstraction : le niveau conceptuel(QUOI ?) qui définit les acteurs, les informations et les traitements ; le niveau Organisationnel (QUI? QUAND ? OÙ ?), qui précise la répartition des tâches ; et le niveau physique ou opérationnel (COMMENT ?), qui concerne les choix techniques. Cette démarche correspond à notre approche : définir et valider le fonctionnement du système à partir de l'expérimentation avant de penser aux solutions informatiques. Ainsi, Merise permet de formaliser le processus étudié avant sa mise en œuvre technique.
+
+\subsection{Une méthode adaptée à un processus déjà éprouvé sur le terrain}
+Contrairement à une démarche de conception qui part principalement des besoins prévisionnels des utilisateurs, notre travail s’appuie sur un processus agricole effectivement mis en œuvre et observé au cours de l’expérimentation. Les rôles des acteurs, les informations échangées et l’enchaînement des opérations ont ainsi pu être identifiés à partir des pratiques réalisées sur le terrain. Il s’agit notamment de l’étude du sol, du diagnostic, de la correction si nécessaire, du suivi de l'évolution des plots, du calcul des besoins en eau, de la prise de décision, de l’intervention et du compte rendu.
+
+Le choix de Merise permet de structurer cette analyse en distinguant les échanges d’informations, les traitements réalisés et leur organisation opérationnelle, notamment à travers le MCC, le MCT et le MOT. UML aurait également pu être mobilisée pour représenter certains aspects du processus, mais Merise a été retenue en raison de sa cohérence avec la démarche de modélisation adoptée dans ce mémoire.
+
+\subsection{Une méthode qui n’impose pas de choix technique prématuré et pédagogiquement adaptée et largement éprouvée}
+Merise permet de décrire les traitements et de préciser leurs modalités d’exécution dans le MOT. Cette distinction est pertinente dans notre étude, où certaines opérations, comme la connexion du capteur 8-en-1, restent manuelles, tandis que d’autres, notamment les calculs, sont destinées à être automatisées dans l’application envisagée.
+
+Le choix de Merise s’inscrit également dans le cadre de notre formation à l’USSEIN et correspond aux besoins de modélisation de cette étude. UML aurait également pu être utilisée, mais Merise a été retenue pour sa cohérence avec la démarche adoptée.
+
+\subsection{Synthèse comparative}
+Ce tableau récapitule les critères qui ont orienté ce choix méthodologique.
+
+{\small
+\begin{longtable}{|p{3.2cm}|p{5.4cm}|p{5.4cm}|}
+    \caption{Critères orientant le choix méthodologique}
+    \label{tab:criteres_choix_methodologique} \\
+    \hline
+    \textbf{Critères} & \textbf{Merise} & \textbf{UML} \\
+    \hline
+    \endfirsthead
+    \hline
+    \textbf{Critères} & \textbf{Merise} & \textbf{UML} \\
+    \hline
+    \endhead
+    Point de départ de la modélisation & Permet de structurer les flux d'informations, les traitements et leur organisation à partir du processus observé. & Permet de représenter les besoins, les interactions entre acteurs et le comportement du système, notamment à travers les cas d'utilisation et les diagrammes de comportement. \\
+    \hline
+    Séparation entre les aspects conceptuels et organisationnels ou techniques & Distingue plusieurs niveaux de modélisation, notamment à travers le MCT et le MOT. & Propose différents diagrammes pour représenter les aspects fonctionnels, structurels et comportementaux du système. \\
+    \hline
+    Représentation des opérations manuelles et automatisées & Permet de préciser les modalités d'exécution des traitements dans le modèle organisationnel. & Permet également de représenter les interactions humaines et les traitements automatisés à l'aide de diagrammes appropriés. \\
+    \hline
+    Adéquation au processus étudié & Adaptée à la formalisation du processus agricole observé et à la distinction entre traitements et organisation. & Également envisageable, notamment pour représenter les interactions entre les utilisateurs et l'application future. \\
+    \hline
+    Cohérence avec la formation et le cadre du mémoire & Correspond à la démarche de modélisation retenue et au cadre méthodologique de la formation. & Constitue une autre approche possible, qui aurait nécessité une organisation différente de la modélisation. \\
+    \hline
+\end{longtable}
+}
+
+En définitive, Merise a été retenue pour sa cohérence avec le processus étudié et les objectifs de cette étude, sans exclure la pertinence d’UML pour d’autres approches de modélisation.
+
+

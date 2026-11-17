@@ -1,0 +1,65 @@
+\section{Conception de l’application AgriSens}
+Les modèles présentés dans ce chapitre ont servi de base à la conception de l'application, une application web de type Progressive Web App (PWA) a été conçue afin d’automatiser le suivi et le pilotage de l'irrigation de précision et de la fertilisation, en accord avec le procédé approuvé au chapitre 3.
+
+\subsection{Architecture technique}
+L'application repose sur la plateforme FIWARE, adaptée à la gestion des données contextuelles issues des capteurs et des sources météorologiques identifiées dans le MCC. L’architecture retenue s’appuie sur les composants ci-dessous : 
+
+\textit{Orion Context Broker (protocole NGSI-v2)} : le cœur du système, qui stocke et distribue les entités du domaine (parcelles, relevés du capteur) sous forme d'informations contextuelles standardisées.
+
+\textit{MongoDB} est la base de données sous-jacente d'Orion.
+
+\textit{Keycloak} est le gestionnaire d'identité et d'accès, chargé de l'authentification des utilisateurs et de l'attribution de leurs rôles applicatifs (Administrateur, Agronome, Technicien).
+
+\textit{Wilma, proxy PEP (Policy Enforcement Point)}, s’intercale entre l'interface web et Orion pour vérifier, en interrogeant Keycloak, que chaque requête est authentifiée avant d'atteindre le Context Broker, et complété par Wilma-auth, qui gère l'inscription des comptes.
+
+Cette architecture donne un contenu technique concret aux flux 15 et 16 du MCC (« Configuration du capteur » et « Envoi des données du sol ») : dans l'application, ces échanges sont représentés par des requêtes NGSI-v2 vers Orion, toujours sécurisées par Wilma.
+
+\subsection{Organisation de l’application et rôles}
+L'application distingue trois rôles applicatifs, qui affinent l'acteur unique « Technicien » du MCC en fonction du niveau d'accès réellement nécessaire, comme le montre le tableau ci-dessous.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Correspondance entre les rôles applicatifs, les accès et les acteurs conceptuels}
+    \label{tab:roles_applicatifs}
+    \begin{tabular}{|p{2.4cm}|p{5.2cm}|p{6.4cm}|}
+        \hline
+        \textbf{Rôle applicatif} & \textbf{Accès} & \textbf{Correspondance avec les acteurs conceptuels (MCC/MCT)} \\
+        \hline
+        Technicien & Accueil, Parcelles, Capteurs, Calculs, Graphes, Historique, plus gestion des utilisateurs et paramétrage des cultures ($K_c$, seuils N/P/K) & Acteur \og Technicien \fg{} : relève les données, déclenche les calculs, agit sur la parcelle. Rôle transverse, nécessaire pour maintenir les référentiels agronomiques du protocole \\
+        \hline
+        Utilisateur & Identique, avec lecture consolidée des résultats & Proche de l'acteur \og Utilisateur \fg{} : observe les résultats \\
+        \hline
+    \end{tabular}
+\end{table}
+
+L'application s'organise en six pages destinées aux rôles Technicien et Agronome : Accueil, Parcelles, Capteurs, Calculs, Graphes et Historique auxquelles s'ajoute une septième page, exclusivement réservée à l'administrateur. Ce tableau établit la correspondance entre chacune de ces pages et l'opération du MCT qu'elle automatise.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Correspondance entre les pages de l'application et les opérations automatisées du MCT}
+    \label{tab:pages_application}
+    \begin{tabular}{|p{3.4cm}|p{10.2cm}|}
+        \hline
+        \textbf{Page de l'application} & \textbf{Opération(s) du MCT automatisée(s)} \\
+        \hline
+        Accueil (tableau de bord) & Vue de synthèse des indicateurs calculés et de l'état des parcelles \\
+        \hline
+        Parcelles & Gestion des entités correspondant aux plots test et témoin \\
+        \hline
+        Capteurs & \og Relever les données du sol \fg{} : lecture du capteur 8-en-1 via le protocole Modbus RTU réel, avec une stabilisation de 30 secondes avant enregistrement \\
+        \hline
+        Calculs & \og Calculer les indicateurs agronomiques \fg{} ($ET_0$, $ET_c$, $RU$, $RFU$, $S_c$, $S_a$, déficits N/P/K) et \og Évaluer le besoin d'irrigation/de fertilisation \fg{}. Seuls les résultats sont affichés, sans exposer les formules intermédiaires \\
+        \hline
+        Graphes & Historisation des relevés du capteur et visualisation de leur évolution \\
+        \hline
+        Historique & Traçabilité des interventions d'irrigation et de fertilisation \\
+        \hline
+        Technicien / Admin & Paramétrage par culture des coefficients $K_c$ (initial, mi-saison, final) et des seuils N/P/K optimaux \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Conformément au MCT, l’application conserve les actions demandant une  interventions humaines, telles que le branchement physique du capteur 8-en-1 et la confirmation de lecture. Par contre, la chaîne de traitement est ensuite automatisée à partir des données du capteur et de OpenWeather, pour réduire les erreurs liées aux traitements manuels. La conception repose ainsi sur une automatisation respectant les pratiques réellement observées sur le terrain.
+
