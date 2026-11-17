@@ -1,0 +1,2840 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.10.22)  17 NOV 2026 20:32
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/DELL/Documents/Memoire/Memoire_final/main.tex
+(c:/Users/DELL/Documents/Memoire/Memoire_final/main.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-09-09>
+(C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count276
+\c@chapter=\count277
+\c@section=\count278
+\c@subsection=\count279
+\c@subsubsection=\count280
+\c@paragraph=\count281
+\c@subparagraph=\count282
+\c@figure=\count283
+\c@table=\count284
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen150
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2026/10/15 v26.14 The multilingual framework for LuaLaTeX, pdfLaTeX and XeLaTeX
+\babel@savecnt=\count285
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding OT1) on input line 2118.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding OT1) on input line 2120.
+LaTeX Encoding Info:    Redeclaring text command \ij (encoding T1) on input line 2122.
+LaTeX Encoding Info:    Redeclaring text command \IJ (encoding T1) on input line 2123.
+LaTeX Encoding Info:    Ignoring declaration for text command \ij (encoding ?) on input line 2124.
+LaTeX Encoding Info:    Ignoring declaration for text command \IJ (encoding ?) on input line 2126.
+LaTeX Encoding Info:    Ignoring declaration for text command \SS (encoding ?) on input line 2151.
+\U@D=\dimen151
+\l@unhyphenated=\language79
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count286
+Package babel Info: Configuration files are deprecated, as
+(babel)             they can break document portability.
+(babel)             Reported on input line 4366.
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/fr\babel-french.tex)
+Package babel Info: Importing font and identification data for 'french'
+(babel)             from babel-fr.ini. Reported on input line 4494.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.ldf
+Language: french 2026-06-06 v4.1a French support from the babel system
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french3.ldf
+Language: french 2026-06-06 v3.7f French support from the babel system
+\FB@stdchar=\count287
+Package babel Info: Making : an active character on input line 266.
+Package babel Info: Making ; an active character on input line 267.
+Package babel Info: Making ! an active character on input line 268.
+Package babel Info: Making ? an active character on input line 269.
+\FBguill@level=\count288
+\FBold@everypar=\toks19
+\FB@Mht=\dimen152
+\mc@charclass=\count289
+\mc@charfam=\count290
+\mc@charslot=\count291
+\std@mcc=\count292
+\dec@mcc=\count293
+\listindentFB=\dimen153
+\descindentFB=\dimen154
+\labelwidthFB=\dimen155
+\labelfullwidthFB=\dimen156
+\FB@pardim=\dimen157
+\parindentFFN=\dimen158
+\FBfnindent=\dimen159
+))) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+Package: geometry 2026/03/07 v6.0 Page Geometry
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count294
+\Gm@cntv=\count295
+\c@Gm@tempcnt=\count296
+\Gm@bindingoffset=\dimen160
+\Gm@wd@mp=\dimen161
+\Gm@odd@mp=\dimen162
+\Gm@even@mp=\dimen163
+\Gm@layoutwidth=\dimen164
+\Gm@layoutheight=\dimen165
+\Gm@layouthoffset=\dimen166
+\Gm@layoutvoffset=\dimen167
+\Gm@dimlist=\toks21
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+Package: amsmath 2026/05/19 v2.18d AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks22
+\ex@=\dimen168
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen169
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count297
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count298
+\leftroot@=\count299
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count300
+\DOTSCASE@=\count301
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen170
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count302
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count303
+\dotsspace@=\muskip17
+\c@parentequation=\count304
+\dspbrk@lvl=\count305
+\tag@help=\toks23
+\row@=\count306
+\column@=\count307
+\maxfields@=\count308
+\andhelp@=\toks24
+\eqnshift@=\dimen171
+\alignsep@=\dimen172
+\tagshift@=\dimen173
+\tagwidth@=\dimen174
+\totwidth@=\dimen175
+\lineht@=\dimen176
+\@envbody=\toks25
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks26
+LaTeX Info: Redefining \[ on input line 2965.
+LaTeX Info: Redefining \] on input line 2966.
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/mhchem\mhchem.sty
+Package: mhchem 2024/01/29 v4.10 for typesetting chemical formulae
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2026-09-09 L3 programming layer (loader) 
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\l3backend-pdftex.def
+File: l3backend-pdftex.def 2026-09-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count309
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty
+Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count310
+\calc@Bcount=\count311
+\calc@Adimen=\dimen177
+\calc@Bdimen=\dimen178
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count312
+\calc@Cskip=\skip56
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/chemgreek\chemgreek.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use in chemistry (CN)
+\l__chemgreek_tmpa_int=\count313
+\g__chemgreek_tmpa_int=\count314
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\l__mhchem_ce_distanceFromLastComma_int=\count315
+\__mhchem_arrow_extPgfLength_skip=\skip57
+\mhchem@minispace@tmp=\skip58
+\mhchem@minibackspace@tmp=\skip59
+\mhchem@bondwidth=\skip60
+\mhchem@bondheight=\skip61
+\mhchem@smallbondwidth@tmpA=\skip62
+\mhchem@smallbondwidth@tmpB=\skip63
+\mhchem@smallbondwidth=\skip64
+\mhchem@bondtmp@minussidebearingleft=\skip65
+\mhchem@bondtmp@minussidebearingright=\skip66
+\l__mhchem_option_version_int=\count316
+\mhchem@option@minusmathsidebearingleft=\dimen179
+\mhchem@option@minusmathsidebearingright=\dimen180
+\mhchem@option@minustextsidebearingleft=\dimen181
+\mhchem@option@minustextsidebearingright=\dimen182
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+Package: newtxtext 2024/04/01 v1.744(Michael Sharpe) latex and unicode latex support for TeXGyreTermesX
+ `newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes and its extensions (msharpe) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count317
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks27
+\XKV@tempa@toks=\toks28
+)
+\XKV@depth=\count318
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+\xs_counta=\count319
+\xs_countb=\count320
+)
+Package: xstring 2023/08/22 v1.86 String manipulations (CT)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+LaTeX Font Info:    Setting ntxLF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxTLF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxOsF sub-encoding to TS1/0 on input line 24.
+LaTeX Font Info:    Setting ntxTOsF sub-encoding to TS1/0 on input line 24.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+\ntx@tmpcnta=\count321
+\ntx@cnt=\count322
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+Package: fontaxes 2026-01-02 v2.0.2 Font selection axes (deprecated)
+Applying: [2024-11-01] Use figureversions if present on input line 74.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureversions.sty
+Package: figureversions 2025-04-29 v1.0.1 Figure versions
+)
+Already applied: [0000-00-00] Fall back to v1 on input line 76.
+)
+\tx@sixem=\dimen183
+\tx@y=\dimen184
+\tx@x=\dimen185
+\tx@tmpdima=\dimen186
+\tx@tmpdimb=\dimen187
+\tx@tmpdimc=\dimen188
+\tx@tmpdimd=\dimen189
+\tx@tmpdime=\dimen190
+\tx@tmpdimf=\dimen191
+\tx@dimA=\dimen192
+\tx@dimAA=\dimen193
+\tx@dimB=\dimen194
+\tx@dimBB=\dimen195
+\tx@dimC=\dimen196
+LaTeX Info: Redefining \oldstylenums on input line 902.
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxmath.sty
+Package: newtxmath 2024/09/22 v1.754
+ `newtxmath' v1.754, 2024/09/22 Math macros based originally on txfonts (msharpe) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/oberdiek\centernot.sty
+Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
+)
+\tx@cntz=\count323
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+\tx@Isdigit=\count324
+\tx@IsAlNum=\count325
+\tx@tA=\toks29
+\tx@tB=\toks30
+\tx@su=\read3
+
+amsthm NOT loaded
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 402.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/minntx/m/n on input line 402.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/minntx/m/n on input line 402.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/minntx/m/n --> OT1/minntx/b/n on input line 403.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 410.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/qhv/m/n on input line 410.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/qhv/m/n on input line 410.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/qhv/m/n --> OT1/qhv/b/n on input line 412.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 419.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/minntx/m/it on input line 419.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/minntx/m/it on input line 419.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 420.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 420.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> T1/ntxtt/m/n on input line 420.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 422.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/minntx/b/n on input line 422.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/minntx/b/n on input line 422.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/minntx/m/it --> OT1/minntx/b/it on input line 423.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  T1/ntxtt/m/n --> T1/ntxtt/b/n on input line 426.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 534.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ntxmi/m/it on input line 534.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ntxmi/m/it on input line 534.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/ntxmi/m/it --> OML/ntxmi/b/it on input line 535.
+\symlettersA=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
+(Font)                  U/ntxmia/m/it --> U/ntxmia/b/it on input line 582.
+Now handling font encoding LMS ...
+... no UTF-8 mapping file for font encoding LMS
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 604.
+LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 604.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> LMS/ntxsy/m/n on input line 604.
+LaTeX Font Info:    Encoding `OMS' has changed to `LMS' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 604.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> LMS/ntxsy/m/n on input line 604.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  LMS/ntxsy/m/n --> LMS/ntxsy/b/n on input line 605.
+\symAMSm=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `AMSm' in version `bold'
+(Font)                  U/ntxsym/m/n --> U/ntxsym/b/n on input line 630.
+\symsymbolsC=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
+(Font)                  U/ntxsyc/m/n --> U/ntxsyc/b/n on input line 651.
+Now handling font encoding LMX ...
+... no UTF-8 mapping file for font encoding LMX
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 664.
+LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 664.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 664.
+LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 664.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> LMX/ntxexx/m/n on input line 664.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  LMX/ntxexx/m/n --> LMX/ntxexx/b/n on input line 665.
+\symlargesymbolsTXA=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `largesymbolsTXA' in version `bold'
+(Font)                  U/ntxexa/m/n --> U/ntxexa/b/n on input line 679.
+\tx@sbptoks=\toks31
+LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 902.
+LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 903.
+LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 904.
+LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 905.
+LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 910.
+LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 911.
+LaTeX Font Info:    Redeclaring math delimiter \langle on input line 913.
+LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 915.
+LaTeX Font Info:    Redeclaring math delimiter \arrowvert on input line 919.
+LaTeX Font Info:    Redeclaring math delimiter \vert on input line 920.
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 966.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 991.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 992.
+LaTeX Font Info:    Redeclaring math accent \vec on input line 2057.
+LaTeX Info: Redefining \Bbbk on input line 2847.
+LaTeX Info: Redefining \not on input line 2995.
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip67
+\enit@outerparindent=\dimen197
+\enit@toks=\toks32
+\enit@inbox=\box55
+\enit@count@id=\count326
+\enitdp@description=\count327
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen198
+\lightrulewidth=\dimen199
+\cmidrulewidth=\dimen256
+\belowrulesep=\dimen257
+\belowbottomsep=\dimen258
+\aboverulesep=\dimen259
+\abovetopsep=\dimen260
+\cmidrulesep=\dimen261
+\cmidrulekern=\dimen262
+\defaultaddspace=\dimen263
+\@cmidla=\count328
+\@cmidlb=\count329
+\@aboverulesep=\dimen264
+\@belowrulesep=\dimen265
+\@thisruleclass=\count330
+\@lastruleclass=\count331
+\@thisrulewidth=\dimen266
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
+\col@sep=\dimen267
+\ar@mcellbox=\box56
+\extrarowheight=\dimen268
+\NC@list=\toks33
+\extratabsurround=\skip68
+\backup@length=\skip69
+\ar@cellbox=\box57
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip70
+\multirow@cntb=\count332
+\multirow@dima=\skip71
+\bigstrutjot=\dimen269
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+Package: longtable 2026-01-28 v4.27 Multi-page Table package (DPC)
+\LTleft=\skip72
+\LTright=\skip73
+\LTpre=\skip74
+\LTpost=\skip75
+\LTchunksize=\count333
+\LTcapwidth=\dimen270
+\LT@head=\box58
+\LT@firsthead=\box59
+\LT@foot=\box60
+\LT@lastfoot=\box61
+\LT@gbox=\box62
+\LT@cols=\count334
+\LT@rows=\count335
+\c@LT@tables=\count336
+\c@LT@chunks=\count337
+\LT@p@ftn=\toks34
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen271
+\Gin@req@width=\dimen272
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks35
+\pgfutil@tempdima=\dimen273
+\pgfutil@tempdimb=\dimen274
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box63
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2026-08-01 v3.1.12 (3.1.12)
+))
+Package: pgf 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks36
+\pgfkeys@temptoks=\toks37
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks38
+))
+\pgf@x=\dimen275
+\pgf@y=\dimen276
+\pgf@xa=\dimen277
+\pgf@ya=\dimen278
+\pgf@xb=\dimen279
+\pgf@yb=\dimen280
+\pgf@xc=\dimen281
+\pgf@yc=\dimen282
+\pgf@xd=\dimen283
+\pgf@yd=\dimen284
+\w@pgf@writea=\write3
+\r@pgf@reada=\read4
+\c@pgf@counta=\count338
+\c@pgf@countb=\count339
+\c@pgf@countc=\count340
+\c@pgf@countd=\count341
+\t@pgf@toka=\toks39
+\t@pgf@tokb=\toks40
+\t@pgf@tokc=\toks41
+\pgf@sys@id@count=\count342
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2026-08-01 v3.1.12 (3.1.12)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2026-08-01 v3.1.12 (3.1.12)
+))) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfsyssoftpath@smallbuffer@items=\count343
+\pgfsyssoftpath@bigbuffer@items=\count344
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2026-08-01 v3.1.12 (3.1.12)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen285
+\pgfmath@count=\count345
+\pgfmath@box=\box64
+\pgfmath@toks=\toks42
+\pgfmath@stack@operand=\toks43
+\pgfmath@stack@operation=\toks44
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count346
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@picminx=\dimen286
+\pgf@picmaxx=\dimen287
+\pgf@picminy=\dimen288
+\pgf@picmaxy=\dimen289
+\pgf@pathminx=\dimen290
+\pgf@pathmaxx=\dimen291
+\pgf@pathminy=\dimen292
+\pgf@pathmaxy=\dimen293
+\pgf@xx=\dimen294
+\pgf@xy=\dimen295
+\pgf@yx=\dimen296
+\pgf@yy=\dimen297
+\pgf@zx=\dimen298
+\pgf@zy=\dimen299
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@path@lastx=\dimen300
+\pgf@path@lasty=\dimen301
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@shorten@end@additional=\dimen302
+\pgf@shorten@start@additional=\dimen303
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfpic=\box65
+\pgf@hbox=\box66
+\pgf@layerbox@main=\box67
+\pgf@picture@serial@count=\count347
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgflinewidth=\dimen304
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@pt@x=\dimen305
+\pgf@pt@y=\dimen306
+\pgf@pt@temp=\dimen307
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfarrowsep=\dimen308
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@max=\dimen309
+\pgf@sys@shading@range@num=\count348
+\pgf@shadingcount=\count349
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfexternal@startupbox=\box68
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2026-08-01 v3.1.12 (3.1.12)
+))) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfnodeparttextbox=\box69
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2026-08-01 v3.1.12 (3.1.12)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2026-08-01 v3.1.12 (3.1.12)
+\pgf@nodesepstart=\dimen310
+\pgf@nodesepend=\dimen311
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2026-08-01 v3.1.12 (3.1.12)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2026-08-01 v3.1.12 (3.1.12)
+\pgffor@iter=\dimen312
+\pgffor@skip=\dimen313
+\pgffor@stack=\toks45
+\pgffor@toks=\toks46
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgf@plot@mark@count=\count350
+\pgfplotmarksize=\dimen314
+)
+\tikz@lastx=\dimen315
+\tikz@lasty=\dimen316
+\tikz@lastxsaved=\dimen317
+\tikz@lastysaved=\dimen318
+\tikz@lastmovetox=\dimen319
+\tikz@lastmovetoy=\dimen320
+\tikzleveldistance=\dimen321
+\tikzsiblingdistance=\dimen322
+\tikz@figbox=\box70
+\tikz@figbox@bg=\box71
+\tikz@tempbox=\box72
+\tikz@tempbox@bg=\box73
+\tikztreelevel=\count351
+\tikznumberofchildren=\count352
+\tikznumberofcurrentchild=\count353
+\tikz@fig@count=\count354
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
+\pgfmatrixcurrentrow=\count355
+\pgfmatrixcurrentcolumn=\count356
+\pgf@matrix@numberofcolumns=\count357
+)
+\tikz@expandcount=\count358
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2026-08-01 v3.1.12 (3.1.12)
+))) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2026-08-01 v3.1.12 (3.1.12)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2026-08-01 v3.1.12 (3.1.12)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
+Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
+Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.sty
+Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
+\collectedbox=\box74
+)
+\tc@llx=\dimen323
+\tc@lly=\dimen324
+\tc@urx=\dimen325
+\tc@ury=\dimen326
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
+File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen327
+\adjbox@Height=\dimen328
+\adjbox@Depth=\dimen329
+\adjbox@Totalheight=\dimen330
+\adjbox@pwidth=\dimen331
+\adjbox@pheight=\dimen332
+\adjbox@pdepth=\dimen333
+\adjbox@ptotalheight=\dimen334
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count359
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box75
+\sift@deathcycles=\count360
+\@vwid@loff=\dimen335
+\@vwid@roff=\dimen336
+)
+==> First Aid for varwidth.sty applied!
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count361
+\float@exts=\toks47
+\float@box=\box76
+\@float@everytoks=\toks48
+\@floatcapt=\box77
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen337
+\captionmargin=\dimen338
+\caption@leftmargin=\dimen339
+\caption@rightmargin=\dimen340
+\caption@width=\dimen341
+\caption@indent=\dimen342
+\caption@parindent=\dimen343
+\caption@hangindent=\dimen344
+Package caption Info: Standard document class detected.
+Package caption Info: french babel package is loaded.
+)
+\c@caption@flags=\count362
+\c@continuedfloat=\count363
+Package caption Info: float package is loaded.
+Package caption Info: longtable package is loaded.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+Package: titlesec 2025/01/04 v2.17 Sectioning titles
+\ttl@box=\box78
+\beforetitleunit=\skip76
+\aftertitleunit=\skip77
+\ttl@plus=\dimen345
+\ttl@minus=\dimen346
+\ttl@toksa=\toks49
+\titlewidth=\dimen347
+\titlewidthlast=\dimen348
+\titlewidthfirst=\dimen349
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.sty
+Package: csquotes 2026-05-19 v5.2p context-sensitive quotations (JAW)
+\csq@reset=\count364
+\csq@gtype=\count365
+\csq@glevel=\count366
+\csq@qlevel=\count367
+\csq@maxlvl=\count368
+\csq@tshold=\count369
+\csq@ltx@everypar=\toks50
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.def
+File: csquotes.def 2026-05-19 v5.2p csquotes generic definitions (JAW)
+)
+Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
+Package csquotes Info: ... configuration file loaded successfully.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/csquotes\csquotes.cfg
+File: csquotes.cfg 
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex 2026/09/24 v3.22a programmable bibliographies (PK/MW)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count370
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@tabx@nest=\count371
+\c@listtotal=\count372
+\c@listcount=\count373
+\c@liststart=\count374
+\c@liststop=\count375
+\c@citecount=\count376
+\c@citetotal=\count377
+\c@multicitecount=\count378
+\c@multicitetotal=\count379
+\c@instcount=\count380
+\c@maxnames=\count381
+\c@minnames=\count382
+\c@maxitems=\count383
+\c@minitems=\count384
+\c@citecounter=\count385
+\c@maxcitecounter=\count386
+\c@savedcitecounter=\count387
+\c@uniquelist=\count388
+\c@uniquename=\count389
+\c@refsection=\count390
+\c@refsegment=\count391
+\c@maxextratitle=\count392
+\c@maxextratitleyear=\count393
+\c@maxextraname=\count394
+\c@maxextradate=\count395
+\c@maxextraalpha=\count396
+\c@abbrvpenalty=\count397
+\c@highnamepenalty=\count398
+\c@lownamepenalty=\count399
+\c@maxparens=\count400
+\c@parenlevel=\count401
+\blx@tempcnta=\count402
+\blx@tempcntb=\count403
+\blx@tempcntc=\count404
+\c@blx@maxsection=\count405
+\blx@maxsegment@0=\count406
+\blx@notetype=\count407
+\blx@parenlevel@text=\count408
+\blx@parenlevel@foot=\count409
+\blx@sectionciteorder@0=\count410
+\blx@sectionciteorderinternal@0=\count411
+\blx@entrysetcounter=\count412
+\blx@biblioinstance=\count413
+\labelnumberwidth=\skip78
+\labelalphawidth=\skip79
+\biblabelsep=\skip80
+\bibitemsep=\skip81
+\bibnamesep=\skip82
+\bibinitsep=\skip83
+\bibparsep=\skip84
+\bibhang=\skip85
+\blx@bcfin=\read5
+\blx@bcfout=\write4
+\blx@langwohyphens=\language80
+\c@mincomprange=\count414
+\c@maxcomprange=\count415
+\c@mincompwidth=\count416
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def 2026/09/24 v3.22a biblatex datamodel (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ieee.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count417
+\c@savedafterword=\count418
+\c@annotator=\count419
+\c@savedannotator=\count420
+\c@author=\count421
+\c@savedauthor=\count422
+\c@bookauthor=\count423
+\c@savedbookauthor=\count424
+\c@commentator=\count425
+\c@savedcommentator=\count426
+\c@editor=\count427
+\c@savededitor=\count428
+\c@editora=\count429
+\c@savededitora=\count430
+\c@editorb=\count431
+\c@savededitorb=\count432
+\c@editorc=\count433
+\c@savededitorc=\count434
+\c@foreword=\count435
+\c@savedforeword=\count436
+\c@holder=\count437
+\c@savedholder=\count438
+\c@introduction=\count439
+\c@savedintroduction=\count440
+\c@namea=\count441
+\c@savednamea=\count442
+\c@nameb=\count443
+\c@savednameb=\count444
+\c@namec=\count445
+\c@savednamec=\count446
+\c@translator=\count447
+\c@savedtranslator=\count448
+\c@shortauthor=\count449
+\c@savedshortauthor=\count450
+\c@shorteditor=\count451
+\c@savedshorteditor=\count452
+\c@labelname=\count453
+\c@savedlabelname=\count454
+\c@institution=\count455
+\c@savedinstitution=\count456
+\c@lista=\count457
+\c@savedlista=\count458
+\c@listb=\count459
+\c@savedlistb=\count460
+\c@listc=\count461
+\c@savedlistc=\count462
+\c@listd=\count463
+\c@savedlistd=\count464
+\c@liste=\count465
+\c@savedliste=\count466
+\c@listf=\count467
+\c@savedlistf=\count468
+\c@location=\count469
+\c@savedlocation=\count470
+\c@organization=\count471
+\c@savedorganization=\count472
+\c@origlocation=\count473
+\c@savedoriglocation=\count474
+\c@origpublisher=\count475
+\c@savedorigpublisher=\count476
+\c@publisher=\count477
+\c@savedpublisher=\count478
+\c@language=\count479
+\c@savedlanguage=\count480
+\c@origlanguage=\count481
+\c@savedoriglanguage=\count482
+\c@pageref=\count483
+\c@savedpageref=\count484
+\shorthandwidth=\skip86
+\shortjournalwidth=\skip87
+\shortserieswidth=\skip88
+\shorttitlewidth=\skip89
+\shortauthorwidth=\skip90
+\shorteditorwidth=\skip91
+\locallabelnumberwidth=\skip92
+\locallabelalphawidth=\skip93
+\localshorthandwidth=\skip94
+\localshortjournalwidth=\skip95
+\localshortserieswidth=\skip96
+\localshorttitlewidth=\skip97
+\localshortauthorwidth=\skip98
+\localshorteditorwidth=\skip99
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-compat.def
+File: blx-compat.def 2026/09/24 v3.22a biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def 2026/09/24 v3.22a biblatex compatibility (PK/MW)
+\c@textcitecount=\count485
+\c@textcitetotal=\count486
+\c@textcitemaxnames=\count487
+\c@biburlbigbreakpenalty=\count488
+\c@biburlbreakpenalty=\count489
+\c@biburlnumpenalty=\count490
+\c@biburlucpenalty=\count491
+\c@biburllcpenalty=\count492
+\biburlbigskip=\muskip19
+\biburlnumskip=\muskip20
+\biburlucskip=\muskip21
+\biburllcskip=\muskip22
+\c@smartand=\count493
+)
+Package biblatex Info: Trying to load bibliography style 'ieee'...
+Package biblatex Info: ... file 'ieee.bbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.bbx
+File: ieee.bbx 2025-08-01 v1.4f biblatex bibliography style
+Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
+Package biblatex Info: ... file 'numeric-comp.bbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
+File: numeric-comp.bbx 2026/09/24 v3.22a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+File: numeric.bbx 2026/09/24 v3.22a biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+File: standard.bbx 2026/09/24 v3.22a biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count494
+\c@bbx:relatedtotal=\count495
+))))
+Package biblatex Info: Trying to load citation style 'ieee'...
+Package biblatex Info: ... file 'ieee.cbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex-ieee\ieee.cbx
+File: ieee.cbx 2025-08-01 v1.4f biblatex citation style
+Package biblatex Info: Trying to load citation style 'numeric-verb'...
+Package biblatex Info: ... file 'numeric-verb.cbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/cbx\numeric-verb.cbx
+File: numeric-verb.cbx 2026/09/24 v3.22a biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+))
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             2026-09-09 L3 programming layer (loader) 
+(biblatex)             is new enough (at least 2020/04/06),
+(biblatex)             setting 'casechanger=expl3'.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
+Package: blx-case-expl3 2026/09/24 v3.22a expl3 case changing code for biblatex
+)) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2026-10-09 v7.01s Hypertext links for LaTeX
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count496
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+\@linkdim=\dimen350
+\Hy@linkcounter=\count497
+\Hy@pagecounter=\count498
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2026-10-09 v7.01s Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count499
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2026-10-09 v7.01s Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4199.
+Package hyperref Info: Link nesting OFF on input line 4204.
+Package hyperref Info: Hyper index ON on input line 4207.
+Package hyperref Info: Plain pages OFF on input line 4214.
+Package hyperref Info: Backreferencing OFF on input line 4219.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4466.
+\c@Hy@tempcnt=\count500
+LaTeX Info: Redefining \url on input line 4805.
+\XeTeXLinkMargin=\dimen351
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count501
+\Field@Width=\dimen352
+\Fld@charsize=\dimen353
+Package hyperref Info: Hyper figures OFF on input line 6091.
+Package hyperref Info: Link nesting OFF on input line 6096.
+Package hyperref Info: Hyper index ON on input line 6099.
+Package hyperref Info: backreferencing OFF on input line 6106.
+Package hyperref Info: Link coloring OFF on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6116.
+Package hyperref Info: PDF/A mode OFF on input line 6121.
+\Hy@abspage=\count502
+\c@Item=\count503
+\c@Hfootnote=\count504
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2026-10-09 v7.01s Hyperref driver for pdfTeX
+\Fld@listcount=\count505
+\c@bookmark@seq@number=\count506
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+)
+\Hy@SectionHShift=\skip100
+)
+Package french3.ldf Info: Setting StandardItemizeEnv=true for
+(french3.ldf)             compatibility with enumitem package,
+(french3.ldf)             reported on input line 58.
+Package french3.ldf Info: Setting StandardEnumerateEnv=true for
+(french3.ldf)             compatibility with enumitem package,
+(french3.ldf)             reported on input line 58.
+LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 58.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd
+File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
+)
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 58.
+Package csquotes Info: Checking for multilingual support...
+Package csquotes Info: ... found 'babel' package.
+Package csquotes Info: Adjusting default style.
+Package csquotes Info: Redefining alias 'default' -> 'french'.
+ (main.aux (preliminaires/pagegarde.aux)
+Package babel Info: 'french' activates 'french' shorthands.
+(babel)             Reported on input line 14.
+ (preliminaires/dedicaces.aux) (preliminaires/remerciements.aux) (preliminaires/resume.aux) (preliminaires/abstract.aux) (preliminaires/abreviations.aux) (chapitres/intro/intro.aux) (chapitres/chap1/chap1.aux) (chapitres/chap2/chap2.aux) (chapitres/chap3/chap3.aux) (chapitres/chap4/chap4.aux) (chapitres/chap5/chap5.aux) (chapitres/conclusion/conclusion.aux) (annexes/annexe_chap1.aux) (annexes/annexe_chap2.aux) (annexes/annexe_chap3.aux) (annexes/annexe_chap4.aux) (annexes/annexe_chap5.aux))
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 58.
+LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line 58.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\omlntxmi.fd
+File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
+)
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 58.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxexa.fd
+File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
+)
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 58.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmsntxsy.fd
+File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
+)
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 58.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 58.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\lmxntxexx.fd
+File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
+)
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Info: Redefining \degres on input line 58.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Command `\dddot' is already robust on input line 58.
+LaTeX Info: Command `\ddddot' is already robust on input line 58.
+
+Package chemgreek Info: Activating mapping `newtx' on line 58.
+
+(C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count507
+\scratchdimen=\dimen354
+\scratchbox=\box79
+\nofMPsegments=\count508
+\nofMParguments=\count509
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count510
+\MPscratchDim=\dimen355
+\MPnumerator=\count511
+\makeMPintoPDFobject=\count512
+\everyMPtoPDFconversion=\toks52
+) (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+\c@mv@tabular=\count513
+\c@mv@boldtabular=\count514
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package biblatex Info: Trying to load language 'french'...
+Package biblatex Info: ... file 'french.lbx' found.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/lbx\french.lbx
+File: french.lbx 2026/09/24 v3.22a biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout4 = `main.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'main.bbl' found.
+ (main.bbl)
+Package biblatex Info: Reference section=0 on input line 58.
+Package biblatex Info: Reference segment=0 on input line 58.
+Package hyperref Info: Link coloring OFF on input line 58.
+ (main.out) (main.out)
+\@outlinefile=\write5
+\openout5 = `main.out'.
+
+Package babel Info: Main language set to 'french'.
+\openout2 = `preliminaires/pagegarde.aux'.
+
+ (preliminaires/pagegarde.tex
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 5.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.95pt on input line 5.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.95pt on input line 13.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 10.95pt on input line 13.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 14.4pt on input line 19.
+<images/logo_ussein.png, id=610, 482.80376pt x 416.55624pt>
+File: images/logo_ussein.png Graphic file (type png)
+<use images/logo_ussein.png>
+Package pdftex.def Info: images/logo_ussein.png  used on input line 21.
+(pdftex.def)             Requested size: 79.1435pt x 68.28644pt.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 14.4pt on input line 24.
+LaTeX Font Info:    Trying to load font information for OT1+minntx on input line 45.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ot1minntx.fd
+File: ot1minntx.fd 2023/09/09 v1.1 font definition file for OT1/minntx
+)
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 45.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxmia.fd
+File: untxmia.fd 2024/04/09 Fontinst v1.933 font definitions for U/ntxmia.
+)
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 45.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsym.fd
+File: untxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/ntxsym.
+)
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 45.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\untxsyc.fd
+File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
+)
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 12.0pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 8.8pt on input line 45.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.6pt on input line 45.
+ [1
+
+
+{C:/Users/DELL/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc} <./images/logo_ussein.png>])
+\openout2 = `preliminaires/dedicaces.aux'.
+
+ (preliminaires/dedicaces.tex
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 32.0pt on input line 4.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 32.0pt on input line 4.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 12.0pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/it' will be
+(Font)              scaled to size 12.0pt on input line 35.
+)
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.60 \include{preliminaires/dedicaces}
+                                       [1
+
+
+
+]
+\openout2 = `preliminaires/remerciements.aux'.
+
+ (preliminaires/remerciements.tex
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 28.0pt on input line 4.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 28.0pt on input line 4.
+) [2
+
+
+
+]
+\openout2 = `preliminaires/resume.aux'.
+
+ (preliminaires/resume.tex
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 14.0pt on input line 1.
+) [3
+
+
+
+
+{C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}]
+\openout2 = `preliminaires/abstract.aux'.
+
+ (preliminaires/abstract.tex
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.8pt on input line 6.
+) [4
+
+
+
+
+]
+\openout2 = `preliminaires/abreviations.aux'.
+
+ (preliminaires/abreviations.tex [5
+
+
+
+
+] [6]
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.6pt on input line 54.
+ [7
+
+]) [8] (main.toc [9
+
+
+
+] [10] [11]
+Overfull \hbox (15.44322pt too wide) in paragraph at lines 128--128
+ [] [][]\T1/ntxtlf/b/n/12 DÉTAILS DES MÉ-THODES DE CAL-CUL DES BE-SOINS EN EAU DES CULTURES[] []  
+ []
+
+[12])
+\tf@toc=\write6
+\openout6 = `main.toc'.
+
+ [13] (main.lof [14
+
+
+] [15])
+\tf@lof=\write7
+\openout7 = `main.lof'.
+
+ [16] (main.lot)
+\tf@lot=\write8
+\openout8 = `main.lot'.
+
+ [17
+
+
+]
+\openout2 = `chapitres/intro/intro.aux'.
+
+ (chapitres/intro/intro.tex [18
+
+
+]) [19]
+\openout2 = `chapitres/chap1/chap1.aux'.
+
+ (chapitres/chap1/chap1.tex
+Chapitre 1.
+(chapitres/chap1/sec1_1.tex) (chapitres/chap1/sec1_2.tex [20
+
+
+
+
+]) (chapitres/chap1/sec1_3.tex [21]
+<images/01_capteur_8_en_1.jpg, id=1136, 438.8897pt x 364.36125pt>
+File: images/01_capteur_8_en_1.jpg Graphic file (type jpg)
+<use images/01_capteur_8_en_1.jpg>
+Package pdftex.def Info: images/01_capteur_8_en_1.jpg  used on input line 12.
+(pdftex.def)             Requested size: 438.88863pt x 364.36035pt.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
+(Font)              scaled to size 12.0pt on input line 13.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/sc' will be
+(Font)              scaled to size 12.0pt on input line 13.
+ [22{C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc} <./images/01_capteur_8_en_1.jpg>]) (chapitres/chap1/sec1_4.tex
+Underfull \hbox (badness 1946) in paragraph at lines 18--18
+[]|\T1/ntxtlf/m/n/10.95 Calcul des be-soins en eau des
+ []
+
+
+Underfull \hbox (badness 1275) in paragraph at lines 22--22
+[]|\T1/ntxtlf/m/n/10.95 Application mo-bile in-té-grant des
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 26--26
+[]|\T1/ntxtlf/m/n/10.95 Application mo-bile as-so-ciant des
+ []
+
+[23]
+Underfull \hbox (badness 1478) in paragraph at lines 55--55
+[]|\T1/ntxtlf/m/n/12 Évapotranspiration d'une sur-face
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 57--57
+[]|\T1/ntxtlf/m/n/12 Évapotranspiration d'une culture
+ []
+
+[24]
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 121.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ts1ntxtlf.fd
+File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
+)
+LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
+(Font)              scaled to size 12.0pt on input line 121.
+ [25] [26{C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}]) (chapitres/chap1/sec1_5.tex [27]
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+\T1/ntxtlf/m/n/10.95 (ra-cines très li-mi-tées) ;
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 25--26
+\T1/ntxtlf/m/n/10.95 manque : ar-rêt de crois-
+ []
+
+[28]) (chapitres/chap1/sec1_6.tex)) [29] [30]
+\openout2 = `chapitres/chap2/chap2.aux'.
+
+ (chapitres/chap2/chap2.tex
+Chapitre 2.
+(chapitres/chap2/sec2_1.tex) (chapitres/chap2/sec2_2.tex
+<images/03_site_experimental.jpg, id=1199, 1038.88126pt x 687.31781pt>
+File: images/03_site_experimental.jpg Graphic file (type jpg)
+<use images/03_site_experimental.jpg>
+Package pdftex.def Info: images/03_site_experimental.jpg  used on input line 7.
+(pdftex.def)             Requested size: 1038.87872pt x 687.31613pt.
+<images/04_surface_experimentation.jpg, id=1200, 510.40688pt x 313.17pt>
+File: images/04_surface_experimentation.jpg Graphic file (type jpg)
+<use images/04_surface_experimentation.jpg>
+Package pdftex.def Info: images/04_surface_experimentation.jpg  used on input line 17.
+(pdftex.def)             Requested size: 510.40562pt x 313.16922pt.
+ [31
+
+
+
+
+ <./images/03_site_experimental.jpg>] [32 <./images/04_surface_experimentation.jpg>]) (chapitres/chap2/sec2_3.tex
+<images/05_pepiniere_laitue.jpg, id=1211, 450.9347pt x 261.22594pt>
+File: images/05_pepiniere_laitue.jpg Graphic file (type jpg)
+<use images/05_pepiniere_laitue.jpg>
+Package pdftex.def Info: images/05_pepiniere_laitue.jpg  used on input line 23.
+(pdftex.def)             Requested size: 450.9336pt x 261.22528pt.
+<images/06_semence_navet.jpg, id=1212, 429.10312pt x 207.77625pt>
+File: images/06_semence_navet.jpg Graphic file (type jpg)
+<use images/06_semence_navet.jpg>
+Package pdftex.def Info: images/06_semence_navet.jpg  used on input line 30.
+(pdftex.def)             Requested size: 429.10207pt x 207.77573pt.
+ [33 <./images/05_pepiniere_laitue.jpg>]
+<images/07_semence_gombo.jpg, id=1217, 438.8897pt x 236.38312pt>
+File: images/07_semence_gombo.jpg Graphic file (type jpg)
+<use images/07_semence_gombo.jpg>
+Package pdftex.def Info: images/07_semence_gombo.jpg  used on input line 37.
+(pdftex.def)             Requested size: 438.88863pt x 236.38254pt.
+) (chapitres/chap2/sec2_4.tex [34 <./images/06_semence_navet.jpg> <./images/07_semence_gombo.jpg>]
+LaTeX Font Info:    Font shape `TS1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 12.
+
+Underfull \hbox (badness 2205) in paragraph at lines 12--12
+[]|\T1/ntxtlf/b/n/12 Capteur / Ins-
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 12--12
+[]|\T1/ntxtlf/b/n/12 Paramètre me-
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 16--16
+[]|\T1/ntxtlf/b/n/12 Capteur / Ins-
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 16--16
+[]|\T1/ntxtlf/b/n/12 Paramètre me-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\T1/ntxtlf/m/n/12 Température de
+ []
+
+
+Underfull \hbox (badness 7379) in paragraph at lines 25--25
+[]|\T1/ntxtlf/m/n/12 Température du
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/ntxtlf/m/n/12 Humidité vo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+\T1/ntxtlf/m/n/12 lu-mique du
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\T1/ntxtlf/m/n/12 %
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--31
+[]|\T1/ntxtlf/m/n/12 Conductivité
+ []
+
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 31.
+
+Underfull \hbox (badness 1107) in paragraph at lines 39--39
+[]|\T1/ntxtlf/m/n/12 Calculé via une
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--39
+[]|\T1/ntxtlf/m/n/12 Ensoleillement
+ []
+
+
+Underfull \hbox (badness 4505) in paragraph at lines 39--39
+\T1/ntxtlf/m/n/12 ou rayon-ne-ment
+ []
+
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 93--93
+[]|\T1/ntxtlf/b/n/12 Phosphore (P)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 93--94
+[]|\T1/ntxtlf/b/n/12 Potassium (K)
+ []
+
+) (chapitres/chap2/sec2_5.tex
+<images/08_desherbage_isolement_herbes.jpg, id=1235, 459.21562pt x 326.72063pt>
+File: images/08_desherbage_isolement_herbes.jpg Graphic file (type jpg)
+<use images/08_desherbage_isolement_herbes.jpg>
+Package pdftex.def Info: images/08_desherbage_isolement_herbes.jpg  used on input line 14.
+(pdftex.def)             Requested size: 459.2145pt x 326.71982pt.
+ [37]
+<images/11_mise_en_place_plot_irrigation_fixer_ados.jpg, id=1240, 479.54156pt x 394.47375pt>
+File: images/11_mise_en_place_plot_irrigation_fixer_ados.jpg Graphic file (type jpg)
+<use images/11_mise_en_place_plot_irrigation_fixer_ados.jpg>
+Package pdftex.def Info: images/11_mise_en_place_plot_irrigation_fixer_ados.jpg  used on input line 32.
+(pdftex.def)             Requested size: 479.54039pt x 394.47278pt.
+ [38 <./images/08_desherbage_isolement_herbes.jpg>]
+<images/12_biochar.jpg, id=1249, 469.755pt x 314.67563pt>
+File: images/12_biochar.jpg Graphic file (type jpg)
+<use images/12_biochar.jpg>
+Package pdftex.def Info: images/12_biochar.jpg  used on input line 53.
+(pdftex.def)             Requested size: 469.75386pt x 314.67485pt.
+ [39 <./images/11_mise_en_place_plot_irrigation_fixer_ados.jpg>]
+<images/13_coque_arrachide.jpg, id=1259, 421.575pt x 307.90031pt>
+File: images/13_coque_arrachide.jpg Graphic file (type jpg)
+<use images/13_coque_arrachide.jpg>
+Package pdftex.def Info: images/13_coque_arrachide.jpg  used on input line 73.
+(pdftex.def)             Requested size: 421.57396pt x 307.89955pt.
+ [40 <./images/12_biochar.jpg>]
+<images/14_compost.jpg, id=1268, 448.67625pt x 341.02406pt>
+File: images/14_compost.jpg Graphic file (type jpg)
+<use images/14_compost.jpg>
+Package pdftex.def Info: images/14_compost.jpg  used on input line 90.
+(pdftex.def)             Requested size: 448.67516pt x 341.02322pt.
+ [41 <./images/13_coque_arrachide.jpg>]
+<images/15_anti_sel.jpg, id=1277, 447.92343pt x 315.42844pt>
+File: images/15_anti_sel.jpg Graphic file (type jpg)
+<use images/15_anti_sel.jpg>
+Package pdftex.def Info: images/15_anti_sel.jpg  used on input line 107.
+(pdftex.def)             Requested size: 447.92233pt x 315.42766pt.
+ [42 <./images/14_compost.jpg>]) (chapitres/chap2/sec2_6.tex)) [43 <./images/15_anti_sel.jpg>]
+\openout2 = `chapitres/chap3/chap3.aux'.
+
+ (chapitres/chap3/chap3.tex
+Chapitre 3.
+(chapitres/chap3/sec3_1.tex) (chapitres/chap3/sec3_2.tex
+<images/16_methode_3_4_5.png, id=1289, 516.93124pt x 338.26375pt>
+File: images/16_methode_3_4_5.png Graphic file (type png)
+<use images/16_methode_3_4_5.png>
+Package pdftex.def Info: images/16_methode_3_4_5.png  used on input line 8.
+(pdftex.def)             Requested size: 516.92998pt x 338.26291pt.
+ [44
+
+
+
+
+]
+<images/17_fin_confection.jpg, id=1295, 432.11438pt x 274.77657pt>
+File: images/17_fin_confection.jpg Graphic file (type jpg)
+<use images/17_fin_confection.jpg>
+Package pdftex.def Info: images/17_fin_confection.jpg  used on input line 17.
+(pdftex.def)             Requested size: 432.11331pt x 274.77588pt.
+ [45 <./images/16_methode_3_4_5.png> <./images/17_fin_confection.jpg>]) (chapitres/chap3/sec3_3.tex
+LaTeX Info: Symbol \texttwosuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 20.
+ [46]
+LaTeX Info: Symbol \texttwosuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 22.
+LaTeX Info: Symbol \texttwosuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 70.
+ [47]
+<images/18_ET0_partie1.jpg, id=1318, 477.28313pt x 271.0125pt>
+File: images/18_ET0_partie1.jpg Graphic file (type jpg)
+<use images/18_ET0_partie1.jpg>
+Package pdftex.def Info: images/18_ET0_partie1.jpg  used on input line 84.
+(pdftex.def)             Requested size: 477.28195pt x 271.01183pt.
+ [48 <./images/18_ET0_partie1.jpg>]
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 10.95pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 8.0pt on input line 116.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.1pt on input line 116.
+
+Underfull \hbox (badness 1360) in paragraph at lines 116--116
+[]|\T1/ntxtlf/m/n/10.95 Inondation des plots, at-tente de 24
+ []
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.0pt on input line 124.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 6.1pt on input line 124.
+LaTeX Info: Symbol \textthreesuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 134.
+LaTeX Info: Symbol \textthreesuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 134.
+[49]) (chapitres/chap3/sec3_4.tex
+<images/26_mon_8_en_1.jpg, id=1337, 430.60875pt x 338.01282pt>
+File: images/26_mon_8_en_1.jpg Graphic file (type jpg)
+<use images/26_mon_8_en_1.jpg>
+Package pdftex.def Info: images/26_mon_8_en_1.jpg  used on input line 19.
+(pdftex.def)             Requested size: 430.60768pt x 338.01198pt.
+ [50] [51 <./images/26_mon_8_en_1.jpg>]) (chapitres/chap3/sec3_5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 20--20
+[]|\T1/ntxtlf/m/n/10.95 Entretien des
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 24--24
+[]|\T1/ntxtlf/m/n/10.95 Enregistrement des ob-ser-va-tions
+ []
+
+
+Underfull \hbox (badness 6658) in paragraph at lines 24--25
+[]|\T1/ntxtlf/m/n/10.95 Historique de l'évo-lu-tion des
+ []
+
+[52]
+<images/29_binage_sarclo_tuteurage.jpg, id=1350, 489.32813pt x 243.91125pt>
+File: images/29_binage_sarclo_tuteurage.jpg Graphic file (type jpg)
+<use images/29_binage_sarclo_tuteurage.jpg>
+Package pdftex.def Info: images/29_binage_sarclo_tuteurage.jpg  used on input line 36.
+(pdftex.def)             Requested size: 489.32692pt x 243.91064pt.
+ [53 <./images/29_binage_sarclo_tuteurage.jpg>]
+<images/30_collecte_hebdomadaire.jpg, id=1355, 274.77657pt x 342.5297pt>
+File: images/30_collecte_hebdomadaire.jpg Graphic file (type jpg)
+<use images/30_collecte_hebdomadaire.jpg>
+Package pdftex.def Info: images/30_collecte_hebdomadaire.jpg  used on input line 76.
+(pdftex.def)             Requested size: 274.77588pt x 342.52885pt.
+
+Underfull \hbox (badness 3375) in paragraph at lines 92--92
+[]|\T1/ntxtlf/b/n/10.95 Ravageurs ob-
+ []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 92--92
+[]|\T1/ntxtlf/b/n/10.95 Méthodes de lutte ap-pli-
+ []
+
+
+Overfull \hbox (10.16623pt too wide) in alignment at lines 88--94
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 3375) in paragraph at lines 96--96
+[]|\T1/ntxtlf/b/n/10.95 Ravageurs ob-
+ []
+
+
+Underfull \hbox (badness 1895) in paragraph at lines 96--96
+[]|\T1/ntxtlf/b/n/10.95 Méthodes de lutte ap-pli-
+ []
+
+
+Overfull \hbox (10.16623pt too wide) in alignment at lines 94--98
+ [] [] [] [] 
+ []
+
+
+Underfull \hbox (badness 1701) in paragraph at lines 99--99
+\T1/ntxtlf/m/n/10.95 jau-nis-se-ment fo-liaire
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+[]|\T1/ntxtlf/m/n/10.95 Cicadelle écu-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+\T1/ntxtlf/m/n/10.95 blanche sur les
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--101
+\T1/ntxtlf/m/n/10.95 feuilles, pro-té-geant
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 101--101
+[]|\T1/ntxtlf/m/n/10.95 Jet d'eau pour éli-mi-ner la
+ []
+
+
+Underfull \hbox (badness 4303) in paragraph at lines 101--102
+[]|\T1/ntxtlf/m/n/10.95 Les larves sont dé-lo-
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 103--103
+[]|\T1/ntxtlf/m/n/10.95 Chenilles dé-fo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+[]|\T1/ntxtlf/m/n/10.95 L'odeur des so-lu-tions
+ []
+
+
+Underfull \hbox (badness 1337) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 semble éloi-gner tem-po-
+ []
+
+
+Underfull \hbox (badness 2435) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 rai-re-ment les che-nilles,
+ []
+
+
+Underfull \hbox (badness 7326) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 mais celles-ci ré-ap-pa-
+ []
+
+
+Underfull \hbox (badness 2653) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 raissent après quelques
+ []
+
+
+Underfull \hbox (badness 3128) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 jours. Lors des ap-pli-
+ []
+
+
+Underfull \hbox (badness 5345) in paragraph at lines 103--104
+\T1/ntxtlf/m/n/10.95 ca-tions ré-pé-tées d'une
+ []
+
+
+Overfull \hbox (10.16623pt too wide) in alignment at lines 98--107
+ [] [] [] [] 
+ []
+
+[54 <./images/30_collecte_hebdomadaire.jpg>]
+<images/31_cochenille_farineuse.jpg, id=1361, 429.10312pt x 389.95688pt>
+File: images/31_cochenille_farineuse.jpg Graphic file (type jpg)
+<use images/31_cochenille_farineuse.jpg>
+Package pdftex.def Info: images/31_cochenille_farineuse.jpg  used on input line 114.
+(pdftex.def)             Requested size: 429.10207pt x 389.95592pt.
+ [55]
+<images/32_cicadelle_ecumeuse.jpg, id=1366, 540.51938pt x 334.24875pt>
+File: images/32_cicadelle_ecumeuse.jpg Graphic file (type jpg)
+<use images/32_cicadelle_ecumeuse.jpg>
+Package pdftex.def Info: images/32_cicadelle_ecumeuse.jpg  used on input line 121.
+(pdftex.def)             Requested size: 540.51805pt x 334.24792pt.
+<images/33_chenille.jpg, id=1367, 525.46312pt x 392.96812pt>
+File: images/33_chenille.jpg Graphic file (type jpg)
+<use images/33_chenille.jpg>
+Package pdftex.def Info: images/33_chenille.jpg  used on input line 128.
+(pdftex.def)             Requested size: 525.46184pt x 392.96715pt.
+ [56 <./images/31_cochenille_farineuse.jpg> <./images/32_cicadelle_ecumeuse.jpg>] [57 <./images/33_chenille.jpg>]
+<images/34_fongique.jpg, id=1376, 504.38437pt x 378.66469pt>
+File: images/34_fongique.jpg Graphic file (type jpg)
+<use images/34_fongique.jpg>
+Package pdftex.def Info: images/34_fongique.jpg  used on input line 153.
+(pdftex.def)             Requested size: 504.38313pt x 378.66376pt.
+ [58 <./images/34_fongique.jpg>]) (chapitres/chap3/sec3_6.tex)) [59]
+\openout2 = `chapitres/chap4/chap4.aux'.
+
+ (chapitres/chap4/chap4.tex
+Chapitre 4.
+(chapitres/chap4/sec4_1.tex) (chapitres/chap4/sec4_2.tex [60
+
+
+
+
+]
+Underfull \hbox (badness 1184) in paragraph at lines 34--34
+\T1/ntxtlf/m/n/10.95 as-pects concep-tuels
+ []
+
+
+Underfull \hbox (badness 6961) in paragraph at lines 34--34
+\T1/ntxtlf/m/n/10.95 et or-ga-ni-sa-tion-nels
+ []
+
+
+Underfull \hbox (badness 6944) in paragraph at lines 34--35
+[]|\T1/ntxtlf/m/n/10.95 Propose dif-fé-rents dia-grammes
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+[]|\T1/ntxtlf/m/n/10.95 Représentation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--36
+\T1/ntxtlf/m/n/10.95 des opé-ra-tions
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 36--36
+\T1/ntxtlf/m/n/10.95 ma-nuelles et au-to-
+ []
+
+
+Underfull \hbox (badness 1968) in paragraph at lines 38--39
+[]|\T1/ntxtlf/m/n/10.95 Également en-vi-sa-geable, no-tam-
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 40--40
+[]|\T1/ntxtlf/m/n/10.95 Cohérence avec la
+ []
+
+[61]) (chapitres/chap4/sec4_3.tex
+Underfull \hbox (badness 2582) in paragraph at lines 8--8
+[]|\T1/ntxtlf/b/n/12 Acteur du sys-tème
+ []
+
+
+Underfull \hbox (badness 2582) in paragraph at lines 12--12
+[]|\T1/ntxtlf/b/n/12 Acteur du sys-tème
+ []
+
+[62]) (chapitres/chap4/sec4_4.tex [63]
+
+pdfTeX warning: pdflatex (file ./images/MCC.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCC.pdf, id=1404, 1650.165pt x 1350.96712pt>
+File: images/MCC.pdf Graphic file (type pdf)
+<use images/MCC.pdf>
+Package pdftex.def Info: images/MCC.pdf  used on input line 64.
+(pdftex.def)             Requested size: 455.24411pt x 372.70242pt.
+[64]
+LaTeX Font Info:    Font shape `TS1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.95pt on input line 79.
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--79
+[]|\T1/ntxtlf/b/n/10.95 Événement(s) dé-clen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[]|\T1/ntxtlf/b/n/10.95 Événement(s) dé-clen-
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 92--92
+[]|\T1/ntxtlf/m/n/10.95 Installer et confi-gu-rer le
+ []
+
+
+Underfull \hbox (badness 3954) in paragraph at lines 108--108
+[]|\T1/ntxtlf/m/n/10.95 Configuration et re-le-vés
+ []
+
+
+Underfull \hbox (badness 6063) in paragraph at lines 108--108
+\T1/ntxtlf/m/n/10.95 de don-nées (à chaque
+ []
+
+
+Underfull \hbox (badness 7740) in paragraph at lines 110--111
+[]|\T1/ntxtlf/m/n/10.95 Données mé-téo re-çues si
+ []
+
+
+Underfull \hbox (badness 5548) in paragraph at lines 112--112
+[]|\T1/ntxtlf/m/n/10.95 Calculer les in-di-ca-teurs
+ []
+
+
+Underfull \hbox (badness 2126) in paragraph at lines 114--114
+[]|\T1/ntxtlf/m/n/10.95 Indicateurs agro-no-miques
+ []
+
+
+Underfull \hbox (badness 2126) in paragraph at lines 118--118
+[]|\T1/ntxtlf/m/n/10.95 Indicateurs agro-no-miques
+ []
+
+
+Underfull \hbox (badness 2903) in paragraph at lines 122--122
+[]|\T1/ntxtlf/m/n/10.95 Irrigation réa-li-sée, stock
+ []
+
+[65 <./images/MCC.pdf>] [66]
+
+pdfTeX warning: pdflatex (file ./images/MCT1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT1.pdf, id=1428, 506.85359pt x 548.0475pt>
+File: images/MCT1.pdf Graphic file (type pdf)
+<use images/MCT1.pdf>
+Package pdftex.def Info: images/MCT1.pdf  used on input line 131.
+(pdftex.def)             Requested size: 455.2514pt x 492.25142pt.
+
+
+pdfTeX warning: pdflatex (file ./images/MCT2.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT2.pdf, id=1429, 670.42468pt x 765.82106pt>
+File: images/MCT2.pdf Graphic file (type pdf)
+<use images/MCT2.pdf>
+Package pdftex.def Info: images/MCT2.pdf  used on input line 138.
+(pdftex.def)             Requested size: 455.24849pt x 520.02693pt.
+[67 <./images/MCT1.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MCT3.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT3.pdf, id=1443, 820.02356pt x 610.19968pt>
+File: images/MCT3.pdf Graphic file (type pdf)
+<use images/MCT3.pdf>
+Package pdftex.def Info: images/MCT3.pdf  used on input line 145.
+(pdftex.def)             Requested size: 455.24359pt x 338.75793pt.
+[68 <./images/MCT2.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MCT4.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT4.pdf, id=1457, 645.37106pt x 573.10106pt>
+File: images/MCT4.pdf Graphic file (type pdf)
+<use images/MCT4.pdf>
+Package pdftex.def Info: images/MCT4.pdf  used on input line 152.
+(pdftex.def)             Requested size: 455.25255pt x 404.27242pt.
+[69 <./images/MCT3.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MCT5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT5.pdf, id=1472, 945.5325pt x 623.44919pt>
+File: images/MCT5.pdf Graphic file (type pdf)
+<use images/MCT5.pdf>
+Package pdftex.def Info: images/MCT5.pdf  used on input line 159.
+(pdftex.def)             Requested size: 455.24992pt x 300.17497pt.
+[70 <./images/MCT4.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MCT6.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MCT6.pdf, id=1486, 609.23605pt x 578.16pt>
+File: images/MCT6.pdf Graphic file (type pdf)
+<use images/MCT6.pdf>
+Package pdftex.def Info: images/MCT6.pdf  used on input line 166.
+(pdftex.def)             Requested size: 455.25261pt x 432.03098pt.
+[71 <./images/MCT5.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MOT1_1.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_1.pdf, id=1500, 2938.98pt x 1295.80106pt>
+File: images/MOT1_1.pdf Graphic file (type pdf)
+<use images/MOT1_1.pdf>
+Package pdftex.def Info: images/MOT1_1.pdf  used on input line 177.
+(pdftex.def)             Requested size: 455.22328pt x 200.70868pt.
+[72 <./images/MCT6.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MOT1_2.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_2.pdf, id=1516, 2428.03107pt x 1020.93419pt>
+File: images/MOT1_2.pdf Graphic file (type pdf)
+<use images/MOT1_2.pdf>
+Package pdftex.def Info: images/MOT1_2.pdf  used on input line 184.
+(pdftex.def)             Requested size: 455.21767pt x 191.4091pt.
+
+
+pdfTeX warning: pdflatex (file ./images/MOT1_3.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_3.pdf, id=1517, 2488.25606pt x 1169.32857pt>
+File: images/MOT1_3.pdf Graphic file (type pdf)
+<use images/MOT1_3.pdf>
+Package pdftex.def Info: images/MOT1_3.pdf  used on input line 191.
+(pdftex.def)             Requested size: 455.2325pt x 213.9315pt.
+[73 <./images/MOT1_1.pdf> <./images/MOT1_2.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MOT1_4.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_4.pdf, id=1550, 2498.37393pt x 1177.5192pt>
+File: images/MOT1_4.pdf Graphic file (type pdf)
+<use images/MOT1_4.pdf>
+Package pdftex.def Info: images/MOT1_4.pdf  used on input line 198.
+(pdftex.def)             Requested size: 455.2156pt x 214.54959pt.
+
+
+pdfTeX warning: pdflatex (file ./images/MOT1_5.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_5.pdf, id=1551, 2456.21645pt x 1144.275pt>
+File: images/MOT1_5.pdf Graphic file (type pdf)
+<use images/MOT1_5.pdf>
+Package pdftex.def Info: images/MOT1_5.pdf  used on input line 205.
+(pdftex.def)             Requested size: 455.21747pt x 212.07169pt.
+[74 <./images/MOT1_3.pdf> <./images/MOT1_4.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MOT1_6.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_6.pdf, id=1584, 2409.0pt x 1187.39606pt>
+File: images/MOT1_6.pdf Graphic file (type pdf)
+<use images/MOT1_6.pdf>
+Package pdftex.def Info: images/MOT1_6.pdf  used on input line 212.
+(pdftex.def)             Requested size: 455.2152pt x 224.37555pt.
+
+
+pdfTeX warning: pdflatex (file ./images/MOT1_7.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_7.pdf, id=1585, 3141.81763pt x 951.555pt>
+File: images/MOT1_7.pdf Graphic file (type pdf)
+<use images/MOT1_7.pdf>
+Package pdftex.def Info: images/MOT1_7.pdf  used on input line 219.
+(pdftex.def)             Requested size: 455.24028pt x 137.87756pt.
+
+
+pdfTeX warning: pdflatex (file ./images/MOT1_8.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_8.pdf, id=1586, 2827.68407pt x 963.6pt>
+File: images/MOT1_8.pdf Graphic file (type pdf)
+<use images/MOT1_8.pdf>
+Package pdftex.def Info: images/MOT1_8.pdf  used on input line 226.
+(pdftex.def)             Requested size: 455.24326pt x 155.13486pt.
+[75 <./images/MOT1_5.pdf> <./images/MOT1_6.pdf> <./images/MOT1_7.pdf>]
+
+pdfTeX warning: pdflatex (file ./images/MOT1_9.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/MOT1_9.pdf, id=1633, 2569.68013pt x 1090.0725pt>
+File: images/MOT1_9.pdf Graphic file (type pdf)
+<use images/MOT1_9.pdf>
+Package pdftex.def Info: images/MOT1_9.pdf  used on input line 233.
+(pdftex.def)             Requested size: 455.22939pt x 193.11081pt.
+) (chapitres/chap4/sec4_5.tex [76 <./images/MOT1_8.pdf> <./images/MOT1_9.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+[]|\T1/ntxtlf/b/n/10.95 Correspondance avec les ac-teurs
+ []
+
+
+Underfull \hbox (badness 2020) in paragraph at lines 47--47
+[]|\T1/ntxtlf/m/n/10.95 Accueil (ta-bleau de
+ []
+
+[77]) (chapitres/chap4/sec4_6.tex
+<images/1_a_pour_appli.jpeg, id=1670, 406.51875pt x 879.285pt>
+File: images/1_a_pour_appli.jpeg Graphic file (type jpg)
+<use images/1_a_pour_appli.jpeg>
+Package pdftex.def Info: images/1_a_pour_appli.jpeg  used on input line 12.
+(pdftex.def)             Requested size: 204.85846pt x 443.10295pt.
+<images/1_b_pour_appli.jpeg, id=1671, 401.24907pt x 880.79062pt>
+File: images/1_b_pour_appli.jpeg Graphic file (type jpg)
+<use images/1_b_pour_appli.jpeg>
+Package pdftex.def Info: images/1_b_pour_appli.jpeg  used on input line 17.
+(pdftex.def)             Requested size: 204.85846pt x 449.69455pt.
+ [78]
+<images/1_c_pour_appli.jpeg, id=1677, 542.025pt x 1174.3875pt>
+File: images/1_c_pour_appli.jpeg Graphic file (type jpg)
+<use images/1_c_pour_appli.jpeg>
+Package pdftex.def Info: images/1_c_pour_appli.jpeg  used on input line 31.
+(pdftex.def)             Requested size: 204.85846pt x 443.85274pt.
+<images/1_d_pour_appli.jpeg, id=1678, 542.025pt x 1174.3875pt>
+File: images/1_d_pour_appli.jpeg Graphic file (type jpg)
+<use images/1_d_pour_appli.jpeg>
+Package pdftex.def Info: images/1_d_pour_appli.jpeg  used on input line 38.
+(pdftex.def)             Requested size: 204.85846pt x 443.85274pt.
+ [79 <./images/1_a_pour_appli.jpeg> <./images/1_b_pour_appli.jpeg>] [80 <./images/1_c_pour_appli.jpeg> <./images/1_d_pour_appli.jpeg>]) (chapitres/chap4/sec4_7.tex)) [81]
+\openout2 = `chapitres/chap5/chap5.aux'.
+
+ (chapitres/chap5/chap5.tex
+Chapitre 5.
+(chapitres/chap5/sec5_1.tex) (chapitres/chap5/sec5_2.tex [82
+
+
+
+
+]
+Overfull \hbox (3.14742pt too wide) in paragraph at lines 22--22
+[]|\T1/ntxtlf/b/n/12 Humidité
+ []
+
+
+Overfull \hbox (12.59993pt too wide) in paragraph at lines 22--22
+[]|\T1/ntxtlf/b/n/12 Température
+ []
+
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 22.
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/ntxtlf/b/n/12 EC
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/ntxtlf/b/n/12 N
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--22
+[]|\T1/ntxtlf/b/n/12 P
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+[]|\T1/ntxtlf/b/n/12 K
+ []
+
+
+Overfull \hbox (34.158pt too wide) in paragraph at lines 20--31
+ [][] 
+ []
+
+<images/27_echantillons_de_sol.jpg, id=1695, 466.74374pt x 292.84406pt>
+File: images/27_echantillons_de_sol.jpg Graphic file (type jpg)
+<use images/27_echantillons_de_sol.jpg>
+Package pdftex.def Info: images/27_echantillons_de_sol.jpg  used on input line 37.
+(pdftex.def)             Requested size: 466.7426pt x 292.84334pt.
+[83]
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+[]|\T1/ntxtlf/b/n/10.95 Humidité
+ []
+
+
+Overfull \hbox (6.76709pt too wide) in paragraph at lines 52--52
+[]|\T1/ntxtlf/b/n/10.95 Température
+ []
+
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 52.
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--52
+[]|\T1/ntxtlf/b/n/10.95 N
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+[]|\T1/ntxtlf/b/n/10.95 K
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]|\T1/ntxtlf/m/n/10.95 6,8--
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--58
+[]|\T1/ntxtlf/m/n/10.95 6,9--
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--60
+[]|\T1/ntxtlf/m/n/10.95 Coque d'ara-
+ []
+
+
+Overfull \hbox (25.62256pt too wide) in paragraph at lines 50--63
+ [][] 
+ []
+
+<images/28_prelevement_intrant.jpg, id=1701, 435.12563pt x 359.84438pt>
+File: images/28_prelevement_intrant.jpg Graphic file (type jpg)
+<use images/28_prelevement_intrant.jpg>
+Package pdftex.def Info: images/28_prelevement_intrant.jpg  used on input line 69.
+(pdftex.def)             Requested size: 435.12456pt x 359.84349pt.
+[84 <./images/27_echantillons_de_sol.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+[]|\T1/ntxtlf/b/n/10.95 Humidité
+ []
+
+
+Overfull \hbox (6.76709pt too wide) in paragraph at lines 84--84
+[]|\T1/ntxtlf/b/n/10.95 Température
+ []
+
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 84.
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+[]|\T1/ntxtlf/b/n/10.95 N
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+[]|\T1/ntxtlf/b/n/10.95 K
+ []
+
+
+Overfull \hbox (11.39618pt too wide) in paragraph at lines 82--99
+ [][] 
+ []
+
+[85 <./images/28_prelevement_intrant.jpg>]
+<images/a_fissure_chap5.jpg, id=1712, 432.11438pt x 380.92313pt>
+File: images/a_fissure_chap5.jpg Graphic file (type jpg)
+<use images/a_fissure_chap5.jpg>
+Package pdftex.def Info: images/a_fissure_chap5.jpg  used on input line 110.
+(pdftex.def)             Requested size: 432.11331pt x 380.92218pt.
+<images/b_gombo_chap5.jpg, id=1713, 495.35063pt x 370.38374pt>
+File: images/b_gombo_chap5.jpg Graphic file (type jpg)
+<use images/b_gombo_chap5.jpg>
+Package pdftex.def Info: images/b_gombo_chap5.jpg  used on input line 120.
+(pdftex.def)             Requested size: 495.34943pt x 370.38283pt.
+ [86 <./images/a_fissure_chap5.jpg>]
+<images/c_navet_chap5.jpg, id=1718, 460.72125pt x 291.33844pt>
+File: images/c_navet_chap5.jpg Graphic file (type jpg)
+<use images/c_navet_chap5.jpg>
+Package pdftex.def Info: images/c_navet_chap5.jpg  used on input line 127.
+(pdftex.def)             Requested size: 460.72012pt x 291.33772pt.
+<images/d_sol_dur_meuble_chap5.jpg, id=1719, 430.60875pt x 395.97937pt>
+File: images/d_sol_dur_meuble_chap5.jpg Graphic file (type jpg)
+<use images/d_sol_dur_meuble_chap5.jpg>
+Package pdftex.def Info: images/d_sol_dur_meuble_chap5.jpg  used on input line 136.
+(pdftex.def)             Requested size: 430.60768pt x 395.97841pt.
+ [87 <./images/b_gombo_chap5.jpg> <./images/c_navet_chap5.jpg>]
+<images/e_signes_chap5.jpg, id=1724, 539.76656pt x 361.35pt>
+File: images/e_signes_chap5.jpg Graphic file (type jpg)
+<use images/e_signes_chap5.jpg>
+Package pdftex.def Info: images/e_signes_chap5.jpg  used on input line 145.
+(pdftex.def)             Requested size: 539.76524pt x 361.34912pt.
+ [88 <./images/d_sol_dur_meuble_chap5.jpg> <./images/e_signes_chap5.jpg>]) (chapitres/chap5/sec5_3.tex
+<images/f_evolution_chap5.jpg, id=1730, 459.21562pt x 353.82187pt>
+File: images/f_evolution_chap5.jpg Graphic file (type jpg)
+<use images/f_evolution_chap5.jpg>
+Package pdftex.def Info: images/f_evolution_chap5.jpg  used on input line 6.
+(pdftex.def)             Requested size: 459.2145pt x 353.821pt.
+ [89]
+<images/g_kc_chap5.png, id=1736, 466.3824pt x 343.7643pt>
+File: images/g_kc_chap5.png Graphic file (type png)
+<use images/g_kc_chap5.png>
+Package pdftex.def Info: images/g_kc_chap5.png  used on input line 15.
+(pdftex.def)             Requested size: 466.38126pt x 343.76344pt.
+ [90 <./images/f_evolution_chap5.jpg>]
+<images/h_ET0_ETc_chap5.png, id=1742, 483.9681pt x 343.5234pt>
+File: images/h_ET0_ETc_chap5.png Graphic file (type png)
+<use images/h_ET0_ETc_chap5.png>
+Package pdftex.def Info: images/h_ET0_ETc_chap5.png  used on input line 23.
+(pdftex.def)             Requested size: 483.9669pt x 343.52255pt.
+<images/i_evapotranspiration_chap5.jpeg, id=1743, 1204.5pt x 1202.24156pt>
+File: images/i_evapotranspiration_chap5.jpeg Graphic file (type jpg)
+<use images/i_evapotranspiration_chap5.jpeg>
+Package pdftex.def Info: images/i_evapotranspiration_chap5.jpeg  used on input line 31.
+(pdftex.def)             Requested size: 1204.49707pt x 1202.23863pt.
+ [91 <./images/g_kc_chap5.png> <./images/h_ET0_ETc_chap5.png>]
+<images/j_cumule_Di_chap5.jpeg, id=1750, 1173.63469pt x 469.00218pt>
+File: images/j_cumule_Di_chap5.jpeg Graphic file (type jpg)
+<use images/j_cumule_Di_chap5.jpeg>
+Package pdftex.def Info: images/j_cumule_Di_chap5.jpeg  used on input line 39.
+(pdftex.def)             Requested size: 1173.63184pt x 469.00104pt.
+<images/k_humidite_chap5.png, id=1751, 482.7636pt x 347.8596pt>
+File: images/k_humidite_chap5.png Graphic file (type png)
+<use images/k_humidite_chap5.png>
+Package pdftex.def Info: images/k_humidite_chap5.png  used on input line 47.
+(pdftex.def)             Requested size: 482.7624pt x 347.85875pt.
+ [92 <./images/i_evapotranspiration_chap5.jpeg> <./images/j_cumule_Di_chap5.jpeg>]
+<images/l_ph_chap5.png, id=1756, 481.5591pt x 342.5598pt>
+File: images/l_ph_chap5.png Graphic file (type png)
+<use images/l_ph_chap5.png>
+Package pdftex.def Info: images/l_ph_chap5.png  used on input line 55.
+(pdftex.def)             Requested size: 481.55792pt x 342.55894pt.
+<images/m_EC_chap5.png, id=1757, 486.3771pt x 343.5234pt>
+File: images/m_EC_chap5.png Graphic file (type png)
+<use images/m_EC_chap5.png>
+Package pdftex.def Info: images/m_EC_chap5.png  used on input line 63.
+(pdftex.def)             Requested size: 486.37592pt x 343.52255pt.
+ [93 <./images/k_humidite_chap5.png> <./images/l_ph_chap5.png>]
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 67.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 67.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 67.
+<images/n_NPK_chap5.png, id=1764, 480.5955pt x 346.4142pt>
+File: images/n_NPK_chap5.png Graphic file (type png)
+<use images/n_NPK_chap5.png>
+Package pdftex.def Info: images/n_NPK_chap5.png  used on input line 71.
+(pdftex.def)             Requested size: 480.59433pt x 346.41335pt.
+ [94 <./images/m_EC_chap5.png> <./images/n_NPK_chap5.png>]
+<images/o_boxplot_ph_chap5.png, id=1771, 481.8pt x 345.6915pt>
+File: images/o_boxplot_ph_chap5.png Graphic file (type png)
+<use images/o_boxplot_ph_chap5.png>
+Package pdftex.def Info: images/o_boxplot_ph_chap5.png  used on input line 79.
+(pdftex.def)             Requested size: 481.79881pt x 345.69064pt.
+<images/p_evolution_ph_EC_chap5.png, id=1772, 560.0925pt x 348.5823pt>
+File: images/p_evolution_ph_EC_chap5.png Graphic file (type png)
+<use images/p_evolution_ph_EC_chap5.png>
+Package pdftex.def Info: images/p_evolution_ph_EC_chap5.png  used on input line 87.
+(pdftex.def)             Requested size: 560.09113pt x 348.58145pt.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 91.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 91.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 91.
+LaTeX Info: Symbol \textmu not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 91.
+ [95 <./images/o_boxplot_ph_chap5.png> <./images/p_evolution_ph_EC_chap5.png>]
+<images/q_tem_hum_ph_chap5.png, id=1779, 505.89pt x 643.9257pt>
+File: images/q_tem_hum_ph_chap5.png Graphic file (type png)
+<use images/q_tem_hum_ph_chap5.png>
+Package pdftex.def Info: images/q_tem_hum_ph_chap5.png  used on input line 95.
+(pdftex.def)             Requested size: 505.88875pt x 643.92413pt.
+<images/r_relation_ph_EC_chap5.png, id=1780, 482.0409pt x 348.5823pt>
+File: images/r_relation_ph_EC_chap5.png Graphic file (type png)
+<use images/r_relation_ph_EC_chap5.png>
+Package pdftex.def Info: images/r_relation_ph_EC_chap5.png  used on input line 103.
+(pdftex.def)             Requested size: 482.0397pt x 348.58145pt.
+ [96 <./images/q_tem_hum_ph_chap5.png>]
+<images/s_ph_EC_duSol_chap5.png, id=1787, 650.43pt x 611.886pt>
+File: images/s_ph_EC_duSol_chap5.png Graphic file (type png)
+<use images/s_ph_EC_duSol_chap5.png>
+Package pdftex.def Info: images/s_ph_EC_duSol_chap5.png  used on input line 111.
+(pdftex.def)             Requested size: 650.4284pt x 611.88449pt.
+ [97 <./images/r_relation_ph_EC_chap5.png> <./images/s_ph_EC_duSol_chap5.png>]
+<images/eau_appliquee_temoin_test_comparaison.jpeg, id=1794, 1606.0pt x 1313.90875pt>
+File: images/eau_appliquee_temoin_test_comparaison.jpeg Graphic file (type jpg)
+<use images/eau_appliquee_temoin_test_comparaison.jpeg>
+Package pdftex.def Info: images/eau_appliquee_temoin_test_comparaison.jpeg  used on input line 128.
+(pdftex.def)             Requested size: 1605.99611pt x 1313.90556pt.
+<images/t_survivant_chap5.jpeg, id=1795, 1606.0pt x 722.7pt>
+File: images/t_survivant_chap5.jpeg Graphic file (type jpg)
+<use images/t_survivant_chap5.jpeg>
+Package pdftex.def Info: images/t_survivant_chap5.jpeg  used on input line 136.
+(pdftex.def)             Requested size: 1605.99611pt x 722.69823pt.
+ [98 <./images/eau_appliquee_temoin_test_comparaison.jpeg>]
+<images/u_nbre_feuille_chap5.png, id=1800, 722.7pt x 325.215pt>
+File: images/u_nbre_feuille_chap5.png Graphic file (type png)
+<use images/u_nbre_feuille_chap5.png>
+Package pdftex.def Info: images/u_nbre_feuille_chap5.png  used on input line 144.
+(pdftex.def)             Requested size: 722.69823pt x 325.2142pt.
+<images/v_longueur_chp5.png, id=1801, 707.0415pt x 310.5201pt>
+File: images/v_longueur_chp5.png Graphic file (type png)
+<use images/v_longueur_chp5.png>
+Package pdftex.def Info: images/v_longueur_chp5.png  used on input line 153.
+(pdftex.def)             Requested size: 707.03976pt x 310.51933pt.
+ [99 <./images/t_survivant_chap5.jpeg> <./images/u_nbre_feuille_chap5.png>]
+<images/w_largeur_chap5.png, id=1806, 702.4644pt x 311.0019pt>
+File: images/w_largeur_chap5.png Graphic file (type png)
+<use images/w_largeur_chap5.png>
+Package pdftex.def Info: images/w_largeur_chap5.png  used on input line 160.
+(pdftex.def)             Requested size: 702.46269pt x 311.00114pt.
+ [100 <./images/v_longueur_chp5.png> <./images/w_largeur_chap5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\T1/ntxtlf/m/n/10.95 Survie des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--181
+[]|\T1/ntxtlf/m/n/10.95 Survie des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--183
+[]|\T1/ntxtlf/m/n/10.95 Survie des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--185
+[]|\T1/ntxtlf/m/n/10.95 Nombre de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
+[]|\T1/ntxtlf/m/n/10.95 Nombre de
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 187--188
+[]|\T1/ntxtlf/m/n/10.95 Valeur su-pé-rieure at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
+[]|\T1/ntxtlf/m/n/10.95 Nombre de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
+[]|\T1/ntxtlf/m/n/10.95 Longueur des
+ []
+
+
+Underfull \hbox (badness 1253) in paragraph at lines 191--192
+[]|\T1/ntxtlf/m/n/10.95 Feuilles plus longues
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+[]|\T1/ntxtlf/m/n/10.95 Longueur des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+[]|\T1/ntxtlf/m/n/10.95 Développement plus
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
+[]|\T1/ntxtlf/m/n/10.95 Largeur des
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+[]|\T1/ntxtlf/m/n/10.95 Largeur des
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 197--198
+[]|\T1/ntxtlf/m/n/10.95 Valeur su-pé-rieure at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--199
+[]|\T1/ntxtlf/m/n/10.95 Largeur des
+ []
+
+<images/x_hauteur_chap5.png, id=1813, 700.0554pt x 311.2428pt>
+File: images/x_hauteur_chap5.png Graphic file (type png)
+<use images/x_hauteur_chap5.png>
+Package pdftex.def Info: images/x_hauteur_chap5.png  used on input line 210.
+(pdftex.def)             Requested size: 700.0537pt x 311.24203pt.
+[101]
+<images/y_box_hauteur_chap5.png, id=1818, 481.5591pt x 346.4142pt>
+File: images/y_box_hauteur_chap5.png Graphic file (type png)
+<use images/y_box_hauteur_chap5.png>
+Package pdftex.def Info: images/y_box_hauteur_chap5.png  used on input line 218.
+(pdftex.def)             Requested size: 481.55792pt x 346.41335pt.
+ [102 <./images/x_hauteur_chap5.png> <./images/y_box_hauteur_chap5.png>]
+<images/z_hauteur_final_chap5.png, id=1826, 481.5591pt x 346.4142pt>
+File: images/z_hauteur_final_chap5.png Graphic file (type png)
+<use images/z_hauteur_final_chap5.png>
+Package pdftex.def Info: images/z_hauteur_final_chap5.png  used on input line 228.
+(pdftex.def)             Requested size: 481.55792pt x 346.41335pt.
+<images/z1_Effectif_hauteur_chap5.png, id=1827, 482.0409pt x 351.9549pt>
+File: images/z1_Effectif_hauteur_chap5.png Graphic file (type png)
+<use images/z1_Effectif_hauteur_chap5.png>
+Package pdftex.def Info: images/z1_Effectif_hauteur_chap5.png  used on input line 237.
+(pdftex.def)             Requested size: 482.0397pt x 351.95404pt.
+ [103 <./images/z_hauteur_final_chap5.png> <./images/z1_Effectif_hauteur_chap5.png>]
+<images/z2_comparaison_L_l_chap5.png, id=1834, 491.1951pt x 349.305pt>
+File: images/z2_comparaison_L_l_chap5.png Graphic file (type png)
+<use images/z2_comparaison_L_l_chap5.png>
+Package pdftex.def Info: images/z2_comparaison_L_l_chap5.png  used on input line 245.
+(pdftex.def)             Requested size: 491.1939pt x 349.30414pt.
+<images/z6_gom_nav_jour11_chap5.jpg, id=1835, 527.72156pt x 402.75468pt>
+File: images/z6_gom_nav_jour11_chap5.jpg Graphic file (type jpg)
+<use images/z6_gom_nav_jour11_chap5.jpg>
+Package pdftex.def Info: images/z6_gom_nav_jour11_chap5.jpg  used on input line 257.
+(pdftex.def)             Requested size: 527.72028pt x 402.7537pt.
+ [104 <./images/z2_comparaison_L_l_chap5.png>]
+<images/z9_gombo_jour22_chap5.jpg, id=1841, 506.6428pt x 322.20375pt>
+File: images/z9_gombo_jour22_chap5.jpg Graphic file (type jpg)
+<use images/z9_gombo_jour22_chap5.jpg>
+Package pdftex.def Info: images/z9_gombo_jour22_chap5.jpg  used on input line 264.
+(pdftex.def)             Requested size: 506.64157pt x 322.20296pt.
+<images/z10_navet_jour22_chap5.jpg, id=1842, 451.6875pt x 312.41719pt>
+File: images/z10_navet_jour22_chap5.jpg Graphic file (type jpg)
+<use images/z10_navet_jour22_chap5.jpg>
+Package pdftex.def Info: images/z10_navet_jour22_chap5.jpg  used on input line 272.
+(pdftex.def)             Requested size: 451.68639pt x 312.41641pt.
+ [105 <./images/z6_gom_nav_jour11_chap5.jpg> <./images/z9_gombo_jour22_chap5.jpg>]
+<images/z11_gombo_jour34_chap5.jpg, id=1847, 444.15938pt x 305.64188pt>
+File: images/z11_gombo_jour34_chap5.jpg Graphic file (type jpg)
+<use images/z11_gombo_jour34_chap5.jpg>
+Package pdftex.def Info: images/z11_gombo_jour34_chap5.jpg  used on input line 279.
+(pdftex.def)             Requested size: 444.15828pt x 305.64111pt.
+<images/z12_navet_jour34_chap5.jpg, id=1848, 485.56406pt x 311.66437pt>
+File: images/z12_navet_jour34_chap5.jpg Graphic file (type jpg)
+<use images/z12_navet_jour34_chap5.jpg>
+Package pdftex.def Info: images/z12_navet_jour34_chap5.jpg  used on input line 287.
+(pdftex.def)             Requested size: 485.56287pt x 311.6636pt.
+ [106 <./images/z10_navet_jour22_chap5.jpg> <./images/z11_gombo_jour34_chap5.jpg>]
+<images/z13_laitue_jour25_chap5.jpg, id=1853, 456.20438pt x 292.84406pt>
+File: images/z13_laitue_jour25_chap5.jpg Graphic file (type jpg)
+<use images/z13_laitue_jour25_chap5.jpg>
+Package pdftex.def Info: images/z13_laitue_jour25_chap5.jpg  used on input line 294.
+(pdftex.def)             Requested size: 456.20325pt x 292.84334pt.
+) (chapitres/chap5/sec5_4.tex [107 <./images/z12_navet_jour34_chap5.jpg> <./images/z13_laitue_jour25_chap5.jpg>]
+<images/z14_gombo_bruler_chap5.jpg, id=1858, 511.9125pt x 352.31625pt>
+File: images/z14_gombo_bruler_chap5.jpg Graphic file (type jpg)
+<use images/z14_gombo_bruler_chap5.jpg>
+Package pdftex.def Info: images/z14_gombo_bruler_chap5.jpg  used on input line 9.
+(pdftex.def)             Requested size: 511.91125pt x 352.31538pt.
+) (chapitres/chap5/sec5_5.tex
+<images/z15_navet_temoin_chap5.jpg, id=1859, 509.65407pt x 338.76563pt>
+File: images/z15_navet_temoin_chap5.jpg Graphic file (type jpg)
+<use images/z15_navet_temoin_chap5.jpg>
+Package pdftex.def Info: images/z15_navet_temoin_chap5.jpg  used on input line 5.
+(pdftex.def)             Requested size: 509.65282pt x 338.76479pt.
+ [108 <./images/z14_gombo_bruler_chap5.jpg>]
+<images/z16_navet_test_chap5.jpg, id=1865, 283.0575pt x 379.4175pt>
+File: images/z16_navet_test_chap5.jpg Graphic file (type jpg)
+<use images/z16_navet_test_chap5.jpg>
+Package pdftex.def Info: images/z16_navet_test_chap5.jpg  used on input line 13.
+(pdftex.def)             Requested size: 283.0568pt x 379.41656pt.
+ [109 <./images/z15_navet_temoin_chap5.jpg> <./images/z16_navet_test_chap5.jpg>]
+<images/z17_relation_longueur_Diametre.jpeg, id=1870, 1166.85938pt x 846.16125pt>
+File: images/z17_relation_longueur_Diametre.jpeg Graphic file (type jpg)
+<use images/z17_relation_longueur_Diametre.jpeg>
+Package pdftex.def Info: images/z17_relation_longueur_Diametre.jpeg  used on input line 21.
+(pdftex.def)             Requested size: 1166.85654pt x 846.1592pt.
+<images/z18_concurence.jpeg, id=1871, 1606.0pt x 1021.8175pt>
+File: images/z18_concurence.jpeg Graphic file (type jpg)
+<use images/z18_concurence.jpeg>
+Package pdftex.def Info: images/z18_concurence.jpeg  used on input line 29.
+(pdftex.def)             Requested size: 1605.99611pt x 1021.81502pt.
+ [110 <./images/z17_relation_longueur_Diametre.jpeg> <./images/z18_concurence.jpeg>]
+<images/z19_rendement_laitue_test.jpg, id=1876, 542.025pt x 395.97937pt>
+File: images/z19_rendement_laitue_test.jpg Graphic file (type jpg)
+<use images/z19_rendement_laitue_test.jpg>
+Package pdftex.def Info: images/z19_rendement_laitue_test.jpg  used on input line 38.
+(pdftex.def)             Requested size: 542.02367pt x 395.97841pt.
+<images/z20_rendement_gombo_test.jpg, id=1877, 542.025pt x 392.96812pt>
+File: images/z20_rendement_gombo_test.jpg Graphic file (type jpg)
+<use images/z20_rendement_gombo_test.jpg>
+Package pdftex.def Info: images/z20_rendement_gombo_test.jpg  used on input line 46.
+(pdftex.def)             Requested size: 542.02367pt x 392.96715pt.
+
+Underfull \hbox (badness 1210) in paragraph at lines 62--63
+[]|\T1/ntxtlf/m/n/12 Récolte ré-gu-lière après 2 mois,
+ []
+
+[111 <./images/z19_rendement_laitue_test.jpg> <./images/z20_rendement_gombo_test.jpg>]) (chapitres/chap5/sec5_6.tex)) [112]
+\openout2 = `chapitres/conclusion/conclusion.aux'.
+
+ (chapitres/conclusion/conclusion.tex
+LaTeX Info: Symbol \texttwosuperior not provided by
+            font family ntxtlf in TS1 encoding.
+            Default family used instead on input line 6.
+) [113
+
+
+
+
+]
+LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 79.
+ (C:\Users\DELL\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtt.fd
+File: t1ntxtt.fd 2012/04/20 v3.1
+)
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 12.0pt on input line 79.
+ [114
+
+
+
+] [115] [116]
+\openout2 = `annexes/annexe_chap1.aux'.
+
+ (annexes/annexe_chap1.tex
+Annexe A.
+[117
+
+
+] [118]) [119]
+\openout2 = `annexes/annexe_chap2.aux'.
+
+ (annexes/annexe_chap2.tex
+Annexe B.
+<images/09_labour.jpg, id=1971, 457.71pt x 240.14719pt>
+File: images/09_labour.jpg Graphic file (type jpg)
+<use images/09_labour.jpg>
+Package pdftex.def Info: images/09_labour.jpg  used on input line 9.
+(pdftex.def)             Requested size: 457.7089pt x 240.14658pt.
+<images/10_confection_planche.jpg, id=1972, 468.24937pt x 251.43938pt>
+File: images/10_confection_planche.jpg Graphic file (type jpg)
+<use images/10_confection_planche.jpg>
+Package pdftex.def Info: images/10_confection_planche.jpg  used on input line 16.
+(pdftex.def)             Requested size: 468.24821pt x 251.43875pt.
+) [120
+
+
+
+
+ <./images/09_labour.jpg> <./images/10_confection_planche.jpg>]
+\openout2 = `annexes/annexe_chap3.aux'.
+
+ (annexes/annexe_chap3.tex
+Annexe C.
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 2.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 14.0pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 2.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 2.
+[121
+
+
+
+
+] [122]
+<images/19_ET0_partie2.jpg, id=2010, 532.99126pt x 351.56343pt>
+File: images/19_ET0_partie2.jpg Graphic file (type jpg)
+<use images/19_ET0_partie2.jpg>
+Package pdftex.def Info: images/19_ET0_partie2.jpg  used on input line 169.
+(pdftex.def)             Requested size: 532.98996pt x 351.56256pt.
+ [123]
+<images/20_ETc.jpg, id=2020, 526.21594pt x 325.215pt>
+File: images/20_ETc.jpg Graphic file (type jpg)
+<use images/20_ETc.jpg>
+Package pdftex.def Info: images/20_ETc.jpg  used on input line 180.
+(pdftex.def)             Requested size: 526.21466pt x 325.2142pt.
+<images/21_culture.jpg, id=2021, 489.32813pt x 283.0575pt>
+File: images/21_culture.jpg Graphic file (type jpg)
+<use images/21_culture.jpg>
+Package pdftex.def Info: images/21_culture.jpg  used on input line 191.
+(pdftex.def)             Requested size: 489.32692pt x 283.0568pt.
+ [124 <./images/19_ET0_partie2.jpg> <./images/20_ETc.jpg>]
+<images/22_note_formule.jpg, id=2026, 506.6428pt x 287.57437pt>
+File: images/22_note_formule.jpg Graphic file (type jpg)
+<use images/22_note_formule.jpg>
+Package pdftex.def Info: images/22_note_formule.jpg  used on input line 202.
+(pdftex.def)             Requested size: 506.64157pt x 287.57367pt.
+) [125 <./images/21_culture.jpg> <./images/22_note_formule.jpg>]
+\openout2 = `annexes/annexe_chap4.aux'.
+
+ (annexes/annexe_chap4.tex
+Annexe D.
+<images/1_e_gantt_retenue.png, id=2031, 1438.6247pt x 583.42969pt>
+File: images/1_e_gantt_retenue.png Graphic file (type png)
+<use images/1_e_gantt_retenue.png>
+Package pdftex.def Info: images/1_e_gantt_retenue.png  used on input line 11.
+(pdftex.def)             Requested size: 455.24411pt x 184.61815pt.
+) [126
+
+
+
+
+ <./images/1_e_gantt_retenue.png>]
+\openout2 = `annexes/annexe_chap5.aux'.
+
+ (annexes/annexe_chap5.tex
+Annexe E.
+<images/z3_stade-cles.jpg, id=2038, 533.74406pt x 338.01282pt>
+File: images/z3_stade-cles.jpg Graphic file (type jpg)
+<use images/z3_stade-cles.jpg>
+Package pdftex.def Info: images/z3_stade-cles.jpg  used on input line 9.
+(pdftex.def)             Requested size: 533.74275pt x 338.01198pt.
+<images/z4_gom_nav_jour4_chap5.jpg, id=2039, 417.81094pt x 398.99063pt>
+File: images/z4_gom_nav_jour4_chap5.jpg Graphic file (type jpg)
+<use images/z4_gom_nav_jour4_chap5.jpg>
+Package pdftex.def Info: images/z4_gom_nav_jour4_chap5.jpg  used on input line 18.
+(pdftex.def)             Requested size: 417.80992pt x 398.98965pt.
+[127
+
+
+
+
+ <./images/z3_stade-cles.jpg>]
+<images/z5_gom_nav_jour8_chap5.jpg, id=2044, 428.35031pt x 395.22656pt>
+File: images/z5_gom_nav_jour8_chap5.jpg Graphic file (type jpg)
+<use images/z5_gom_nav_jour8_chap5.jpg>
+Package pdftex.def Info: images/z5_gom_nav_jour8_chap5.jpg  used on input line 25.
+(pdftex.def)             Requested size: 428.34926pt x 395.22559pt.
+<images/z7_laitue_jour4_chap5.jpg, id=2045, 478.03593pt x 303.38344pt>
+File: images/z7_laitue_jour4_chap5.jpg Graphic file (type jpg)
+<use images/z7_laitue_jour4_chap5.jpg>
+Package pdftex.def Info: images/z7_laitue_jour4_chap5.jpg  used on input line 32.
+(pdftex.def)             Requested size: 478.03476pt x 303.38269pt.
+ [128 <./images/z4_gom_nav_jour4_chap5.jpg> <./images/z5_gom_nav_jour8_chap5.jpg>]
+<images/z8_laitue_jour7_chap5.jpg, id=2050, 484.05844pt x 330.48468pt>
+File: images/z8_laitue_jour7_chap5.jpg Graphic file (type jpg)
+<use images/z8_laitue_jour7_chap5.jpg>
+Package pdftex.def Info: images/z8_laitue_jour7_chap5.jpg  used on input line 39.
+(pdftex.def)             Requested size: 484.05725pt x 330.48387pt.
+) [129 <./images/z7_laitue_jour4_chap5.jpg> <./images/z8_laitue_jour7_chap5.jpg>] (main.aux (preliminaires/pagegarde.aux) (preliminaires/dedicaces.aux) (preliminaires/remerciements.aux) (preliminaires/resume.aux) (preliminaires/abstract.aux) (preliminaires/abreviations.aux) (chapitres/intro/intro.aux) (chapitres/chap1/chap1.aux) (chapitres/chap2/chap2.aux) (chapitres/chap3/chap3.aux) (chapitres/chap4/chap4.aux) (chapitres/chap5/chap5.aux) (chapitres/conclusion/conclusion.aux) (annexes/annexe_chap1.aux) (annexes/annexe_chap2.aux) (annexes/annexe_chap3.aux) (annexes/annexe_chap4.aux) (annexes/annexe_chap5.aux))
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2020/03/25>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 5485A86F1E0B182F7E010AB786192144;41791.
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 41469 strings out of 467392
+ 806198 string characters out of 5406124
+ 1644880 words of memory out of 5000000
+ 69489 multiletter control sequences out of 15000+600000
+ 739779 words of font info for 174 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 92i,17n,117p,3568b,2328s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrb1095.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrb1200.pk> <C:\Users\DELL\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qtmb.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txexs.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmbi.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><C:/Users/DELL/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on main.pdf (130 pages, 11906808 bytes).
+PDF statistics:
+ 2229 PDF objects out of 2487 (max. 8388607)
+ 460 named destinations out of 1000 (max. 500000)
+ 1716 words of extra memory for PDF output out of 10000 (max. 10000000)
+

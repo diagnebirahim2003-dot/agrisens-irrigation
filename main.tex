@@ -1,0 +1,87 @@
+% ===== ETape1 type de document =====
+\documentclass[12pt, a4paper]{report}
+%===== ETape2 langue et accents =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%===== ETape3 mise en page =====
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+%===== ETape4 formule mathematiques et police times =====
+\usepackage{amsmath}
+\usepackage[version=4]{mhchem}
+\usepackage{newtxtext, newtxmath}
+%===== ETape5 tableaux =====
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+%===== ETape6 figure et legende =====
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usepackage{pdflscape}
+\usepackage{adjustbox}
+
+\newcommand{\imgstd}[1]{%
+  \adjustbox{width=11cm, height=8cm, keepaspectratio=false}{\includegraphics{#1}}%
+}
+
+\usepackage{float}
+\usepackage[labelfont=bf]{caption}
+\addto\captionsfrench{\renewcommand{\tablename}{Tableau}}
+\addto\captionsfrench{\renewcommand{\listfigurename}{LISTE DES FIGURES}}
+\addto\captionsfrench{\renewcommand{\listtablename}{LISTE DES TABLEAUX}}
+\captionsetup{labelsep=colon}
+%===== ETape7 titres =====
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering\fontsize{14}{17}\selectfont}{\chaptertitlename\ \thechapter}{10pt}{\fontsize{14}{17}\selectfont}
+\titleformat{\section}{\bfseries\fontsize{14}{17}\selectfont}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\fontsize{12}{14.5}\selectfont}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries\itshape\fontsize{12}{14.5}\selectfont}{\thesubsubsection}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{25pt}
+\titleformat{\paragraph}{\bfseries\itshape\fontsize{12}{14.5}\selectfont}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{12pt}{6pt}
+%===== ETape8 bibliographies =====
+\usepackage{csquotes}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{references.bib}
+%===== ETape9 liens cliquables =====
+\usepackage{hyperref}
+%===== Étape 10 le corps du document =====
+%\includeonly{chapitres/chap1/chap1,chapitres/chap2/chap2}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\begin{document}
+\include{preliminaires/pagegarde}
+\include{preliminaires/dedicaces}
+\include{preliminaires/remerciements}
+\include{preliminaires/resume}
+\include{preliminaires/abstract}
+\include{preliminaires/abreviations}
+\tableofcontents
+\clearpage
+\addcontentsline{toc}{chapter}{LISTE DES FIGURES}
+\listoffigures
+\clearpage
+\addcontentsline{toc}{chapter}{LISTE DES TABLEAUX}
+\listoftables
+\include{chapitres/intro/intro}
+\include{chapitres/chap1/chap1}
+\include{chapitres/chap2/chap2}
+\include{chapitres/chap3/chap3}
+\include{chapitres/chap4/chap4}
+\include{chapitres/chap5/chap5}
+\include{chapitres/conclusion/conclusion}
+\printbibliography[heading=bibintoc, title={BIBLIOGRAPHIE}]
+
+\appendix
+\include{annexes/annexe_chap1}
+\include{annexes/annexe_chap2}
+\include{annexes/annexe_chap3}
+\include{annexes/annexe_chap4}
+\include{annexes/annexe_chap5}
+\end{document}

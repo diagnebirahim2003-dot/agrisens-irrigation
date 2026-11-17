@@ -1,0 +1,152 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{RÉSUMÉ}{3}{chapter*.1}%
+\contentsline {chapter}{ABSTRACT}{4}{chapter*.2}%
+\contentsline {chapter}{LISTE DES ABRÉVIATIONS}{5}{chapter*.3}%
+\contentsline {chapter}{LISTE DES SYMBOLES}{7}{chapter*.4}%
+\contentsline {chapter}{LISTE DES FIGURES}{14}{chapter*.5}%
+\contentsline {chapter}{LISTE DES TABLEAUX}{17}{chapter*.6}%
+\contentsline {chapter}{INTRODUCTION GÉNÉRALE}{18}{chapter*.8}%
+\contentsline {chapter}{\numberline {1}REVUE DE LA LITTÉRATURE}{20}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{20}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Agriculture de précision : concepts fondamentaux}{20}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Définition et principes de l'agriculture de précision}{20}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Origines et évolution du concept}{21}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Agriculture de précision versus agriculture traditionnelle}{21}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Enjeux et intérêts pour l'agroécologie}{21}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Technologies de collecte de données en agriculture de précision}{22}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Les capteurs de sol et de climat}{22}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Les drones et l’imagerie aérienne en agriculture}{22}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Les donnees météorologiques et les API météo}{22}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Limites et défis de fiabilité des capteurs low-cost}{23}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Applications numériques et fondements théoriques de la gestion de l’irrigation}{23}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Panorama des applications numériques d’aide à la prise de décision d’irrigation}{23}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Approches de calcul des besoins en eau des cultures et de l'évapotranspiration}{24}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Méthode FAO-56 de Penman-Monteith, coefficient cultural ($K_c$) et évapotranspiration culturale ($ET_c$)}{25}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}Travaux antérieurs orientés sur différentes zones}{26}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}Salinité des sols et stratégies de correction}{28}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Problématique de la salinité des sols dans la zone d'étude}{28}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Effet du stress salin sur les cultures maraîchères}{28}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}Cultures étudiées et sensibilité à la salinité}{28}{subsection.1.5.3}%
+\contentsline {subsection}{\numberline {1.5.4}Amendements organiques utilisés pour lutter contre la salinité (biochar, compost, coque d’arachide et biofertilisant)}{29}{subsection.1.5.4}%
+\contentsline {subsection}{\numberline {1.5.5}Travaux antérieurs sur l'efficacité de ces amendements}{29}{subsection.1.5.5}%
+\contentsline {section}{\numberline {1.6}Conclusion}{29}{section.1.6}%
+\contentsline {chapter}{\numberline {2}PROTOCOLE EXPÉRIMENTAL}{31}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduction}{31}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Dispositif expérimental}{31}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Présentation du site expérimental}{31}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Représentation de la surface expérimentale}{32}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Méthode d’irrigation et d’apport en nutriment}{32}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Matériel végétal}{33}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Aménagement du sol et amendements}{34}{subsection.2.3.1}%
+\contentsline {section}{\numberline {2.4}Paramètres capteurs et méthodologie de calcul}{35}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Paramètres capteurs}{35}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Besoins des cultures et Méthodologie de calcul}{36}{subsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.1}Besoins en eau}{36}{subsubsection.2.4.2.1}%
+\contentsline {subsubsection}{\numberline {2.4.2.2}Variables climatiques utilisées}{36}{subsubsection.2.4.2.2}%
+\contentsline {subsubsection}{\numberline {2.4.2.3}Coefficients culturaux et stades de développement}{36}{subsubsection.2.4.2.3}%
+\contentsline {subsection}{\numberline {2.4.3}Besoin en élément nutritif}{37}{subsection.2.4.3}%
+\contentsline {section}{\numberline {2.5}Processus d'aménagement des plots : étapes, rôle et justification des apports}{37}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Les étapes de l'aménagement}{37}{subsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.1}Désherbage et Isolement des herbes}{37}{subsubsection.2.5.1.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.2}Le labour et la délimitation des plots}{38}{subsubsection.2.5.1.2}%
+\contentsline {subsection}{\numberline {2.5.2}Rôle et justification du choix des apports(mécanisme attendu)}{39}{subsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.2.1}Le biochar}{39}{subsubsection.2.5.2.1}%
+\contentsline {subsubsection}{\numberline {2.5.2.2}La poudre de coque d’arachide}{40}{subsubsection.2.5.2.2}%
+\contentsline {subsubsection}{\numberline {2.5.2.3}Le compost}{41}{subsubsection.2.5.2.3}%
+\contentsline {subsubsection}{\numberline {2.5.2.4}Le biofertilisant anti-sel ou engrais granulé bio}{42}{subsubsection.2.5.2.4}%
+\contentsline {section}{\numberline {2.6}Conclusion}{43}{section.2.6}%
+\contentsline {chapter}{\numberline {3}MISE EN ŒUVRE RÉELLE ET SUIVI DE L'EXPÉRIMENTATION}{44}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduction}{44}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Mise en place des plots et des cultures}{44}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Mise en place des plots}{44}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Mise en place des cultures sur les plots}{45}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Irrigation}{46}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Détermination manuelle des paramètres pour l’irrigation}{46}{subsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.1}Détermination de $ET_0$}{46}{subsubsection.3.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.3.1.2}Détermination de $ET_c$ en mm/jour}{47}{subsubsection.3.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.3.1.3}Détermination de la dose théorique d’irrigation}{47}{subsubsection.3.3.1.3}%
+\contentsline {subsection}{\numberline {3.3.2}Détermination automatique des paramètres de $ET_0$ sur Excel}{48}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Détermination automatique des paramètres sur Excel}{48}{subsubsection.3.3.2.1}%
+\contentsline {subsection}{\numberline {3.3.3}Détermination des paramètres hydriques du sol ($H_{cc}$, $RFU$, $P$, $RU$ et $S_c$)}{48}{subsection.3.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.3.1}Détermination de la réserve utile}{49}{subsubsection.3.3.3.1}%
+\contentsline {section}{\numberline {3.4}Présentation des outils d'acquisition de données}{50}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Acquisition des données géographiques et météorologiques}{50}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Le capteur 8-en-1}{50}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Caractérisation des paramètres du sol étudiés}{51}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}La température du sol et l'humidité du sol}{51}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2} Le potentiel hydrogène du sol}{51}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {3.4.3.3}L'électroconductivité ou conductivité électrique}{51}{subsubsection.3.4.3.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.4}L'azote, le phosphore et le potassium}{52}{subsubsection.3.4.3.4}%
+\contentsline {section}{\numberline {3.5}Gestion hebdomadaire et suivi de l'expérimentation culturale}{52}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Protocole de suivi des cultures}{52}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Entretien des cultures}{53}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Apport journalier d’eau}{53}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Stratégie de lutte contre les maladies et ravageurs}{54}{subsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.4.1}Ravageurs observés et méthodes de lutte}{54}{subsubsection.3.5.4.1}%
+\contentsline {subsubsection}{\numberline {3.5.4.2}Maladies observées et méthodes de lutte}{57}{subsubsection.3.5.4.2}%
+\contentsline {subsection}{\numberline {3.5.5}Évolutions des différents plots}{58}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Conclusion}{59}{section.3.6}%
+\contentsline {chapter}{\numberline {4} MODÉLISATION, CONCEPTION ET IMPLÉMENTATION DU SYSTÈME}{60}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{60}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Choix de la méthode d’analyse : Pourquoi MERISE}{60}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Une méthode qui sépare la réflexion de la technique}{60}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Une méthode adaptée à un processus déjà éprouvé sur le terrain}{61}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Une méthode qui n’impose pas de choix technique prématuré et pédagogiquement adaptée et largement éprouvée}{61}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Synthèse comparative}{61}{subsection.4.2.4}%
+\contentsline {section}{\numberline {4.3}Du terrain au système d’information : Domaine d'étude et acteur}{62}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Les deux grandes catégories de modèles et le diagramme de Gantt}{63}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Modèle Conceptuel de Communication (MCC)}{63}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Modèle Conceptuel de Traitement (MCT)}{65}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Modèle Organisationnel de Traitement (MOT)}{72}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Conception de l’application AgriSens}{76}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Architecture technique}{76}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Organisation de l’application et rôles}{77}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Implémentation de l’application AgriSens}{78}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Conclusion}{81}{section.4.7}%
+\contentsline {chapter}{\numberline {5}RÉSULTATS ET DISCUSSIONS}{82}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{82}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Résultats relatifs à l'amendement du sol}{82}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Mécanisme d’action attendu des composants de l’amendement}{82}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Résultats des tests au début de l'expérimentation}{83}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}Validation du comportement du capteur}{83}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}Caractérisation des composantes de l’amendement}{84}{subsubsection.5.2.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.3}Analyse comparative de l’état du sol : plots témoins et plots test}{85}{subsubsection.5.2.2.3}%
+\contentsline {subsection}{\numberline {5.2.3}Évolution de l'état du sol entre plots tests et plots témoins (observations)}{86}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Interprétation et discussion sur les observations}{89}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Courbes d'évolution des paramètres étudiés durant l'expérimentation}{90}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Résultats des paramètres climatiques et hydriques et leurs relations}{90}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Consommation d’eau : zone test contre zone témoin}{98}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Résultats des paramètres de croissance et de développement végétative}{99}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Résultats phytosanitaires}{108}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Maladies fongiques observées et efficacité des traitements appliqués}{108}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Résultats de rendement}{109}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Production finale par plot}{109}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Comparaison des rendements entre T et TS}{112}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Conclusion}{112}{section.5.6}%
+\contentsline {chapter}{CONCLUSION GÉNÉRALE}{113}{chapter*.107}%
+\contentsline {chapter}{BIBLIOGRAPHIE}{114}{chapter*.108}%
+\contentsline {chapter}{\numberline {A}DÉTAILS DES MÉTHODES DE CALCUL DES BESOINS EN EAU DES CULTURES}{117}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Équation de Penman-Monteith selon la méthode FAO-56}{117}{appendix.A.1}%
+\contentsline {section}{\numberline {A.2}Autres méthodes d'estimation de l'évapotranspiration}{117}{appendix.A.2}%
+\contentsline {section}{\numberline {A.3}Calcul de la réserve utile et de la réserve facilement utilisable}{118}{appendix.A.3}%
+\contentsline {section}{\numberline {A.4}Approche duale du coefficient cultural}{118}{appendix.A.4}%
+\contentsline {section}{\numberline {A.5}Prise en compte du stress hydrique}{119}{appendix.A.5}%
+\contentsline {chapter}{\numberline {B}DÉTAILS DE LA CONFECTION DES PLOTS}{120}{appendix.B}%
+\contentsline {chapter}{\numberline {C}DÉTAIL DES CALCULS DE $ET_0$ ET CLASSEUR EXCEL}{121}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Détermination des paramètres de $ET_0$}{121}{appendix.C.1}%
+\contentsline {subsection}{\numberline {C.1.1}Détermination du rayonnement extraterrestre}{121}{subsection.C.1.1}%
+\contentsline {subsection}{\numberline {C.1.2}Détermination du rayonnement solaire}{121}{subsection.C.1.2}%
+\contentsline {subsection}{\numberline {C.1.3}Détermination de la pression de vapeur saturante}{122}{subsection.C.1.3}%
+\contentsline {subsection}{\numberline {C.1.4}Détermination de la pression de vapeur réelle}{122}{subsection.C.1.4}%
+\contentsline {subsection}{\numberline {C.1.5}Déficit de pression de vapeur}{122}{subsection.C.1.5}%
+\contentsline {subsection}{\numberline {C.1.6}Détermination du rayonnement net}{122}{subsection.C.1.6}%
+\contentsline {subsection}{\numberline {C.1.7}Pente de la courbe de vapeur}{123}{subsection.C.1.7}%
+\contentsline {subsection}{\numberline {C.1.8}Détermination de $G$}{123}{subsection.C.1.8}%
+\contentsline {subsection}{\numberline {C.1.9}Détermination de la constante psychrométrique}{123}{subsection.C.1.9}%
+\contentsline {subsection}{\numberline {C.1.10}Vitesse du vent ($u_2$)}{123}{subsection.C.1.10}%
+\contentsline {section}{\numberline {C.2}Classeur Excel de calcul automatique}{124}{appendix.C.2}%
+\contentsline {chapter}{\numberline {D}DIAGRAMMES DE MODÉLISATION ET DE PLANIFICATION}{126}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Diagramme de Gantt}{126}{appendix.D.1}%
+\contentsline {chapter}{\numberline {E}STADES PHÉNOLOGIQUES ET PHOTOS COMPARATIVES}{127}{appendix.E}%
+\contentsline {section}{\numberline {E.1}Stades phénologiques clés}{127}{appendix.E.1}%
+\contentsline {section}{\numberline {E.2}Images comparatives des plots T et TS}{128}{appendix.E.2}%
